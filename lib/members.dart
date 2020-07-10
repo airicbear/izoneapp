@@ -22,15 +22,37 @@ class Member {
       this.stageNameKorean});
 }
 
-class MembersList extends StatelessWidget {
+class MembersList extends StatefulWidget {
   MembersList({Key key, this.title}) : super(key: key);
 
   final String title;
+
+  @override
+  MembersState createState() => MembersState();
+}
+
+class MembersState extends State<MembersList> {
+  int collectionNumber = 3;
+
+  void changeCollectionNumber() {
+    setState(() {
+      if (collectionNumber >= 3) {
+        collectionNumber -= 2;
+      } else {
+        collectionNumber += 1;
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(title),
+          title: Text(widget.title),
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () => changeCollectionNumber(),
+          child: Icon(Icons.image),
         ),
         body: Container(
           child: FutureBuilder(
@@ -42,6 +64,7 @@ class MembersList extends StatelessWidget {
                 itemCount: members == null ? 0 : members.length,
                 itemBuilder: (context, index) {
                   return MemberCard(
+                    collectionNumber: collectionNumber,
                     member: Member(
                       id: members[index]['ID'],
                       birthplace: members[index]['BIRTHPLACE'],
@@ -61,21 +84,28 @@ class MembersList extends StatelessWidget {
   }
 }
 
-class MemberCard extends StatelessWidget {
-  MemberCard({Key key, this.member}) : super(key: key);
+class MemberCard extends StatefulWidget {
+  const MemberCard({Key key, this.member, this.collectionNumber})
+      : super(key: key);
 
   final Member member;
+  final int collectionNumber;
 
+  @override
+  MemberCardState createState() => MemberCardState();
+}
+
+class MemberCardState extends State<MemberCard> {
   int calculateAge(String dateOfBirth) {
     return DateTime.now().difference(DateTime.parse(dateOfBirth)).inDays ~/ 365;
   }
 
   Widget memberPicture() {
-    var imagePath =
-        'assets/images/official-photo-3-${member.stageName.toLowerCase()}.jpg';
     return ClipRRect(
         borderRadius: new BorderRadius.circular(32.0),
-        child: GestureDetector(child: Image.asset(imagePath)));
+        child: GestureDetector(
+            child: Image.asset(
+                'assets/images/oneiric-diary/official-photo-${widget.collectionNumber}-${widget.member.stageName.toLowerCase()}.jpg')));
   }
 
   TableRow memberInfoItem(property, description) {
@@ -100,19 +130,21 @@ class MemberCard extends StatelessWidget {
               inside: BorderSide(color: Color.fromRGBO(255, 255, 255, 0.1))),
           children: <TableRow>[
             memberInfoItem('Stage name',
-                '${member.stageName} (${member.stageNameKorean})'),
-            memberInfoItem(
-                'Full name', '${member.fullName} (${member.fullNameKorean})'),
-            memberInfoItem('Nationality', '${member.nationality}'),
+                '${widget.member.stageName} (${widget.member.stageNameKorean})'),
+            memberInfoItem('Full name',
+                '${widget.member.fullName} (${widget.member.fullNameKorean})'),
+            memberInfoItem('Nationality', '${widget.member.nationality}'),
             memberInfoItem('Date of birth',
-                '${member.dateOfBirth} (${calculateAge(member.dateOfBirth)} years old)'),
-            memberInfoItem('Birthplace', '${member.birthplace}'),
+                '${widget.member.dateOfBirth} (${calculateAge(widget.member.dateOfBirth)} years old)'),
+            memberInfoItem('Birthplace', '${widget.member.birthplace}'),
           ],
         ));
   }
 
   @override
   Widget build(BuildContext context) {
+    print("HELLO + ${widget.collectionNumber}");
+
     return Container(
       decoration: BoxDecoration(
         color: Theme.of(context).cardColor,
