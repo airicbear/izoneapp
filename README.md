@@ -24,4 +24,4 @@ Other nice-to-have things may include a preferences page, multiple themes, and a
 For now, I'm not going to release any builds just yet since I think there is a lot more work to do, however it is fairly straightforward to build yourself following [Flutter's Get Started Page](https://flutter.dev/docs/get-started/install).
 It should work for Flutter Web too, so if you want to build it for the web make sure to follow the [Web setup](https://flutter.dev/docs/get-started/web).
 Flutter Web definitely isn't perfect yet but I find it pretty cool how it mostly "just works" and doesn't require a phone/emulator.
-There's also Flutter for Desktop though I haven't tried that yet.
+If you're using Linux, Canonical and Google are working together to make [Flutter build as Linux desktop apps](https://ubuntu.com/blog/canonical-enables-linux-desktop-app-support-with-flutter).
