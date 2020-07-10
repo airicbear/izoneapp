@@ -1,0 +1,122 @@
+[
+    {
+        "BIRTHPLACE": "Seoul",
+        "DATEOFBIRTH": "1995-09-27",
+        "FULLNAME": "Kwon Eunbi",
+        "FULLNAME_KR": "권은비",
+        "ID": 1,
+        "NATIONALITY": "South Korean",
+        "STAGENAME": "Eunbi",
+        "STAGENAME_KR": "은비"
+    },
+    {
+        "BIRTHPLACE": "Kagoshima",
+        "DATEOFBIRTH": "1998-03-19",
+        "FULLNAME": "Miyawaki Sakura",
+        "FULLNAME_KR": "미야와키 사쿠라",
+        "ID": 2,
+        "NATIONALITY": "Japanese",
+        "STAGENAME": "Sakura",
+        "STAGENAME_KR": "사쿠라"
+    },
+    {
+        "BIRTHPLACE": "Yangsan",
+        "DATEOFBIRTH": "1999-07-05",
+        "FULLNAME": "Kang Hyewon",
+        "FULLNAME_KR": "강혜원",
+        "ID": 3,
+        "NATIONALITY": "South Korean",
+        "STAGENAME": "Hyewon",
+        "STAGENAME_KR": "혜원"
+    },
+    {
+        "BIRTHPLACE": "Seoul",
+        "DATEOFBIRTH": "1999-09-29",
+        "FULLNAME": "Choi Yena",
+        "FULLNAME_KR": "최예나",
+        "ID": 4,
+        "NATIONALITY": "South Korean",
+        "STAGENAME": "Yena",
+        "STAGENAME_KR": "예나"
+    },
+    {
+        "BIRTHPLACE": "Yongin",
+        "DATEOFBIRTH": "2000-01-11",
+        "FULLNAME": "Lee Chaeyeon",
+        "FULLNAME_KR": "이채연",
+        "ID": 5,
+        "NATIONALITY": "South Korean",
+        "STAGENAME": "Chaeyeon",
+        "STAGENAME_KR": "채연"
+    },
+    {
+        "BIRTHPLACE": "Seoul",
+        "DATEOFBIRTH": "2000-08-01",
+        "FULLNAME": "Kim Chaewon",
+        "FULLNAME_KR": "김채원",
+        "ID": 6,
+        "NATIONALITY": "South Korean",
+        "STAGENAME": "Chaewon",
+        "STAGENAME_KR": "채원"
+    },
+    {
+        "BIRTHPLACE": "Seoul",
+        "DATEOFBIRTH": "2001-02-05",
+        "FULLNAME": "Kim Minju",
+        "FULLNAME_KR": "김민주",
+        "ID": 7,
+        "NATIONALITY": "South Korean",
+        "STAGENAME": "Minju",
+        "STAGENAME_KR": "민주"
+    },
+    {
+        "BIRTHPLACE": "Tokyo",
+        "DATEOFBIRTH": "2001-06-18",
+        "FULLNAME": "Yabuki Nako",
+        "FULLNAME_KR": "야부키 나코",
+        "ID": 8,
+        "NATIONALITY": "Japanese",
+        "STAGENAME": "Nako",
+        "STAGENAME_KR": "나코"
+    },
+    {
+        "BIRTHPLACE": "Toghichi",
+        "DATEOFBIRTH": "2001-10-06",
+        "FULLNAME": "Honda Hitomi",
+        "FULLNAME_KR": "혼다 히토미",
+        "ID": 9,
+        "NATIONALITY": "Japanese",
+        "STAGENAME": "Hitomi",
+        "STAGENAME_KR": "히토미"
+    },
+    {
+        "BIRTHPLACE": "Busan",
+        "DATEOFBIRTH": "2001-10-22",
+        "FULLNAME": "Jo Yuri",
+        "FULLNAME_KR": "조유리",
+        "ID": 10,
+        "NATIONALITY": "South Korean",
+        "STAGENAME": "Yuri",
+        "STAGENAME_KR": "유리"
+    },
+    {
+        "BIRTHPLACE": "Cheongju",
+        "DATEOFBIRTH": "2003-09-01",
+        "FULLNAME": "Ahn Yujin",
+        "FULLNAME_KR": "안유진",
+        "ID": 11,
+        "NATIONALITY": "South Korean",
+        "STAGENAME": "Yujin",
+        "STAGENAME_KR": "유진"
+    },
+    {
+        "BIRTHPLACE": "Seoul",
+        "DATEOFBIRTH": "2004-08-31",
+        "FULLNAME": "Jang Wonyoung",
+        "FULLNAME_KR": "장원영",
+        "ID": 12,
+        "NATIONALITY": "South Korean",
+        "STAGENAME": "Wonyoung",
+        "STAGENAME_KR": "원영"
+    }
+]
