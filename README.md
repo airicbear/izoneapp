@@ -9,6 +9,11 @@ A fan-made Flutter app dedicated to [IZ*ONE](http://iz-one.co.kr/).
 
 ## Developer Notes
 
+### App and repository size
+
+The app and repository size may be quite large due to the high quality images in the `assets/images` folder.
+Somethings to consider may include image compression, fetching images using networking, or allowing the user to download more pictures in local storage while keeping a default gallery in the repository.
+
 ### Database
 
 I initially tried using SQLite hence the `assets/izoneapp.db` but then exported it to `assets/izone.json` after realizing how much easier it would be to just use JSON.
