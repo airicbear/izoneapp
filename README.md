@@ -12,7 +12,7 @@ A fan-made Flutter app dedicated to [IZ*ONE](http://iz-one.co.kr/).
 ### App and repository size
 
 The app and repository size may be quite large due to the high quality images in the `assets/images` folder.
-Somethings to consider may include image compression, fetching images using networking, or allowing the user to download more pictures in local storage while keeping a default gallery in the repository.
+Somethings to consider may include image compression, fetching images using networking, or allowing the user to download more pictures into local storage while keeping a default gallery in the repository.
 
 ### Database
 

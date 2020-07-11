@@ -143,8 +143,6 @@ class MemberCardState extends State<MemberCard> {
 
   @override
   Widget build(BuildContext context) {
-    print("HELLO + ${widget.collectionNumber}");
-
     return Container(
       decoration: BoxDecoration(
         color: Theme.of(context).cardColor,
