@@ -12,7 +12,17 @@ class MemberList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: Row(
+          children: <Widget>[
+            Expanded(
+              child: Text(title),
+            ),
+            Text(
+              'Debut Oct. 29, 2018',
+              style: TextStyle(color: Theme.of(context).disabledColor),
+            ),
+          ],
+        ),
       ),
       body: Container(
         child: FutureBuilder(
