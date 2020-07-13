@@ -31,9 +31,9 @@ class MemberList extends StatelessWidget {
           builder: (context, snapshot) {
             var members = json.decode(snapshot.data.toString());
             return GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
+              gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
                 childAspectRatio: 1.15,
+                maxCrossAxisExtent: 256,
               ),
               itemCount: members == null ? 0 : members.length,
               itemBuilder: (context, index) {
