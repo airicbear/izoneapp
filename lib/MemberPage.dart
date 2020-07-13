@@ -22,7 +22,7 @@ class MemberPage extends StatelessWidget {
         slivers: <Widget>[
           SliverAppBar(
             automaticallyImplyLeading: false,
-            expandedHeight: 370.0,
+            expandedHeight: 440,
             centerTitle: true,
             backgroundColor: Colors.transparent,
             flexibleSpace: Hero(
@@ -32,6 +32,7 @@ class MemberPage extends StatelessWidget {
                 child: Image(
                   image: AssetImage(member.getImagePath('oneiric-diary')),
                   fit: BoxFit.cover,
+                  height: 470,
                 ),
               ),
             ),
