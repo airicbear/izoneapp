@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:izoneapp/members.dart';
+import 'package:izoneapp/MemberList.dart';
 
 void main() {
   runApp(MyApp());
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.purple,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MembersList(title: 'IZ*ONE'),
+      home: MemberList(title: 'IZ*ONE'),
     );
   }
 }
