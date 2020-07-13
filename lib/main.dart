@@ -20,6 +20,11 @@ class MyApp extends StatelessWidget {
         canvasColor: Colors.black,
       ),
       theme: ThemeData(
+        appBarTheme: AppBarTheme(
+          color: Colors.transparent,
+          elevation: 0,
+        ),
+        primaryColor: Colors.white,
         primarySwatch: Colors.purple,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
