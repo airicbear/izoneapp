@@ -24,6 +24,6 @@ class Member {
   }
 
   String getImagePath(String album) {
-    return 'assets/images/$album/official-photo-3-${this.stageName.toLowerCase()}.jpg';
+    return 'assets/images/$album/official-photo-4-${this.stageName.toLowerCase()}.jpg';
   }
 }
