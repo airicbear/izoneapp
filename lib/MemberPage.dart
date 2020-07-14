@@ -21,7 +21,6 @@ class MemberPage extends StatelessWidget {
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
-            automaticallyImplyLeading: false,
             expandedHeight: 440,
             centerTitle: true,
             backgroundColor: Colors.transparent,
