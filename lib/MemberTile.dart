@@ -28,7 +28,7 @@ class MemberTile extends StatelessWidget {
           children: <Widget>[
             Expanded(
               child: Hero(
-                tag: member.stageName,
+                tag: member.getImagePath('oneiric-diary'),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(12.0),
                   child: Image(

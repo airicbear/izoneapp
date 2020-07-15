@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:izoneapp/MemberPictureView.dart';
 import 'Member.dart';
 
 class MemberPage extends StatelessWidget {
@@ -24,14 +25,28 @@ class MemberPage extends StatelessWidget {
             expandedHeight: 440,
             centerTitle: true,
             backgroundColor: Colors.transparent,
-            flexibleSpace: Hero(
-              tag: member.stageName,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(32.0),
-                child: Image(
-                  image: AssetImage(member.getImagePath('oneiric-diary')),
-                  fit: BoxFit.cover,
-                  height: 470,
+            flexibleSpace: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return MemberPictureView(
+                        memberImagePath: member.getImagePath('oneiric-diary'),
+                      );
+                    },
+                  ),
+                );
+              },
+              child: Hero(
+                tag: member.getImagePath('oneiric-diary'),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(32.0),
+                  child: Image(
+                    image: AssetImage(member.getImagePath('oneiric-diary')),
+                    fit: BoxFit.cover,
+                    height: 470,
+                  ),
                 ),
               ),
             ),
@@ -47,7 +62,10 @@ class MemberPage extends StatelessWidget {
                         child: Text(memberInfo[index][0]),
                         flex: 2,
                       ),
-                      Expanded(child: Text(memberInfo[index][1]), flex: 4),
+                      Expanded(
+                        child: Text(memberInfo[index][1]),
+                        flex: 4,
+                      ),
                     ],
                   ),
                 );
