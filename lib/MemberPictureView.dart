@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:photo_view/photo_view.dart';
 
 class MemberPictureView extends StatelessWidget {
   const MemberPictureView({Key key, this.memberImagePath}) : super(key: key);
@@ -13,12 +14,12 @@ class MemberPictureView extends StatelessWidget {
       },
       child: Scaffold(
         body: Center(
-          child: Hero(
-            tag: memberImagePath,
-            child: Image(
-              image: AssetImage(memberImagePath),
-              fit: BoxFit.cover,
+          child: PhotoView(
+            imageProvider: AssetImage(memberImagePath),
+            heroAttributes: PhotoViewHeroAttributes(
+              tag: memberImagePath,
             ),
+            minScale: PhotoViewComputedScale.contained,
           ),
         ),
       ),
