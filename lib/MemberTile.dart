@@ -1,10 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'Member.dart';
 import 'MemberPage.dart';
 
 Route _memberRoute(BuildContext context, Member member) {
-  return CupertinoPageRoute(
+  return MaterialPageRoute(
     builder: (context) => MemberPage(
       member: member,
     ),
