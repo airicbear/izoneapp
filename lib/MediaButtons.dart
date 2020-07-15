@@ -68,13 +68,41 @@ class MediaButtons extends StatelessWidget {
             icon: FaIcon(FontAwesomeIcons.redditAlien),
           ),
           IconButton(
-            onPressed: () => _launchUrl('http://iz-one.co.kr/'),
-            icon: FaIcon(FontAwesomeIcons.globeAmericas),
-          ),
-          IconButton(
             onPressed: () => _launchUrl(
                 'https://music.apple.com/us/artist/iz-one/1440449616'),
             icon: FaIcon(FontAwesomeIcons.itunesNote),
+          ),
+          IconButton(
+            onPressed: () => _launchUrl(
+                'https://play.google.com/music/r/m/Avt4ltg3radsfcc2gnggnvnsa4m?t=IZONE'),
+            icon: FaIcon(FontAwesomeIcons.googlePlay),
+          ),
+          IconButton(
+            onPressed: () => _launchUrl(
+                'https://music.youtube.com/channel/UCG81UKNsFg9Perf0uPQOsQw'),
+            icon: FaIcon(FontAwesomeIcons.playCircle),
+          ),
+          IconButton(
+            onPressed: () => _launchUrl('https://pandora.app.link/cFvHL2U587'),
+            icon: ImageIcon(AssetImage('assets/icons/pandora.png')),
+          ),
+          IconButton(
+            onPressed: () =>
+                _launchUrl('https://music.amazon.com/artists/B07JZF2B3R'),
+            icon: FaIcon(FontAwesomeIcons.amazon),
+          ),
+          IconButton(
+            onPressed: () =>
+                _launchUrl('https://soundcloud.com/search?q=iz*one'),
+            icon: FaIcon(FontAwesomeIcons.soundcloud),
+          ),
+          IconButton(
+            onPressed: () => _launchUrl('https://tidal.com/artist/10528069'),
+            icon: ImageIcon(AssetImage('assets/icons/tidal.png')),
+          ),
+          IconButton(
+            onPressed: () => _launchUrl('http://iz-one.co.kr/'),
+            icon: FaIcon(FontAwesomeIcons.globeAmericas),
           ),
         ],
       ),
