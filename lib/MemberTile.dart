@@ -35,7 +35,6 @@ class MemberTile extends StatelessWidget {
                   child: Image(
                     image: AssetImage(member.getImagePath('oneiric-diary')),
                     fit: BoxFit.cover,
-                    height: 470,
                   ),
                 ),
               ),
