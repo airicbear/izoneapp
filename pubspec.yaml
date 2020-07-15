@@ -55,6 +55,7 @@ flutter:
   assets:
     - assets/izone.json
     - assets/images/oneiric-diary/
+    - assets/icons/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

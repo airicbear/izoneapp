@@ -56,16 +56,16 @@ class MediaButtons extends StatelessWidget {
           ),
           IconButton(
             onPressed: () => _launchUrl('https://channels.vlive.tv/C1B7AF'),
-            icon: FaIcon(FontAwesomeIcons.handPeace),
-          ),
-          IconButton(
-            onPressed: () => _launchUrl('https://www.reddit.com/r/izone/'),
-            icon: FaIcon(FontAwesomeIcons.reddit),
+            icon: ImageIcon(AssetImage('assets/icons/vlive.png')),
           ),
           IconButton(
             onPressed: () => _launchUrl(
                 'https://open.spotify.com/artist/5r1tUTxVSgvBHnoDuDODPH'),
             icon: FaIcon(FontAwesomeIcons.spotify),
+          ),
+          IconButton(
+            onPressed: () => _launchUrl('https://www.reddit.com/r/izone/'),
+            icon: FaIcon(FontAwesomeIcons.redditAlien),
           ),
           IconButton(
             onPressed: () => _launchUrl('http://iz-one.co.kr/'),
