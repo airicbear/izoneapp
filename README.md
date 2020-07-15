@@ -17,4 +17,4 @@ Somethings to consider may include image compression, fetching images using netw
 ### Database
 
 I initially tried using SQLite hence the `assets/izoneapp.db` but then exported it to `assets/izone.json` after realizing how much easier it would be to just use JSON.
-I'm keeping this method of editing the `.db` file and exporting to `.json` in case I want to use SQL in the future (for example, if Flutter support for SQLite improves).
+I'm keeping this method of editing the `.db` file and exporting to `.json` in case I want to use SQL in the future.
