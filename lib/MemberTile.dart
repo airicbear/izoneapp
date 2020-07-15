@@ -18,39 +18,43 @@ class MemberTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Hero(
-      tag: member.stageName,
-      child: Material(
-        child: InkResponse(
-          onTap: () {
-            Navigator.of(context).push(_memberRoute(context, member));
-          },
-          highlightShape: BoxShape.rectangle,
-          borderRadius: BorderRadius.circular(32.0),
-          child: Column(
-            children: <Widget>[
-              Expanded(
+    return Material(
+      child: InkResponse(
+        onTap: () {
+          Navigator.of(context).push(_memberRoute(context, member));
+        },
+        highlightShape: BoxShape.rectangle,
+        borderRadius: BorderRadius.circular(32.0),
+        child: Column(
+          children: <Widget>[
+            Expanded(
+              child: Hero(
+                tag: member.stageName,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(12.0),
-                  child: Image.asset(member.getImagePath('oneiric-diary')),
+                  child: Image(
+                    image: AssetImage(member.getImagePath('oneiric-diary')),
+                    fit: BoxFit.cover,
+                    height: 470,
+                  ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
-                child: Column(
-                  children: <Widget>[
-                    Text(member.stageName),
-                    Text(
-                      '${member.getAge()} years old',
-                      style: TextStyle(
-                        color: Theme.of(context).disabledColor,
-                      ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: Column(
+                children: <Widget>[
+                  Text(member.stageName),
+                  Text(
+                    '${member.getAge()} years old',
+                    style: TextStyle(
+                      color: Theme.of(context).disabledColor,
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
