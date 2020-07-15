@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'Member.dart';
 import 'MemberTile.dart';
+import 'MediaButtons.dart';
 
 class MemberList extends StatelessWidget {
   MemberList({Key key, this.title}) : super(key: key);
@@ -11,6 +12,10 @@ class MemberList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: BottomAppBar(
+        child: MediaButtons(),
+        color: Theme.of(context).primaryColor,
+      ),
       appBar: AppBar(
         title: Row(
           children: <Widget>[
