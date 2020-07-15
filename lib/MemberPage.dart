@@ -59,11 +59,11 @@ class MemberPage extends StatelessWidget {
                   child: Row(
                     children: <Widget>[
                       Expanded(
-                        child: Text(memberInfo[index][0]),
+                        child: SelectableText(memberInfo[index][0]),
                         flex: 2,
                       ),
                       Expanded(
-                        child: Text(memberInfo[index][1]),
+                        child: SelectableText(memberInfo[index][1]),
                         flex: 4,
                       ),
                     ],
