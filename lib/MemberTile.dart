@@ -25,7 +25,7 @@ class MemberTile extends StatelessWidget {
         highlightShape: BoxShape.rectangle,
         borderRadius: BorderRadius.circular(32.0),
         child: Column(
-          children: <Widget>[
+          children: [
             Expanded(
               child: Hero(
                 tag: member.getImagePath('oneiric-diary'),
@@ -41,7 +41,7 @@ class MemberTile extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: Column(
-                children: <Widget>[
+                children: [
                   Text(member.stageName),
                   Text(
                     '${member.getAge()} years old',

@@ -5,10 +5,6 @@ import 'MemberTile.dart';
 import 'MediaButtons.dart';
 
 class MemberList extends StatelessWidget {
-  MemberList({Key key, this.title}) : super(key: key);
-
-  final String title;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,21 +17,31 @@ class MemberList extends StatelessWidget {
           future:
               DefaultAssetBundle.of(context).loadString('assets/izone.json'),
           builder: (context, snapshot) {
-            var members = json.decode(snapshot.data.toString());
+            final members = json.decode(snapshot.data.toString());
             return CustomScrollView(
               slivers: [
                 SliverAppBar(
-                  title: Row(
-                    children: [
-                      Expanded(
-                        child: Text(title),
-                      ),
-                      Text(
-                        'Debut Oct. 29, 2018',
-                        style:
-                            TextStyle(color: Theme.of(context).disabledColor),
-                      ),
-                    ],
+                  automaticallyImplyLeading: false,
+                  floating: true,
+                  snap: true,
+                  title: SingleChildScrollView(
+                    child: ButtonBar(
+                      alignment: MainAxisAlignment.start,
+                      children: [
+                        FlatButton(
+                          onPressed: () {
+                            Navigator.popAndPushNamed(context, '/About');
+                          },
+                          child: Text(
+                            'About',
+                            style: TextStyle(
+                              color: Theme.of(context).disabledColor,
+                            ),
+                          ),
+                        ),
+                        Text('Members'),
+                      ],
+                    ),
                   ),
                 ),
                 SliverGrid(
@@ -61,7 +67,7 @@ class MemberList extends StatelessWidget {
                         ),
                       );
                     },
-                    childCount: members.length,
+                    childCount: members == null ? 0 : members.length,
                   ),
                 ),
               ],
