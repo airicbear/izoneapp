@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:izoneapp/AboutIzone.dart';
+import 'package:izoneapp/MediaButtons.dart';
 import 'package:izoneapp/MemberList.dart';
 
 void main() {
@@ -29,11 +30,57 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.purple,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      initialRoute: '/About',
+      initialRoute: '/',
       routes: {
+        '/': (context) => AppPageView(),
         '/About': (context) => AboutIzone(),
         '/Members': (context) => MemberList(),
       },
+    );
+  }
+}
+
+class AppPageView extends StatefulWidget {
+  AppPageView({Key key}) : super(key: key);
+
+  @override
+  State<StatefulWidget> createState() => _AppPageViewState();
+}
+
+class _AppPageViewState extends State<AppPageView> {
+  PageController _pageController;
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController = PageController();
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: PageView(
+        controller: _pageController,
+        scrollDirection: Axis.horizontal,
+        children: [
+          AboutIzone(
+            pageController: _pageController,
+          ),
+          MemberList(
+            pageController: _pageController,
+          ),
+        ],
+      ),
+      bottomNavigationBar: BottomAppBar(
+        child: MediaButtons(),
+        color: Theme.of(context).primaryColor,
+      ),
     );
   }
 }

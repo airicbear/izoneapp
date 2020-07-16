@@ -3,6 +3,10 @@ import 'package:izoneapp/MediaButtons.dart';
 import 'package:izoneapp/MemberPictureView.dart';
 
 class AboutIzone extends StatelessWidget {
+  const AboutIzone({Key key, this.pageController}) : super(key: key);
+
+  final PageController pageController;
+
   Widget _izonePicture(context) {
     const imagePath = 'assets/images/oneiric-diary/official-photo-4-izone.jpg';
     return Flexible(
@@ -56,7 +60,13 @@ The group's debut album, COLOR*IZ, was released in Korea on October 29th, 2018. 
               Text('About'),
               FlatButton(
                 onPressed: () {
-                  Navigator.popAndPushNamed(context, '/Members');
+                  pageController.animateToPage(
+                    1,
+                    duration: const Duration(
+                      milliseconds: 100,
+                    ),
+                    curve: Curves.easeInOut,
+                  );
                 },
                 child: Text(
                   'Members',
@@ -68,10 +78,6 @@ The group's debut album, COLOR*IZ, was released in Korea on October 29th, 2018. 
             ],
           ),
         ),
-      ),
-      bottomNavigationBar: BottomAppBar(
-        child: MediaButtons(),
-        color: Theme.of(context).primaryColor,
       ),
       body: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {

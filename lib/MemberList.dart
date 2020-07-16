@@ -5,13 +5,13 @@ import 'MemberTile.dart';
 import 'MediaButtons.dart';
 
 class MemberList extends StatelessWidget {
+  const MemberList({Key key, this.pageController}) : super(key: key);
+
+  final PageController pageController;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomAppBar(
-        child: MediaButtons(),
-        color: Theme.of(context).primaryColor,
-      ),
       body: Container(
         child: FutureBuilder(
           future:
@@ -30,7 +30,13 @@ class MemberList extends StatelessWidget {
                       children: [
                         FlatButton(
                           onPressed: () {
-                            Navigator.popAndPushNamed(context, '/About');
+                            pageController.animateToPage(
+                              0,
+                              duration: const Duration(
+                                milliseconds: 100,
+                              ),
+                              curve: Curves.easeInOut,
+                            );
                           },
                           child: Text(
                             'About',
