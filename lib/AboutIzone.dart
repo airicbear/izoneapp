@@ -51,34 +51,6 @@ The group's debut album, COLOR*IZ, was released in Korea on October 29th, 2018. 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: SingleChildScrollView(
-          child: ButtonBar(
-            alignment: MainAxisAlignment.start,
-            children: [
-              Text('About'),
-              FlatButton(
-                onPressed: () {
-                  pageController.animateToPage(
-                    1,
-                    duration: const Duration(
-                      milliseconds: 100,
-                    ),
-                    curve: Curves.easeInOut,
-                  );
-                },
-                child: Text(
-                  'Members',
-                  style: TextStyle(
-                    color: Theme.of(context).disabledColor,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
       body: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
           if (constraints.maxWidth < 800) {

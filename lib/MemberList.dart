@@ -20,36 +20,6 @@ class MemberList extends StatelessWidget {
             final members = json.decode(snapshot.data.toString());
             return CustomScrollView(
               slivers: [
-                SliverAppBar(
-                  automaticallyImplyLeading: false,
-                  floating: true,
-                  snap: true,
-                  title: SingleChildScrollView(
-                    child: ButtonBar(
-                      alignment: MainAxisAlignment.start,
-                      children: [
-                        FlatButton(
-                          onPressed: () {
-                            pageController.animateToPage(
-                              0,
-                              duration: const Duration(
-                                milliseconds: 100,
-                              ),
-                              curve: Curves.easeInOut,
-                            );
-                          },
-                          child: Text(
-                            'About',
-                            style: TextStyle(
-                              color: Theme.of(context).disabledColor,
-                            ),
-                          ),
-                        ),
-                        Text('Members'),
-                      ],
-                    ),
-                  ),
-                ),
                 SliverGrid(
                   gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
                     childAspectRatio: 1.0,
