@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:izoneapp/MediaButtons.dart';
 import 'package:izoneapp/MemberPictureView.dart';
 
 class AboutIzone extends StatelessWidget {
