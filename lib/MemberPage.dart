@@ -9,8 +9,35 @@ class MemberPage extends StatelessWidget {
   final Member member;
   final int collectionNumber;
 
-  @override
-  Widget build(BuildContext context) {
+  Widget _memberHero(context, height) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) {
+              return MemberPictureView(
+                memberImagePath: member.getImagePath('oneiric-diary'),
+              );
+            },
+          ),
+        );
+      },
+      child: Hero(
+        tag: member.getImagePath('oneiric-diary'),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(32.0),
+          child: Image(
+            image: AssetImage(member.getImagePath('oneiric-diary')),
+            fit: BoxFit.cover,
+            height: height,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _memberInfo() {
     var memberInfo = [
       ["Stage Name", '${member.stageName} (${member.stageNameKorean})'],
       ["Full Name", '${member.fullName} (${member.fullNameKorean})'],
@@ -18,62 +45,72 @@ class MemberPage extends StatelessWidget {
       ["Nationality", member.nationality],
       ["Birthplace", member.birthplace],
     ];
-    return Scaffold(
-      body: CustomScrollView(
-        slivers: <Widget>[
-          SliverAppBar(
-            expandedHeight: 440,
-            centerTitle: true,
-            backgroundColor: Colors.transparent,
-            flexibleSpace: GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return MemberPictureView(
-                        memberImagePath: member.getImagePath('oneiric-diary'),
-                      );
-                    },
-                  ),
-                );
-              },
-              child: Hero(
-                tag: member.getImagePath('oneiric-diary'),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(32.0),
-                  child: Image(
-                    image: AssetImage(member.getImagePath('oneiric-diary')),
-                    fit: BoxFit.cover,
-                    height: 470,
-                  ),
+
+    return SliverList(
+      delegate: SliverChildBuilderDelegate(
+        (BuildContext context, int index) {
+          return Container(
+            padding: const EdgeInsets.all(24.0),
+            child: Row(
+              children: [
+                Expanded(
+                  child: SelectableText(memberInfo[index][0]),
+                  flex: 2,
                 ),
+                Expanded(
+                  child: SelectableText(memberInfo[index][1]),
+                  flex: 4,
+                ),
+              ],
+            ),
+          );
+        },
+        childCount: memberInfo.length,
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+          if (constraints.maxWidth < 600.0) {
+            return CustomScrollView(
+              slivers: [
+                SliverAppBar(
+                  expandedHeight: 440.0,
+                  centerTitle: true,
+                  backgroundColor: Colors.transparent,
+                  flexibleSpace: _memberHero(context, 470.0),
+                ),
+                _memberInfo(),
+              ],
+            );
+          } else {
+            return Scaffold(
+              extendBodyBehindAppBar: true,
+              appBar: AppBar(
+                backgroundColor: Colors.transparent,
+                elevation: 0.0,
               ),
-            ),
-          ),
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (BuildContext context, int index) {
-                return Container(
-                  padding: const EdgeInsets.all(24.0),
-                  child: Row(
-                    children: <Widget>[
-                      Expanded(
-                        child: SelectableText(memberInfo[index][0]),
-                        flex: 2,
-                      ),
-                      Expanded(
-                        child: SelectableText(memberInfo[index][1]),
-                        flex: 4,
-                      ),
-                    ],
+              body: Row(
+                children: [
+                  Expanded(
+                    child: _memberHero(context, null),
                   ),
-                );
-              },
-              childCount: memberInfo.length,
-            ),
-          ),
-        ],
+                  Expanded(
+                    child: CustomScrollView(
+                      slivers: [
+                        _memberInfo(),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            );
+          }
+        },
       ),
     );
   }
