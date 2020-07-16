@@ -18,7 +18,7 @@ class MemberList extends StatelessWidget {
       ),
       appBar: AppBar(
         title: Row(
-          children: <Widget>[
+          children: [
             Expanded(
               child: Text(title),
             ),
