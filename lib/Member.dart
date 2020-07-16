@@ -8,15 +8,16 @@ class Member {
   final String stageName;
   final String stageNameKorean;
 
-  Member(
-      {this.id,
-      this.birthplace,
-      this.dateOfBirth,
-      this.fullName,
-      this.fullNameKorean,
-      this.nationality,
-      this.stageName,
-      this.stageNameKorean});
+  Member({
+    this.id,
+    this.birthplace,
+    this.dateOfBirth,
+    this.fullName,
+    this.fullNameKorean,
+    this.nationality,
+    this.stageName,
+    this.stageNameKorean,
+  });
 
   int getAge() {
     return DateTime.now().difference(DateTime.parse(this.dateOfBirth)).inDays ~/

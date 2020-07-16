@@ -28,7 +28,9 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.purple,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MemberList(title: 'IZ*ONE'),
+      home: MemberList(
+        title: 'Members',
+      ),
     );
   }
 }
