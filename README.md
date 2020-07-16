@@ -11,6 +11,11 @@ A fan-made Flutter app dedicated to [IZ*ONE](http://iz-one.co.kr/).
 
 ## Developer Notes
 
+### Language support
+
+At some point it would be a good idea to add support for other languages, especially Korean and Japanese (and maybe Chinese).
+See [Internationalizing Flutter apps](https://flutter.dev/docs/development/accessibility-and-localization/internationalization) for more information on how to implement this.
+
 ### App and repository size
 
 The app and repository size may be quite large due to the high quality images in the `assets/images` folder.
