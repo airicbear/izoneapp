@@ -71,7 +71,7 @@ class _AppPageViewState extends State<AppPageView> {
                     appBar: AppBar(
                       title: Text('Disclaimer'),
                     ),
-                    body: Column(
+                    body: ListView(
                       children: [
                         ListTile(
                           title: Text(
