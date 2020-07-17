@@ -75,11 +75,11 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints) {
-          if (constraints.maxWidth < 600.0) {
-            return CustomScrollView(
+    return LayoutBuilder(
+      builder: (BuildContext context, BoxConstraints constraints) {
+        if (constraints.maxWidth < 600.0) {
+          return Scaffold(
+            body: CustomScrollView(
               slivers: [
                 SliverAppBar(
                   expandedHeight: 440.0,
@@ -89,32 +89,32 @@ class ProfilePage extends StatelessWidget {
                 ),
                 _memberInfo(),
               ],
-            );
-          } else {
-            return Scaffold(
-              extendBodyBehindAppBar: true,
-              appBar: AppBar(
-                backgroundColor: Colors.transparent,
-                elevation: 0.0,
-              ),
-              body: Row(
-                children: [
-                  Expanded(
-                    child: _memberHero(context, null),
+            ),
+          );
+        } else {
+          return Scaffold(
+            extendBodyBehindAppBar: true,
+            appBar: AppBar(
+              backgroundColor: Colors.transparent,
+              elevation: 0.0,
+            ),
+            body: Row(
+              children: [
+                Expanded(
+                  child: _memberHero(context, null),
+                ),
+                Expanded(
+                  child: CustomScrollView(
+                    slivers: [
+                      _memberInfo(),
+                    ],
                   ),
-                  Expanded(
-                    child: CustomScrollView(
-                      slivers: [
-                        _memberInfo(),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            );
-          }
-        },
-      ),
+                ),
+              ],
+            ),
+          );
+        }
+      },
     );
   }
 }
