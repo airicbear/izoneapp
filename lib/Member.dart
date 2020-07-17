@@ -4,9 +4,12 @@ class Member {
   final String dateOfBirth;
   final String fullName;
   final String fullNameKorean;
-  final String nationality;
   final String stageName;
   final String stageNameKorean;
+  final int height;
+  final String color;
+  final String bloodType;
+  final String company;
 
   Member({
     this.id,
@@ -14,9 +17,12 @@ class Member {
     this.dateOfBirth,
     this.fullName,
     this.fullNameKorean,
-    this.nationality,
     this.stageName,
     this.stageNameKorean,
+    this.height,
+    this.color,
+    this.bloodType,
+    this.company,
   });
 
   int getAge() {

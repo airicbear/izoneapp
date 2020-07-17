@@ -39,11 +39,14 @@ class MemberPage extends StatelessWidget {
 
   Widget _memberInfo() {
     var memberInfo = [
-      ["Stage Name", '${member.stageName} (${member.stageNameKorean})'],
-      ["Full Name", '${member.fullName} (${member.fullNameKorean})'],
-      ["Date of birth", '${member.dateOfBirth} (${member.getAge()} years old)'],
-      ["Nationality", member.nationality],
-      ["Birthplace", member.birthplace],
+      ['Stage Name', '${member.stageName} (${member.stageNameKorean})'],
+      ['Full Name', '${member.fullName} (${member.fullNameKorean})'],
+      ['Date of birth', '${member.dateOfBirth} (${member.getAge()} years old)'],
+      ['Birthplace', member.birthplace],
+      ['Company', member.company],
+      ['Color', member.color],
+      ['Height', '${member.height} cm'],
+      ['Blood type', member.bloodType == null ? 'Unknown' : member.bloodType],
     ];
 
     return SliverList(

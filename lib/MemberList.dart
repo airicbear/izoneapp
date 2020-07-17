@@ -35,9 +35,12 @@ class MemberList extends StatelessWidget {
                             dateOfBirth: members[index]['DATEOFBIRTH'],
                             fullName: members[index]['FULLNAME'],
                             fullNameKorean: members[index]['FULLNAME_KR'],
-                            nationality: members[index]['NATIONALITY'],
                             stageName: members[index]['STAGENAME'],
                             stageNameKorean: members[index]['STAGENAME_KR'],
+                            height: members[index]['HEIGHT'],
+                            color: members[index]['COLOR'],
+                            bloodType: members[index]['BLOODTYPE'],
+                            company: members[index]['COMPANY'],
                           ),
                         ),
                       );

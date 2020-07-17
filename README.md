@@ -7,6 +7,8 @@ A fan-made Flutter app dedicated to [IZ*ONE](http://iz-one.co.kr/).
 - Data:
     - https://dbkpop.com/group/izone
     - https://www.izone-official.com
+    - https://kprofiles.com/izone-members-profile/
+    - https://kpop.fandom.com/wiki/IZ*ONE
 - Pictures: http://iz-one.co.kr/photos/
 
 ## Developer Notes
