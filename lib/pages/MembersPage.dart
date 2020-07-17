@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'Member.dart';
 import 'MemberTile.dart';
 
-class MemberList extends StatelessWidget {
-  const MemberList({Key key, this.pageController}) : super(key: key);
+class MembersPage extends StatelessWidget {
+  const MembersPage({Key key, this.pageController}) : super(key: key);
 
   final PageController pageController;
 

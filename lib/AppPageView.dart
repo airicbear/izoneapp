@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:izoneapp/AboutIzone.dart';
+import 'package:izoneapp/pages/AboutPage.dart';
 import 'package:izoneapp/MediaButtons.dart';
-import 'package:izoneapp/MemberList.dart';
+import 'package:izoneapp/pages/MembersPage.dart';
 
 enum Page { ABOUT, MEMBERS }
 
@@ -73,10 +73,10 @@ class _AppPageViewState extends State<AppPageView> {
         controller: _pageController,
         scrollDirection: Axis.horizontal,
         children: [
-          AboutIzone(
+          AboutPage(
             pageController: _pageController,
           ),
-          MemberList(
+          MembersPage(
             pageController: _pageController,
           ),
         ],

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:izoneapp/MemberPictureView.dart';
+import 'package:izoneapp/pages/ViewPicturePage.dart';
 import 'Member.dart';
 
-class MemberPage extends StatelessWidget {
-  const MemberPage({Key key, this.member, this.collectionNumber})
+class ProfilePage extends StatelessWidget {
+  const ProfilePage({Key key, this.member, this.collectionNumber})
       : super(key: key);
 
   final Member member;
@@ -16,7 +16,7 @@ class MemberPage extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) {
-              return MemberPictureView(
+              return ViewPicturePage(
                 memberImagePath: member.getImagePath('oneiric-diary'),
               );
             },

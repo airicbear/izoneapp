@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
 
-class MemberPictureView extends StatelessWidget {
-  const MemberPictureView({Key key, this.memberImagePath}) : super(key: key);
+class ViewPicturePage extends StatelessWidget {
+  const ViewPicturePage({Key key, this.memberImagePath}) : super(key: key);
 
   final String memberImagePath;
 

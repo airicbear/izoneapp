@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:izoneapp/MemberPictureView.dart';
+import 'package:izoneapp/pages/ViewPicturePage.dart';
 
-class AboutIzone extends StatelessWidget {
-  const AboutIzone({Key key, this.pageController}) : super(key: key);
+class AboutPage extends StatelessWidget {
+  const AboutPage({Key key, this.pageController}) : super(key: key);
 
   final PageController pageController;
 
@@ -15,7 +15,7 @@ class AboutIzone extends StatelessWidget {
             context,
             MaterialPageRoute(
               builder: (context) {
-                return MemberPictureView(
+                return ViewPicturePage(
                   memberImagePath: imagePath,
                 );
               },
