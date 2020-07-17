@@ -6,7 +6,7 @@ class Member {
   final String fullNameKorean;
   final String stageName;
   final String stageNameKorean;
-  final int height;
+  final int height; // cm
   final String color;
   final String bloodType;
   final String company;
@@ -32,5 +32,10 @@ class Member {
 
   String getImagePath(String album) {
     return 'assets/images/$album/official-photo-4-${this.stageName.toLowerCase()}.jpg';
+  }
+
+  String getHeightInFeetInches() {
+    var inches = this.height * 0.3937; // cm to inches
+    return '${inches ~/ 12}\' ${(inches % 12).floor()}\"';
   }
 }
