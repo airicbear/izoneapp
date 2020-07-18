@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import '../data/Member.dart';
-import 'widgets/MemberTile.dart';
+import 'package:izoneapp/data/Member.dart';
+import 'package:izoneapp/widgets/MemberTile.dart';
 
 class MembersPage extends StatelessWidget {
   const MembersPage({Key key, this.pageController}) : super(key: key);

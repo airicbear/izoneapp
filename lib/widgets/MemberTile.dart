@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../data/Member.dart';
-import '../ProfilePage.dart';
+import 'package:izoneapp/data/Member.dart';
+import 'package:izoneapp/pages/ProfilePage.dart';
 
 Route _memberRoute(BuildContext context, Member member) {
   return MaterialPageRoute(
