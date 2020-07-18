@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:izoneapp/generated/l10n.dart';
 import 'package:izoneapp/pages/AboutPage.dart';
-import 'package:izoneapp/pages/DisclaimerPage.dart';
-import 'package:izoneapp/pages/widgets/MediaButtons.dart';
+import 'package:izoneapp/widgets/MediaButtons.dart';
 import 'package:izoneapp/pages/MembersPage.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:izoneapp/widgets/AppMoreButton.dart';
+import 'package:izoneapp/pages/DancePage.dart';
 
-enum Page { ABOUT, MEMBERS }
-enum More { DISCLAIMER, ABOUT }
+enum Page { ABOUT, MEMBERS, DANCE }
 
 class AppPageView extends StatefulWidget {
   AppPageView({Key key}) : super(key: key);
@@ -60,67 +58,11 @@ class _AppPageViewState extends State<AppPageView> {
         children: [
           _pageTitle(context, S.of(context).about, Page.ABOUT),
           _pageTitle(context, S.of(context).members, Page.MEMBERS),
+          _pageTitle(context, S.of(context).dance, Page.DANCE),
         ],
       ),
       actions: [
-        PopupMenuButton(
-          onSelected: (More result) {
-            switch (result) {
-              case More.DISCLAIMER:
-                showDialog(
-                  context: context,
-                  child: DisclaimerPage(),
-                );
-                break;
-              case More.ABOUT:
-                showAboutDialog(
-                  context: context,
-                  applicationIcon: Image.asset(
-                    'assets/launcher_round.png',
-                    width: 64,
-                  ),
-                  children: [
-                    Text(
-                        'This is an unofficial fan-made app dedicated to IZ*ONE and is free and open-source for everyone.'),
-                    Divider(height: 24),
-                    Text(
-                        'If you want to contribute to this app, please visit the GitHub page at github.com/airicbear/izone-app using the button below.'),
-                    FlatButton.icon(
-                      label: Text('airicbear/izone-app'),
-                      icon: FaIcon(FontAwesomeIcons.github),
-                      onPressed: () =>
-                          launch('https://github.com/airicbear/izone-app'),
-                    ),
-                    Divider(height: 24),
-                    Text(
-                        'If you want to support the development of this app, you can pay through PayPal using the button below.'),
-                    FlatButton.icon(
-                      label: Text('airicbear'),
-                      icon: FaIcon(FontAwesomeIcons.paypal),
-                      onPressed: () =>
-                          launch('https://www.paypal.me/airicbear'),
-                    ),
-                  ],
-                  applicationLegalese: '''
-MIT License
-
-Copyright (c) 2020 Eric Nguyen
-                  ''',
-                );
-                break;
-            }
-          },
-          itemBuilder: (BuildContext context) => <PopupMenuEntry<More>>[
-            const PopupMenuItem<More>(
-              value: More.DISCLAIMER,
-              child: Text('Disclaimer'),
-            ),
-            const PopupMenuItem<More>(
-              value: More.ABOUT,
-              child: Text('About this app'),
-            ),
-          ],
-        ),
+        AppMoreButton(),
       ],
     );
   }
@@ -138,12 +80,9 @@ Copyright (c) 2020 Eric Nguyen
         controller: _pageController,
         scrollDirection: Axis.horizontal,
         children: [
-          AboutPage(
-            pageController: _pageController,
-          ),
-          MembersPage(
-            pageController: _pageController,
-          ),
+          AboutPage(pageController: _pageController),
+          MembersPage(pageController: _pageController),
+          DancePage(pageController: _pageController),
         ],
       ),
       bottomNavigationBar: BottomAppBar(
