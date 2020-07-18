@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:izoneapp/AppPageView.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:izoneapp/data/AppLocalizations.dart';
+import 'package:izoneapp/generated/l10n.dart';
 
 void main() {
   runApp(MyApp());
@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
       ),
       home: AppPageView(),
       localizationsDelegates: [
-        const AppLocalizationsDelegate(),
+        const AppLocalizationDelegate(),
         GlobalMaterialLocalizations.delegate,
       ],
       supportedLocales: [
@@ -42,6 +42,7 @@ class MyApp extends StatelessWidget {
         ),
         const Locale.fromSubtags(
           languageCode: 'ko',
+          countryCode: 'KO',
         ),
       ],
     );

@@ -1,7 +1,0 @@
-{
-    "about": "About",
-    "@about": {
-        "description": "Name of the About page",
-        "type": "text"
-    }
-}
