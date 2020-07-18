@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'IZ*ONE',
+      home: AppPageView(),
       debugShowCheckedModeBanner: false,
       darkTheme: ThemeData(
         brightness: Brightness.dark,
@@ -30,7 +31,6 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.purple,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: AppPageView(),
       localizationsDelegates: [
         const AppLocalizationDelegate(),
         GlobalMaterialLocalizations.delegate,
