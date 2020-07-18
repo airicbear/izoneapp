@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class VideoCard {
   final String title;
@@ -118,10 +121,10 @@ class DancePageState extends State<DancePage> {
       ),
     ];
 
-    return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          SliverAppBar(
+    Widget _videoPlaceholder() {
+      try {
+        if (Platform.isAndroid || Platform.isIOS) {
+          return SliverAppBar(
             expandedHeight: 240,
             collapsedHeight: 240,
             floating: true,
@@ -138,7 +141,18 @@ class DancePageState extends State<DancePage> {
                     '<iframe width="560" height="315" src="$_currentVideo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
                     webView: true,
                   ),
-          ),
+          );
+        }
+      } catch (e) {
+        return SliverAppBar();
+      }
+      return SliverAppBar();
+    }
+
+    return Scaffold(
+      body: CustomScrollView(
+        slivers: [
+          _videoPlaceholder(),
           SliverList(
             delegate: SliverChildBuilderDelegate(
               (context, index) {
@@ -147,9 +161,21 @@ class DancePageState extends State<DancePage> {
                       ? Theme.of(context).backgroundColor
                       : Theme.of(context).cardColor,
                   child: InkWell(
-                    onTap: () => setState(() {
-                      _currentVideo = videos[index].youtubeUrl;
-                    }),
+                    onTap: () async {
+                      try {
+                        if (Platform.isAndroid || Platform.isIOS) {
+                          setState(() {
+                            _currentVideo = videos[index].youtubeUrl;
+                          });
+                        }
+                      } catch (e) {
+                        if (await canLaunch(videos[index].youtubeUrl)) {
+                          launch(videos[index].youtubeUrl);
+                        } else {
+                          throw 'Could not launch ${videos[index].youtubeUrl}.';
+                        }
+                      }
+                    },
                     splashFactory: InkRipple.splashFactory,
                     child: ListTile(
                       leading: FaIcon(FontAwesomeIcons.youtube),
