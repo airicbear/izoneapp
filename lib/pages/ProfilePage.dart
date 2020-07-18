@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:izoneapp/pages/ViewPicturePage.dart';
-import 'Member.dart';
+import '../data/Member.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key key, this.member, this.collectionNumber})

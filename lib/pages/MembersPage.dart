@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'Member.dart';
+import '../data/Member.dart';
 import 'widgets/MemberTile.dart';
 
 class MembersPage extends StatelessWidget {

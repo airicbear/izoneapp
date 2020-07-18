@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../Member.dart';
+import '../../data/Member.dart';
 import '../ProfilePage.dart';
 
 Route _memberRoute(BuildContext context, Member member) {
