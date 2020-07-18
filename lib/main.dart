@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:izoneapp/AppPageView.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:izoneapp/data/AppLocalizations.dart';
 
 void main() {
   runApp(MyApp());
@@ -29,6 +31,19 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: AppPageView(),
+      localizationsDelegates: [
+        const AppLocalizationsDelegate(),
+        GlobalMaterialLocalizations.delegate,
+      ],
+      supportedLocales: [
+        const Locale.fromSubtags(
+          languageCode: 'en',
+          countryCode: 'US',
+        ),
+        const Locale.fromSubtags(
+          languageCode: 'ko',
+        ),
+      ],
     );
   }
 }

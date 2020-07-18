@@ -1,0 +1,9 @@
+{
+  "@@last_modified": "2020-07-17T23:14:27.839963",
+  "about": "About",
+  "@about": {
+    "description": "Name of the About page.",
+    "type": "text",
+    "placeholders": {}
+  }
+}

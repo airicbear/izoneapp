@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:izoneapp/data/AppLocalizations.dart';
 import 'package:izoneapp/pages/AboutPage.dart';
 import 'package:izoneapp/pages/DisclaimerPage.dart';
 import 'package:izoneapp/pages/widgets/MediaButtons.dart';
@@ -57,7 +58,7 @@ class _AppPageViewState extends State<AppPageView> {
       title: ButtonBar(
         alignment: MainAxisAlignment.start,
         children: [
-          _pageTitle(context, 'About', Page.ABOUT),
+          _pageTitle(context, AppLocalizations.of(context).about, Page.ABOUT),
           _pageTitle(context, 'Members', Page.MEMBERS),
         ],
       ),

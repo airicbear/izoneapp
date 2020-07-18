@@ -1,0 +1,7 @@
+{
+    "about": "대해",
+    "@about": {
+        "description": "Name of the About page",
+        "type": "text"
+    }
+}
