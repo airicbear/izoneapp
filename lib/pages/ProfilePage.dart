@@ -37,11 +37,15 @@ class ProfilePage extends StatelessWidget {
     );
   }
 
-  Widget _memberInfo() {
+  Widget _memberInfo(context) {
     var memberInfo = [
       ['Stage Name', '${member.stageName} (${member.stageNameKorean})'],
       ['Full Name', '${member.fullName} (${member.fullNameKorean})'],
-      ['Date of birth', '${member.dateOfBirth} (${member.getAge()} years old)'],
+      [
+        'Date of birth',
+        '${MaterialLocalizations.of(context).formatFullDate(DateTime.parse(member.dateOfBirth))}'
+      ],
+      ['Age', '${member.getAge()} years old'],
       ['Birthplace', member.birthplace],
       ['Company', member.company],
       ['Color', member.color],
@@ -87,7 +91,7 @@ class ProfilePage extends StatelessWidget {
                   backgroundColor: Colors.transparent,
                   flexibleSpace: _memberHero(context, 470.0),
                 ),
-                _memberInfo(),
+                _memberInfo(context),
               ],
             ),
           );
@@ -106,7 +110,7 @@ class ProfilePage extends StatelessWidget {
                 Expanded(
                   child: CustomScrollView(
                     slivers: [
-                      _memberInfo(),
+                      _memberInfo(context),
                     ],
                   ),
                 ),
