@@ -22,6 +22,23 @@ class YoutubeVideoListPage extends StatefulWidget {
 class YoutubeVideoListPageState extends State<YoutubeVideoListPage> {
   String _currentVideo = '';
 
+  void _toggleFullscreen(int index) {
+    setState(() async {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => ViewYoutubeVideoPage(
+            youtubeUrl: widget.videos[index].youtubeUrl,
+          ),
+        ),
+      );
+
+      await Future.delayed(Duration(seconds: 1));
+
+      SystemChrome.setEnabledSystemUIOverlays([]);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     Widget _videoPlaceholder(bool isSliver) {
@@ -35,10 +52,11 @@ class YoutubeVideoListPageState extends State<YoutubeVideoListPage> {
         }
       } catch (e) {}
       return Container(
-        padding: const EdgeInsets.all(64.0),
+        padding: const EdgeInsets.all(24.0),
         color: Theme.of(context).primaryColor,
         child: Center(
-          child: Text('Select a video to watch.'),
+          child: Text(
+              'Select a video to watch.\n\nPress the Youtube icon to watch the video in the Youtube app.\n\nPress the fullscreen icon to show the video in fullscreen mode. Use your phone\'s back button to exit fullscreen mode.\n\nAudio may persist if the video is not paused.'),
         ),
       );
     }
@@ -71,25 +89,25 @@ class YoutubeVideoListPageState extends State<YoutubeVideoListPage> {
                 child: ListTile(
                   leading: _currentVideo == widget.videos[index].youtubeUrl
                       ? IconButton(
-                          icon: Icon(Icons.fullscreen),
-                          onPressed: () {
-                            setState(() async {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => ViewYoutubeVideoPage(
-                                    youtubeUrl: widget.videos[index].youtubeUrl,
-                                  ),
-                                ),
-                              );
-
-                              await Future.delayed(Duration(seconds: 1));
-
-                              SystemChrome.setEnabledSystemUIOverlays([]);
-                            });
-                          },
+                          icon: FaIcon(FontAwesomeIcons.expand),
+                          onPressed: () => _toggleFullscreen(index),
                         )
-                      : FaIcon(FontAwesomeIcons.youtube),
+                      : IconButton(
+                          icon: FaIcon(FontAwesomeIcons.youtube),
+                          onPressed: () async {
+                            if (await canLaunch(
+                                widget.videos[index].youtubeUrl)) {
+                              launch(widget.videos[index].youtubeUrl);
+                            } else {
+                              showDialog(
+                                  context: context,
+                                  child: Center(
+                                    child: Text(
+                                        'Unable to open video "${widget.videos[index].youtubeUrl}"'),
+                                  ));
+                            }
+                          },
+                        ),
                   title: Text('${widget.videos[index].title}'),
                   subtitle: Text(widget.videos[index].subtitle),
                   trailing: Text(MaterialLocalizations.of(context)
