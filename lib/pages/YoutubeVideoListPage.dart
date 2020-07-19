@@ -56,7 +56,7 @@ class YoutubeVideoListPageState extends State<YoutubeVideoListPage> {
         color: Theme.of(context).primaryColor,
         child: Center(
           child: Text(
-              'Select a video to watch.\n\nPress the Youtube icon to watch the video in the Youtube app.\n\nPress the fullscreen icon to show the video in fullscreen mode. Use your phone\'s back button to exit fullscreen mode.\n\nAudio may persist if the video is not paused.'),
+              'Select a video to watch.\n\nPress the Youtube icon to watch the video in the Youtube app.\n\nPress the fullscreen icon to show the video in fullscreen mode. Use your device\'s back button to exit fullscreen mode.\n\nAudio may persist if the video is not paused.'),
         ),
       );
     }
@@ -100,11 +100,12 @@ class YoutubeVideoListPageState extends State<YoutubeVideoListPage> {
                               launch(widget.videos[index].youtubeUrl);
                             } else {
                               showDialog(
-                                  context: context,
-                                  child: Center(
-                                    child: Text(
-                                        'Unable to open video "${widget.videos[index].youtubeUrl}"'),
-                                  ));
+                                context: context,
+                                child: Center(
+                                  child: Text(
+                                      'Unable to open video "${widget.videos[index].youtubeUrl}"'),
+                                ),
+                              );
                             }
                           },
                         ),
