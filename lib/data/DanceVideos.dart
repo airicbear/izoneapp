@@ -1,11 +1,12 @@
 import 'package:flutter/widgets.dart';
 import 'package:izoneapp/data/YoutubeVideo.dart';
+import 'package:izoneapp/generated/l10n.dart';
 
 class DanceVideos {
   static List<YoutubeVideo> videos(BuildContext context) {
     return [
       YoutubeVideo(
-        title: 'Secret Story of the Swan',
+        title: S.of(context).secretStoryOfTheSwan,
         subtitle: 'Dance practice',
         date: '2020-06-23',
         youtubeUrl: 'https://www.youtube.com/embed/1yQjsWhOuJI',
@@ -53,19 +54,19 @@ class DanceVideos {
         youtubeUrl: 'https://www.youtube.com/embed/IsUVaQOj0fs',
       ),
       YoutubeVideo(
-        title: 'Violeta',
+        title: S.of(context).violeta,
         subtitle: 'Dance practice (Close up ver.)',
         date: '2019-04-25',
         youtubeUrl: 'https://www.youtube.com/embed/wnTWDHiBRpQ',
       ),
       YoutubeVideo(
-        title: 'Violeta',
+        title: S.of(context).violeta,
         subtitle: 'Dance practice',
         date: '2019-04-07',
         youtubeUrl: 'https://www.youtube.com/embed/Z8_aiEDLoY4',
       ),
       YoutubeVideo(
-        title: 'La Vie en Rose',
+        title: S.of(context).laVieEnRose,
         subtitle: '2018 MAMA ver.',
         date: '2019-01-04',
         youtubeUrl: 'https://www.youtube.com/embed/xhdW-GceM6g',
@@ -77,7 +78,7 @@ class DanceVideos {
         youtubeUrl: 'https://www.youtube.com/embed/56XuG4JrByk',
       ),
       YoutubeVideo(
-        title: 'La Vie en Rose',
+        title: S.of(context).laVieEnRose,
         subtitle: 'Dance practice',
         date: '2018-11-03',
         youtubeUrl: 'https://www.youtube.com/embed/hsMaygLZ3G4',

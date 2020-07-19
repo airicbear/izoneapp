@@ -82,6 +82,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Violeta`
+  String get violeta {
+    return Intl.message(
+      'Violeta',
+      name: 'violeta',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `La Vie en Rose`
+  String get laVieEnRose {
+    return Intl.message(
+      'La Vie en Rose',
+      name: 'laVieEnRose',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
