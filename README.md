@@ -48,6 +48,18 @@ Edit each the `lib/l10n/intl_*.arb` files so that they all have the same fields 
 
 ## Known Issues
 
+### Web version
+
+The Web version is *very* much not well supported.
+
+1. Embedded Youtube videos don't work (see the [flutter_widget_from_html](https://pub.dev/packages/flutter_widget_from_html) package).
+
+2. Cached network images don't work (see the [cached_network_image](https://pub.dev/packages/cached_network_image) package).
+
+3. The most useful thing about the Web version is to share the app with others using a link.
+
+The app might actually be better off using Image assets rather than cached network images, at least for pages such as the `AboutPage` and `MembersPage`.
+
 ### App layout
 
 There is an issue with the [`PageController`](https://api.flutter.dev/flutter/widgets/PageController-class.html) going beyond the last page when the [`LayoutBuilder`](https://api.flutter.dev/flutter/widgets/LayoutBuilder-class.html) switches from vertical to horizontal layout.
