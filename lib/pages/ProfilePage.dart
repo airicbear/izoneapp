@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:izoneapp/pages/ViewPicturePage.dart';
 import '../data/Member.dart';
@@ -17,18 +18,18 @@ class ProfilePage extends StatelessWidget {
           MaterialPageRoute(
             builder: (context) {
               return ViewPicturePage(
-                memberImagePath: member.getImagePath('oneiric-diary'),
+                memberImagePath: member.getImagePath(),
               );
             },
           ),
         );
       },
       child: Hero(
-        tag: member.getImagePath('oneiric-diary'),
+        tag: member.getImagePath(),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(32.0),
           child: Image(
-            image: AssetImage(member.getImagePath('oneiric-diary')),
+            image: CachedNetworkImageProvider(member.getImagePath()),
             fit: BoxFit.cover,
             height: height,
           ),

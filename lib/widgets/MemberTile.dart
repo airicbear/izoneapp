@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:izoneapp/data/Member.dart';
 import 'package:izoneapp/pages/ProfilePage.dart';
@@ -28,11 +29,11 @@ class MemberTile extends StatelessWidget {
           children: [
             Expanded(
               child: Hero(
-                tag: member.getImagePath('oneiric-diary'),
+                tag: member.getImagePath(),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(12.0),
                   child: Image(
-                    image: AssetImage(member.getImagePath('oneiric-diary')),
+                    image: CachedNetworkImageProvider(member.getImagePath()),
                     fit: BoxFit.cover,
                   ),
                 ),

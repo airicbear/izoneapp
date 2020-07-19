@@ -30,8 +30,8 @@ class Member {
         365;
   }
 
-  String getImagePath(String album) {
-    return 'assets/images/$album/official-photo-4-${this.stageName.toLowerCase()}.jpg';
+  String getImagePath() {
+    return 'http://cdn.iz-one.co.kr/images/oneiric-diary/v/official-photo-4-${this.stageName.toLowerCase()}.jpg';
   }
 
   String getHeightInFeetInches() {

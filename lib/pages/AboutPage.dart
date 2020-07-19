@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:izoneapp/generated/l10n.dart';
 import 'package:izoneapp/pages/ViewPicturePage.dart';
@@ -8,7 +9,8 @@ class AboutPage extends StatelessWidget {
   final PageController pageController;
 
   Widget _izonePicture(BuildContext context) {
-    const imagePath = 'assets/images/oneiric-diary/official-photo-4-izone.jpg';
+    const imagePath =
+        'http://cdn.iz-one.co.kr/images/oneiric-diary/v/official-photo-4-izone.jpg';
     return Flexible(
       child: GestureDetector(
         onTap: () {
@@ -16,18 +18,14 @@ class AboutPage extends StatelessWidget {
             context,
             MaterialPageRoute(
               builder: (context) {
-                return ViewPicturePage(
-                  memberImagePath: imagePath,
-                );
+                return ViewPicturePage(memberImagePath: imagePath);
               },
             ),
           );
         },
         child: Hero(
           tag: imagePath,
-          child: Image.asset(
-            imagePath,
-          ),
+          child: CachedNetworkImage(imageUrl: imagePath),
         ),
       ),
     );
