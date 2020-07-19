@@ -11,22 +11,20 @@ class AboutPage extends StatelessWidget {
   Widget _izonePicture(BuildContext context) {
     const imagePath =
         'http://cdn.iz-one.co.kr/images/oneiric-diary/v/official-photo-4-izone.jpg';
-    return Flexible(
-      child: GestureDetector(
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) {
-                return ViewPicturePage(memberImagePath: imagePath);
-              },
-            ),
-          );
-        },
-        child: Hero(
-          tag: imagePath,
-          child: CachedNetworkImage(imageUrl: imagePath),
-        ),
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) {
+              return ViewPicturePage(memberImagePath: imagePath);
+            },
+          ),
+        );
+      },
+      child: Hero(
+        tag: imagePath,
+        child: CachedNetworkImage(imageUrl: imagePath),
       ),
     );
   }
@@ -47,7 +45,7 @@ class AboutPage extends StatelessWidget {
             return ListView(
               children: [
                 _izonePicture(context),
-                Expanded(child: _izoneDescription(context)),
+                _izoneDescription(context),
               ],
             );
           } else {
