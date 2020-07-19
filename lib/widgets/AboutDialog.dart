@@ -22,13 +22,13 @@ void appAboutDialog(BuildContext context) {
       ),
       Divider(height: 24),
       Text(
-          'If you want to support the development of this app, you can pay through PayPal using the button below.'),
+          'If you want to support the development of this app, you can pay through PayPal using the button below. The recommended amount is \$10 for most people.'),
       FlatButton.icon(
         label: Text('airicbear'),
         icon: FaIcon(FontAwesomeIcons.paypal),
         onPressed: () => launch('https://www.paypal.me/airicbear'),
       ),
     ],
-    applicationLegalese: 'MIT License\n\nCopyright (c) 2020 Eric Nguyen',
+    applicationLegalese: 'MIT License\n\nCopyright (c) 2020 Eric Nguyen\n',
   );
 }
