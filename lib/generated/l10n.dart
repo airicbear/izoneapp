@@ -72,6 +72,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Secret Story of the Swan`
+  String get secretStoryOfTheSwan {
+    return Intl.message(
+      'Secret Story of the Swan',
+      name: 'secretStoryOfTheSwan',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

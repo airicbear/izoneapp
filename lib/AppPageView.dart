@@ -87,11 +87,11 @@ class _AppPageViewState extends State<AppPageView> {
           MembersPage(pageController: _pageController),
           YoutubeVideoListPage(
             pageController: _pageController,
-            videos: DanceVideos.videos,
+            videos: DanceVideos.videos(context),
           ),
           YoutubeVideoListPage(
             pageController: _pageController,
-            videos: MusicVideos.videos,
+            videos: MusicVideos.videos(context),
           ),
         ],
       ),
