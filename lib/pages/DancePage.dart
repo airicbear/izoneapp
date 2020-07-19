@@ -123,32 +123,23 @@ class DancePageState extends State<DancePage> {
       ),
     ];
 
-    Widget _videoPlaceholder() {
+    Widget _videoPlaceholder(bool isSliver) {
       try {
-        if (Platform.isAndroid || Platform.isIOS) {
-          return SliverAppBar(
-            expandedHeight: 240,
-            collapsedHeight: 240,
-            floating: true,
-            pinned: true,
-            elevation: 0,
-            flexibleSpace: _currentVideo.isEmpty
-                ? Padding(
-                    padding: const EdgeInsets.all(64.0),
-                    child: Center(
-                      child: Text('Select a video to watch.'),
-                    ),
-                  )
-                : HtmlWidget(
-                    '<iframe width="560" height="315" src="$_currentVideo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
-                    webView: true,
-                  ),
+        if ((Platform.isAndroid || Platform.isIOS) &&
+            _currentVideo.isNotEmpty) {
+          return HtmlWidget(
+            '<iframe width="560" height="315" src="$_currentVideo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+            webView: true,
           );
         }
-      } catch (e) {
-        return SliverAppBar();
-      }
-      return SliverAppBar();
+      } catch (e) {}
+      return Container(
+        padding: const EdgeInsets.all(64.0),
+        color: Theme.of(context).primaryColor,
+        child: Center(
+          child: Text('Select a video to watch.'),
+        ),
+      );
     }
 
     Widget _videoList() {
@@ -216,15 +207,33 @@ class DancePageState extends State<DancePage> {
         if (constraints.maxWidth < 600) {
           return CustomScrollView(
             slivers: [
-              _videoPlaceholder(),
+              SliverAppBar(
+                expandedHeight: 240,
+                collapsedHeight: 240,
+                floating: true,
+                pinned: true,
+                elevation: 0,
+                flexibleSpace: _videoPlaceholder(true),
+              ),
               _videoList(),
             ],
           );
         } else {
           return Container(
-            child: CustomScrollView(slivers: [
-              _videoList(),
-            ]),
+            child: Row(
+              children: [
+                Expanded(
+                  child: _videoPlaceholder(false),
+                ),
+                Expanded(
+                  child: CustomScrollView(
+                    slivers: [
+                      _videoList(),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           );
         }
       }),
