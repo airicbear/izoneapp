@@ -45,7 +45,7 @@ class MemberTile extends StatelessWidget {
                 children: [
                   Text(member.stageName),
                   Text(
-                    '${member.getAge()} years old',
+                    '${MaterialLocalizations.of(context).formatCompactDate(DateTime.parse(member.dateOfBirth))} (${member.getAge()})',
                     style: TextStyle(
                       color: Theme.of(context).disabledColor,
                     ),
