@@ -37,7 +37,7 @@ class DancePageState extends State<DancePage> {
       ),
       VideoCard(
         title: 'Pretty',
-        subtitle: 'Dance Performance',
+        subtitle: 'Dance performance',
         date: '2020-06-19',
         youtubeUrl: 'https://www.youtube.com/embed/o3KQAKchUT8',
       ),
