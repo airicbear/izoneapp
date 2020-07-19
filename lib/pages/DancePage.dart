@@ -1,8 +1,10 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:izoneapp/pages/ViewYoutubeVideoPage.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class VideoCard {
@@ -149,53 +151,83 @@ class DancePageState extends State<DancePage> {
       return SliverAppBar();
     }
 
+    Widget _videoList() {
+      return SliverList(
+        delegate: SliverChildBuilderDelegate(
+          (context, index) {
+            return Card(
+              color: _currentVideo == videos[index].youtubeUrl
+                  ? Theme.of(context).backgroundColor
+                  : Theme.of(context).cardColor,
+              child: InkWell(
+                onTap: () async {
+                  try {
+                    if (Platform.isAndroid || Platform.isIOS) {
+                      setState(() {
+                        _currentVideo = videos[index].youtubeUrl;
+                      });
+                    }
+                  } catch (e) {
+                    if (await canLaunch(videos[index].youtubeUrl)) {
+                      launch(videos[index].youtubeUrl);
+                    } else {
+                      throw 'Could not launch ${videos[index].youtubeUrl}.';
+                    }
+                  }
+                },
+                splashFactory: InkRipple.splashFactory,
+                child: ListTile(
+                  leading: _currentVideo == videos[index].youtubeUrl
+                      ? IconButton(
+                          icon: Icon(Icons.fullscreen),
+                          onPressed: () {
+                            setState(() async {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => ViewYoutubeVideoPage(
+                                    youtubeUrl: videos[index].youtubeUrl,
+                                  ),
+                                ),
+                              );
+
+                              await Future.delayed(Duration(seconds: 1));
+
+                              SystemChrome.setEnabledSystemUIOverlays([]);
+                            });
+                          },
+                        )
+                      : FaIcon(FontAwesomeIcons.youtube),
+                  title: Text('${videos[index].title}'),
+                  subtitle: Text(videos[index].subtitle),
+                  trailing: Text(MaterialLocalizations.of(context)
+                      .formatCompactDate(DateTime.parse(videos[index].date))),
+                ),
+              ),
+            );
+          },
+          childCount: videos.length,
+        ),
+      );
+    }
+
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          _videoPlaceholder(),
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (context, index) {
-                return Card(
-                  color: _currentVideo == videos[index].youtubeUrl
-                      ? Theme.of(context).backgroundColor
-                      : Theme.of(context).cardColor,
-                  child: InkWell(
-                    onTap: () async {
-                      try {
-                        if (Platform.isAndroid || Platform.isIOS) {
-                          setState(() {
-                            _currentVideo = videos[index].youtubeUrl;
-                          });
-                        }
-                      } catch (e) {
-                        if (await canLaunch(videos[index].youtubeUrl)) {
-                          launch(videos[index].youtubeUrl);
-                        } else {
-                          throw 'Could not launch ${videos[index].youtubeUrl}.';
-                        }
-                      }
-                    },
-                    splashFactory: InkRipple.splashFactory,
-                    child: ListTile(
-                      leading: FaIcon(FontAwesomeIcons.youtube),
-                      title: Text('${videos[index].title}'),
-                      subtitle: videos[index].subtitle == null
-                          ? null
-                          : Text(videos[index].subtitle),
-                      trailing: Text(videos[index].date != null
-                          ? MaterialLocalizations.of(context).formatCompactDate(
-                              DateTime.parse(videos[index].date))
-                          : 'Date'),
-                    ),
-                  ),
-                );
-              },
-              childCount: videos.length,
-            ),
-          ),
-        ],
-      ),
+      body: LayoutBuilder(builder: (context, constraints) {
+        if (constraints.maxWidth < 600) {
+          return CustomScrollView(
+            slivers: [
+              _videoPlaceholder(),
+              _videoList(),
+            ],
+          );
+        } else {
+          return Container(
+            child: CustomScrollView(slivers: [
+              _videoList(),
+            ]),
+          );
+        }
+      }),
     );
   }
 }
