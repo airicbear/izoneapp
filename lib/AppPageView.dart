@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:izoneapp/data/DanceVideos.dart';
 import 'package:izoneapp/generated/l10n.dart';
 import 'package:izoneapp/pages/AboutPage.dart';
 import 'package:izoneapp/widgets/MediaButtons.dart';
 import 'package:izoneapp/pages/MembersPage.dart';
 import 'package:izoneapp/widgets/AppMoreButton.dart';
-import 'package:izoneapp/pages/DancePage.dart';
+import 'package:izoneapp/pages/YoutubeVideoListPage.dart';
 
 enum Page { ABOUT, MEMBERS, DANCE }
 
@@ -82,7 +83,10 @@ class _AppPageViewState extends State<AppPageView> {
         children: [
           AboutPage(pageController: _pageController),
           MembersPage(pageController: _pageController),
-          DancePage(pageController: _pageController),
+          YoutubeVideoListPage(
+            pageController: _pageController,
+            videos: DanceVideos.videos,
+          ),
         ],
       ),
       bottomNavigationBar: BottomAppBar(
