@@ -71,6 +71,8 @@ It may be worth checking out the [`SliverLayoutBuilder`](https://api.flutter.dev
 The audio from the embedded Youtube video persists if the app is not closed and the user decides to go out of the app or turns off their display.
 I figure this may be more of a feature than a bug, though, potentially allowing for Youtube streaming without ads.
 
+**WARNING:** There is something *SEVERELY* wrong with the embedded Youtube videos that cause the Android device to be COMPLETELY borked. I'm trying to fix this ASAP.
+
 ## References
 
 - https://dbkpop.com/group/izone
