@@ -1,6 +1,6 @@
 # IZ*ONE Fan App <img src="./assets/launcher_round.png" width="64" alt="App icon"/>
 
-A fan-made Flutter app dedicated to [IZ*ONE](http://iz-one.co.kr/).
+An unofficial fan-made app dedicated to [IZ*ONE](http://iz-one.co.kr/).
 
 ## Contributing
 
