@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:izoneapp/data/DanceVideos.dart';
+import 'package:izoneapp/data/MusicVideos.dart';
 import 'package:izoneapp/generated/l10n.dart';
 import 'package:izoneapp/pages/AboutPage.dart';
 import 'package:izoneapp/widgets/MediaButtons.dart';
@@ -7,7 +8,7 @@ import 'package:izoneapp/pages/MembersPage.dart';
 import 'package:izoneapp/widgets/AppMoreButton.dart';
 import 'package:izoneapp/pages/YoutubeVideoListPage.dart';
 
-enum Page { ABOUT, MEMBERS, DANCE }
+enum Page { ABOUT, MEMBERS, DANCE, MV }
 
 class AppPageView extends StatefulWidget {
   AppPageView({Key key}) : super(key: key);
@@ -60,6 +61,7 @@ class _AppPageViewState extends State<AppPageView> {
           _pageTitle(context, S.of(context).about, Page.ABOUT),
           _pageTitle(context, S.of(context).members, Page.MEMBERS),
           _pageTitle(context, S.of(context).dance, Page.DANCE),
+          _pageTitle(context, 'MV', Page.MV),
         ],
       ),
       actions: [
@@ -86,6 +88,10 @@ class _AppPageViewState extends State<AppPageView> {
           YoutubeVideoListPage(
             pageController: _pageController,
             videos: DanceVideos.videos,
+          ),
+          YoutubeVideoListPage(
+            pageController: _pageController,
+            videos: MusicVideos.videos,
           ),
         ],
       ),
