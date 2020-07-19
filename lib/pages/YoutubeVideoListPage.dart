@@ -103,13 +103,7 @@ class YoutubeVideoListPageState extends State<YoutubeVideoListPage> {
                               widget.videos[index].youtubeUrl)) {
                             launch(widget.videos[index].youtubeUrl);
                           } else {
-                            showDialog(
-                              context: context,
-                              child: Center(
-                                child: Text(
-                                    'Unable to open video "${widget.videos[index].youtubeUrl}"'),
-                              ),
-                            );
+                            throw 'Unable to open video "${widget.videos[index].youtubeUrl}"';
                           }
                         },
                       ),

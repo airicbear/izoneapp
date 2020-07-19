@@ -73,6 +73,13 @@ I figure this may be more of a feature than a bug, though, potentially allowing 
 
 **WARNING:** There is something *SEVERELY* wrong with the embedded Youtube videos that cause the Android device to be COMPLETELY borked. I'm trying to fix this ASAP.
 
+**UPDATE:** Added `WAKE_LOCK` permissions by adding `<uses-permission android:name="android.permission.WAKE_LOCK"/>` to the `AndroidManifest.xml`.
+Hopefully this should fix the issue above.
+See https://developer.android.com/reference/android/os/PowerManager for more details.
+NOTE from the Android Developers documentation:
+
+> **Device battery life will be significantly affected by the use of this API.**
+
 ## References
 
 - https://dbkpop.com/group/izone
