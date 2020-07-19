@@ -32,11 +32,9 @@ class AboutPage extends StatelessWidget {
   }
 
   Widget _izoneDescription(BuildContext context) {
-    return Expanded(
-      child: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: SelectableText(S.of(context).aboutIzone),
-      ),
+    return Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: SelectableText(S.of(context).aboutIzone),
     );
   }
 
@@ -46,10 +44,10 @@ class AboutPage extends StatelessWidget {
       body: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
           if (constraints.maxWidth < 800) {
-            return Column(
+            return ListView(
               children: [
                 _izonePicture(context),
-                _izoneDescription(context),
+                Expanded(child: _izoneDescription(context)),
               ],
             );
           } else {
@@ -57,7 +55,9 @@ class AboutPage extends StatelessWidget {
               child: Row(
                 children: [
                   _izonePicture(context),
-                  _izoneDescription(context),
+                  Expanded(
+                    child: ListView(children: [_izoneDescription(context)]),
+                  ),
                 ],
               ),
             );
