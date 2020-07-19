@@ -22,6 +22,7 @@ class MusicVideos {
         subtitle: 'Music video',
         date: '2020-02-17',
         youtubeUrl: 'https://www.youtube.com/embed/eDEFolvLn0A',
+        restricted: true,
       ),
       YoutubeVideo(
         title: 'Vampire',
@@ -46,6 +47,7 @@ class MusicVideos {
         subtitle: 'Music video',
         date: '2019-04-01',
         youtubeUrl: 'https://www.youtube.com/embed/6eEZ7DJMzuk',
+        restricted: true,
       ),
       YoutubeVideo(
         title: 'Gokigen Sayonara',
@@ -64,12 +66,14 @@ class MusicVideos {
         subtitle: 'Music video (Performance ver.)',
         date: '2018-11-08',
         youtubeUrl: 'https://www.youtube.com/embed/E-T1gEeUqwA',
+        restricted: true,
       ),
       YoutubeVideo(
         title: S.of(context).laVieEnRose,
         subtitle: 'Music video',
         date: '2018-10-29',
         youtubeUrl: 'https://www.youtube.com/embed/WZwr2a_lFWY',
+        restricted: true,
       ),
     ];
   }
