@@ -30,6 +30,7 @@ class YoutubeVideoListPageState extends State<YoutubeVideoListPage> {
         context,
         MaterialPageRoute(
           builder: (context) {
+            // Stop current video and switch to fullscreen
             _currentVideo = '';
 
             return ViewYoutubeVideoPage(
@@ -77,7 +78,13 @@ class YoutubeVideoListPageState extends State<YoutubeVideoListPage> {
                         _currentVideo = widget.videos[index].youtubeUrl;
                       });
                     }
-                  } catch (e) {}
+                  } catch (e) {
+                    // Web
+                    if (await canLaunch(widget.videos[index].youtubeUrl)) {
+                      launch(widget.videos[index].youtubeUrl);
+                    }
+                  }
+                  // Restricted
                 } else if (await canLaunch(widget.videos[index].youtubeUrl)) {
                   launch(widget.videos[index].youtubeUrl);
                 } else {
