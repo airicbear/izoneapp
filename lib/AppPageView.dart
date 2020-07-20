@@ -80,6 +80,10 @@ class _AppPageViewState extends State<AppPageView> {
           setState(() {
             _page = AppPage.values[page];
           });
+          AppPages.scrollAppBarToPage(
+            AppPages.pages(context)[page],
+            _appBarController,
+          );
         },
         controller: _pageController,
         scrollDirection: Axis.horizontal,

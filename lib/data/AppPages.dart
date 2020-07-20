@@ -65,6 +65,17 @@ class AppPages {
     ];
   }
 
+  static void scrollAppBarToPage(
+    AppPageInfo page,
+    ScrollController appBarController,
+  ) {
+    appBarController.animateTo(
+      page.index * 10.0,
+      duration: Duration(milliseconds: 1000),
+      curve: Curves.fastLinearToSlowEaseIn,
+    );
+  }
+
   static void goToPage(
     AppPageInfo page,
     PageController pageController,
@@ -77,11 +88,6 @@ class AppPages {
       ),
       curve: Curves.fastLinearToSlowEaseIn,
     );
-
-    appBarController.animateTo(
-      page.index * 10.0,
-      duration: Duration(milliseconds: 1000),
-      curve: Curves.fastLinearToSlowEaseIn,
-    );
+    scrollAppBarToPage(page, appBarController);
   }
 }
