@@ -40,7 +40,8 @@ class HomePage extends StatelessWidget {
               curve: Curves.fastLinearToSlowEaseIn,
             ),
             child: ListTile(
-              title: Text('${pages[index].title}'),
+              leading: pages[index].icon,
+              title: Text('${pages[index].longTitle}'),
               trailing: FaIcon(FontAwesomeIcons.arrowRight),
             ),
           ),
