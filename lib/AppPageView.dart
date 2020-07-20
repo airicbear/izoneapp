@@ -56,13 +56,10 @@ class _AppPageViewState extends State<AppPageView> {
         scrollDirection: Axis.horizontal,
         child: ButtonBar(
           alignment: MainAxisAlignment.start,
-          children: [
-            _pageTitle(context, AppPages.home(context)),
-            _pageTitle(context, AppPages.about(context)),
-            _pageTitle(context, AppPages.members(context)),
-            _pageTitle(context, AppPages.dance(context)),
-            _pageTitle(context, AppPages.mv(context)),
-          ],
+          children: List<Widget>.generate(
+            AppPages.pages(context).length,
+            (index) => _pageTitle(context, AppPages.pages(context)[index]),
+          ),
         ),
       ),
       actions: [

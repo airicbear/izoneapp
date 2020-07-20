@@ -19,17 +19,6 @@ class AppPageInfo {
 }
 
 class AppPages {
-  static AppPageInfo home(BuildContext context) =>
-      pages(context)[AppPage.HOME.index];
-  static AppPageInfo about(BuildContext context) =>
-      pages(context)[AppPage.ABOUT.index];
-  static AppPageInfo members(BuildContext context) =>
-      pages(context)[AppPage.MEMBERS.index];
-  static AppPageInfo dance(BuildContext context) =>
-      pages(context)[AppPage.DANCE.index];
-  static AppPageInfo mv(BuildContext context) =>
-      pages(context)[AppPage.MV.index];
-
   static List<AppPageInfo> pages(BuildContext context) {
     return [
       AppPageInfo(
