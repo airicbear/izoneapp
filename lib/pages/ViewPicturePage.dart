@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
 
@@ -16,7 +15,7 @@ class ViewPicturePage extends StatelessWidget {
       child: Scaffold(
         body: Center(
           child: PhotoView(
-            imageProvider: CachedNetworkImageProvider(memberImagePath),
+            imageProvider: AssetImage(memberImagePath),
             heroAttributes: PhotoViewHeroAttributes(
               tag: memberImagePath,
             ),

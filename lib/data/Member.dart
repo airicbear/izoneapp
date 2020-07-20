@@ -31,7 +31,7 @@ class Member {
   }
 
   String getImagePath() {
-    return 'http://cdn.iz-one.co.kr/images/oneiric-diary/v/official-photo-4-${this.stageName.toLowerCase()}.jpg';
+    return 'assets/images/oneiric-diary/official-photo-4-${this.stageName.toLowerCase()}.jpg';
   }
 
   String getHeightInFeetInches() {

@@ -32,7 +32,7 @@ dependencies:
   intl: ^0.16.1
   intl_translation: ^0.17.10
   flutter_widget_from_html: ^0.4.2
-  cached_network_image: ^2.2.0+1
+  # cached_network_image: ^2.2.0+1
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -61,6 +61,7 @@ flutter:
     - assets/izone.json
     - assets/icons/
     - assets/launcher_round.png
+    - assets/images/oneiric-diary/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see

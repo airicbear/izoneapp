@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:izoneapp/pages/ViewPicturePage.dart';
 import '../data/Member.dart';
@@ -29,7 +28,7 @@ class ProfilePage extends StatelessWidget {
         child: ClipRRect(
           borderRadius: BorderRadius.circular(32.0),
           child: Image(
-            image: CachedNetworkImageProvider(member.getImagePath()),
+            image: AssetImage(member.getImagePath()),
             fit: BoxFit.cover,
             height: height,
           ),

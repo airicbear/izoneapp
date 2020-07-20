@@ -54,7 +54,9 @@ The Web version is *very* much not well supported.
 
 1. Embedded Youtube videos don't work (see the [flutter_widget_from_html](https://pub.dev/packages/flutter_widget_from_html) package).
 
-2. Cached network images don't work (see the [cached_network_image](https://pub.dev/packages/cached_network_image) package).
+2. ~~Cached network images don't work (see the [cached_network_image](https://pub.dev/packages/cached_network_image) package).~~
+
+    - **Update 2020-07-19**: Reverting back to local images to fix this.
 
 3. The most useful thing about the Web version is to share the app with others using a link.
 
