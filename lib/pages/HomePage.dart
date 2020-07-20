@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:izoneapp/generated/l10n.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:izoneapp/data/AppPage.dart';
 import 'package:izoneapp/pages/ViewPicturePage.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key key, this.pageController}) : super(key: key);
+  const HomePage({Key key, this.pageController, this.pages}) : super(key: key);
 
   final PageController pageController;
+  final List<AppPageInfo> pages;
 
   Widget _izonePicture(BuildContext context) {
     const imagePath = 'assets/images/oneiric-diary/official-photo-4-izone.jpg';
@@ -27,10 +29,24 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _izoneDescription(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(12.0),
-      child: SelectableText(S.of(context).aboutIzone),
+  ListView _pageSelection(BuildContext context) {
+    return ListView.builder(
+      itemBuilder: (context, index) {
+        return Card(
+          child: InkWell(
+            onTap: () => pageController.animateToPage(
+              pages[index].index,
+              duration: Duration(seconds: 1),
+              curve: Curves.fastLinearToSlowEaseIn,
+            ),
+            child: ListTile(
+              title: Text('${pages[index].title}'),
+              trailing: FaIcon(FontAwesomeIcons.arrowRight),
+            ),
+          ),
+        );
+      },
+      itemCount: pages.length,
     );
   }
 
@@ -40,10 +56,14 @@ class HomePage extends StatelessWidget {
       body: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
           if (constraints.maxWidth < 800) {
-            return ListView(
+            return Column(
               children: [
-                _izonePicture(context),
-                _izoneDescription(context),
+                Flexible(
+                  child: _izonePicture(context),
+                ),
+                Expanded(
+                  child: _pageSelection(context),
+                ),
               ],
             );
           } else {
@@ -53,11 +73,7 @@ class HomePage extends StatelessWidget {
                   child: _izonePicture(context),
                 ),
                 Flexible(
-                  child: ListView(
-                    children: [
-                      _izoneDescription(context),
-                    ],
-                  ),
+                  child: _pageSelection(context),
                 ),
               ],
             );

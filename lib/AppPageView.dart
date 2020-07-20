@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:izoneapp/data/AppPage.dart';
 import 'package:izoneapp/data/DanceVideos.dart';
 import 'package:izoneapp/data/MusicVideos.dart';
-import 'package:izoneapp/generated/l10n.dart';
 import 'package:izoneapp/pages/HomePage.dart';
 import 'package:izoneapp/widgets/MediaButtons.dart';
 import 'package:izoneapp/pages/MembersPage.dart';
@@ -32,7 +31,7 @@ class _AppPageViewState extends State<AppPageView> {
     super.dispose();
   }
 
-  Widget _pageTitle(BuildContext context, String title, AppPage page) {
+  Widget _pageTitle(BuildContext context, AppPageInfo page) {
     return GestureDetector(
       onTap: () => _pageController.animateToPage(
         page.index,
@@ -42,8 +41,8 @@ class _AppPageViewState extends State<AppPageView> {
         curve: Curves.fastLinearToSlowEaseIn,
       ),
       child: Text(
-        title,
-        style: _page != page
+        page.title,
+        style: _page.index != page.index
             ? TextStyle(
                 color: Theme.of(context).disabledColor,
               )
@@ -57,10 +56,10 @@ class _AppPageViewState extends State<AppPageView> {
       title: ButtonBar(
         alignment: MainAxisAlignment.start,
         children: [
-          _pageTitle(context, S.of(context).home, AppPage.HOME),
-          _pageTitle(context, S.of(context).members, AppPage.MEMBERS),
-          _pageTitle(context, S.of(context).dance, AppPage.DANCE),
-          _pageTitle(context, 'MV', AppPage.MV),
+          _pageTitle(context, AppPages.home(context)),
+          _pageTitle(context, AppPages.members(context)),
+          _pageTitle(context, AppPages.dance(context)),
+          _pageTitle(context, AppPages.mv(context)),
         ],
       ),
       actions: [
@@ -82,8 +81,13 @@ class _AppPageViewState extends State<AppPageView> {
         controller: _pageController,
         scrollDirection: Axis.horizontal,
         children: [
-          HomePage(pageController: _pageController),
-          MembersPage(pageController: _pageController),
+          HomePage(
+            pageController: _pageController,
+            pages: AppPages.pages(context).sublist(1),
+          ),
+          MembersPage(
+            pageController: _pageController,
+          ),
           YoutubeVideoListPage(
             pageController: _pageController,
             videos: DanceVideos.videos(context),
