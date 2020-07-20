@@ -8,7 +8,7 @@ import 'package:izoneapp/pages/MembersPage.dart';
 import 'package:izoneapp/widgets/AppMoreButton.dart';
 import 'package:izoneapp/pages/YoutubeVideoListPage.dart';
 
-enum Page { HOME, MEMBERS, DANCE, MV }
+enum AppPage { HOME, MEMBERS, DANCE, MV }
 
 class AppPageView extends StatefulWidget {
   AppPageView({Key key}) : super(key: key);
@@ -19,7 +19,7 @@ class AppPageView extends StatefulWidget {
 
 class _AppPageViewState extends State<AppPageView> {
   PageController _pageController;
-  Page _page = Page.HOME;
+  AppPage _page = AppPage.HOME;
 
   @override
   void initState() {
@@ -33,7 +33,7 @@ class _AppPageViewState extends State<AppPageView> {
     super.dispose();
   }
 
-  Widget _pageTitle(BuildContext context, String title, Page page) {
+  Widget _pageTitle(BuildContext context, String title, AppPage page) {
     return GestureDetector(
       onTap: () => _pageController.animateToPage(
         page.index,
@@ -58,10 +58,10 @@ class _AppPageViewState extends State<AppPageView> {
       title: ButtonBar(
         alignment: MainAxisAlignment.start,
         children: [
-          _pageTitle(context, S.of(context).home, Page.HOME),
-          _pageTitle(context, S.of(context).members, Page.MEMBERS),
-          _pageTitle(context, S.of(context).dance, Page.DANCE),
-          _pageTitle(context, 'MV', Page.MV),
+          _pageTitle(context, S.of(context).home, AppPage.HOME),
+          _pageTitle(context, S.of(context).members, AppPage.MEMBERS),
+          _pageTitle(context, S.of(context).dance, AppPage.DANCE),
+          _pageTitle(context, 'MV', AppPage.MV),
         ],
       ),
       actions: [
@@ -77,7 +77,7 @@ class _AppPageViewState extends State<AppPageView> {
       body: PageView(
         onPageChanged: (page) {
           setState(() {
-            _page = Page.values[page];
+            _page = AppPage.values[page];
           });
         },
         controller: _pageController,
