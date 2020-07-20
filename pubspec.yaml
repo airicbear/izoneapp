@@ -62,11 +62,6 @@ flutter:
     - assets/icons/
     - assets/launcher_round.png
     - assets/images/oneiric-diary/
-    - assets/lyrics.json
-    - assets/lyrics/bloom-iz/
-    - assets/lyrics/color-iz/
-    - assets/lyrics/heart-iz/
-    - assets/lyrics/oneiric-diary/
     - assets/coverart/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
