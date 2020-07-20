@@ -39,7 +39,7 @@ class AboutPage extends StatelessWidget {
                 Expanded(
                   child: GroupPicture(
                     imagePath:
-                        'assets/images/oneiric-diary/official-photo-3-izone.jpg',
+                        'assets/images/oneiric-diary/official-photo-4-izone.jpg',
                   ),
                 ),
                 Flexible(
