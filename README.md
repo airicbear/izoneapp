@@ -50,17 +50,15 @@ Edit each the `lib/l10n/intl_*.arb` files so that they all have the same fields 
 
 ### Web version
 
-The Web version is *very* much not well supported.
+The Web version works okay for the most part.
 
-1. Embedded Youtube videos don't work (see the [flutter_widget_from_html](https://pub.dev/packages/flutter_widget_from_html) package).
+1. Embedded Youtube videos don't work in app (see the [flutter_widget_from_html](https://pub.dev/packages/flutter_widget_from_html) package).
+
+    - As a workaround for this issue, the app simply opens the Youtube video in a new tab. ([link to relevant commit](https://github.com/airicbear/izone-app/commit/9cee33ea1d4a685b021c35a040c553c74bd2e1be))
 
 2. ~~Cached network images don't work (see the [cached_network_image](https://pub.dev/packages/cached_network_image) package).~~
 
-    - **Update 2020-07-19**: Reverting back to local images to fix this.
-
-3. The most useful thing about the Web version is to share the app with others using a link.
-
-The app might actually be better off using Image assets rather than cached network images, at least for pages such as the `AboutPage` and `MembersPage`.
+    - **Update 2020-07-19**: Reverting back to local images to fix this. ([link to relevant commit](https://github.com/airicbear/izone-app/commit/323a025c72f3396bf61585b2389cd6f077852cbe))
 
 ### App layout
 
@@ -73,14 +71,15 @@ It may be worth checking out the [`SliverLayoutBuilder`](https://api.flutter.dev
 The audio from the embedded Youtube video persists if the app is not closed and the user decides to go out of the app or turns off their display.
 I figure this may be more of a feature than a bug, though, potentially allowing for Youtube streaming without ads.
 
-**WARNING:** There is something *SEVERELY* wrong with the embedded Youtube videos that cause the Android device to be COMPLETELY borked. I'm trying to fix this ASAP.
+~~**WARNING:** There is something *SEVERELY* wrong with the embedded Youtube videos that cause the Android device to be COMPLETELY borked. I'm trying to fix this ASAP.~~
 
-**UPDATE:** Added `WAKE_LOCK` permissions by adding `<uses-permission android:name="android.permission.WAKE_LOCK"/>` to the `AndroidManifest.xml`.
+**UPDATE:** Added `WAKE_LOCK` permissions by adding `<uses-permission android:name="android.permission.WAKE_LOCK"/>` to the `AndroidManifest.xml` ([link to relevant commit](https://github.com/airicbear/izone-app/commit/ad519808252dea0b584199ac01d17582bd4eac1c)).
 Hopefully this should fix the issue above.
 See https://developer.android.com/reference/android/os/PowerManager for more details.
 NOTE from the Android Developers documentation:
 
 > **Device battery life will be significantly affected by the use of this API.**
+
 
 ## References
 
