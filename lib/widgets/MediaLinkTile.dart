@@ -22,6 +22,8 @@ class MediaLinkTile extends StatelessWidget {
         onTap: () => _launchUrl(link.url),
         child: ListTile(
           leading: link.icon,
+          title: Text(link.description),
+          trailing: Icon(Icons.open_in_new),
         ),
       ),
     );

@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:izoneapp/generated/l10n.dart';
 
-enum AppPage { HOME, ABOUT, MEMBERS, DANCE, MV }
+enum AppPage { HOME, ABOUT, MEMBERS, DANCE, MV, MEDIA }
 
 class AppPageInfo {
   final String title;
   final String longTitle;
   final int index;
-  final Icon icon;
+  final Widget icon;
 
   AppPageInfo({
     this.title,
@@ -43,13 +43,19 @@ class AppPages {
         title: S.of(context).dance,
         longTitle: 'Dance videos',
         index: AppPage.DANCE.index,
-        icon: Icon(FontAwesomeIcons.video),
+        icon: FaIcon(FontAwesomeIcons.video),
       ),
       AppPageInfo(
         title: 'MV',
         longTitle: 'Music videos',
         index: AppPage.MV.index,
-        icon: Icon(FontAwesomeIcons.video),
+        icon: FaIcon(FontAwesomeIcons.video),
+      ),
+      AppPageInfo(
+        title: 'Media',
+        longTitle: 'Social media & platforms',
+        index: AppPage.MEDIA.index,
+        icon: Icon(Icons.live_tv),
       ),
     ];
   }
@@ -59,7 +65,7 @@ class AppPages {
     ScrollController appBarController,
   ) {
     appBarController.animateTo(
-      page.index * 10.0,
+      page.index * 50.0,
       duration: Duration(milliseconds: 1000),
       curve: Curves.fastLinearToSlowEaseIn,
     );

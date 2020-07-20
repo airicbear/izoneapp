@@ -4,6 +4,7 @@ import 'package:izoneapp/data/DanceVideos.dart';
 import 'package:izoneapp/data/MusicVideos.dart';
 import 'package:izoneapp/pages/AboutPage.dart';
 import 'package:izoneapp/pages/HomePage.dart';
+import 'package:izoneapp/pages/MediaPage.dart';
 import 'package:izoneapp/widgets/MediaButtons.dart';
 import 'package:izoneapp/pages/MembersPage.dart';
 import 'package:izoneapp/widgets/AppMoreButton.dart';
@@ -94,6 +95,7 @@ class _AppPageViewState extends State<AppPageView> {
           MembersPage(),
           YoutubeVideoListPage(videos: DanceVideos.videos(context)),
           YoutubeVideoListPage(videos: MusicVideos.videos(context)),
+          MediaPage(),
         ],
       ),
       bottomNavigationBar: BottomAppBar(
