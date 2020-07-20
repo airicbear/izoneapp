@@ -5,11 +5,12 @@ import 'package:izoneapp/data/MusicVideos.dart';
 import 'package:izoneapp/generated/l10n.dart';
 import 'package:izoneapp/pages/AboutPage.dart';
 import 'package:izoneapp/pages/HomePage.dart';
+import 'package:izoneapp/pages/LyricsPage.dart';
 import 'package:izoneapp/pages/MediaPage.dart';
 import 'package:izoneapp/pages/MembersPage.dart';
 import 'package:izoneapp/pages/YoutubeVideoListPage.dart';
 
-enum AppPage { HOME, ABOUT, MEMBERS, DANCE, MV, MEDIA }
+enum AppPage { HOME, ABOUT, MEMBERS, LYRICS, DANCE, MV, MEDIA }
 
 class AppPageInfo {
   final String title;
@@ -55,8 +56,15 @@ class AppPages {
         title: S.of(context).members,
         longTitle: 'Member profiles',
         index: AppPage.MEMBERS.index,
-        icon: Icon(Icons.portrait),
+        icon: FaIcon(FontAwesomeIcons.userFriends),
         page: MembersPage(),
+      ),
+      AppPageInfo(
+        title: 'Lyrics',
+        longTitle: 'Song lyrics',
+        index: AppPage.LYRICS.index,
+        icon: FaIcon(FontAwesomeIcons.readme),
+        page: LyricsPage(),
       ),
       AppPageInfo(
         title: S.of(context).dance,
@@ -69,7 +77,7 @@ class AppPages {
         title: 'MV',
         longTitle: 'Music videos',
         index: AppPage.MV.index,
-        icon: FaIcon(FontAwesomeIcons.video),
+        icon: FaIcon(FontAwesomeIcons.film),
         page: YoutubeVideoListPage(videos: MusicVideos.videos(context)),
       ),
       AppPageInfo(

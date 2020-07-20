@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:izoneapp/data/Member.dart';
-import 'package:izoneapp/pages/ProfilePage.dart';
+import 'package:izoneapp/data/Album.dart';
+import 'package:izoneapp/pages/AlbumLyricsPage.dart';
 
-class MemberTile extends StatelessWidget {
-  const MemberTile({Key key, this.member}) : super(key: key);
+class AlbumLyricsTile extends StatelessWidget {
+  const AlbumLyricsTile({Key key, this.album}) : super(key: key);
 
-  final Member member;
+  final Album album;
 
-  Route _memberRoute(BuildContext context, Member member) {
+  Route _albumLyricsRoute(BuildContext context, Album album) {
     return MaterialPageRoute(
-      builder: (context) => ProfilePage(
-        member: member,
+      builder: (context) => AlbumLyricsPage(
+        album: album,
       ),
     );
   }
@@ -20,7 +20,7 @@ class MemberTile extends StatelessWidget {
     return Material(
       child: InkResponse(
         onTap: () {
-          Navigator.of(context).push(_memberRoute(context, member));
+          Navigator.of(context).push(_albumLyricsRoute(context, album));
         },
         highlightShape: BoxShape.rectangle,
         borderRadius: BorderRadius.circular(32.0),
@@ -28,11 +28,11 @@ class MemberTile extends StatelessWidget {
           children: [
             Expanded(
               child: Hero(
-                tag: member.getImagePath(),
+                tag: album.getCoverArtPath(),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(12.0),
                   child: Image(
-                    image: AssetImage(member.getImagePath()),
+                    image: AssetImage(album.getCoverArtPath()),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -42,9 +42,9 @@ class MemberTile extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: Column(
                 children: [
-                  Text(member.stageName),
+                  Text(album.title),
                   Text(
-                    '${MaterialLocalizations.of(context).formatCompactDate(DateTime.parse(member.dateOfBirth))} (${member.getAge()})',
+                    '${MaterialLocalizations.of(context).formatCompactDate(DateTime.parse(album.releaseDate))}',
                     style: TextStyle(
                       color: Theme.of(context).disabledColor,
                     ),
