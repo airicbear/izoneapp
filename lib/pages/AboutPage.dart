@@ -47,15 +47,19 @@ class AboutPage extends StatelessWidget {
               ],
             );
           } else {
-            return Center(
-              child: Row(
-                children: [
-                  _izonePicture(context),
-                  Expanded(
-                    child: ListView(children: [_izoneDescription(context)]),
+            return Row(
+              children: [
+                Expanded(
+                  child: _izonePicture(context),
+                ),
+                Flexible(
+                  child: ListView(
+                    children: [
+                      _izoneDescription(context),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             );
           }
         },
