@@ -58,8 +58,11 @@ class _AppPageViewState extends State<AppPageView> {
         child: ButtonBar(
           alignment: MainAxisAlignment.start,
           children: List<Widget>.generate(
-            AppPages.pages(context).length,
-            (index) => _pageTitle(context, AppPages.pages(context)[index]),
+            AppPages.pages(context, _pageController, _appBarController).length,
+            (index) => _pageTitle(
+                context,
+                AppPages.pages(
+                    context, _pageController, _appBarController)[index]),
           ),
         ),
       ),
@@ -79,24 +82,18 @@ class _AppPageViewState extends State<AppPageView> {
             _page = AppPage.values[page];
           });
           AppPages.scrollAppBarToPage(
-            AppPages.pages(context)[page],
+            AppPages.pages(context, _pageController, _appBarController)[page],
             _appBarController,
           );
         },
         controller: _pageController,
         scrollDirection: Axis.horizontal,
-        children: [
-          HomePage(
-            pageController: _pageController,
-            appBarController: _appBarController,
-            pages: AppPages.pages(context).sublist(1),
-          ),
-          AboutPage(),
-          MembersPage(),
-          YoutubeVideoListPage(videos: DanceVideos.videos(context)),
-          YoutubeVideoListPage(videos: MusicVideos.videos(context)),
-          MediaPage(),
-        ],
+        children: List.generate(
+          AppPages.pages(context, _pageController, _appBarController).length,
+          (index) =>
+              AppPages.pages(context, _pageController, _appBarController)[index]
+                  .page,
+        ),
       ),
       bottomNavigationBar: BottomAppBar(
         child: MediaButtons(),

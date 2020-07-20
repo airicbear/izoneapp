@@ -4,15 +4,16 @@ import 'package:izoneapp/data/AppPages.dart';
 import 'package:izoneapp/widgets/GroupPicture.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage(
-      {Key key, this.pageController, this.pages, this.appBarController})
+  const HomePage({Key key, this.pageController, this.appBarController})
       : super(key: key);
 
   final PageController pageController;
   final ScrollController appBarController;
-  final List<AppPageInfo> pages;
 
   ListView _pageSelection(BuildContext context) {
+    List<AppPageInfo> pages =
+        AppPages.pages(context, pageController, appBarController).sublist(1);
+
     return ListView.builder(
       itemBuilder: (context, index) {
         return Card(
@@ -40,12 +41,14 @@ class HomePage extends StatelessWidget {
             return Column(
               children: [
                 Flexible(
+                  flex: 2,
                   child: GroupPicture(
                     imagePath:
                         'assets/images/oneiric-diary/official-photo-3-izone.jpg',
                   ),
                 ),
                 Expanded(
+                  flex: 3,
                   child: _pageSelection(context),
                 ),
               ],
