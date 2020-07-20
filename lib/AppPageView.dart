@@ -93,20 +93,10 @@ class _AppPageViewState extends State<AppPageView> {
             appBarController: _appBarController,
             pages: AppPages.pages(context).sublist(1),
           ),
-          AboutPage(
-            pageController: _pageController,
-          ),
-          MembersPage(
-            pageController: _pageController,
-          ),
-          YoutubeVideoListPage(
-            pageController: _pageController,
-            videos: DanceVideos.videos(context),
-          ),
-          YoutubeVideoListPage(
-            pageController: _pageController,
-            videos: MusicVideos.videos(context),
-          ),
+          AboutPage(),
+          MembersPage(),
+          YoutubeVideoListPage(videos: DanceVideos.videos(context)),
+          YoutubeVideoListPage(videos: MusicVideos.videos(context)),
         ],
       ),
       bottomNavigationBar: BottomAppBar(

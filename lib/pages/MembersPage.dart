@@ -4,9 +4,7 @@ import 'package:izoneapp/data/Member.dart';
 import 'package:izoneapp/widgets/MemberTile.dart';
 
 class MembersPage extends StatelessWidget {
-  const MembersPage({Key key, this.pageController}) : super(key: key);
-
-  final PageController pageController;
+  const MembersPage({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

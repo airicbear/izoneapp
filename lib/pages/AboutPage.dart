@@ -3,9 +3,7 @@ import 'package:izoneapp/generated/l10n.dart';
 import 'package:izoneapp/widgets/GroupPicture.dart';
 
 class AboutPage extends StatelessWidget {
-  const AboutPage({Key key, this.pageController}) : super(key: key);
-
-  final PageController pageController;
+  const AboutPage({Key key}) : super(key: key);
 
   Widget _izoneDescription(BuildContext context) {
     return Padding(

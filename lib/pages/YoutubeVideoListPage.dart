@@ -9,10 +9,8 @@ import 'package:izoneapp/pages/ViewYoutubeVideoPage.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class YoutubeVideoListPage extends StatefulWidget {
-  const YoutubeVideoListPage({Key key, this.pageController, this.videos})
-      : super(key: key);
+  const YoutubeVideoListPage({Key key, this.videos}) : super(key: key);
 
-  final PageController pageController;
   final List<YoutubeVideo> videos;
 
   @override
