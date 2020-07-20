@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:izoneapp/data/AppPage.dart';
+import 'package:izoneapp/data/AppPages.dart';
 import 'package:izoneapp/widgets/GroupPicture.dart';
 
 class HomePage extends StatelessWidget {
@@ -42,7 +42,7 @@ class HomePage extends StatelessWidget {
                 Flexible(
                   child: GroupPicture(
                     imagePath:
-                        'assets/images/oneiric-diary/official-photo-4-izone.jpg',
+                        'assets/images/oneiric-diary/official-photo-3-izone.jpg',
                   ),
                 ),
                 Expanded(
@@ -56,7 +56,7 @@ class HomePage extends StatelessWidget {
                 Expanded(
                   child: GroupPicture(
                     imagePath:
-                        'assets/images/oneiric-diary/official-photo-4-izone.jpg',
+                        'assets/images/oneiric-diary/official-photo-3-izone.jpg',
                   ),
                 ),
                 Flexible(

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:izoneapp/data/AppPage.dart';
+import 'package:izoneapp/data/AppPages.dart';
 import 'package:izoneapp/data/DanceVideos.dart';
 import 'package:izoneapp/data/MusicVideos.dart';
+import 'package:izoneapp/pages/AboutPage.dart';
 import 'package:izoneapp/pages/HomePage.dart';
 import 'package:izoneapp/widgets/MediaButtons.dart';
 import 'package:izoneapp/pages/MembersPage.dart';
@@ -53,14 +54,18 @@ class _AppPageViewState extends State<AppPageView> {
 
   Widget _pageViewAppBar(BuildContext context) {
     return AppBar(
-      title: ButtonBar(
-        alignment: MainAxisAlignment.start,
-        children: [
-          _pageTitle(context, AppPages.home(context)),
-          _pageTitle(context, AppPages.members(context)),
-          _pageTitle(context, AppPages.dance(context)),
-          _pageTitle(context, AppPages.mv(context)),
-        ],
+      title: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: ButtonBar(
+          alignment: MainAxisAlignment.start,
+          children: [
+            _pageTitle(context, AppPages.home(context)),
+            _pageTitle(context, AppPages.about(context)),
+            _pageTitle(context, AppPages.members(context)),
+            _pageTitle(context, AppPages.dance(context)),
+            _pageTitle(context, AppPages.mv(context)),
+          ],
+        ),
       ),
       actions: [
         AppMoreButton(),
@@ -84,6 +89,9 @@ class _AppPageViewState extends State<AppPageView> {
           HomePage(
             pageController: _pageController,
             pages: AppPages.pages(context).sublist(1),
+          ),
+          AboutPage(
+            pageController: _pageController,
           ),
           MembersPage(
             pageController: _pageController,

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:izoneapp/generated/l10n.dart';
 
-enum AppPage { HOME, MEMBERS, DANCE, MV }
+enum AppPage { HOME, ABOUT, MEMBERS, DANCE, MV }
 
 class AppPageInfo {
   final String title;
@@ -21,6 +21,8 @@ class AppPageInfo {
 class AppPages {
   static AppPageInfo home(BuildContext context) =>
       pages(context)[AppPage.HOME.index];
+  static AppPageInfo about(BuildContext context) =>
+      pages(context)[AppPage.ABOUT.index];
   static AppPageInfo members(BuildContext context) =>
       pages(context)[AppPage.MEMBERS.index];
   static AppPageInfo dance(BuildContext context) =>
@@ -35,6 +37,12 @@ class AppPages {
         longTitle: S.of(context).home,
         index: AppPage.HOME.index,
         icon: Icon(Icons.home),
+      ),
+      AppPageInfo(
+        title: S.of(context).about,
+        longTitle: 'About IZ*ONE',
+        index: AppPage.ABOUT.index,
+        icon: Icon(Icons.help),
       ),
       AppPageInfo(
         title: S.of(context).members,
