@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:izoneapp/data/AppPage.dart';
 import 'package:izoneapp/data/DanceVideos.dart';
 import 'package:izoneapp/data/MusicVideos.dart';
 import 'package:izoneapp/generated/l10n.dart';
@@ -7,8 +8,6 @@ import 'package:izoneapp/widgets/MediaButtons.dart';
 import 'package:izoneapp/pages/MembersPage.dart';
 import 'package:izoneapp/widgets/AppMoreButton.dart';
 import 'package:izoneapp/pages/YoutubeVideoListPage.dart';
-
-enum AppPage { HOME, MEMBERS, DANCE, MV }
 
 class AppPageView extends StatefulWidget {
   AppPageView({Key key}) : super(key: key);
