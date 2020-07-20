@@ -4,9 +4,12 @@ import 'package:izoneapp/data/AppPages.dart';
 import 'package:izoneapp/widgets/GroupPicture.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key key, this.pageController, this.pages}) : super(key: key);
+  const HomePage(
+      {Key key, this.pageController, this.pages, this.appBarController})
+      : super(key: key);
 
   final PageController pageController;
+  final ScrollController appBarController;
   final List<AppPageInfo> pages;
 
   ListView _pageSelection(BuildContext context) {
@@ -14,11 +17,8 @@ class HomePage extends StatelessWidget {
       itemBuilder: (context, index) {
         return Card(
           child: InkWell(
-            onTap: () => pageController.animateToPage(
-              pages[index].index,
-              duration: Duration(seconds: 1),
-              curve: Curves.fastLinearToSlowEaseIn,
-            ),
+            onTap: () => AppPages.goToPage(
+                pages[index], pageController, appBarController),
             child: ListTile(
               leading: pages[index].icon,
               title: Text('${pages[index].longTitle}'),

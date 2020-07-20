@@ -18,29 +18,26 @@ class AppPageView extends StatefulWidget {
 
 class _AppPageViewState extends State<AppPageView> {
   PageController _pageController;
+  ScrollController _appBarController;
   AppPage _page = AppPage.HOME;
 
   @override
   void initState() {
     super.initState();
     _pageController = PageController();
+    _appBarController = ScrollController();
   }
 
   @override
   void dispose() {
     _pageController.dispose();
+    _appBarController.dispose();
     super.dispose();
   }
 
   Widget _pageTitle(BuildContext context, AppPageInfo page) {
     return GestureDetector(
-      onTap: () => _pageController.animateToPage(
-        page.index,
-        duration: const Duration(
-          milliseconds: 1000,
-        ),
-        curve: Curves.fastLinearToSlowEaseIn,
-      ),
+      onTap: () => AppPages.goToPage(page, _pageController, _appBarController),
       child: Text(
         page.title,
         style: _page.index != page.index
@@ -55,6 +52,7 @@ class _AppPageViewState extends State<AppPageView> {
   Widget _pageViewAppBar(BuildContext context) {
     return AppBar(
       title: SingleChildScrollView(
+        controller: _appBarController,
         scrollDirection: Axis.horizontal,
         child: ButtonBar(
           alignment: MainAxisAlignment.start,
@@ -88,6 +86,7 @@ class _AppPageViewState extends State<AppPageView> {
         children: [
           HomePage(
             pageController: _pageController,
+            appBarController: _appBarController,
             pages: AppPages.pages(context).sublist(1),
           ),
           AboutPage(

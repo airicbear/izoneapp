@@ -64,4 +64,24 @@ class AppPages {
       ),
     ];
   }
+
+  static void goToPage(
+    AppPageInfo page,
+    PageController pageController,
+    ScrollController appBarController,
+  ) {
+    pageController.animateToPage(
+      page.index,
+      duration: const Duration(
+        milliseconds: 1000,
+      ),
+      curve: Curves.fastLinearToSlowEaseIn,
+    );
+
+    appBarController.animateTo(
+      page.index * 10.0,
+      duration: Duration(milliseconds: 1000),
+      curve: Curves.fastLinearToSlowEaseIn,
+    );
+  }
 }
