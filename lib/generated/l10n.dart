@@ -33,11 +33,11 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `About`
-  String get about {
+  /// `Home`
+  String get home {
     return Intl.message(
-      'About',
-      name: 'about',
+      'Home',
+      name: 'home',
       desc: '',
       args: [],
     );

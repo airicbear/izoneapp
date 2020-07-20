@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:izoneapp/data/DanceVideos.dart';
 import 'package:izoneapp/data/MusicVideos.dart';
 import 'package:izoneapp/generated/l10n.dart';
-import 'package:izoneapp/pages/AboutPage.dart';
+import 'package:izoneapp/pages/HomePage.dart';
 import 'package:izoneapp/widgets/MediaButtons.dart';
 import 'package:izoneapp/pages/MembersPage.dart';
 import 'package:izoneapp/widgets/AppMoreButton.dart';
 import 'package:izoneapp/pages/YoutubeVideoListPage.dart';
 
-enum Page { ABOUT, MEMBERS, DANCE, MV }
+enum Page { HOME, MEMBERS, DANCE, MV }
 
 class AppPageView extends StatefulWidget {
   AppPageView({Key key}) : super(key: key);
@@ -19,7 +19,7 @@ class AppPageView extends StatefulWidget {
 
 class _AppPageViewState extends State<AppPageView> {
   PageController _pageController;
-  Page _page = Page.ABOUT;
+  Page _page = Page.HOME;
 
   @override
   void initState() {
@@ -58,7 +58,7 @@ class _AppPageViewState extends State<AppPageView> {
       title: ButtonBar(
         alignment: MainAxisAlignment.start,
         children: [
-          _pageTitle(context, S.of(context).about, Page.ABOUT),
+          _pageTitle(context, S.of(context).home, Page.HOME),
           _pageTitle(context, S.of(context).members, Page.MEMBERS),
           _pageTitle(context, S.of(context).dance, Page.DANCE),
           _pageTitle(context, 'MV', Page.MV),
@@ -83,7 +83,7 @@ class _AppPageViewState extends State<AppPageView> {
         controller: _pageController,
         scrollDirection: Axis.horizontal,
         children: [
-          AboutPage(pageController: _pageController),
+          HomePage(pageController: _pageController),
           MembersPage(pageController: _pageController),
           YoutubeVideoListPage(
             pageController: _pageController,

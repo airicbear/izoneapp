@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:izoneapp/generated/l10n.dart';
 import 'package:izoneapp/pages/ViewPicturePage.dart';
 
-class AboutPage extends StatelessWidget {
-  const AboutPage({Key key, this.pageController}) : super(key: key);
+class HomePage extends StatelessWidget {
+  const HomePage({Key key, this.pageController}) : super(key: key);
 
   final PageController pageController;
 

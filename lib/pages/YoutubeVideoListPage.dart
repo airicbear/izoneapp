@@ -77,6 +77,9 @@ class YoutubeVideoListPageState extends State<YoutubeVideoListPage> {
                       setState(() {
                         _currentVideo = widget.videos[index].youtubeUrl;
                       });
+                    } else if (await canLaunch(
+                        widget.videos[index].youtubeUrl)) {
+                      launch(widget.videos[index].youtubeUrl);
                     }
                   } catch (e) {
                     // Web
