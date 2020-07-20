@@ -1,33 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:izoneapp/data/AppPage.dart';
-import 'package:izoneapp/pages/ViewPicturePage.dart';
+import 'package:izoneapp/widgets/GroupPicture.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key key, this.pageController, this.pages}) : super(key: key);
 
   final PageController pageController;
   final List<AppPageInfo> pages;
-
-  Widget _izonePicture(BuildContext context) {
-    const imagePath = 'assets/images/oneiric-diary/official-photo-4-izone.jpg';
-    return GestureDetector(
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) {
-              return ViewPicturePage(memberImagePath: imagePath);
-            },
-          ),
-        );
-      },
-      child: Hero(
-        tag: imagePath,
-        child: Image.asset(imagePath),
-      ),
-    );
-  }
 
   ListView _pageSelection(BuildContext context) {
     return ListView.builder(
@@ -60,7 +40,10 @@ class HomePage extends StatelessWidget {
             return Column(
               children: [
                 Flexible(
-                  child: _izonePicture(context),
+                  child: GroupPicture(
+                    imagePath:
+                        'assets/images/oneiric-diary/official-photo-4-izone.jpg',
+                  ),
                 ),
                 Expanded(
                   child: _pageSelection(context),
@@ -71,7 +54,10 @@ class HomePage extends StatelessWidget {
             return Row(
               children: [
                 Expanded(
-                  child: _izonePicture(context),
+                  child: GroupPicture(
+                    imagePath:
+                        'assets/images/oneiric-diary/official-photo-4-izone.jpg',
+                  ),
                 ),
                 Flexible(
                   child: _pageSelection(context),
