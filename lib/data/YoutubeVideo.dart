@@ -5,10 +5,11 @@ class YoutubeVideo {
   final String youtubeUrl;
   final bool restricted;
 
-  YoutubeVideo(
-      {this.title,
-      this.subtitle,
-      this.date,
-      this.youtubeUrl,
-      this.restricted = false});
+  YoutubeVideo({
+    this.title,
+    this.subtitle,
+    this.date,
+    this.youtubeUrl,
+    this.restricted = false,
+  });
 }
