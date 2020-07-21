@@ -35,11 +35,8 @@ class AlbumLyricsPage extends StatelessWidget {
       },
       child: Hero(
         tag: album.getCoverArtPath(),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(32.0),
-          child: Image(
-            image: AssetImage(album.getCoverArtPath()),
-          ),
+        child: Image(
+          image: AssetImage(album.getCoverArtPath()),
         ),
       ),
     );
