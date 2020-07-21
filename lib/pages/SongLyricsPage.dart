@@ -5,10 +5,12 @@ import 'package:countdown_flutter/countdown_flutter.dart';
 import 'package:countdown_flutter/utils.dart';
 
 class SongLyricsPage extends StatefulWidget {
-  const SongLyricsPage({Key key, this.song, this.coverArt}) : super(key: key);
+  const SongLyricsPage({Key key, this.song, this.coverArt, this.color})
+      : super(key: key);
 
   final Song song;
   final String coverArt;
+  final Color color;
 
   @override
   State<StatefulWidget> createState() => SongLyricsPageState();
@@ -90,6 +92,7 @@ class SongLyricsPageState extends State<SongLyricsPage>
             ],
             bottom: TabBar(
               controller: _tabController,
+              indicatorColor: widget.color,
               tabs: List<Tab>.generate(
                 widget.song.lyrics.length,
                 (index) => Tab(
