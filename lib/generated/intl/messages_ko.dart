@@ -26,6 +26,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "dance" : MessageLookupByLibrary.simpleMessage("댄스"),
     "home" : MessageLookupByLibrary.simpleMessage("집"),
     "laVieEnRose" : MessageLookupByLibrary.simpleMessage("라비앙로즈"),
+    "lyrics" : MessageLookupByLibrary.simpleMessage("가사"),
+    "media" : MessageLookupByLibrary.simpleMessage("미디어"),
     "members" : MessageLookupByLibrary.simpleMessage("회원"),
     "secretStoryOfTheSwan" : MessageLookupByLibrary.simpleMessage("환상동화"),
     "violeta" : MessageLookupByLibrary.simpleMessage("비올레타")

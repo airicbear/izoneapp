@@ -60,7 +60,7 @@ class AppPages {
         page: MembersPage(),
       ),
       AppPageInfo(
-        title: 'Lyrics',
+        title: S.of(context).lyrics,
         longTitle: 'Song lyrics',
         index: AppPage.LYRICS.index,
         icon: FaIcon(FontAwesomeIcons.readme),
@@ -81,7 +81,7 @@ class AppPages {
         page: YoutubeVideoListPage(videos: MusicVideos.videos(context)),
       ),
       AppPageInfo(
-        title: 'Media',
+        title: S.of(context).media,
         longTitle: 'Social media & platforms',
         index: AppPage.MEDIA.index,
         icon: Icon(Icons.live_tv),
