@@ -17,6 +17,7 @@ class ViewYoutubeVideoPage extends StatelessWidget {
         return;
       },
       child: Scaffold(
+        backgroundColor: Colors.black,
         body: Center(
           child: HtmlWidget(
             '<iframe style="width:100%; height:100%;" src="$youtubeUrl" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
