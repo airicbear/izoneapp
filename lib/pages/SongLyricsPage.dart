@@ -63,9 +63,12 @@ class SongLyricsPageState extends State<SongLyricsPage>
               child: ListView.builder(
                 key: PageStorageKey(index),
                 itemBuilder: (context, _index) => Card(
-                  child: ListTile(
-                    title: HtmlWidget(
-                      widget.song.lyrics.values.toList()[index][_index],
+                  child: InkWell(
+                    onTap: () {},
+                    child: ListTile(
+                      title: HtmlWidget(
+                        widget.song.lyrics.values.toList()[index][_index],
+                      ),
                     ),
                   ),
                 ),

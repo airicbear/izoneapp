@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:izoneapp/data/Album.dart';
 import 'package:izoneapp/data/Song.dart';
 import 'package:izoneapp/pages/SongLyricsPage.dart';
@@ -61,6 +62,7 @@ class AlbumLyricsPage extends StatelessWidget {
                       context, album.songs[index], album.getCoverArtPath())),
                   child: ListTile(
                     title: Text(album.songs[index].title),
+                    trailing: FaIcon(FontAwesomeIcons.readme),
                   ),
                 ),
               ),
