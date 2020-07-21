@@ -38,9 +38,7 @@ class SongLyricsPageState extends State<SongLyricsPage>
           tabs: List<Tab>.generate(
             widget.song.lyrics.length,
             (index) => Tab(
-              text: widget.song.lyrics == null
-                  ? ''
-                  : widget.song.lyrics.keys.toList()[index].toUpperCase(),
+              text: widget.song.lyrics.keys.toList()[index].toUpperCase(),
             ),
           ),
         ),
@@ -52,6 +50,7 @@ class SongLyricsPageState extends State<SongLyricsPage>
             widget.song.lyrics.length,
             (index) => Container(
               child: ListView.builder(
+                key: PageStorageKey(index),
                 itemBuilder: (context, _index) => Card(
                   child: ListTile(
                     title: HtmlWidget(
