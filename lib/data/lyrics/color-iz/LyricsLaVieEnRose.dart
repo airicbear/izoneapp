@@ -3,9 +3,12 @@ import 'package:izoneapp/data/Song.dart';
 import 'package:izoneapp/generated/l10n.dart';
 
 class LyricsLaVieEnRose implements Song {
+  final BuildContext context;
+
   LyricsLaVieEnRose(this.context);
 
-  final BuildContext context;
+  @override
+  Duration get length => Duration(minutes: 3, seconds: 40);
 
   @override
   Map<String, List<String>> get lyrics => {
@@ -244,7 +247,4 @@ class LyricsLaVieEnRose implements Song {
 
   @override
   String get title => S.of(context).laVieEnRose;
-
-  @override
-  Duration get length => Duration(minutes: 3, seconds: 40);
 }

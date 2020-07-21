@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:izoneapp/data/Album.dart';
 import 'package:izoneapp/data/lyrics/color-iz/LyricsLaVieEnRose.dart';
+import 'package:izoneapp/data/lyrics/heart-iz/LyricsVioleta.dart';
 
 class Albums {
   static List<Album> albums(BuildContext context) {
@@ -28,7 +29,9 @@ class Albums {
       Album(
         title: "HEART*IZ",
         releaseDate: "2019-04-01",
-        songs: [],
+        songs: [
+          LyricsVioleta(context),
+        ],
       ),
       Album(
         title: "COLOR*IZ",
