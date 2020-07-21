@@ -104,7 +104,11 @@ class SongLyricsPageState extends State<SongLyricsPage>
             delegate: SliverChildBuilderDelegate(
               (context, _index) => Card(
                 child: InkWell(
-                  onTap: () {},
+                  // For debugging, reset lyrics on tap
+                  onTap: () => setState(() {
+                    _currentLyrics = widget.song.lyrics.values
+                        .toList()[_tabController.index];
+                  }),
                   child: ListTile(
                     title: HtmlWidget(
                       _currentLyrics[_index],
