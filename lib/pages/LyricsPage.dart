@@ -16,11 +16,11 @@ class LyricsPage extends StatelessWidget {
           return Container(
             padding: const EdgeInsets.all(8.0),
             child: AlbumLyricsTile(
-              album: Albums.albums[index],
+              album: Albums.albums(context)[index],
             ),
           );
         },
-        itemCount: Albums.albums.length,
+        itemCount: Albums.albums(context).length,
       ),
     ));
   }

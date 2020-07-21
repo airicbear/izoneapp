@@ -1,6 +1,12 @@
+import 'package:flutter/material.dart';
 import 'package:izoneapp/data/Song.dart';
+import 'package:izoneapp/generated/l10n.dart';
 
 class LyricsLaVieEnRose implements Song {
+  LyricsLaVieEnRose(this.context);
+
+  final BuildContext context;
+
   @override
   Map<String, List<String>> get lyrics => {
         "rom": [
@@ -237,7 +243,7 @@ class LyricsLaVieEnRose implements Song {
       };
 
   @override
-  String get title => 'La Vie en Rose';
+  String get title => S.of(context).laVieEnRose;
 
   @override
   Duration get length => Duration(minutes: 3, seconds: 40);

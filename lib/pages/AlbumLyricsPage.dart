@@ -61,7 +61,7 @@ class AlbumLyricsPage extends StatelessWidget {
                   onTap: () => Navigator.of(context).push(_songLyricsRoute(
                       context, album.songs[index], album.getCoverArtPath())),
                   child: ListTile(
-                    title: Text(album.songs[index].title),
+                    title: Text('$index. ${album.songs[index].title}'),
                     trailing: FittedBox(
                       child: Row(
                         children: [
