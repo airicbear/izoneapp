@@ -62,7 +62,20 @@ class AlbumLyricsPage extends StatelessWidget {
                       context, album.songs[index], album.getCoverArtPath())),
                   child: ListTile(
                     title: Text(album.songs[index].title),
-                    trailing: FaIcon(FontAwesomeIcons.readme),
+                    trailing: FittedBox(
+                      child: Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(4.0),
+                            child: Text(
+                              'Lyrics',
+                              textScaleFactor: 1.25,
+                            ),
+                          ),
+                          FaIcon(FontAwesomeIcons.readme),
+                        ],
+                      ),
+                    ),
                   ),
                 ),
               ),
