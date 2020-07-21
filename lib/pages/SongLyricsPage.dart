@@ -54,17 +54,15 @@ class SongLyricsPageState extends State<SongLyricsPage>
             expandedHeight: 370,
             collapsedHeight: 60,
             flexibleSpace: ColorFiltered(
-                colorFilter: ColorFilter.mode(
-                  Theme.of(context).primaryColor.withOpacity(0.3),
-                  BlendMode.dstATop,
-                ),
-                child: Hero(
-                  tag: widget.coverArt,
-                  child: Image(
-                    image: AssetImage(widget.coverArt),
-                    fit: BoxFit.cover,
-                  ),
-                )),
+              colorFilter: ColorFilter.mode(
+                Theme.of(context).primaryColor.withOpacity(0.3),
+                BlendMode.dstATop,
+              ),
+              child: Image(
+                image: AssetImage(widget.coverArt),
+                fit: BoxFit.cover,
+              ),
+            ),
             title: Text(widget.song.title),
             actions: [
               FlatButton(
