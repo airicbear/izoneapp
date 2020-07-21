@@ -3,9 +3,10 @@ import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:izoneapp/data/Song.dart';
 
 class SongLyricsPage extends StatefulWidget {
-  const SongLyricsPage({Key key, this.song}) : super(key: key);
+  const SongLyricsPage({Key key, this.song, this.coverArt}) : super(key: key);
 
   final Song song;
+  final String coverArt;
 
   @override
   State<StatefulWidget> createState() => SongLyricsPageState();
@@ -32,6 +33,16 @@ class SongLyricsPageState extends State<SongLyricsPage>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        flexibleSpace: ColorFiltered(
+          colorFilter: ColorFilter.mode(
+            Theme.of(context).primaryColor.withOpacity(0.3),
+            BlendMode.dstATop,
+          ),
+          child: Image(
+            image: AssetImage(widget.coverArt),
+            fit: BoxFit.cover,
+          ),
+        ),
         title: Text(widget.song.title),
         bottom: TabBar(
           controller: _tabController,

@@ -9,9 +9,12 @@ class AlbumLyricsPage extends StatelessWidget {
 
   final Album album;
 
-  Route _songLyricsRoute(BuildContext context, Song song) {
+  Route _songLyricsRoute(BuildContext context, Song song, String coverArt) {
     return MaterialPageRoute(
-      builder: (context) => SongLyricsPage(song: song),
+      builder: (context) => SongLyricsPage(
+        song: song,
+        coverArt: coverArt,
+      ),
     );
   }
 
@@ -54,8 +57,8 @@ class AlbumLyricsPage extends StatelessWidget {
             delegate: SliverChildBuilderDelegate(
               (context, index) => Card(
                 child: InkWell(
-                  onTap: () => Navigator.of(context)
-                      .push(_songLyricsRoute(context, album.songs[index])),
+                  onTap: () => Navigator.of(context).push(_songLyricsRoute(
+                      context, album.songs[index], album.getCoverArtPath())),
                   child: ListTile(
                     title: Text(album.songs[index].title),
                   ),
