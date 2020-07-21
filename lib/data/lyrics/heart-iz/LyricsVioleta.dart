@@ -199,7 +199,7 @@ class LyricsVioleta implements Song {
           "",
           "[Verse 3: Hyewon &amp; Minju]",
           "You, you, you, would you trust me? (would you?)",
-          "Would you open your heart up more to me? (hey)",
+          "Would you open your heart up more, more, more to me? (hey)",
           "Gathering up your mysterious color of light",
           "It resembles me who will let you shine",
           "So, we can shine brighter than anybody else",
