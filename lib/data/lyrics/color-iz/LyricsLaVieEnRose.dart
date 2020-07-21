@@ -73,7 +73,7 @@ class LyricsLaVieEnRose implements Song {
           "(Ooh) jangmitbiche muldeulge",
           "La la la la vie en rose <i>(oh, la vie en rose, yeah!)</i>",
           "",
-          "saeppalgaaaan My rose <i>(my rose, ooh ooh ooh ooh ooh)</i>",
+          "saeppalgaaaan my rose <i>(my rose, ooh ooh ooh ooh ooh)</i>",
           "bichi naaaa my rose <i>(yeah)</i>",
           "La la la la vie en rose",
           "i sungan teukbyeolhage <i>(we'll make it red)</i>",
