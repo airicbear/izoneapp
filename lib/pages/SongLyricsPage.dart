@@ -60,6 +60,15 @@ class SongLyricsPageState extends State<SongLyricsPage>
               ),
             ),
             title: Text(widget.song.title),
+            actions: [
+              FlatButton(
+                onPressed: () {},
+                child: Text(
+                  '${widget.song.length.inMinutes}:${widget.song.length.inSeconds.remainder(60)}',
+                  textScaleFactor: 1.5,
+                ),
+              ),
+            ],
             bottom: TabBar(
               controller: _tabController,
               tabs: List<Tab>.generate(

@@ -238,4 +238,7 @@ class LyricsLaVieEnRose implements Song {
 
   @override
   String get title => 'La Vie en Rose';
+
+  @override
+  Duration get length => Duration(minutes: 3, seconds: 40);
 }
