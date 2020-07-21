@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:izoneapp/controllers/LyricsPageView.dart';
 import 'package:izoneapp/data/Album.dart';
-import 'package:izoneapp/pages/AlbumLyricsPage.dart';
+import 'package:izoneapp/data/Albums.dart';
 
 class AlbumLyricsTile extends StatelessWidget {
   const AlbumLyricsTile({Key key, this.album}) : super(key: key);
@@ -9,7 +10,7 @@ class AlbumLyricsTile extends StatelessWidget {
 
   Route _albumLyricsRoute(BuildContext context, Album album) {
     return MaterialPageRoute(
-      builder: (context) => AlbumLyricsPage(
+      builder: (context) => LyricsPageView(
         album: album,
       ),
     );
