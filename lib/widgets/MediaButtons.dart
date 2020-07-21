@@ -1,5 +1,3 @@
-import 'dart:io' show Platform;
-
 import 'package:flutter/material.dart';
 import 'package:izoneapp/data/MediaLinks.dart';
 import 'package:izoneapp/widgets/MediaButton.dart';

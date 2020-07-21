@@ -1,14 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:izoneapp/data/AppPages.dart';
-import 'package:izoneapp/data/DanceVideos.dart';
-import 'package:izoneapp/data/MusicVideos.dart';
-import 'package:izoneapp/pages/AboutPage.dart';
-import 'package:izoneapp/pages/HomePage.dart';
-import 'package:izoneapp/pages/MediaPage.dart';
 import 'package:izoneapp/widgets/MediaButtons.dart';
-import 'package:izoneapp/pages/MembersPage.dart';
 import 'package:izoneapp/widgets/AppMoreButton.dart';
-import 'package:izoneapp/pages/YoutubeVideoListPage.dart';
 
 class AppPageView extends StatefulWidget {
   AppPageView({Key key}) : super(key: key);

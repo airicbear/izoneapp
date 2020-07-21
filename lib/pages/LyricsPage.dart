@@ -1,7 +1,4 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:izoneapp/data/Album.dart';
 import 'package:izoneapp/data/Albums.dart';
 import 'package:izoneapp/widgets/AlbumLyricsTile.dart';
 
