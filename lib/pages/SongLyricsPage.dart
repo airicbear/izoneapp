@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:izoneapp/data/Song.dart';
+import 'package:countdown_flutter/countdown_flutter.dart';
+import 'package:countdown_flutter/utils.dart';
 
 class SongLyricsPage extends StatefulWidget {
   const SongLyricsPage({Key key, this.song, this.coverArt}) : super(key: key);
@@ -16,6 +18,7 @@ class SongLyricsPageState extends State<SongLyricsPage>
     with TickerProviderStateMixin {
   TabController _tabController;
   List<String> _currentLyrics;
+  bool _startCountdown;
 
   void _changeLyricsListener() {
     setState(() {
@@ -30,6 +33,7 @@ class SongLyricsPageState extends State<SongLyricsPage>
         TabController(length: widget.song.lyrics.length, vsync: this);
     _tabController.addListener(_changeLyricsListener);
     _currentLyrics = widget.song.lyrics.values.toList()[0];
+    _startCountdown = false;
   }
 
   @override
@@ -62,11 +66,23 @@ class SongLyricsPageState extends State<SongLyricsPage>
             title: Text(widget.song.title),
             actions: [
               FlatButton(
-                onPressed: () {},
-                child: Text(
-                  '${widget.song.length.inMinutes}:${widget.song.length.inSeconds.remainder(60)}',
-                  textScaleFactor: 1.5,
-                ),
+                onPressed: () => setState(() {
+                  _startCountdown = !_startCountdown;
+                }),
+                child: _startCountdown
+                    ? CountdownFormatted(
+                        duration: widget.song.length,
+                        builder: (BuildContext context, String remaining) {
+                          return Text(
+                            '-$remaining',
+                            textScaleFactor: 1.5,
+                          );
+                        },
+                      )
+                    : Text(
+                        formatByMinutes(widget.song.length),
+                        textScaleFactor: 1.5,
+                      ),
               ),
             ],
             bottom: TabBar(
