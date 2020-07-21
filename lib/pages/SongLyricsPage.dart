@@ -72,6 +72,9 @@ class SongLyricsPageState extends State<SongLyricsPage>
                 child: _startCountdown
                     ? CountdownFormatted(
                         duration: widget.song.length,
+                        onFinish: () => setState(() {
+                          _startCountdown = !_startCountdown;
+                        }),
                         builder: (BuildContext context, String remaining) {
                           return Text(
                             '-$remaining',
