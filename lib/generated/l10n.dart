@@ -132,6 +132,16 @@ class S {
       args: [],
     );
   }
+
+  /// `We Together`
+  String get weTogether {
+    return Intl.message(
+      'We Together',
+      name: 'weTogether',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

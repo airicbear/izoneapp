@@ -30,6 +30,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "media" : MessageLookupByLibrary.simpleMessage("미디어"),
     "members" : MessageLookupByLibrary.simpleMessage("회원"),
     "secretStoryOfTheSwan" : MessageLookupByLibrary.simpleMessage("환상동화"),
-    "violeta" : MessageLookupByLibrary.simpleMessage("비올레타")
+    "violeta" : MessageLookupByLibrary.simpleMessage("비올레타"),
+    "weTogether" : MessageLookupByLibrary.simpleMessage("앞으로 잘 부탁해")
   };
 }
