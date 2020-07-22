@@ -1,92 +1,119 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+typedef MediaLinkLaunch = void Function();
 
 class MediaLinkInfo {
-  final String url;
+  final MediaLinkLaunch launch;
   final Widget icon;
   final String description;
 
-  MediaLinkInfo({this.url, this.icon, this.description});
+  MediaLinkInfo({this.launch, this.icon, this.description});
 }
 
 class MediaLinks {
+  static _launchUrl(url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
   static List<MediaLinkInfo> links = [
     MediaLinkInfo(
-      url: 'https://www.facebook.com/official.izone',
+      launch: () {
+        String url = 'https://www.facebook.com/official.izone';
+
+        try {
+          if (Platform.isAndroid) {
+            url =
+                'fb://facewebmodal/f?href=https://www.facebook.com/official.izone';
+          }
+        } catch (e) {}
+
+        _launchUrl(url);
+      },
       icon: FaIcon(FontAwesomeIcons.facebook),
       description: 'Facebook',
     ),
     MediaLinkInfo(
-      url: 'https://www.instagram.com/official_izone',
+      launch: () => _launchUrl('https://www.instagram.com/official_izone'),
       icon: FaIcon(FontAwesomeIcons.instagram),
       description: 'Instagram',
     ),
     MediaLinkInfo(
-      url: 'https://twitter.com/official_izone',
+      launch: () => _launchUrl('https://twitter.com/official_izone'),
       icon: FaIcon(FontAwesomeIcons.twitter),
       description: 'Twitter',
     ),
     MediaLinkInfo(
-      url: 'https://www.tiktok.com/@officializone_',
+      launch: () => _launchUrl('https://www.tiktok.com/@officializone_'),
       icon: FaIcon(FontAwesomeIcons.tiktok),
       description: 'TikTok',
     ),
     MediaLinkInfo(
-      url: 'https://www.youtube.com/c/officialIZONE/',
+      launch: () => _launchUrl('https://www.youtube.com/c/officialIZONE/'),
       icon: FaIcon(FontAwesomeIcons.youtube),
       description: 'YouTube',
     ),
     MediaLinkInfo(
-        url: 'https://channels.vlive.tv/C1B7AF',
+        launch: () => _launchUrl('https://channels.vlive.tv/C1B7AF'),
         icon: ImageIcon(AssetImage('assets/icons/vlive.png')),
         description: 'V Live'),
     MediaLinkInfo(
-      url: 'https://open.spotify.com/artist/5r1tUTxVSgvBHnoDuDODPH',
+      launch: () =>
+          _launchUrl('https://open.spotify.com/artist/5r1tUTxVSgvBHnoDuDODPH'),
       icon: FaIcon(FontAwesomeIcons.spotify),
       description: 'Spotify',
     ),
     MediaLinkInfo(
-      url: 'https://www.reddit.com/r/izone/',
+      launch: () => _launchUrl('https://www.reddit.com/r/izone/'),
       icon: FaIcon(FontAwesomeIcons.redditAlien),
       description: 'Reddit (r/IZONE) (unofficial)',
     ),
     MediaLinkInfo(
-      url: 'https://music.apple.com/us/artist/iz-one/1440449616',
+      launch: () =>
+          _launchUrl('https://music.apple.com/us/artist/iz-one/1440449616'),
       icon: FaIcon(FontAwesomeIcons.itunesNote),
       description: 'Apple Music',
     ),
     MediaLinkInfo(
-      url:
-          'https://play.google.com/music/r/m/Avt4ltg3radsfcc2gnggnvnsa4m?t=IZONE',
+      launch: () => _launchUrl(
+          'https://play.google.com/music/r/m/Avt4ltg3radsfcc2gnggnvnsa4m?t=IZONE'),
       icon: FaIcon(FontAwesomeIcons.googlePlay),
       description: 'Google Play Music',
     ),
     MediaLinkInfo(
-      url: 'https://music.youtube.com/channel/UCG81UKNsFg9Perf0uPQOsQw',
+      launch: () => _launchUrl(
+          'https://music.youtube.com/channel/UCG81UKNsFg9Perf0uPQOsQw'),
       icon: FaIcon(FontAwesomeIcons.playCircle),
       description: 'YouTube Music',
     ),
     MediaLinkInfo(
-      url: 'https://pandora.app.link/cFvHL2U587',
+      launch: () => _launchUrl('https://pandora.app.link/cFvHL2U587'),
       icon: ImageIcon(AssetImage('assets/icons/pandora.png')),
       description: 'Pandora',
     ),
     MediaLinkInfo(
-      url: 'https://music.amazon.com/artists/B07JZF2B3R',
+      launch: () => _launchUrl('https://music.amazon.com/artists/B07JZF2B3R'),
       icon: FaIcon(FontAwesomeIcons.amazon),
       description: 'Amazon Music',
     ),
     MediaLinkInfo(
-      url: 'https://soundcloud.com/search?q=iz*one',
+      launch: () => _launchUrl('https://soundcloud.com/search?q=iz*one'),
       icon: FaIcon(FontAwesomeIcons.soundcloud),
       description: 'Soundcloud (unofficial)',
     ),
     MediaLinkInfo(
-        url: 'https://tidal.com/artist/10528069',
+        launch: () => _launchUrl('https://tidal.com/artist/10528069'),
         icon: ImageIcon(AssetImage('assets/icons/tidal.png')),
         description: 'Tidal Music'),
     MediaLinkInfo(
-      url: 'http://iz-one.co.kr/',
+      launch: () => _launchUrl('http://iz-one.co.kr/'),
       icon: FaIcon(FontAwesomeIcons.globeAmericas),
       description: 'Official website',
     ),
