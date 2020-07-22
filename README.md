@@ -93,8 +93,3 @@ NOTE from the Android Developers documentation:
 - https://www.youtube.com/results?search_query=iz%2Aone+color+coded+lyrics
 - https://translate.google.com/#view=home&op=translate&sl=ko&tl=en
 - https://en.wikipedia.org/wiki/Iz*One
-
-## Developer Notes
-
-I initially tried using SQLite hence the `assets/izoneapp.db` but then exported it to `assets/izone.json` after realizing how much easier it would be to just use JSON.
-I'm keeping this method of editing the `.db` file and exporting to `.json` in case I want to use SQL in the future.

@@ -48,7 +48,7 @@ class ProfilePage extends StatelessWidget {
       ['Age', '${member.getAge()} years old'],
       ['Birthplace', member.birthplace],
       ['Company', member.company],
-      ['Color', member.color],
+      ['Color', member.colorDesc],
       ['Height', '≈ ${member.height} cm (${member.getHeightInFeetInches()})'],
       ['Blood type', member.bloodType == null ? 'Unknown' : member.bloodType],
     ];

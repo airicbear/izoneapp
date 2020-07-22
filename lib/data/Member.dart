@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class Member {
   final int id;
   final String birthplace;
@@ -7,7 +9,8 @@ class Member {
   final String stageName;
   final String stageNameKorean;
   final int height; // cm
-  final String color;
+  final String colorDesc;
+  final Color color;
   final String bloodType;
   final String company;
 
@@ -20,6 +23,7 @@ class Member {
     this.stageName,
     this.stageNameKorean,
     this.height,
+    this.colorDesc,
     this.color,
     this.bloodType,
     this.company,
