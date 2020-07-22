@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:izoneapp/controllers/LyricsPageView.dart';
 import 'package:izoneapp/data/Album.dart';
-import 'package:izoneapp/data/Albums.dart';
 
 class AlbumLyricsTile extends StatelessWidget {
   const AlbumLyricsTile({Key key, this.album}) : super(key: key);
@@ -29,11 +28,11 @@ class AlbumLyricsTile extends StatelessWidget {
           children: [
             Expanded(
               child: Hero(
-                tag: album.getCoverArtPath(),
+                tag: album.getCoverArtPath,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(12.0),
                   child: Image(
-                    image: AssetImage(album.getCoverArtPath()),
+                    image: AssetImage(album.getCoverArtPath),
                     fit: BoxFit.cover,
                   ),
                 ),

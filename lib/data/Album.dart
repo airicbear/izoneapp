@@ -1,16 +1,17 @@
 import 'dart:ui';
 
+import 'package:flutter/material.dart';
 import 'package:izoneapp/data/Song.dart';
 
-class Album {
+abstract class Album {
+  final BuildContext context;
   final String title;
   final String releaseDate;
   final List<Song> songs;
   final Color color;
 
-  Album({this.title, this.releaseDate, this.songs, this.color});
+  Album(this.context, {this.title, this.releaseDate, this.songs, this.color});
 
-  String getCoverArtPath() {
-    return 'assets/coverart/${this.title.split(RegExp(r'[\s\*]')).join('-').toLowerCase()}.jpg';
-  }
+  String get getCoverArtPath =>
+      'assets/coverart/${this.title.split(RegExp(r'[\s\*]')).join('-').toLowerCase()}.jpg';
 }

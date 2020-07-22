@@ -29,16 +29,16 @@ class AlbumLyricsPage extends StatelessWidget {
           MaterialPageRoute(
             builder: (context) {
               return ViewPicturePage(
-                memberImagePath: album.getCoverArtPath(),
+                memberImagePath: album.getCoverArtPath,
               );
             },
           ),
         );
       },
       child: Hero(
-        tag: album.getCoverArtPath(),
+        tag: album.getCoverArtPath,
         child: Image(
-          image: AssetImage(album.getCoverArtPath()),
+          image: AssetImage(album.getCoverArtPath),
           fit: BoxFit.cover,
         ),
       ),
@@ -63,7 +63,7 @@ class AlbumLyricsPage extends StatelessWidget {
                     _songLyricsRoute(
                       context: context,
                       song: album.songs[index],
-                      coverArt: album.getCoverArtPath(),
+                      coverArt: album.getCoverArtPath,
                       color: album.color,
                     ),
                   ),
