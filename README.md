@@ -88,6 +88,11 @@ NOTE from the Android Developers documentation:
 - https://kprofiles.com/izone-members-profile/
 - https://kpop.fandom.com/wiki/IZ*ONE
 - http://iz-one.co.kr/photos/
+- https://genius.com/artists/Izone
+- https://colorcodedlyrics.com/2018/11/iz-one-aijeuwon-produce-48-lyrics-index
+- https://www.youtube.com/results?search_query=iz%2Aone+color+coded+lyrics
+- https://translate.google.com/#view=home&op=translate&sl=ko&tl=en
+- https://en.wikipedia.org/wiki/Iz*One
 
 ## Developer Notes
 

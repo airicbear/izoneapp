@@ -49,8 +49,34 @@ class DisclaimerPage extends StatelessWidget {
             subtitle: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                    'There are several different sources referenced in this app including'),
+                FlatButton.icon(
+                  onPressed: () => launch('https://genius.com/artists/Izone'),
+                  icon: FaIcon(FontAwesomeIcons.globeAmericas),
+                  label: Text('Genius.com'),
+                ),
+                FlatButton.icon(
+                  onPressed: () => launch(
+                      'https://colorcodedlyrics.com/2018/11/iz-one-aijeuwon-produce-48-lyrics-index'),
+                  icon: FaIcon(FontAwesomeIcons.globeAmericas),
+                  label: Text('colorcodedlyrics.com'),
+                ),
+                FlatButton.icon(
+                  onPressed: () => launch(
+                      'https://www.youtube.com/results?search_query=iz%2Aone+color+coded+lyrics'),
+                  icon: FaIcon(FontAwesomeIcons.youtube),
+                  label: Text('YouTube search: "IZ*ONE color coded lyrics"'),
+                ),
+                FlatButton.icon(
+                  onPressed: () => launch(
+                      'https://translate.google.com/#view=home&op=translate&sl=ko&tl=en'),
+                  icon: FaIcon(FontAwesomeIcons.language),
+                  label: Text('Google Translate: Korean to English'),
+                ),
+                FlatButton.icon(
+                    onPressed: () =>
+                        launch('https://en.wikipedia.org/wiki/Iz*One'),
+                    icon: FaIcon(FontAwesomeIcons.wikipediaW),
+                    label: Text('Wikipedia: Iz*One')),
                 FlatButton.icon(
                   onPressed: () => launch('http://iz-one.co.kr/'),
                   icon: FaIcon(FontAwesomeIcons.globeAmericas),

@@ -41,7 +41,7 @@ class Albums {
       ),
       Album(
         title: "Suki to Iwasetai",
-        releaseDate: "2019-01-20",
+        releaseDate: "2019-02-06",
         color: Color.fromRGBO(144, 135, 139, 1),
         songs: [],
       ),
