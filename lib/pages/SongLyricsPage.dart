@@ -55,6 +55,7 @@ class SongLyricsPageState extends State<SongLyricsPage>
             pinned: true,
             expandedHeight: 370,
             collapsedHeight: 60,
+            backgroundColor: Theme.of(context).primaryColor,
             flexibleSpace: ColorFiltered(
               colorFilter: ColorFilter.mode(
                 Theme.of(context).primaryColor.withOpacity(0.3),
