@@ -106,6 +106,8 @@ class SongLyricsPageState extends State<SongLyricsPage>
             delegate: SliverChildBuilderDelegate(
               (context, _index) => Card(
                 child: InkWell(
+                  splashColor: widget.color.withOpacity(0.8),
+                  onTap: () {},
                   child: ListTile(
                     title: HtmlWidget(
                       _currentLyrics[_index],
