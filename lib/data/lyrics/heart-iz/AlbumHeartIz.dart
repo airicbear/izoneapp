@@ -13,4 +13,7 @@ class AlbumHeartIz extends Album {
             LyricsVioleta(context),
           ],
         );
+
+  @override
+  int index;
 }

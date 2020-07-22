@@ -9,6 +9,7 @@ abstract class Album {
   final Color color;
 
   set index(int n);
+  int get index;
 
   Album(this.context, {this.title, this.releaseDate, this.songs, this.color});
 

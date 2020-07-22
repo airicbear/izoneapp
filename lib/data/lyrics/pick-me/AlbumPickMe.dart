@@ -10,4 +10,7 @@ class AlbumPickMe extends Album {
           color: Color.fromRGBO(241, 211, 232, 1),
           songs: [],
         );
+
+  @override
+  int index;
 }

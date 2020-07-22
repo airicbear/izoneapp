@@ -10,4 +10,7 @@ class Album30Girls6Concepts extends Album {
           color: Color.fromRGBO(240, 210, 230, 1),
           songs: [],
         );
+
+  @override
+  int index;
 }

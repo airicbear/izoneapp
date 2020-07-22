@@ -10,4 +10,7 @@ class AlbumBloomIz extends Album {
           color: Color.fromRGBO(175, 125, 101, 1),
           songs: [],
         );
+
+  @override
+  int index;
 }

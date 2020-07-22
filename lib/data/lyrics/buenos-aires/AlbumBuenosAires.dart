@@ -10,4 +10,7 @@ class AlbumBuenosAires extends Album {
           color: Color.fromRGBO(107, 45, 49, 1),
           songs: [],
         );
+
+  @override
+  int index;
 }

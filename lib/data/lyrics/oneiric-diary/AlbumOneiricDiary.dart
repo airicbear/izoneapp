@@ -10,4 +10,7 @@ class AlbumOneiricDiary extends Album {
           color: Color.fromRGBO(198, 172, 195, 1),
           songs: [],
         );
+
+  @override
+  int index;
 }

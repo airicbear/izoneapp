@@ -10,4 +10,7 @@ class AlbumFinal extends Album {
           color: Color.fromRGBO(241, 211, 231, 1),
           songs: [],
         );
+
+  @override
+  int index;
 }

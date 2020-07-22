@@ -10,4 +10,7 @@ class AlbumVampire extends Album {
           color: Color.fromRGBO(132, 134, 138, 1),
           songs: [],
         );
+
+  @override
+  int index;
 }

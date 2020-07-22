@@ -13,4 +13,7 @@ class AlbumSukiToIwasetai extends Album {
             LyricsSukiToIwasetai(context),
           ],
         );
+
+  @override
+  int index;
 }
