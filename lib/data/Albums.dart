@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:izoneapp/data/Album.dart';
 import 'package:izoneapp/data/lyrics/color-iz/LyricsLaVieEnRose.dart';
 import 'package:izoneapp/data/lyrics/heart-iz/LyricsVioleta.dart';
+import 'package:izoneapp/data/lyrics/rise/LyricsRise.dart';
 
 class Albums {
   static List<Album> albums(BuildContext context) {
@@ -37,6 +38,13 @@ class Albums {
         color: Color.fromRGBO(189, 201, 189, 1),
         songs: [
           LyricsVioleta(context),
+        ],
+      ),
+      Album(
+        title: "Rise",
+        releaseDate: "2019-03-09",
+        songs: [
+          LyricsRise(context),
         ],
       ),
       Album(
