@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:izoneapp/data/Album.dart';
+import 'package:izoneapp/data/lyrics/buenos-aires/LyricsBuenosAires.dart';
 
 class AlbumBuenosAires extends Album {
   AlbumBuenosAires(BuildContext context)
@@ -8,7 +9,9 @@ class AlbumBuenosAires extends Album {
           title: "Buenos Aires",
           releaseDate: "2019-06-26",
           color: Color.fromRGBO(107, 45, 49, 1),
-          songs: [],
+          songs: [
+            LyricsBuenosAires(context),
+          ],
         );
 
   @override
