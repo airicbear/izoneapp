@@ -22,7 +22,7 @@ class HomePage extends StatelessWidget {
                 pages[index], pageController, appBarController),
             child: ListTile(
               leading: pages[index].icon,
-              title: Text('${pages[index].longTitle}'),
+              title: Text('${pages[index].title}'),
               trailing: FaIcon(FontAwesomeIcons.arrowRight),
             ),
           ),

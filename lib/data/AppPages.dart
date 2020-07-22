@@ -49,7 +49,7 @@ class AppPages {
         title: S.of(context).about,
         longTitle: 'About IZ*ONE',
         index: AppPage.ABOUT.index,
-        icon: Icon(Icons.help),
+        icon: FaIcon(FontAwesomeIcons.infoCircle),
         page: AboutPage(),
       ),
       AppPageInfo(
