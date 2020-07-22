@@ -15,18 +15,15 @@ class LyricsPageView extends StatefulWidget {
 class LyricsPageViewState extends State<LyricsPageView> {
   PageController _pageController;
   ScrollController _appBarController;
-  int _widgetAlbumIndex = 0;
   int _nextAlbumIndex = 0;
 
   @override
   void initState() {
     super.initState();
-    _widgetAlbumIndex = Albums.albums(null)
-        .indexWhere((element) => element.title == widget.album.title);
-    _pageController = PageController(initialPage: _widgetAlbumIndex);
+    _pageController = PageController(initialPage: widget.album.index);
     _appBarController =
-        ScrollController(initialScrollOffset: _widgetAlbumIndex * 100.0);
-    _nextAlbumIndex = _widgetAlbumIndex;
+        ScrollController(initialScrollOffset: widget.album.index * 100.0);
+    _nextAlbumIndex = widget.album.index;
   }
 
   @override

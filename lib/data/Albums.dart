@@ -15,7 +15,7 @@ import 'package:izoneapp/data/lyrics/vampire/AlbumVampire.dart';
 
 class Albums {
   static List<Album> albums(BuildContext context) {
-    return [
+    List<Album> _albums = [
       AlbumOneiricDiary(context),
       AlbumBloomIz(context),
       AlbumVampire(context),
@@ -28,5 +28,11 @@ class Albums {
       Album30Girls6Concepts(context),
       AlbumPickMe(context),
     ];
+    int _index = 0;
+    _albums.forEach((album) {
+      album.index = _index;
+      _index++;
+    });
+    return _albums;
   }
 }

@@ -8,6 +8,8 @@ abstract class Album {
   final List<Song> songs;
   final Color color;
 
+  set index(int n);
+
   Album(this.context, {this.title, this.releaseDate, this.songs, this.color});
 
   String get getCoverArtPath =>
