@@ -4,6 +4,7 @@ import 'package:izoneapp/data/Album.dart';
 import 'package:izoneapp/data/lyrics/color-iz/LyricsLaVieEnRose.dart';
 import 'package:izoneapp/data/lyrics/heart-iz/LyricsVioleta.dart';
 import 'package:izoneapp/data/lyrics/rise/LyricsRise.dart';
+import 'package:izoneapp/data/lyrics/suki-to-iwasetai/LyricsSukiToIwasetai.dart';
 
 class Albums {
   static List<Album> albums(BuildContext context) {
@@ -52,7 +53,9 @@ class Albums {
         title: "Suki to Iwasetai",
         releaseDate: "2019-02-06",
         color: Color.fromRGBO(144, 135, 139, 1),
-        songs: [],
+        songs: [
+          LyricsSukiToIwasetai(context),
+        ],
       ),
       Album(
         title: "COLOR*IZ",
