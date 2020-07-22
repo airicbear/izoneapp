@@ -48,7 +48,23 @@ class ProfilePage extends StatelessWidget {
       ['Age', '${member.getAge()} years old'],
       ['Birthplace', member.birthplace],
       ['Company', member.company],
-      ['Color', member.colorDesc],
+      [
+        'Color',
+        Row(
+          children: [
+            Text(member.colorDesc),
+            Container(
+              padding: const EdgeInsets.all(12.0),
+              margin: const EdgeInsets.only(left: 12.0),
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.black),
+                borderRadius: BorderRadius.circular(4.0),
+                color: member.color,
+              ),
+            ),
+          ],
+        ),
+      ],
       ['Height', '≈ ${member.height} cm (${member.getHeightInFeetInches()})'],
       ['Blood type', member.bloodType == null ? 'Unknown' : member.bloodType],
     ];
@@ -65,7 +81,9 @@ class ProfilePage extends StatelessWidget {
                   flex: 2,
                 ),
                 Expanded(
-                  child: SelectableText(memberInfo[index][1]),
+                  child: memberInfo[index][1] is String
+                      ? SelectableText(memberInfo[index][1])
+                      : memberInfo[index][1],
                   flex: 4,
                 ),
               ],
