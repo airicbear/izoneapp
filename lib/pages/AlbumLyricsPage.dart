@@ -39,6 +39,7 @@ class AlbumLyricsPage extends StatelessWidget {
         tag: album.getCoverArtPath(),
         child: Image(
           image: AssetImage(album.getCoverArtPath()),
+          fit: BoxFit.cover,
         ),
       ),
     );
@@ -51,7 +52,7 @@ class AlbumLyricsPage extends StatelessWidget {
         slivers: [
           SliverAppBar(
             automaticallyImplyLeading: false,
-            expandedHeight: 400,
+            expandedHeight: 410,
             flexibleSpace: _albumCoverArt(context),
           ),
           SliverList(
