@@ -68,7 +68,7 @@ class LyricsPickMe extends Song {
               "Na yaksok hallae oneulbuteo neon kkok naekkeoya <i>(ah ooh)</i>",
               "",
               "Nareul minneundamyeon nae soneul jabajullae",
-              "Kkok jaba noji ma cause you're my star <i>(ah ooh)</i>",
+              "Kkok jaba noji ma 'cause you're my star <i>(ah ooh)</i>",
               "Ije ni mamsoge juingongeun baro na",
               "I want you, pick me up",
               "",
