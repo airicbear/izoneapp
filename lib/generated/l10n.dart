@@ -142,6 +142,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Nekkoya (Pick Me)`
+  String get pickMe {
+    return Intl.message(
+      'Nekkoya (Pick Me)',
+      name: 'pickMe',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

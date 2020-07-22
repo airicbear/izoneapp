@@ -29,6 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "lyrics" : MessageLookupByLibrary.simpleMessage("Lyrics"),
     "media" : MessageLookupByLibrary.simpleMessage("Media"),
     "members" : MessageLookupByLibrary.simpleMessage("Members"),
+    "pickMe" : MessageLookupByLibrary.simpleMessage("Nekkoya (Pick Me)"),
     "secretStoryOfTheSwan" : MessageLookupByLibrary.simpleMessage("Secret Story of the Swan"),
     "violeta" : MessageLookupByLibrary.simpleMessage("Violeta"),
     "weTogether" : MessageLookupByLibrary.simpleMessage("We Together")
