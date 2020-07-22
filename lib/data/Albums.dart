@@ -43,6 +43,7 @@ class Albums {
       Album(
         title: "Rise",
         releaseDate: "2019-03-09",
+        color: Color.fromRGBO(100, 95, 131, 1),
         songs: [
           LyricsRise(context),
         ],
