@@ -6,10 +6,5 @@ abstract class Song {
   final Duration length;
   final Map<String, List<String>> lyrics;
 
-  Song({
-    this.context,
-    this.title,
-    this.length,
-    this.lyrics,
-  });
+  Song(this.context, {this.title, this.length, this.lyrics});
 }
