@@ -8,7 +8,7 @@ The easiest way to contribute to this app is to simply use it and give feedback 
 You may [submit issues](https://github.com/airicbear/izone-app/issues) with your device specifications for any problems you are facing or for any feedback or suggestions.
 
 Another way you can contribute is to add translations.
-Edit each the `lib/l10n/intl_*.arb` files so that they all have the same fields and submit a pull request.
+Edit each of the `.arb` files in `lib/l10n/` so that they all have the same fields and submit a pull request.
 
 ## Building
 
@@ -40,11 +40,14 @@ Edit each the `lib/l10n/intl_*.arb` files so that they all have the same fields 
 
 7. You can also just run the app using your editor's Run/Debug button or using the command line:
 
-    - Android: `flutter run --release`
+    - Android: `flutter run`
 
     - Web: `flutter run -d chrome`
 
     - Linux: `flutter run -d linux`
+
+    By default, it will run the app in debug mode.
+    Add `--release` to run the release version.
 
 ## Known Issues
 
