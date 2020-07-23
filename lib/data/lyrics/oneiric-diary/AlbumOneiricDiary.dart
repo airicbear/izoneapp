@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:izoneapp/data/Album.dart';
 import 'package:izoneapp/data/lyrics/oneiric-diary/LyricsMerryGoRound.dart';
 import 'package:izoneapp/data/lyrics/oneiric-diary/LyricsPretty.dart';
+import 'package:izoneapp/data/lyrics/oneiric-diary/LyricsRococo.dart';
 import 'package:izoneapp/data/lyrics/oneiric-diary/LyricsSecretStoryOfTheSwan.dart';
 import 'package:izoneapp/data/lyrics/oneiric-diary/LyricsWelcome.dart';
 
@@ -17,6 +18,7 @@ class AlbumOneiricDiary extends Album {
             LyricsSecretStoryOfTheSwan(context),
             LyricsPretty(context),
             LyricsMerryGoRound(context),
+            LyricsRococo(context),
           ],
         );
 
