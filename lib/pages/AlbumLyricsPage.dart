@@ -68,7 +68,11 @@ class AlbumLyricsPage extends StatelessWidget {
                     ),
                   ),
                   child: ListTile(
-                    title: Text('${index + 1}. ${album.songs[index].title}'),
+                    leading: Text(
+                      '${index + 1}.',
+                      textScaleFactor: 1.25,
+                    ),
+                    title: Text('${album.songs[index].title}'),
                     trailing: FittedBox(
                       child: Row(
                         children: [
