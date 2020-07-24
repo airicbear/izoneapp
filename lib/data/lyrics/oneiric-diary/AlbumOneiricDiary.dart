@@ -4,6 +4,7 @@ import 'package:izoneapp/data/lyrics/oneiric-diary/LyricsMerryGoRound.dart';
 import 'package:izoneapp/data/lyrics/oneiric-diary/LyricsPretty.dart';
 import 'package:izoneapp/data/lyrics/oneiric-diary/LyricsRococo.dart';
 import 'package:izoneapp/data/lyrics/oneiric-diary/LyricsSecretStoryOfTheSwan.dart';
+import 'package:izoneapp/data/lyrics/oneiric-diary/LyricsSecretStoryOfTheSwanJapanese.dart';
 import 'package:izoneapp/data/lyrics/oneiric-diary/LyricsWelcome.dart';
 import 'package:izoneapp/data/lyrics/oneiric-diary/LyricsWithOne.dart';
 
@@ -21,6 +22,7 @@ class AlbumOneiricDiary extends Album {
             LyricsMerryGoRound(context),
             LyricsRococo(context),
             LyricsWithOne(context),
+            LyricsSecretStoryOfTheSwanJapanese(context),
           ],
         );
 
