@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:izoneapp/data/Album.dart';
+import 'package:izoneapp/data/lyrics/bloom-iz/LyricsDreamlike.dart';
 import 'package:izoneapp/data/lyrics/bloom-iz/LyricsEyes.dart';
 import 'package:izoneapp/data/lyrics/bloom-iz/LyricsFiesta.dart';
 
@@ -13,6 +14,7 @@ class AlbumBloomIz extends Album {
           songs: [
             LyricsEyes(context),
             LyricsFiesta(context),
+            LyricsDreamlike(context),
           ],
         );
 
