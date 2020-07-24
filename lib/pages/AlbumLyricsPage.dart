@@ -10,8 +10,12 @@ class AlbumLyricsPage extends StatelessWidget {
 
   final Album album;
 
-  Route _songLyricsRoute(
-      {BuildContext context, Song song, String coverArt, Color color}) {
+  Route _songLyricsRoute({
+    BuildContext context,
+    Song song,
+    String coverArt,
+    Color color,
+  }) {
     return MaterialPageRoute(
       builder: (context) => SongLyricsPage(
         song: song,
@@ -45,55 +49,82 @@ class AlbumLyricsPage extends StatelessWidget {
     );
   }
 
+  Widget _albumSongList() {
+    return SliverList(
+      delegate: SliverChildBuilderDelegate(
+        (context, index) => Card(
+          child: InkWell(
+            onTap: () => Navigator.of(context).push(
+              _songLyricsRoute(
+                context: context,
+                song: album.songs[index],
+                coverArt: album.getCoverArtPath,
+                color: album.color,
+              ),
+            ),
+            child: ListTile(
+              leading: Text(
+                '${index + 1}.',
+                textScaleFactor: 1.25,
+              ),
+              title: Text('${album.songs[index].title}'),
+              trailing: FittedBox(
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Text(
+                        'Lyrics',
+                        textScaleFactor: 1.25,
+                      ),
+                    ),
+                    FaIcon(FontAwesomeIcons.readme),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+        childCount: album.songs.length,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          SliverAppBar(
-            automaticallyImplyLeading: false,
-            expandedHeight: 410,
-            flexibleSpace: _albumCoverArt(context),
-          ),
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (context, index) => Card(
-                child: InkWell(
-                  onTap: () => Navigator.of(context).push(
-                    _songLyricsRoute(
-                      context: context,
-                      song: album.songs[index],
-                      coverArt: album.getCoverArtPath,
-                      color: album.color,
-                    ),
-                  ),
-                  child: ListTile(
-                    leading: Text(
-                      '${index + 1}.',
-                      textScaleFactor: 1.25,
-                    ),
-                    title: Text('${album.songs[index].title}'),
-                    trailing: FittedBox(
-                      child: Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(4.0),
-                            child: Text(
-                              'Lyrics',
-                              textScaleFactor: 1.25,
-                            ),
-                          ),
-                          FaIcon(FontAwesomeIcons.readme),
-                        ],
-                      ),
-                    ),
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          if (constraints.maxWidth < 600) {
+            return CustomScrollView(
+              slivers: [
+                SliverAppBar(
+                  automaticallyImplyLeading: false,
+                  expandedHeight: 410,
+                  flexibleSpace: _albumCoverArt(context),
+                ),
+                _albumSongList(),
+              ],
+            );
+          } else {
+            return Row(
+              children: [
+                Flexible(
+                  flex: 2,
+                  child: _albumCoverArt(context),
+                ),
+                Expanded(
+                  flex: 3,
+                  child: CustomScrollView(
+                    slivers: [
+                      _albumSongList(),
+                    ],
                   ),
                 ),
-              ),
-              childCount: album.songs.length,
-            ),
-          ),
-        ],
+              ],
+            );
+          }
+        },
       ),
     );
   }
