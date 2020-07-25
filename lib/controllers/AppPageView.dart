@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:izoneapp/controllers/ScrollableAppBarScrollBehavior.dart';
 import 'package:izoneapp/data/AppPages.dart';
 import 'package:izoneapp/widgets/MediaButtons.dart';
 import 'package:izoneapp/widgets/AppMoreButton.dart';
@@ -45,17 +46,21 @@ class _AppPageViewState extends State<AppPageView> {
 
   Widget _pageViewAppBar(BuildContext context) {
     return AppBar(
-      title: SingleChildScrollView(
-        controller: _appBarController,
-        scrollDirection: Axis.horizontal,
-        child: ButtonBar(
-          alignment: MainAxisAlignment.start,
-          children: List<Widget>.generate(
-            AppPages.pages(context, _pageController, _appBarController).length,
-            (index) => _pageTitle(
-                context,
-                AppPages.pages(
-                    context, _pageController, _appBarController)[index]),
+      title: ScrollConfiguration(
+        behavior: ScrollableAppBarScrollBehavior(),
+        child: SingleChildScrollView(
+          controller: _appBarController,
+          scrollDirection: Axis.horizontal,
+          child: ButtonBar(
+            alignment: MainAxisAlignment.start,
+            children: List<Widget>.generate(
+              AppPages.pages(context, _pageController, _appBarController)
+                  .length,
+              (index) => _pageTitle(
+                  context,
+                  AppPages.pages(
+                      context, _pageController, _appBarController)[index]),
+            ),
           ),
         ),
       ),

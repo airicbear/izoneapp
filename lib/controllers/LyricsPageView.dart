@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:izoneapp/controllers/ScrollableAppBarScrollBehavior.dart';
 import 'package:izoneapp/data/Album.dart';
 import 'package:izoneapp/data/Albums.dart';
 import 'package:izoneapp/pages/AlbumLyricsPage.dart';
@@ -64,16 +65,19 @@ class LyricsPageViewState extends State<LyricsPageView> {
 
   Widget _pageViewAppBar(BuildContext context) {
     return AppBar(
-      title: SingleChildScrollView(
-        controller: _appBarController,
-        scrollDirection: Axis.horizontal,
-        child: ButtonBar(
-          alignment: MainAxisAlignment.start,
-          children: List<Widget>.generate(
-            Albums.albums(context).length,
-            (index) => _albumTitle(
-              context,
-              Albums.albums(context)[index],
+      title: ScrollConfiguration(
+        behavior: ScrollableAppBarScrollBehavior(),
+        child: SingleChildScrollView(
+          controller: _appBarController,
+          scrollDirection: Axis.horizontal,
+          child: ButtonBar(
+            alignment: MainAxisAlignment.start,
+            children: List<Widget>.generate(
+              Albums.albums(context).length,
+              (index) => _albumTitle(
+                context,
+                Albums.albums(context)[index],
+              ),
             ),
           ),
         ),
