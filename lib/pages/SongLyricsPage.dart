@@ -107,17 +107,29 @@ class SongLyricsPageState extends State<SongLyricsPage>
           ),
           SliverList(
             delegate: SliverChildBuilderDelegate(
-              (context, _index) => Card(
-                child: InkWell(
-                  splashColor: widget.color.withOpacity(0.8),
-                  onTap: () {},
-                  child: ListTile(
-                    title: HtmlWidget(
-                      _currentLyrics[_index],
+              (context, _index) {
+                bool isEmpty = _currentLyrics[_index].isEmpty;
+                bool isNewSection = _currentLyrics[_index].startsWith('[') &&
+                    _currentLyrics[_index].endsWith(']');
+                return Card(
+                  child: InkWell(
+                    splashColor: widget.color.withOpacity(0.8),
+                    onTap: () {},
+                    child: ListTile(
+                      title: HtmlWidget(
+                        isNewSection
+                            ? _currentLyrics[_index]
+                                .substring(1, _currentLyrics[_index].length - 1)
+                            : _currentLyrics[_index],
+                      ),
+                      tileColor: isEmpty || isNewSection
+                          ? Theme.of(context).canvasColor
+                          : Theme.of(context).cardColor,
                     ),
                   ),
-                ),
-              ),
+                  elevation: isEmpty || isNewSection ? 0 : 1,
+                );
+              },
               childCount: _currentLyrics.length,
             ),
           ),
