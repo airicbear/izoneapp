@@ -113,6 +113,9 @@ class ProfilePage extends StatelessWidget {
       delegate: SliverChildBuilderDelegate(
         (BuildContext context, int index) {
           return Card(
+            clipBehavior: ClipRRect(
+              borderRadius: BorderRadius.circular(4.0),
+            ).clipBehavior,
             child: InkWell(
               onTap: () {},
               child: ListTile(

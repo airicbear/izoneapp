@@ -78,6 +78,9 @@ class AlbumLyricsPage extends StatelessWidget {
     return SliverList(
       delegate: SliverChildBuilderDelegate(
         (context, index) => Card(
+          clipBehavior: ClipRRect(
+            borderRadius: BorderRadius.circular(4.0),
+          ).clipBehavior,
           child: InkWell(
             splashColor: album.color.withOpacity(0.8),
             onTap: () => Navigator.of(context).push(

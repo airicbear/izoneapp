@@ -112,6 +112,9 @@ class SongLyricsPageState extends State<SongLyricsPage>
                 bool isNewSection = _currentLyrics[_index].startsWith('[') &&
                     _currentLyrics[_index].endsWith(']');
                 return Card(
+                  clipBehavior: ClipRRect(
+                    borderRadius: BorderRadius.circular(4.0),
+                  ).clipBehavior,
                   child: InkWell(
                     splashColor: widget.color.withOpacity(0.8),
                     onTap: () {},
