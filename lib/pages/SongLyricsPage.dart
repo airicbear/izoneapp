@@ -124,7 +124,7 @@ class SongLyricsPageState extends State<SongLyricsPage>
                       ),
                       tileColor: isEmpty || isNewSection
                           ? Theme.of(context).canvasColor
-                          : Theme.of(context).cardColor,
+                          : Colors.transparent,
                     ),
                   ),
                   elevation: isEmpty || isNewSection ? 0 : 1,

@@ -54,6 +54,7 @@ class AlbumLyricsPage extends StatelessWidget {
       delegate: SliverChildBuilderDelegate(
         (context, index) => Card(
           child: InkWell(
+            splashColor: album.color.withOpacity(0.8),
             onTap: () => Navigator.of(context).push(
               _songLyricsRoute(
                 context: context,
