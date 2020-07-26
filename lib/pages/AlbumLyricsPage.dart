@@ -47,7 +47,8 @@ class AlbumLyricsPage extends StatelessWidget {
             tag: album.getCoverArtPath,
             child: Image(
               image: AssetImage(album.getCoverArtPath),
-              fit: BoxFit.fill,
+              fit: BoxFit.cover,
+              width: MediaQuery.of(context).size.width,
             ),
           ),
         ),
