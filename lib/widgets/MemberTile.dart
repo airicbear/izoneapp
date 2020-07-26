@@ -27,8 +27,8 @@ class MemberTile extends StatelessWidget {
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(32.0),
           topRight: Radius.circular(32.0),
-          bottomLeft: Radius.circular(10),
-          bottomRight: Radius.circular(10),
+          bottomLeft: Radius.circular(10.0),
+          bottomRight: Radius.circular(10.0),
         ),
         child: Column(
           children: [
