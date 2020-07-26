@@ -5,8 +5,9 @@ import 'package:url_launcher/url_launcher.dart';
 void appAboutDialog(BuildContext context) {
   showAboutDialog(
     context: context,
+    applicationName: 'IZ*ONE Lyrics',
     applicationIcon: Image.asset(
-      'assets/launcher_round.png',
+      'assets/launcher.png',
       width: 64,
     ),
     children: [
