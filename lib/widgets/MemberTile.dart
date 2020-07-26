@@ -24,7 +24,12 @@ class MemberTile extends StatelessWidget {
           Navigator.of(context).push(_memberRoute(context, member));
         },
         highlightShape: BoxShape.rectangle,
-        borderRadius: BorderRadius.circular(32.0),
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(32.0),
+          topRight: Radius.circular(32.0),
+          bottomLeft: Radius.circular(10),
+          bottomRight: Radius.circular(10),
+        ),
         child: Column(
           children: [
             Expanded(

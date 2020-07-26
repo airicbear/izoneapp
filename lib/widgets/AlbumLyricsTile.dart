@@ -19,6 +19,7 @@ class AlbumLyricsTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       child: InkResponse(
+        highlightColor: album.color.withOpacity(0.3),
         onTap: () {
           Navigator.of(context).push(_albumLyricsRoute(context, album));
         },
