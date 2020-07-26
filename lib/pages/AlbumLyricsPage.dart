@@ -26,27 +26,50 @@ class AlbumLyricsPage extends StatelessWidget {
   }
 
   Widget _albumCoverArt(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) {
-              return ViewPicturePage(
-                memberImagePath: album.getCoverArtPath,
-                color: album.color,
-              );
-            },
+    return Stack(
+      alignment: Alignment.bottomRight,
+      children: [
+        GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) {
+                  return ViewPicturePage(
+                    memberImagePath: album.getCoverArtPath,
+                    color: album.color,
+                  );
+                },
+              ),
+            );
+          },
+          child: Hero(
+            tag: album.getCoverArtPath,
+            child: Image(
+              image: AssetImage(album.getCoverArtPath),
+              fit: BoxFit.fill,
+            ),
           ),
-        );
-      },
-      child: Hero(
-        tag: album.getCoverArtPath,
-        child: Image(
-          image: AssetImage(album.getCoverArtPath),
-          fit: BoxFit.cover,
         ),
-      ),
+        Container(
+          padding: const EdgeInsets.all(12.0),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(topLeft: Radius.circular(4.0)),
+            color: Theme.of(context).primaryColor,
+          ),
+          child: Text(
+              '${MaterialLocalizations.of(context).formatShortDate(DateTime.parse(album.releaseDate))}'),
+        ),
+        Container(
+          padding: const EdgeInsets.all(12.0),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(topLeft: Radius.circular(4.0)),
+            color: album.color.withOpacity(0.5),
+          ),
+          child: Text(
+              '${MaterialLocalizations.of(context).formatShortDate(DateTime.parse(album.releaseDate))}'),
+        ),
+      ],
     );
   }
 
