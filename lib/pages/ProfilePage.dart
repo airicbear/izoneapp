@@ -114,6 +114,7 @@ class ProfilePage extends StatelessWidget {
         (BuildContext context, int index) {
           return Card(
             child: InkWell(
+              onTap: () {},
               child: ListTile(
                 tileColor: member.color.withOpacity(0.3),
                 leading: Container(
@@ -121,7 +122,7 @@ class ProfilePage extends StatelessWidget {
                   child: Text(memberInfo[index][0]),
                 ),
                 title: memberInfo[index][1] is String
-                    ? SelectableText(memberInfo[index][1])
+                    ? Text(memberInfo[index][1])
                     : memberInfo[index][1],
               ),
             ),
