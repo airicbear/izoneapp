@@ -34,6 +34,7 @@ class AlbumLyricsPage extends StatelessWidget {
             builder: (context) {
               return ViewPicturePage(
                 memberImagePath: album.getCoverArtPath,
+                color: album.color,
               );
             },
           ),

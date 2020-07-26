@@ -18,6 +18,7 @@ class ProfilePage extends StatelessWidget {
             builder: (context) {
               return ViewPicturePage(
                 memberImagePath: member.getImagePath(),
+                color: member.color,
               );
             },
           ),
@@ -100,21 +101,34 @@ class ProfilePage extends StatelessWidget {
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
         if (constraints.maxWidth < 600.0) {
-          return Scaffold(
-            body: CustomScrollView(
-              slivers: [
-                SliverAppBar(
-                  expandedHeight: 440.0,
-                  centerTitle: true,
-                  backgroundColor: Colors.transparent,
-                  flexibleSpace: _memberHero(context, 470.0),
+          return Stack(
+            children: [
+              Container(
+                width: constraints.maxWidth,
+                height: constraints.maxHeight,
+                color: member.color,
+                child: Text('HELLO'),
+              ),
+              Scaffold(
+                backgroundColor:
+                    Theme.of(context).scaffoldBackgroundColor.withOpacity(0.8),
+                body: CustomScrollView(
+                  slivers: [
+                    SliverAppBar(
+                      expandedHeight: 440.0,
+                      centerTitle: true,
+                      backgroundColor: Colors.transparent,
+                      flexibleSpace: _memberHero(context, 470.0),
+                    ),
+                    _memberInfo(context),
+                  ],
                 ),
-                _memberInfo(context),
-              ],
-            ),
+              ),
+            ],
           );
         } else {
           return Scaffold(
+            backgroundColor: member.color.withOpacity(0.3),
             extendBodyBehindAppBar: true,
             appBar: AppBar(
               backgroundColor: Colors.transparent,

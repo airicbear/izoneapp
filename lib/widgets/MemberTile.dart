@@ -19,6 +19,7 @@ class MemberTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       child: InkResponse(
+        highlightColor: member.color.withOpacity(0.6),
         onTap: () {
           Navigator.of(context).push(_memberRoute(context, member));
         },
@@ -40,13 +41,32 @@ class MemberTile extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: Column(
+              child: Row(
                 children: [
-                  Text(member.stageName),
-                  Text(
-                    '${MaterialLocalizations.of(context).formatCompactDate(DateTime.parse(member.dateOfBirth))} (${member.getAge()})',
-                    style: TextStyle(
-                      color: Theme.of(context).disabledColor,
+                  Expanded(
+                    flex: 3,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(member.stageName),
+                        Text(
+                          '${MaterialLocalizations.of(context).formatCompactDate(DateTime.parse(member.dateOfBirth))} (${member.getAge()})',
+                          style: TextStyle(
+                            color: Theme.of(context).disabledColor,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      padding: const EdgeInsets.all(16.0),
+                      margin: const EdgeInsets.only(left: 12.0),
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.black),
+                        borderRadius: BorderRadius.circular(4.0),
+                        color: member.color,
+                      ),
                     ),
                   ),
                 ],
