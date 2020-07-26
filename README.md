@@ -1,4 +1,4 @@
-# IZ*ONE Fan App <img src="./assets/launcher_round.png" width="64" alt="App icon"/>
+# IZ*ONE Fan App <img src="./assets/launcher.png" width="64" alt="App icon"/>
 
 An unofficial fan-made app dedicated to [IZ*ONE](http://iz-one.co.kr/).
 
