@@ -32,16 +32,8 @@ class ProfilePage extends StatelessWidget {
         Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(4.0),
-            color: member.color.withOpacity(0.3),
-          ),
-          child: BackButton(
-            color: Theme.of(context).textTheme.bodyText1.color,
-          ),
-        ),
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(4.0),
-            color: member.color.withOpacity(0.3),
+            color: Color.lerp(Theme.of(context).textTheme.bodyText1.color,
+                member.color.withOpacity(0.3), 0.8),
           ),
           child: BackButton(
             color: Theme.of(context).textTheme.bodyText1.color,

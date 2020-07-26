@@ -56,16 +56,7 @@ class AlbumLyricsPage extends StatelessWidget {
           padding: const EdgeInsets.all(12.0),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.only(topLeft: Radius.circular(4.0)),
-            color: Theme.of(context).primaryColor,
-          ),
-          child: Text(
-              '${MaterialLocalizations.of(context).formatShortDate(DateTime.parse(album.releaseDate))}'),
-        ),
-        Container(
-          padding: const EdgeInsets.all(12.0),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.only(topLeft: Radius.circular(4.0)),
-            color: album.color.withOpacity(0.5),
+            color: Color.lerp(Theme.of(context).primaryColor, album.color, 0.5),
           ),
           child: Text(
               '${MaterialLocalizations.of(context).formatShortDate(DateTime.parse(album.releaseDate))}'),
