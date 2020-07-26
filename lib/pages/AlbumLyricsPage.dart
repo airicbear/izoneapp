@@ -65,6 +65,7 @@ class AlbumLyricsPage extends StatelessWidget {
               ),
             ),
             child: ListTile(
+              tileColor: album.color.withOpacity(0.3),
               leading: Text(
                 '${index + 1}.',
                 textScaleFactor: 1.25,
@@ -94,40 +95,49 @@ class AlbumLyricsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: LayoutBuilder(
-        builder: (context, constraints) {
-          if (constraints.maxWidth < 600) {
-            return CustomScrollView(
-              slivers: [
-                SliverAppBar(
-                  automaticallyImplyLeading: false,
-                  expandedHeight: 410,
-                  flexibleSpace: _albumCoverArt(context),
-                ),
-                _albumSongList(),
-              ],
-            );
-          } else {
-            return Row(
-              children: [
-                Flexible(
-                  flex: 2,
-                  child: _albumCoverArt(context),
-                ),
-                Expanded(
-                  flex: 3,
-                  child: CustomScrollView(
-                    slivers: [
-                      _albumSongList(),
-                    ],
-                  ),
-                ),
-              ],
-            );
-          }
-        },
-      ),
+    return Stack(
+      children: [
+        Container(
+          color: album.color,
+        ),
+        Scaffold(
+          backgroundColor:
+              Theme.of(context).scaffoldBackgroundColor.withOpacity(0.5),
+          body: LayoutBuilder(
+            builder: (context, constraints) {
+              if (constraints.maxWidth < 600) {
+                return CustomScrollView(
+                  slivers: [
+                    SliverAppBar(
+                      automaticallyImplyLeading: false,
+                      expandedHeight: 410,
+                      flexibleSpace: _albumCoverArt(context),
+                    ),
+                    _albumSongList(),
+                  ],
+                );
+              } else {
+                return Row(
+                  children: [
+                    Flexible(
+                      flex: 2,
+                      child: _albumCoverArt(context),
+                    ),
+                    Expanded(
+                      flex: 3,
+                      child: CustomScrollView(
+                        slivers: [
+                          _albumSongList(),
+                        ],
+                      ),
+                    ),
+                  ],
+                );
+              }
+            },
+          ),
+        ),
+      ],
     );
   }
 }

@@ -65,6 +65,8 @@ class LyricsPageViewState extends State<LyricsPageView> {
 
   Widget _pageViewAppBar(BuildContext context) {
     return AppBar(
+      backgroundColor:
+          Albums.albums(context)[_nextAlbumIndex].color.withOpacity(0.5),
       title: ScrollConfiguration(
         behavior: ScrollableAppBarScrollBehavior(),
         child: SingleChildScrollView(
