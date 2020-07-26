@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:izoneapp/pages/ViewPicturePage.dart';
-import '../data/Member.dart';
+import 'package:izoneapp/data/Member.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key key, this.member, this.collectionNumber})
@@ -8,6 +8,39 @@ class ProfilePage extends StatelessWidget {
 
   final Member member;
   final int collectionNumber;
+
+  Widget _profileBackButton(BuildContext context) {
+    return Stack(
+      children: [
+        Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(4.0),
+            color: Theme.of(context).primaryColor,
+            boxShadow: [
+              BoxShadow(
+                color: Theme.of(context).shadowColor.withOpacity(0.3),
+                blurRadius: 1.0,
+                spreadRadius: 1.0,
+                offset: Offset(0.0, 1.5),
+              )
+            ],
+          ),
+          child: BackButton(
+            color: Theme.of(context).textTheme.bodyText1.color,
+          ),
+        ),
+        Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(4.0),
+            color: member.color.withOpacity(0.3),
+          ),
+          child: BackButton(
+            color: Theme.of(context).textTheme.bodyText1.color,
+          ),
+        ),
+      ],
+    );
+  }
 
   Widget _memberHero(context, height) {
     return GestureDetector(
@@ -26,13 +59,10 @@ class ProfilePage extends StatelessWidget {
       },
       child: Hero(
         tag: member.getImagePath(),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(32.0),
-          child: Image(
-            image: AssetImage(member.getImagePath()),
-            fit: BoxFit.cover,
-            height: height,
-          ),
+        child: Image(
+          image: AssetImage(member.getImagePath()),
+          fit: BoxFit.cover,
+          height: height,
         ),
       ),
     );
@@ -73,21 +103,18 @@ class ProfilePage extends StatelessWidget {
     return SliverList(
       delegate: SliverChildBuilderDelegate(
         (BuildContext context, int index) {
-          return Container(
-            padding: const EdgeInsets.all(24.0),
-            child: Row(
-              children: [
-                Expanded(
-                  child: SelectableText(memberInfo[index][0]),
-                  flex: 2,
+          return Card(
+            child: InkWell(
+              child: ListTile(
+                tileColor: member.color.withOpacity(0.3),
+                leading: Container(
+                  width: 100,
+                  child: Text(memberInfo[index][0]),
                 ),
-                Expanded(
-                  child: memberInfo[index][1] is String
-                      ? SelectableText(memberInfo[index][1])
-                      : memberInfo[index][1],
-                  flex: 4,
-                ),
-              ],
+                title: memberInfo[index][1] is String
+                    ? SelectableText(memberInfo[index][1])
+                    : memberInfo[index][1],
+              ),
             ),
           );
         },
@@ -107,7 +134,6 @@ class ProfilePage extends StatelessWidget {
                 width: constraints.maxWidth,
                 height: constraints.maxHeight,
                 color: member.color,
-                child: Text('HELLO'),
               ),
               Scaffold(
                 backgroundColor:
@@ -115,8 +141,8 @@ class ProfilePage extends StatelessWidget {
                 body: CustomScrollView(
                   slivers: [
                     SliverAppBar(
-                      expandedHeight: 440.0,
-                      centerTitle: true,
+                      leading: _profileBackButton(context),
+                      expandedHeight: 430.0,
                       backgroundColor: Colors.transparent,
                       flexibleSpace: _memberHero(context, 470.0),
                     ),
@@ -128,11 +154,13 @@ class ProfilePage extends StatelessWidget {
           );
         } else {
           return Scaffold(
-            backgroundColor: member.color.withOpacity(0.3),
+            backgroundColor:
+                Theme.of(context).scaffoldBackgroundColor.withOpacity(0.8),
             extendBodyBehindAppBar: true,
             appBar: AppBar(
               backgroundColor: Colors.transparent,
               elevation: 0.0,
+              leading: _profileBackButton(context),
             ),
             body: Row(
               children: [
