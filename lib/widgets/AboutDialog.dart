@@ -12,7 +12,12 @@ void appAboutDialog(BuildContext context) {
     ),
     children: [
       Text(
-          'This is an unofficial fan-made app dedicated to IZ*ONE and is free and open-source for everyone.'),
+          'This is an unofficial fan-made app dedicated to IZ*ONE and is free and open-source for everyone. There is a web version of this app also available:'),
+      FlatButton.icon(
+        label: Text('airicbear.github.io/izone-app'),
+        icon: Icon(Icons.open_in_browser),
+        onPressed: () => launch('https://airicbear.github.io/izone-app'),
+      ),
       Divider(height: 24),
       Text(
           'If you want to contribute to this app, please visit the GitHub page at github.com/airicbear/izone-app using the button below.'),
