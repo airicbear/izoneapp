@@ -6,7 +6,7 @@ import 'package:izoneapp/pages/SongLyricsPage.dart';
 import 'package:izoneapp/pages/ViewPicturePage.dart';
 
 class AlbumLyricsPage extends StatelessWidget {
-  const AlbumLyricsPage({Key key, this.album}) : super(key: key);
+  const AlbumLyricsPage({Key key, @required this.album}) : super(key: key);
 
   final Album album;
 

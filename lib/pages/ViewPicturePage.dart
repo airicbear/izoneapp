@@ -4,12 +4,14 @@ import 'package:photo_view/photo_view.dart';
 class ViewPicturePage extends StatelessWidget {
   const ViewPicturePage({
     Key key,
-    this.memberImagePath,
+    @required this.memberImagePath,
     this.color,
+    this.isNetwork,
   }) : super(key: key);
 
   final String memberImagePath;
   final Color color;
+  final bool isNetwork;
 
   @override
   Widget build(BuildContext context) {
@@ -21,12 +23,15 @@ class ViewPicturePage extends StatelessWidget {
         body: Center(
           child: PhotoView(
             backgroundDecoration:
-                BoxDecoration(color: color.withOpacity(0.5) ?? Colors.black),
-            imageProvider: AssetImage(memberImagePath),
+                BoxDecoration(color: color?.withOpacity(0.5) ?? Colors.black),
+            imageProvider: isNetwork == null || isNetwork == false
+                ? AssetImage(memberImagePath)
+                : NetworkImage(memberImagePath),
             heroAttributes: PhotoViewHeroAttributes(
               tag: memberImagePath,
             ),
             minScale: PhotoViewComputedScale.contained,
+            filterQuality: FilterQuality.high,
           ),
         ),
       ),

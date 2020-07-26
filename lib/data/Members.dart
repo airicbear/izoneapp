@@ -16,6 +16,12 @@ class Members {
       id: 1,
       stageName: "Eunbi",
       stageNameKorean: "은비",
+      galleryUrlList: [
+        'http://cdn.iz-one.co.kr/images/oneiric-diary/Wrj0g8ez7Ef4/official-photo-1-eunbi.jpg',
+        'http://cdn.iz-one.co.kr/images/oneiric-diary/v/official-photo-2-eunbi.jpg',
+        "http://cdn.iz-one.co.kr/images/oneiric-diary/HFdG2LjN8bg4/official-photo-3-eunbi.jpg",
+        'http://cdn.iz-one.co.kr/images/oneiric-diary/v/official-photo-4-eunbi.jpg',
+      ],
     ),
     Member(
       birthplace: "Kagoshima, Japan",
@@ -30,6 +36,12 @@ class Members {
       id: 2,
       stageName: "Sakura",
       stageNameKorean: "사쿠라",
+      galleryUrlList: [
+        'http://cdn.iz-one.co.kr/images/oneiric-diary/Wrj0g8ez7Ef4/official-photo-1-sakura.jpg',
+        'http://cdn.iz-one.co.kr/images/oneiric-diary/v/official-photo-2-sakura.jpg',
+        'http://cdn.iz-one.co.kr/images/oneiric-diary/HFdG2LjN8bg4/official-photo-3-sakura.jpg',
+        'http://cdn.iz-one.co.kr/images/oneiric-diary/v/official-photo-4-sakura.jpg',
+      ],
     ),
     Member(
       birthplace: "Yangsan, South Korea",
@@ -44,6 +56,12 @@ class Members {
       id: 3,
       stageName: "Hyewon",
       stageNameKorean: "혜원",
+      galleryUrlList: [
+        'http://cdn.iz-one.co.kr/images/oneiric-diary/Wrj0g8ez7Ef4/official-photo-1-hyewon.jpg',
+        'http://cdn.iz-one.co.kr/images/oneiric-diary/v/official-photo-2-hyewon.jpg',
+        'http://cdn.iz-one.co.kr/images/oneiric-diary/HFdG2LjN8bg4/official-photo-3-hyewon.jpg',
+        'http://cdn.iz-one.co.kr/images/oneiric-diary/v/official-photo-4-hyewon.jpg',
+      ],
     ),
     Member(
       birthplace: "Seoul, South Korea",
@@ -58,6 +76,12 @@ class Members {
       id: 4,
       stageName: "Yena",
       stageNameKorean: "예나",
+      galleryUrlList: [
+        'http://cdn.iz-one.co.kr/images/oneiric-diary/Wrj0g8ez7Ef4/official-photo-1-yena.jpg',
+        'http://cdn.iz-one.co.kr/images/oneiric-diary/v/official-photo-2-yena.jpg',
+        'http://cdn.iz-one.co.kr/images/oneiric-diary/HFdG2LjN8bg4/official-photo-3-yena.jpg',
+        'http://cdn.iz-one.co.kr/images/oneiric-diary/v/official-photo-4-yena.jpg',
+      ],
     ),
     Member(
       birthplace: "Yongin, South Korea",
@@ -72,6 +96,12 @@ class Members {
       id: 5,
       stageName: "Chaeyeon",
       stageNameKorean: "채연",
+      galleryUrlList: [
+        'http://cdn.iz-one.co.kr/images/oneiric-diary/Wrj0g8ez7Ef4/official-photo-1-chaeyeon.jpg',
+        'http://cdn.iz-one.co.kr/images/oneiric-diary/v/official-photo-2-chaeyeon.jpg',
+        'http://cdn.iz-one.co.kr/images/oneiric-diary/HFdG2LjN8bg4/official-photo-3-chaeyeon.jpg',
+        'http://cdn.iz-one.co.kr/images/oneiric-diary/v/official-photo-4-chaeyeon.jpg',
+      ],
     ),
     Member(
       birthplace: "Seoul, South Korea",
@@ -86,6 +116,12 @@ class Members {
       id: 6,
       stageName: "Chaewon",
       stageNameKorean: "채원",
+      galleryUrlList: [
+        'http://cdn.iz-one.co.kr/images/oneiric-diary/Wrj0g8ez7Ef4/official-photo-1-chaewon.jpg',
+        'http://cdn.iz-one.co.kr/images/oneiric-diary/v/official-photo-2-chaewon.jpg',
+        'http://cdn.iz-one.co.kr/images/oneiric-diary/HFdG2LjN8bg4/official-photo-3-chaewon.jpg',
+        'http://cdn.iz-one.co.kr/images/oneiric-diary/v/official-photo-4-chaewon.jpg',
+      ],
     ),
     Member(
       birthplace: "Seoul, South Korea",
@@ -100,6 +136,12 @@ class Members {
       id: 7,
       stageName: "Minju",
       stageNameKorean: "민주",
+      galleryUrlList: [
+        'http://cdn.iz-one.co.kr/images/oneiric-diary/Wrj0g8ez7Ef4/official-photo-1-minju.jpg',
+        'http://cdn.iz-one.co.kr/images/oneiric-diary/v/official-photo-2-minju.jpg',
+        'http://cdn.iz-one.co.kr/images/oneiric-diary/HFdG2LjN8bg4/official-photo-3-minju.jpg',
+        'http://cdn.iz-one.co.kr/images/oneiric-diary/v/official-photo-4-minju.jpg',
+      ],
     ),
     Member(
       birthplace: "Tokyo, Japan",
@@ -114,6 +156,12 @@ class Members {
       id: 8,
       stageName: "Nako",
       stageNameKorean: "나코",
+      galleryUrlList: [
+        'http://cdn.iz-one.co.kr/images/oneiric-diary/Wrj0g8ez7Ef4/official-photo-1-nako.jpg',
+        'http://cdn.iz-one.co.kr/images/oneiric-diary/v/official-photo-2-nako.jpg',
+        'http://cdn.iz-one.co.kr/images/oneiric-diary/HFdG2LjN8bg4/official-photo-3-nako.jpg',
+        'http://cdn.iz-one.co.kr/images/oneiric-diary/v/official-photo-4-nako.jpg',
+      ],
     ),
     Member(
       birthplace: "Tochigi, Japan",
@@ -128,6 +176,12 @@ class Members {
       id: 9,
       stageName: "Hitomi",
       stageNameKorean: "히토미",
+      galleryUrlList: [
+        'http://cdn.iz-one.co.kr/images/oneiric-diary/Wrj0g8ez7Ef4/official-photo-1-hitomi.jpg',
+        'http://cdn.iz-one.co.kr/images/oneiric-diary/v/official-photo-2-hitomi.jpg',
+        'http://cdn.iz-one.co.kr/images/oneiric-diary/HFdG2LjN8bg4/official-photo-3-hitomi.jpg',
+        'http://cdn.iz-one.co.kr/images/oneiric-diary/v/official-photo-4-hitomi.jpg',
+      ],
     ),
     Member(
       birthplace: "Busan, South Korea",
@@ -142,6 +196,12 @@ class Members {
       id: 10,
       stageName: "Yuri",
       stageNameKorean: "유리",
+      galleryUrlList: [
+        'http://cdn.iz-one.co.kr/images/oneiric-diary/Wrj0g8ez7Ef4/official-photo-1-yuri.jpg',
+        'http://cdn.iz-one.co.kr/images/oneiric-diary/v/official-photo-2-yuri.jpg',
+        'http://cdn.iz-one.co.kr/images/oneiric-diary/HFdG2LjN8bg4/official-photo-3-yuri.jpg',
+        'http://cdn.iz-one.co.kr/images/oneiric-diary/v/official-photo-4-yuri.jpg',
+      ],
     ),
     Member(
       birthplace: "Cheongju, South Korea",
@@ -156,6 +216,12 @@ class Members {
       id: 11,
       stageName: "Yujin",
       stageNameKorean: "유진",
+      galleryUrlList: [
+        'http://cdn.iz-one.co.kr/images/oneiric-diary/Wrj0g8ez7Ef4/official-photo-1-yujin.jpg',
+        'http://cdn.iz-one.co.kr/images/oneiric-diary/v/official-photo-2-yujin.jpg',
+        'http://cdn.iz-one.co.kr/images/oneiric-diary/HFdG2LjN8bg4/official-photo-3-yujin.jpg',
+        'http://cdn.iz-one.co.kr/images/oneiric-diary/v/official-photo-4-yujin.jpg',
+      ],
     ),
     Member(
       birthplace: "Seoul, South Korea",
@@ -170,6 +236,12 @@ class Members {
       id: 12,
       stageName: "Wonyoung",
       stageNameKorean: "원영",
+      galleryUrlList: [
+        'http://cdn.iz-one.co.kr/images/oneiric-diary/Wrj0g8ez7Ef4/official-photo-1-wonyoung.jpg',
+        'http://cdn.iz-one.co.kr/images/oneiric-diary/v/official-photo-2-wonyoung.jpg',
+        'http://cdn.iz-one.co.kr/images/oneiric-diary/HFdG2LjN8bg4/official-photo-3-wonyoung.jpg',
+        'http://cdn.iz-one.co.kr/images/oneiric-diary/v/official-photo-4-wonyoung.jpg',
+      ],
     ),
   ];
 }

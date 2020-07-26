@@ -13,6 +13,7 @@ class Member {
   final Color color;
   final String bloodType;
   final String company;
+  final List<String> galleryUrlList;
 
   Member({
     this.id,
@@ -27,6 +28,7 @@ class Member {
     this.color,
     this.bloodType,
     this.company,
+    this.galleryUrlList,
   });
 
   int getAge() {
