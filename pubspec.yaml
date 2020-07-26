@@ -46,6 +46,12 @@ dependency_overrides:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: ^0.7.5
+
+flutter_icons:
+  image_path: assets/launcher.png
+  android: true
+  ios: true
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -60,7 +66,6 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/icons/
-    - assets/launcher_round.png
     - assets/images/oneiric-diary/
     - assets/coverart/
   #   - images/a_dot_burr.jpeg
