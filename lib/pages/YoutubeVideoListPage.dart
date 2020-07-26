@@ -64,6 +64,9 @@ class YoutubeVideoListPageState extends State<YoutubeVideoListPage> {
       delegate: SliverChildBuilderDelegate(
         (context, index) {
           return Card(
+            clipBehavior: ClipRRect(
+              borderRadius: BorderRadius.circular(4.0),
+            ).clipBehavior,
             color: _currentVideo == widget.videos[index].youtubeUrl
                 ? Theme.of(context).backgroundColor
                 : Theme.of(context).cardColor,

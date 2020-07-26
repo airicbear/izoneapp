@@ -17,6 +17,9 @@ class HomePage extends StatelessWidget {
     return ListView.builder(
       itemBuilder: (context, index) {
         return Card(
+          clipBehavior: ClipRRect(
+            borderRadius: BorderRadius.circular(4.0),
+          ).clipBehavior,
           child: InkWell(
             onTap: () => AppPages.goToPage(
                 pages[index], pageController, appBarController),

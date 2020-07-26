@@ -9,6 +9,9 @@ class MediaLinkTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      clipBehavior: ClipRRect(
+        borderRadius: BorderRadius.circular(4.0),
+      ).clipBehavior,
       child: InkWell(
         onTap: () => link.launch(),
         child: ListTile(
