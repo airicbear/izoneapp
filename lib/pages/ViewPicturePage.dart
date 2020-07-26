@@ -20,7 +20,8 @@ class ViewPicturePage extends StatelessWidget {
       child: Scaffold(
         body: Center(
           child: PhotoView(
-            backgroundDecoration: BoxDecoration(color: color ?? Colors.black),
+            backgroundDecoration:
+                BoxDecoration(color: color.withOpacity(0.5) ?? Colors.black),
             imageProvider: AssetImage(memberImagePath),
             heroAttributes: PhotoViewHeroAttributes(
               tag: memberImagePath,
