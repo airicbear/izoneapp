@@ -20,10 +20,16 @@ class ViewPicturePage extends StatelessWidget {
         Navigator.pop(context);
       },
       child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0.0,
+        ),
+        extendBodyBehindAppBar: true,
         body: Center(
           child: PhotoView(
-            backgroundDecoration:
-                BoxDecoration(color: color?.withOpacity(0.5) ?? Colors.black),
+            backgroundDecoration: BoxDecoration(
+              color: color?.withOpacity(0.5) ?? Colors.black,
+            ),
             imageProvider: isNetwork == null || isNetwork == false
                 ? AssetImage(memberImagePath)
                 : NetworkImage(memberImagePath),
