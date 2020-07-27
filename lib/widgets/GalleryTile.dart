@@ -35,7 +35,15 @@ class GalleryTile extends StatelessWidget {
               (BuildContext context, Widget widget, ImageChunkEvent progress) {
             if (progress == null) return widget;
             return Center(
-              child: CircularProgressIndicator(),
+              child: CircularProgressIndicator(
+                valueColor: AlwaysStoppedAnimation(
+                  Color.lerp(
+                    color,
+                    Theme.of(context).textTheme.bodyText1.color,
+                    0.5,
+                  ),
+                ),
+              ),
             );
           },
           errorBuilder: (context, error, stackTrace) => Center(
