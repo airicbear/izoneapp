@@ -36,11 +36,13 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: widget.member.color.withOpacity(0.2),
+        backgroundColor: Color.lerp(
+            widget.member.color, Theme.of(context).primaryColor, 0.5),
         currentIndex: _selectedIndex,
-        elevation: 0.0,
         selectedItemColor: Color.lerp(widget.member.color,
             Theme.of(context).textTheme.bodyText1.color, 0.8),
+        unselectedItemColor: Color.lerp(Colors.transparent,
+            Theme.of(context).textTheme.bodyText1.color.withOpacity(0.5), 0.8),
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.info),
