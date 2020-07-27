@@ -131,16 +131,20 @@ class ProfilePageInfo extends StatelessWidget {
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
         if (constraints.maxWidth < 600.0) {
-          return CustomScrollView(
-            slivers: [
-              SliverAppBar(
-                leading: _profileBackButton(context),
-                expandedHeight: 430.0,
-                backgroundColor: Colors.transparent,
-                flexibleSpace: _memberHero(context, 470.0),
-              ),
-              _memberInfo(context),
-            ],
+          return GlowingOverscrollIndicator(
+            axisDirection: AxisDirection.down,
+            color: member.color,
+            child: CustomScrollView(
+              slivers: [
+                SliverAppBar(
+                  leading: _profileBackButton(context),
+                  expandedHeight: 430.0,
+                  backgroundColor: Colors.transparent,
+                  flexibleSpace: _memberHero(context, 470.0),
+                ),
+                _memberInfo(context),
+              ],
+            ),
           );
         } else {
           return Scaffold(

@@ -124,16 +124,20 @@ class AlbumLyricsPage extends StatelessWidget {
           body: LayoutBuilder(
             builder: (context, constraints) {
               if (constraints.maxWidth < 600) {
-                return CustomScrollView(
-                  slivers: [
-                    SliverAppBar(
-                      backgroundColor: Colors.transparent,
-                      automaticallyImplyLeading: false,
-                      expandedHeight: 410,
-                      flexibleSpace: _albumCoverArt(context),
-                    ),
-                    _albumSongList(),
-                  ],
+                return GlowingOverscrollIndicator(
+                  axisDirection: AxisDirection.down,
+                  color: album.color,
+                  child: CustomScrollView(
+                    slivers: [
+                      SliverAppBar(
+                        backgroundColor: Colors.transparent,
+                        automaticallyImplyLeading: false,
+                        expandedHeight: 410,
+                        flexibleSpace: _albumCoverArt(context),
+                      ),
+                      _albumSongList(),
+                    ],
+                  ),
                 );
               } else {
                 return Row(
@@ -144,10 +148,14 @@ class AlbumLyricsPage extends StatelessWidget {
                     ),
                     Expanded(
                       flex: 3,
-                      child: CustomScrollView(
-                        slivers: [
-                          _albumSongList(),
-                        ],
+                      child: GlowingOverscrollIndicator(
+                        axisDirection: AxisDirection.down,
+                        color: album.color,
+                        child: CustomScrollView(
+                          slivers: [
+                            _albumSongList(),
+                          ],
+                        ),
                       ),
                     ),
                   ],
