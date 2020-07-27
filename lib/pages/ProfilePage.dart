@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:izoneapp/pages/ProfilePageGallery.dart';
 import 'package:izoneapp/pages/ProfilePageInfo.dart';
 import 'package:izoneapp/data/Member.dart';
+import 'package:izoneapp/pages/ViewPicturePage.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key key, @required this.member}) : super(key: key);
@@ -21,49 +22,120 @@ class _ProfilePageState extends State<ProfilePage> {
     super.initState();
     _pages = [
       ProfilePageInfo(member: widget.member),
-      Scaffold(
-        appBar: AppBar(
-          title: Text('Gallery'),
-          backgroundColor: Colors.transparent,
-        ),
-        backgroundColor: Colors.transparent,
-        body: ProfilePageGallery(member: widget.member),
-      ),
+      ProfilePageGallery(member: widget.member),
     ];
+  }
+
+  Widget _bottomNavBar(BuildContext context) {
+    return BottomNavigationBar(
+      currentIndex: _selectedIndex,
+      backgroundColor: Color.lerp(
+        widget.member.color,
+        Theme.of(context).primaryColor,
+        0.5,
+      ),
+      selectedItemColor: Color.lerp(
+        widget.member.color,
+        Theme.of(context).textTheme.bodyText1.color,
+        0.8,
+      ),
+      unselectedItemColor: Color.lerp(
+        Colors.transparent,
+        Theme.of(context).textTheme.bodyText1.color.withOpacity(0.5),
+        0.8,
+      ),
+      items: [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.info),
+          title: Text('Info'),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.image),
+          title: Text('Gallery'),
+        ),
+      ],
+      onTap: (int index) {
+        setState(() {
+          _selectedIndex = index;
+        });
+      },
+    );
+  }
+
+  Widget _memberHero(context, height) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) {
+              return ViewPicturePage(
+                memberImagePath: widget.member.getImagePath(),
+                color: widget.member.color,
+              );
+            },
+          ),
+        );
+      },
+      child: Hero(
+        tag: widget.member.getImagePath(),
+        child: Image(
+          image: AssetImage(widget.member.getImagePath()),
+          fit: BoxFit.cover,
+          height: height,
+        ),
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Color.lerp(
-            widget.member.color, Theme.of(context).primaryColor, 0.5),
-        currentIndex: _selectedIndex,
-        selectedItemColor: Color.lerp(widget.member.color,
-            Theme.of(context).textTheme.bodyText1.color, 0.8),
-        unselectedItemColor: Color.lerp(Colors.transparent,
-            Theme.of(context).textTheme.bodyText1.color.withOpacity(0.5), 0.8),
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.info),
-            title: Text('Info'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.image),
-            title: Text('Gallery'),
-          ),
-        ],
-        onTap: (int index) {
-          setState(() {
-            _selectedIndex = index;
-          });
+      bottomNavigationBar: _bottomNavBar(context),
+      backgroundColor: Color.lerp(
+        Theme.of(context).scaffoldBackgroundColor.withOpacity(0.8),
+        widget.member.color,
+        0.5,
+      ),
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          if (constraints.maxWidth < 600) {
+            return GlowingOverscrollIndicator(
+              axisDirection: AxisDirection.down,
+              color: widget.member.color,
+              child: CustomScrollView(
+                slivers: [
+                  SliverAppBar(
+                    expandedHeight: 430.0,
+                    backgroundColor: Colors.transparent,
+                    flexibleSpace: _memberHero(context, 470.0),
+                  ),
+                  _pages.elementAt(_selectedIndex),
+                ],
+              ),
+            );
+          } else {
+            return Row(
+              children: [
+                Expanded(
+                  child: _memberHero(context, 470.0),
+                ),
+                Expanded(
+                  child: GlowingOverscrollIndicator(
+                    axisDirection: AxisDirection.down,
+                    color: widget.member.color,
+                    child: CustomScrollView(
+                      slivers: [
+                        _pages.elementAt(_selectedIndex),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            );
+          }
         },
       ),
-      backgroundColor: Color.lerp(
-          Theme.of(context).scaffoldBackgroundColor.withOpacity(0.8),
-          widget.member.color,
-          0.5),
-      body: _pages.elementAt(_selectedIndex),
     );
   }
 }

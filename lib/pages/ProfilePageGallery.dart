@@ -9,19 +9,13 @@ class ProfilePageGallery extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GlowingOverscrollIndicator(
-      axisDirection: AxisDirection.down,
-      color: member.color,
-      child: GridView.builder(
-        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-            maxCrossAxisExtent: 512 / 3),
-        itemBuilder: (BuildContext context, int index) {
-          return GalleryTile(
-            url: member.galleryUrlList.elementAt(index),
-            color: member.color.withOpacity(0.2),
-          );
-        },
-        itemCount: member.galleryUrlList?.length ?? 0,
+    return SliverList(
+      delegate: SliverChildBuilderDelegate(
+        (context, index) => GalleryTile(
+          url: member.galleryUrlList.elementAt(index),
+          color: member.color.withOpacity(0.2),
+        ),
+        childCount: member.galleryUrlList?.length ?? 0,
       ),
     );
   }

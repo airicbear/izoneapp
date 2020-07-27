@@ -1,71 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:izoneapp/data/Member.dart';
-import 'package:izoneapp/pages/ViewPicturePage.dart';
 
 class ProfilePageInfo extends StatelessWidget {
   const ProfilePageInfo({Key key, @required this.member}) : super(key: key);
 
   final Member member;
-
-  Widget _profileBackButton(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(4.0),
-            color: Theme.of(context).primaryColor,
-            boxShadow: [
-              BoxShadow(
-                color: Theme.of(context).shadowColor.withOpacity(0.3),
-                blurRadius: 1.0,
-                spreadRadius: 1.0,
-                offset: Offset(0.0, 1.5),
-              )
-            ],
-          ),
-          child: BackButton(
-            color: Theme.of(context).textTheme.bodyText1.color,
-          ),
-        ),
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(4.0),
-            color: Color.lerp(Theme.of(context).textTheme.bodyText1.color,
-                member.color.withOpacity(0.3), 0.8),
-          ),
-          child: BackButton(
-            color: Theme.of(context).textTheme.bodyText1.color,
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _memberHero(context, height) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) {
-              return ViewPicturePage(
-                memberImagePath: member.getImagePath(),
-                color: member.color,
-              );
-            },
-          ),
-        );
-      },
-      child: Hero(
-        tag: member.getImagePath(),
-        child: Image(
-          image: AssetImage(member.getImagePath()),
-          fit: BoxFit.cover,
-          height: height,
-        ),
-      ),
-    );
-  }
 
   Widget _memberInfo(context) {
     var memberInfo = [
@@ -128,51 +67,6 @@ class ProfilePageInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (BuildContext context, BoxConstraints constraints) {
-        if (constraints.maxWidth < 600.0) {
-          return GlowingOverscrollIndicator(
-            axisDirection: AxisDirection.down,
-            color: member.color,
-            child: CustomScrollView(
-              slivers: [
-                SliverAppBar(
-                  leading: _profileBackButton(context),
-                  expandedHeight: 430.0,
-                  backgroundColor: Colors.transparent,
-                  flexibleSpace: _memberHero(context, 470.0),
-                ),
-                _memberInfo(context),
-              ],
-            ),
-          );
-        } else {
-          return Scaffold(
-            backgroundColor:
-                Theme.of(context).scaffoldBackgroundColor.withOpacity(0.8),
-            extendBodyBehindAppBar: true,
-            appBar: AppBar(
-              backgroundColor: Colors.transparent,
-              elevation: 0.0,
-              leading: _profileBackButton(context),
-            ),
-            body: Row(
-              children: [
-                Expanded(
-                  child: _memberHero(context, null),
-                ),
-                Expanded(
-                  child: CustomScrollView(
-                    slivers: [
-                      _memberInfo(context),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          );
-        }
-      },
-    );
+    return _memberInfo(context);
   }
 }
