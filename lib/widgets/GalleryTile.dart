@@ -38,6 +38,9 @@ class GalleryTile extends StatelessWidget {
               child: CircularProgressIndicator(),
             );
           },
+          errorBuilder: (context, error, stackTrace) => Center(
+            child: Icon(Icons.signal_wifi_off),
+          ),
         ),
       ),
     );
