@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:izoneapp/data/YoutubeVideo.dart';
 import 'package:izoneapp/data/lyrics/30-girls-6-concepts/Album30Girls6Concepts.dart';
+import 'package:izoneapp/data/lyrics/bloom-iz/AlbumBloomIz.dart';
 import 'package:izoneapp/data/lyrics/color-iz/AlbumColorIz.dart';
 import 'package:izoneapp/data/lyrics/heart-iz/AlbumHeartIz.dart';
 import 'package:izoneapp/data/lyrics/oneiric-diary/AlbumOneiricDiary.dart';
@@ -37,21 +38,21 @@ class DanceVideos {
         subtitle: 'Choreography (To WIZ*ONE ver.)',
         date: '2020-03-06',
         youtubeUrl: 'https://www.youtube.com/embed/xaWafVLlIZs',
-        imagePath: AlbumHeartIz(context).getCoverArtPath,
+        imagePath: AlbumBloomIz(context).getCoverArtPath,
       ),
       YoutubeVideo(
         title: 'SPACESHIP',
         date: '2020-03-06',
         subtitle: 'Choreography (Close up ver.)',
         youtubeUrl: 'https://www.youtube.com/embed/GsEo4_9mIMg',
-        imagePath: AlbumHeartIz(context).getCoverArtPath,
+        imagePath: AlbumBloomIz(context).getCoverArtPath,
       ),
       YoutubeVideo(
         title: 'FIESTA',
         subtitle: 'Dance practice',
         date: '2020-02-28',
         youtubeUrl: 'https://www.youtube.com/embed/kCk8x__pXvE',
-        imagePath: AlbumHeartIz(context).getCoverArtPath,
+        imagePath: AlbumBloomIz(context).getCoverArtPath,
       ),
       YoutubeVideo(
         title: 'Vampire',
