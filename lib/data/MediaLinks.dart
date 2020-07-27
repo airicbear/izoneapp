@@ -61,7 +61,17 @@ class MediaLinks {
       description: 'YouTube',
     ),
     MediaLinkInfo(
-        launch: () => _launchUrl('https://channels.vlive.tv/C1B7AF'),
+        launch: () {
+          String url = 'https://channels.vlive.tv/C1B7AF/';
+
+          try {
+            if (Platform.isAndroid) {
+              url = 'globalv://channel?channelseq=C1B7AF';
+            }
+          } catch (e) {}
+
+          _launchUrl(url);
+        },
         icon: ImageIcon(AssetImage('assets/icons/vlive.png')),
         description: 'V Live'),
     MediaLinkInfo(
