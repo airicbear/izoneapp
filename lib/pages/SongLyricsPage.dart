@@ -50,23 +50,22 @@ class SongLyricsPageState extends State<SongLyricsPage>
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            snap: false,
-            floating: false,
             pinned: true,
             expandedHeight: 370,
             collapsedHeight: 60,
             backgroundColor: Theme.of(context).primaryColor,
             flexibleSpace: Hero(
               tag: widget.coverArt,
-              child: ColorFiltered(
-                colorFilter: ColorFilter.mode(
-                  Theme.of(context).primaryColor.withOpacity(0.3),
-                  BlendMode.dstATop,
-                ),
-                child: Image(
-                  image: AssetImage(widget.coverArt),
-                  fit: BoxFit.cover,
-                ),
+              child: Stack(
+                fit: StackFit.expand,
+                children: [
+                  Image(
+                    image: AssetImage(widget.coverArt),
+                    fit: BoxFit.cover,
+                  ),
+                  Container(
+                      color: Theme.of(context).primaryColor.withOpacity(0.7)),
+                ],
               ),
             ),
             title: Text(widget.song.title),
