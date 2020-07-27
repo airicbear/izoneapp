@@ -88,6 +88,25 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
+  Widget _memberHeroGradient(BuildContext context) {
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment(0.0, 0.8),
+          end: Alignment(0.0, 0.0),
+          colors: [
+            Color.lerp(
+              Theme.of(context).primaryColor,
+              widget.member.color,
+              0.45,
+            ),
+            Theme.of(context).primaryColor.withOpacity(0.1),
+          ],
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -106,9 +125,24 @@ class _ProfilePageState extends State<ProfilePage> {
               child: CustomScrollView(
                 slivers: [
                   SliverAppBar(
+                    pinned: true,
                     expandedHeight: 430.0,
-                    backgroundColor: Colors.transparent,
-                    flexibleSpace: _memberHero(context, 470.0),
+                    backgroundColor: Color.lerp(
+                      Theme.of(context).primaryColor,
+                      widget.member.color,
+                      0.45,
+                    ),
+                    flexibleSpace: FlexibleSpaceBar(
+                      title: Text(widget.member.stageName),
+                      centerTitle: true,
+                      background: Stack(
+                        fit: StackFit.expand,
+                        children: [
+                          _memberHero(context, 470.0),
+                          _memberHeroGradient(context),
+                        ],
+                      ),
+                    ),
                   ),
                   _pages.elementAt(_selectedIndex),
                 ],
@@ -118,7 +152,35 @@ class _ProfilePageState extends State<ProfilePage> {
             return Row(
               children: [
                 Expanded(
-                  child: _memberHero(context, 470.0),
+                  child: Stack(
+                    alignment: Alignment.bottomCenter,
+                    children: [
+                      Stack(
+                        children: [
+                          Stack(
+                            fit: StackFit.expand,
+                            children: [
+                              _memberHero(context, 470.0),
+                              _memberHeroGradient(context),
+                            ],
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 24.0),
+                            child: BackButton(
+                              onPressed: () => Navigator.of(context).pop(),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Container(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Text(
+                          widget.member.stageName,
+                          style: Theme.of(context).textTheme.headline3,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
                 Expanded(
                   child: GlowingOverscrollIndicator(

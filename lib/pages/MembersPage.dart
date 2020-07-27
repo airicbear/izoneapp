@@ -21,7 +21,7 @@ class MembersPage extends StatelessWidget {
                   return Container(
                     padding: const EdgeInsets.all(8.0),
                     child: MemberTile(
-                      member: Members.members[index],
+                      member: Members.members.elementAt(index),
                     ),
                   );
                 },
