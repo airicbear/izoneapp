@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:izoneapp/data/YoutubeVideo.dart';
+import 'package:izoneapp/data/lyrics/oneiric-diary/AlbumOneiricDiary.dart';
 import 'package:izoneapp/pages/ViewYoutubeVideoPage.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -32,7 +33,7 @@ class YoutubeVideoListPageState extends State<YoutubeVideoListPage> {
             _currentVideo = '';
 
             return ViewYoutubeVideoPage(
-              youtubeUrl: widget.videos[index].youtubeUrl,
+              youtubeUrl: widget.videos.elementAt(index).youtubeUrl,
             );
           },
         ),
@@ -67,62 +68,78 @@ class YoutubeVideoListPageState extends State<YoutubeVideoListPage> {
             clipBehavior: ClipRRect(
               borderRadius: BorderRadius.circular(4.0),
             ).clipBehavior,
-            color: _currentVideo == widget.videos[index].youtubeUrl
+            color: _currentVideo == widget.videos.elementAt(index).youtubeUrl
                 ? Theme.of(context).backgroundColor
                 : Theme.of(context).cardColor,
             child: InkWell(
               onTap: () async {
-                if (!widget.videos[index].restricted) {
+                if (!widget.videos.elementAt(index).restricted) {
                   try {
                     if ((Platform.isAndroid || Platform.isIOS)) {
                       setState(() {
-                        _currentVideo = widget.videos[index].youtubeUrl;
+                        _currentVideo =
+                            widget.videos.elementAt(index).youtubeUrl;
                       });
                     } else if (await canLaunch(
-                        widget.videos[index].youtubeUrl)) {
-                      launch(widget.videos[index].youtubeUrl);
+                        widget.videos.elementAt(index).youtubeUrl)) {
+                      launch(widget.videos.elementAt(index).youtubeUrl);
                     }
                   } catch (e) {
                     // Web
-                    if (await canLaunch(widget.videos[index].youtubeUrl)) {
-                      launch(widget.videos[index].youtubeUrl);
+                    if (await canLaunch(
+                        widget.videos.elementAt(index).youtubeUrl)) {
+                      launch(widget.videos.elementAt(index).youtubeUrl);
                     }
                   }
                   // Restricted
-                } else if (await canLaunch(widget.videos[index].youtubeUrl)) {
-                  launch(widget.videos[index].youtubeUrl);
+                } else if (await canLaunch(
+                    widget.videos.elementAt(index).youtubeUrl)) {
+                  launch(widget.videos.elementAt(index).youtubeUrl);
                 } else {
-                  throw 'Could not launch ${widget.videos[index].youtubeUrl}.';
+                  throw 'Could not launch ${widget.videos.elementAt(index).youtubeUrl}.';
                 }
               },
               splashFactory: InkRipple.splashFactory,
-              child: ListTile(
-                leading: _currentVideo == widget.videos[index].youtubeUrl
-                    ? IconButton(
-                        icon: FaIcon(FontAwesomeIcons.expand),
-                        onPressed: () => _toggleFullscreen(index),
-                      )
-                    : IconButton(
-                        icon: FaIcon(
-                          FontAwesomeIcons.youtube,
-                          color: widget.videos[index].restricted
-                              ? Colors.red
-                              : IconTheme.of(context).color,
+              child: Container(
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage(widget.videos.elementAt(index).imagePath),
+                    fit: BoxFit.cover,
+                    colorFilter: ColorFilter.mode(
+                      Theme.of(context).primaryColor.withOpacity(0.2),
+                      BlendMode.dstATop,
+                    ),
+                  ),
+                ),
+                child: ListTile(
+                  leading: _currentVideo ==
+                          widget.videos.elementAt(index).youtubeUrl
+                      ? IconButton(
+                          icon: FaIcon(FontAwesomeIcons.expand),
+                          onPressed: () => _toggleFullscreen(index),
+                        )
+                      : IconButton(
+                          icon: FaIcon(
+                            FontAwesomeIcons.youtube,
+                            color: widget.videos.elementAt(index).restricted
+                                ? Colors.red
+                                : IconTheme.of(context).color,
+                          ),
+                          onPressed: () async {
+                            if (await canLaunch(
+                                widget.videos.elementAt(index).youtubeUrl)) {
+                              launch(widget.videos.elementAt(index).youtubeUrl);
+                            } else {
+                              throw 'Unable to open video "${widget.videos.elementAt(index).youtubeUrl}"';
+                            }
+                          },
                         ),
-                        onPressed: () async {
-                          if (await canLaunch(
-                              widget.videos[index].youtubeUrl)) {
-                            launch(widget.videos[index].youtubeUrl);
-                          } else {
-                            throw 'Unable to open video "${widget.videos[index].youtubeUrl}"';
-                          }
-                        },
-                      ),
-                title: Text('${widget.videos[index].title}'),
-                subtitle: Text(widget.videos[index].subtitle),
-                trailing: Text(MaterialLocalizations.of(context)
-                    .formatCompactDate(
-                        DateTime.parse(widget.videos[index].date))),
+                  title: Text('${widget.videos.elementAt(index).title}'),
+                  subtitle: Text(widget.videos.elementAt(index).subtitle),
+                  trailing: Text(MaterialLocalizations.of(context)
+                      .formatCompactDate(
+                          DateTime.parse(widget.videos.elementAt(index).date))),
+                ),
               ),
             ),
           );

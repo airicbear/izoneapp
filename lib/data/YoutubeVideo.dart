@@ -4,6 +4,7 @@ class YoutubeVideo {
   final String date;
   final String youtubeUrl;
   final bool restricted;
+  final String imagePath;
 
   YoutubeVideo({
     this.title,
@@ -11,5 +12,6 @@ class YoutubeVideo {
     this.date,
     this.youtubeUrl,
     this.restricted = false,
+    this.imagePath,
   });
 }
