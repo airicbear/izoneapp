@@ -68,7 +68,7 @@ class YoutubeVideoListPageState extends State<YoutubeVideoListPage> {
             clipBehavior: ClipRRect(
               borderRadius: BorderRadius.circular(4.0),
             ).clipBehavior,
-            color: _currentVideoId == widget.videos.elementAt(index).url
+            color: _currentVideoId == widget.videos.elementAt(index).youtubeId
                 ? Theme.of(context).backgroundColor
                 : Theme.of(context).cardColor,
             child: InkWell(
@@ -116,7 +116,7 @@ class YoutubeVideoListPageState extends State<YoutubeVideoListPage> {
                   leading: _currentVideoId ==
                           widget.videos.elementAt(index).youtubeId
                       ? IconButton(
-                          icon: FaIcon(FontAwesomeIcons.expand),
+                          icon: const FaIcon(FontAwesomeIcons.expand),
                           onPressed: () => _toggleFullscreen(index),
                         )
                       : IconButton(
