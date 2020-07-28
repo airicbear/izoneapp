@@ -6,9 +6,13 @@ class AboutPage extends StatelessWidget {
   const AboutPage({Key key}) : super(key: key);
 
   Widget _izoneDescription(BuildContext context) {
-    return Padding(
+    return ListView.custom(
       padding: const EdgeInsets.all(12.0),
-      child: SelectableText(S.of(context).aboutIzone),
+      childrenDelegate: SliverChildListDelegate.fixed(
+        [
+          SelectableText(S.of(context).aboutIzone),
+        ],
+      ),
     );
   }
 
@@ -17,7 +21,7 @@ class AboutPage extends StatelessWidget {
     return Scaffold(
       body: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
-          if (constraints.maxWidth < 800) {
+          if (constraints.maxWidth < 600) {
             return Column(
               children: [
                 Flexible(
