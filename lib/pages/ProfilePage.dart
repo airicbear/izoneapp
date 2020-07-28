@@ -164,8 +164,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               _memberHeroGradient(context),
                             ],
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 24.0),
+                          SafeArea(
                             child: BackButton(
                               onPressed: () => Navigator.of(context).pop(),
                             ),
