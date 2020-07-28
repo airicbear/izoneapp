@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:izoneapp/data/Album.dart';
-import 'package:izoneapp/data/lyrics/bloom-iz/LyricsAyayaya.dart';
-import 'package:izoneapp/data/lyrics/bloom-iz/LyricsDreamlike.dart';
-import 'package:izoneapp/data/lyrics/bloom-iz/LyricsEyes.dart';
-import 'package:izoneapp/data/lyrics/bloom-iz/LyricsFiesta.dart';
+import 'package:izoneapp/data/lyrics/bloom-iz/lyrics_ayayaya.dart';
+import 'package:izoneapp/data/lyrics/bloom-iz/lyrics_dreamlike.dart';
+import 'package:izoneapp/data/lyrics/bloom-iz/lyrics_eyes.dart';
+import 'package:izoneapp/data/lyrics/bloom-iz/lyrics_fiesta.dart';
 import 'package:izoneapp/data/lyrics/bloom-iz/lyrics_so_curious.dart';
 
 class AlbumBloomIz extends Album {

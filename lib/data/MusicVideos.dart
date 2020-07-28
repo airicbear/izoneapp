@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:izoneapp/data/YoutubeVideo.dart';
-import 'package:izoneapp/data/lyrics/bloom-iz/AlbumBloomIz.dart';
+import 'package:izoneapp/data/lyrics/bloom-iz/album_bloom_iz.dart';
 import 'package:izoneapp/data/lyrics/buenos-aires/AlbumBuenosAires.dart';
 import 'package:izoneapp/data/lyrics/color-iz/AlbumColorIz.dart';
 import 'package:izoneapp/data/lyrics/heart-iz/AlbumHeartIz.dart';

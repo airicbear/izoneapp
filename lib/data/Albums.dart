@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:izoneapp/data/Album.dart';
 import 'package:izoneapp/data/lyrics/30-girls-6-concepts/Album30Girls6Concepts.dart';
-import 'package:izoneapp/data/lyrics/bloom-iz/AlbumBloomIz.dart';
+import 'package:izoneapp/data/lyrics/bloom-iz/album_bloom_iz.dart';
 import 'package:izoneapp/data/lyrics/buenos-aires/AlbumBuenosAires.dart';
 import 'package:izoneapp/data/lyrics/color-iz/AlbumColorIz.dart';
 import 'package:izoneapp/data/lyrics/final/AlbumFinal.dart';
