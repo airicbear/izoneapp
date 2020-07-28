@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:izoneapp/controllers/ScrollableAppBarScrollBehavior.dart';
 import 'package:izoneapp/data/AppPages.dart';
 import 'package:izoneapp/widgets/MediaButtons.dart';
@@ -102,6 +103,7 @@ class _AppPageViewState extends State<AppPageView> {
       ),
       body: PageView(
         onPageChanged: (index) {
+          SystemChrome.setPreferredOrientations(DeviceOrientation.values);
           setState(() {
             _page = AppPage.values.elementAt(index);
           });

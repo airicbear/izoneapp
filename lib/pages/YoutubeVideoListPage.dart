@@ -152,6 +152,12 @@ class YoutubeVideoListPageState extends State<YoutubeVideoListPage> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations(
+      [
+        DeviceOrientation.values
+            .elementAt(MediaQuery.of(context).orientation.index),
+      ],
+    );
     return Scaffold(
       body: LayoutBuilder(builder: (context, constraints) {
         if (constraints.maxWidth < 600) {
