@@ -54,8 +54,34 @@ class YoutubeVideoListPageState extends State<YoutubeVideoListPage> {
       padding: const EdgeInsets.all(12.0),
       color: Theme.of(context).primaryColor,
       child: Center(
-        child: Text(
-            'Select a video to watch.\n\nPress the Youtube icon to watch the video in the Youtube app. Press the fullscreen icon to show the video in fullscreen mode. Use your device\'s back button to exit fullscreen mode.\n\nAudio may persist if the video is not paused.\nRestricted videos are highlighted in red and will open the Youtube app by default.'),
+        child: RichText(
+          text: TextSpan(
+            style: TextStyle(
+              color: Theme.of(context).textTheme.bodyText1.color,
+            ),
+            children: [
+              TextSpan(
+                text: 'Select a video to watch.\n\n',
+              ),
+              TextSpan(
+                text:
+                    'Press the Youtube icon to watch the video in the Youtube app.\n\n',
+              ),
+              TextSpan(
+                text:
+                    'Videos highlighted in red will open the Youtube app due to content distribution restrictions.',
+                style: TextStyle(
+                  color: Color.lerp(
+                    Colors.red,
+                    Theme.of(context).textTheme.bodyText1.color,
+                    0.5,
+                  ),
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
