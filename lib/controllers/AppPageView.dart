@@ -14,12 +14,12 @@ class AppPageView extends StatefulWidget {
 class _AppPageViewState extends State<AppPageView> {
   PageController _pageController;
   ScrollController _appBarController;
-  AppPage _page = AppPage.HOME;
+  AppPage _page = AppPage.LYRICS;
 
   @override
   void initState() {
     super.initState();
-    _pageController = PageController();
+    _pageController = PageController(initialPage: _page.index);
     _appBarController = ScrollController();
   }
 
