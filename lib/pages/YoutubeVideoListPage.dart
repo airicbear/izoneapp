@@ -5,7 +5,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:izoneapp/data/YoutubeVideo.dart';
-import 'package:izoneapp/data/lyrics/oneiric-diary/AlbumOneiricDiary.dart';
 import 'package:izoneapp/pages/ViewYoutubeVideoPage.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -19,7 +18,7 @@ class YoutubeVideoListPage extends StatefulWidget {
 }
 
 class YoutubeVideoListPageState extends State<YoutubeVideoListPage> {
-  String _currentVideo = '';
+  String _currentVideoId = '';
 
   void _toggleFullscreen(int index) {
     SystemChrome.setEnabledSystemUIOverlays([]);
@@ -30,10 +29,10 @@ class YoutubeVideoListPageState extends State<YoutubeVideoListPage> {
         MaterialPageRoute(
           builder: (context) {
             // Stop current video and switch to fullscreen
-            _currentVideo = '';
+            _currentVideoId = '';
 
             return ViewYoutubeVideoPage(
-              youtubeUrl: widget.videos.elementAt(index).youtubeUrl,
+              youtubeUrl: widget.videos.elementAt(index).url,
             );
           },
         ),
@@ -43,9 +42,10 @@ class YoutubeVideoListPageState extends State<YoutubeVideoListPage> {
 
   Widget _videoPlaceholder() {
     try {
-      if ((Platform.isAndroid || Platform.isIOS) && _currentVideo.isNotEmpty) {
+      if ((Platform.isAndroid || Platform.isIOS) &&
+          _currentVideoId.isNotEmpty) {
         return HtmlWidget(
-          '<iframe width="560" height="315" src="$_currentVideo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+          '<iframe width="560" height="315" src="https://www.youtube.com/embed/$_currentVideoId" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
           webView: true,
         );
       }
@@ -68,7 +68,7 @@ class YoutubeVideoListPageState extends State<YoutubeVideoListPage> {
             clipBehavior: ClipRRect(
               borderRadius: BorderRadius.circular(4.0),
             ).clipBehavior,
-            color: _currentVideo == widget.videos.elementAt(index).youtubeUrl
+            color: _currentVideoId == widget.videos.elementAt(index).url
                 ? Theme.of(context).backgroundColor
                 : Theme.of(context).cardColor,
             child: InkWell(
@@ -77,33 +77,34 @@ class YoutubeVideoListPageState extends State<YoutubeVideoListPage> {
                   try {
                     if ((Platform.isAndroid || Platform.isIOS)) {
                       setState(() {
-                        _currentVideo =
-                            widget.videos.elementAt(index).youtubeUrl;
+                        _currentVideoId =
+                            widget.videos.elementAt(index).youtubeId;
                       });
                     } else if (await canLaunch(
-                        widget.videos.elementAt(index).youtubeUrl)) {
-                      launch(widget.videos.elementAt(index).youtubeUrl);
+                        widget.videos.elementAt(index).url)) {
+                      launch(widget.videos.elementAt(index).url);
                     }
                   } catch (e) {
                     // Web
-                    if (await canLaunch(
-                        widget.videos.elementAt(index).youtubeUrl)) {
-                      launch(widget.videos.elementAt(index).youtubeUrl);
+                    if (await canLaunch(widget.videos.elementAt(index).url)) {
+                      launch(widget.videos.elementAt(index).url);
                     }
                   }
                   // Restricted
                 } else if (await canLaunch(
-                    widget.videos.elementAt(index).youtubeUrl)) {
-                  launch(widget.videos.elementAt(index).youtubeUrl);
+                    widget.videos.elementAt(index).url)) {
+                  launch(widget.videos.elementAt(index).url);
                 } else {
-                  throw 'Could not launch ${widget.videos.elementAt(index).youtubeUrl}.';
+                  throw 'Could not launch ${widget.videos.elementAt(index).url}.';
                 }
               },
               splashFactory: InkRipple.splashFactory,
               child: Container(
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage(widget.videos.elementAt(index).imagePath),
+                    image: NetworkImage(
+                      widget.videos.elementAt(index).thumbnail,
+                    ),
                     fit: BoxFit.cover,
                     colorFilter: ColorFilter.mode(
                       Theme.of(context).primaryColor.withOpacity(0.2),
@@ -112,8 +113,8 @@ class YoutubeVideoListPageState extends State<YoutubeVideoListPage> {
                   ),
                 ),
                 child: ListTile(
-                  leading: _currentVideo ==
-                          widget.videos.elementAt(index).youtubeUrl
+                  leading: _currentVideoId ==
+                          widget.videos.elementAt(index).youtubeId
                       ? IconButton(
                           icon: FaIcon(FontAwesomeIcons.expand),
                           onPressed: () => _toggleFullscreen(index),
@@ -127,10 +128,10 @@ class YoutubeVideoListPageState extends State<YoutubeVideoListPage> {
                           ),
                           onPressed: () async {
                             if (await canLaunch(
-                                widget.videos.elementAt(index).youtubeUrl)) {
-                              launch(widget.videos.elementAt(index).youtubeUrl);
+                                widget.videos.elementAt(index).url)) {
+                              launch(widget.videos.elementAt(index).url);
                             } else {
-                              throw 'Unable to open video "${widget.videos.elementAt(index).youtubeUrl}"';
+                              throw 'Unable to open video "${widget.videos.elementAt(index).url}"';
                             }
                           },
                         ),

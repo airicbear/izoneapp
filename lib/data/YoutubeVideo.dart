@@ -2,16 +2,17 @@ class YoutubeVideo {
   final String title;
   final String subtitle;
   final String date;
-  final String youtubeUrl;
+  final String youtubeId;
   final bool restricted;
-  final String imagePath;
 
   YoutubeVideo({
     this.title,
     this.subtitle,
     this.date,
-    this.youtubeUrl,
+    this.youtubeId,
     this.restricted = false,
-    this.imagePath,
   });
+
+  get thumbnail => 'https://i.ytimg.com/vi/$youtubeId/sddefault.jpg';
+  get url => 'https://www.youtube.com/embed/$youtubeId';
 }
