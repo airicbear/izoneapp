@@ -19,5 +19,5 @@ abstract class Song {
 
   Song(this.context, {this.title, this.length, this.lyrics})
       : assert(lyrics.length > 0 && lineCountMatch(lyrics),
-            'Song lyrics must have matching number of lines.');
+            'Song lyrics must have matching number of lines. The song "$title" has line counts ${lyrics.values.map((e) => e.length)}.');
 }
