@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -15,27 +13,21 @@ class MediaLinkInfo {
 }
 
 class MediaLinks {
-  static _launchUrl(url) async {
+  static _launchUrl(url, {altUrl}) async {
     if (await canLaunch(url)) {
       await launch(url);
     } else {
-      throw 'Could not launch $url';
+      await launch(altUrl);
     }
   }
 
   static List<MediaLinkInfo> links = [
     MediaLinkInfo(
-      launch: () {
-        String url = 'https://www.facebook.com/official.izone';
-
-        try {
-          if (Platform.isAndroid) {
-            url =
-                'fb://facewebmodal/f?href=https://www.facebook.com/official.izone';
-          }
-        } catch (e) {}
-
-        _launchUrl(url);
+      launch: () async {
+        _launchUrl(
+          'fb://facewebmodal/f?href=https://www.facebook.com/official.izone',
+          altUrl: 'https://www.facebook.com/official.izone',
+        );
       },
       icon: FaIcon(FontAwesomeIcons.facebook),
       description: 'Facebook',
@@ -62,15 +54,10 @@ class MediaLinks {
     ),
     MediaLinkInfo(
         launch: () {
-          String url = 'https://channels.vlive.tv/C1B7AF/';
-
-          try {
-            if (Platform.isAndroid) {
-              url = 'globalv://channel?channelseq=C1B7AF';
-            }
-          } catch (e) {}
-
-          _launchUrl(url);
+          _launchUrl(
+            'globalv://channel?channelseq=C1B7AF',
+            altUrl: 'https://channels.vlive.tv/C1B7AF/',
+          );
         },
         icon: ImageIcon(AssetImage('assets/icons/vlive.png')),
         description: 'V Live'),
@@ -90,12 +77,6 @@ class MediaLinks {
           _launchUrl('https://music.apple.com/us/artist/iz-one/1440449616'),
       icon: FaIcon(FontAwesomeIcons.itunesNote),
       description: 'Apple Music',
-    ),
-    MediaLinkInfo(
-      launch: () => _launchUrl(
-          'https://play.google.com/music/r/m/Avt4ltg3radsfcc2gnggnvnsa4m?t=IZONE'),
-      icon: FaIcon(FontAwesomeIcons.googlePlay),
-      description: 'Google Play Music',
     ),
     MediaLinkInfo(
       launch: () => _launchUrl(
