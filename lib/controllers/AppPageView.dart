@@ -20,7 +20,8 @@ class _AppPageViewState extends State<AppPageView> {
   void initState() {
     super.initState();
     _pageController = PageController(initialPage: _page.index);
-    _appBarController = ScrollController();
+    _appBarController =
+        ScrollController(initialScrollOffset: _page.index * 50.0);
   }
 
   @override
@@ -44,7 +45,7 @@ class _AppPageViewState extends State<AppPageView> {
     );
   }
 
-  Widget _pageViewAppBar(BuildContext context) {
+  Widget _pageViewAppBar(BuildContext context, List<AppPageInfo> appPages) {
     return AppBar(
       title: ScrollConfiguration(
         behavior: ScrollableAppBarScrollBehavior(),
@@ -54,12 +55,8 @@ class _AppPageViewState extends State<AppPageView> {
           child: ButtonBar(
             alignment: MainAxisAlignment.start,
             children: List<Widget>.generate(
-              AppPages.pages(context, _pageController, _appBarController)
-                  .length,
-              (index) => _pageTitle(
-                  context,
-                  AppPages.pages(
-                      context, _pageController, _appBarController)[index]),
+              appPages.length,
+              (index) => _pageTitle(context, appPages.elementAt(index)),
             ),
           ),
         ),
@@ -72,25 +69,52 @@ class _AppPageViewState extends State<AppPageView> {
 
   @override
   Widget build(BuildContext context) {
+    List<AppPageInfo> _appPages = AppPages.pages(
+      context,
+      _pageController,
+      _appBarController,
+    );
     return Scaffold(
-      appBar: _pageViewAppBar(context),
+      appBar: _pageViewAppBar(context, _appPages),
+      drawer: Drawer(
+        child: ListView.builder(
+          itemBuilder: (context, index) {
+            AppPageInfo _appPage = _appPages.elementAt(index);
+            return InkWell(
+              onTap: () {
+                AppPages.goToPage(
+                  _appPage,
+                  _pageController,
+                  _appBarController,
+                );
+                Navigator.pop(context);
+              },
+              child: ListTile(
+                leading: _appPage.icon,
+                title: Text(
+                  _appPage.title,
+                ),
+              ),
+            );
+          },
+          itemCount: _appPages.length,
+        ),
+      ),
       body: PageView(
-        onPageChanged: (page) {
+        onPageChanged: (index) {
           setState(() {
-            _page = AppPage.values[page];
+            _page = AppPage.values.elementAt(index);
           });
           AppPages.scrollAppBarToPage(
-            AppPages.pages(context, _pageController, _appBarController)[page],
+            _appPages.elementAt(index),
             _appBarController,
           );
         },
         controller: _pageController,
         scrollDirection: Axis.horizontal,
         children: List.generate(
-          AppPages.pages(context, _pageController, _appBarController).length,
-          (index) =>
-              AppPages.pages(context, _pageController, _appBarController)[index]
-                  .page,
+          _appPages.length,
+          (index) => _appPages.elementAt(index).page,
         ),
       ),
       bottomNavigationBar: BottomAppBar(
