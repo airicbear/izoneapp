@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:izoneapp/data/member.dart';
 import 'package:izoneapp/pages/page_profile.dart';
+import 'package:izoneapp/widgets/gradient_member.dart';
 
 class MemberTile extends StatelessWidget {
   const MemberTile({Key key, this.member}) : super(key: key);
@@ -33,48 +34,48 @@ class MemberTile extends StatelessWidget {
         child: Column(
           children: [
             Expanded(
-              child: Hero(
-                tag: member.getImagePath(),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(12.0),
-                  child: Image(
-                    image: AssetImage(member.getImagePath()),
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: Row(
-                children: [
-                  Expanded(
-                    flex: 3,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(32.0),
+                child: Stack(
+                  alignment: Alignment.bottomCenter,
+                  children: [
+                    Stack(
+                      fit: StackFit.expand,
+                      alignment: Alignment.bottomCenter,
                       children: [
-                        Text(member.stageName),
-                        Text(
-                          '${MaterialLocalizations.of(context).formatCompactDate(DateTime.parse(member.dateOfBirth))} (${member.getAge()})',
-                          style: TextStyle(
-                            color: Theme.of(context).disabledColor,
-                          ),
+                        Image(
+                          image: AssetImage(member.getImagePath()),
+                          fit: BoxFit.cover,
                         ),
+                        MemberPictureGradient(member: member, beginY: 1.0),
                       ],
                     ),
-                  ),
-                  Expanded(
-                    child: Container(
-                      padding: const EdgeInsets.all(16.0),
-                      margin: const EdgeInsets.only(left: 12.0),
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.black),
-                        borderRadius: BorderRadius.circular(4.0),
-                        color: member.color,
+                    FittedBox(
+                      child: Column(
+                        children: [
+                          Text(
+                            member.stageName,
+                            style: TextStyle(
+                              fontSize: Theme.of(context)
+                                  .textTheme
+                                  .headline5
+                                  .fontSize,
+                            ),
+                          ),
+                          Text(
+                            MaterialLocalizations.of(context).formatShortDate(
+                              DateTime.parse(member.dateOfBirth),
+                            ),
+                            style: TextStyle(
+                              fontSize:
+                                  Theme.of(context).textTheme.caption.fontSize,
+                            ),
+                          )
+                        ],
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ],

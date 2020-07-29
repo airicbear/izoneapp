@@ -3,6 +3,7 @@ import 'package:izoneapp/pages/subpage_gallery_profile.dart';
 import 'package:izoneapp/pages/subpage_info_profile.dart';
 import 'package:izoneapp/data/member.dart';
 import 'package:izoneapp/pages/page_view_picture.dart';
+import 'package:izoneapp/widgets/gradient_member.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key key, @required this.member}) : super(key: key);
@@ -88,25 +89,6 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
-  Widget _memberHeroGradient(BuildContext context) {
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment(0.0, 0.8),
-          end: Alignment(0.0, 0.0),
-          colors: [
-            Color.lerp(
-              Theme.of(context).primaryColor,
-              widget.member.color,
-              0.45,
-            ),
-            Theme.of(context).primaryColor.withOpacity(0.1),
-          ],
-        ),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -139,7 +121,9 @@ class _ProfilePageState extends State<ProfilePage> {
                         fit: StackFit.expand,
                         children: [
                           _memberHero(context, 470.0),
-                          _memberHeroGradient(context),
+                          MemberPictureGradient(
+                            member: widget.member,
+                          ),
                         ],
                       ),
                     ),
@@ -161,7 +145,9 @@ class _ProfilePageState extends State<ProfilePage> {
                             fit: StackFit.expand,
                             children: [
                               _memberHero(context, 470.0),
-                              _memberHeroGradient(context),
+                              MemberPictureGradient(
+                                member: widget.member,
+                              ),
                             ],
                           ),
                           SafeArea(
