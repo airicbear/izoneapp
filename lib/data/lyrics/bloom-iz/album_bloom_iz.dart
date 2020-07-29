@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:izoneapp/data/album.dart';
 import 'package:izoneapp/data/lyrics/bloom-iz/lyrics_ayayaya.dart';
+import 'package:izoneapp/data/lyrics/bloom-iz/lyrics_destiny.dart';
 import 'package:izoneapp/data/lyrics/bloom-iz/lyrics_dreamlike.dart';
 import 'package:izoneapp/data/lyrics/bloom-iz/lyrics_eyes.dart';
 import 'package:izoneapp/data/lyrics/bloom-iz/lyrics_fiesta.dart';
@@ -21,6 +22,7 @@ class AlbumBloomIz extends Album {
             LyricsAyayaya(context),
             LyricsSoCurious(context),
             LyricsSpaceship(context),
+            LyricsDestiny(context),
           ],
         );
 
