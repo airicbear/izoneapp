@@ -30,27 +30,27 @@ class MediaLinks {
         );
       },
       icon: FaIcon(FontAwesomeIcons.facebook),
-      description: 'Facebook',
+      description: 'Facebook (@official.izone)',
     ),
     MediaLinkInfo(
       launch: () => _launchUrl('https://www.instagram.com/official_izone'),
       icon: FaIcon(FontAwesomeIcons.instagram),
-      description: 'Instagram',
+      description: 'Instagram (@official_izone)',
     ),
     MediaLinkInfo(
       launch: () => _launchUrl('https://twitter.com/official_izone'),
       icon: FaIcon(FontAwesomeIcons.twitter),
-      description: 'Twitter',
+      description: 'Twitter (@official_izone)',
     ),
     MediaLinkInfo(
       launch: () => _launchUrl('https://www.tiktok.com/@officializone_'),
       icon: FaIcon(FontAwesomeIcons.tiktok),
-      description: 'TikTok',
+      description: 'TikTok (@officializone_)',
     ),
     MediaLinkInfo(
       launch: () => _launchUrl('https://www.youtube.com/c/officialIZONE/'),
       icon: FaIcon(FontAwesomeIcons.youtube),
-      description: 'YouTube',
+      description: 'YouTube (c/officialIZONE)',
     ),
     MediaLinkInfo(
         launch: () {
@@ -60,7 +60,7 @@ class MediaLinks {
           );
         },
         icon: ImageIcon(AssetImage('assets/icons/vlive.png')),
-        description: 'V Live'),
+        description: 'V Live (C1B7AF)'),
     MediaLinkInfo(
       launch: () =>
           _launchUrl('https://open.spotify.com/artist/5r1tUTxVSgvBHnoDuDODPH'),

@@ -18,7 +18,7 @@ class DanceVideos {
         youtubeId: 'o3KQAKchUT8',
       ),
       YoutubeVideo(
-        title: 'Secret Story of the Swan',
+        title: S.of(context).secretStoryOfTheSwan,
         subtitle: 'STUDIO CHOOM performance',
         date: '2020-06-16',
         youtubeId: 'fXSXUKXuqu8',
@@ -48,7 +48,7 @@ class DanceVideos {
         youtubeId: 'vr9h-epSUZQ',
       ),
       YoutubeVideo(
-        title: 'Up',
+        title: S.of(context).up,
         subtitle: 'Dance practice',
         date: '2019-05-17',
         youtubeId: 'IsUVaQOj0fs',
@@ -90,7 +90,7 @@ class DanceVideos {
         youtubeId: 'h49TeJo4mK0',
       ),
       YoutubeVideo(
-        title: 'PICK ME',
+        title: S.of(context).pickMe,
         subtitle: 'Dance practice (12 ver.)',
         date: '2018-10-04',
         youtubeId: 'YGiLQUc8x5E',

@@ -65,11 +65,11 @@ class YoutubeVideoListPageState extends State<YoutubeVideoListPage> {
               ),
               TextSpan(
                 text:
-                    'Press the Youtube icon to watch the video in the Youtube app.\n\n',
+                    'Press the YouTube icon to watch the video in the YouTube app.\n\n',
               ),
               TextSpan(
                 text:
-                    'Videos highlighted in red will open the Youtube app due to content distribution restrictions.',
+                    'Videos highlighted in red will open the YouTube app due to content distribution restrictions.',
                 style: TextStyle(
                   color: Color.lerp(
                     Colors.red,
