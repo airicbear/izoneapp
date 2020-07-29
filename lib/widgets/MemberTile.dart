@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:izoneapp/data/member.dart';
-import 'package:izoneapp/pages/ProfilePage.dart';
+import 'package:izoneapp/pages/page_profile.dart';
 
 class MemberTile extends StatelessWidget {
   const MemberTile({Key key, this.member}) : super(key: key);

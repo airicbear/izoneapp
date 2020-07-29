@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:izoneapp/pages/ProfilePageGallery.dart';
-import 'package:izoneapp/pages/ProfilePageInfo.dart';
+import 'package:izoneapp/pages/subpage_gallery_profile.dart';
+import 'package:izoneapp/pages/subpage_info_profile.dart';
 import 'package:izoneapp/data/member.dart';
-import 'package:izoneapp/pages/ViewPicturePage.dart';
+import 'package:izoneapp/pages/page_view_picture.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key key, @required this.member}) : super(key: key);

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:izoneapp/pages/DisclaimerPage.dart';
+import 'package:izoneapp/pages/page_disclaimer.dart';
 import 'package:izoneapp/widgets/AboutDialog.dart';
 
 enum More { DISCLAIMER, ABOUT }

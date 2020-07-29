@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:izoneapp/pages/ViewPicturePage.dart';
+import 'package:izoneapp/pages/page_view_picture.dart';
 
 class GroupPicture extends StatelessWidget {
   const GroupPicture({Key key, this.imagePath}) : super(key: key);

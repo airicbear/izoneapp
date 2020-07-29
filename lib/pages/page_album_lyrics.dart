@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:izoneapp/data/album.dart';
 import 'package:izoneapp/data/song.dart';
-import 'package:izoneapp/pages/SongLyricsPage.dart';
-import 'package:izoneapp/pages/ViewPicturePage.dart';
+import 'package:izoneapp/pages/page_song_lyrics.dart';
+import 'package:izoneapp/pages/page_view_picture.dart';
 
 class AlbumLyricsPage extends StatelessWidget {
   const AlbumLyricsPage({Key key, @required this.album}) : super(key: key);

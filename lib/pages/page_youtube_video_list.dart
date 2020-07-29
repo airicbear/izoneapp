@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:izoneapp/data/youtube_video.dart';
-import 'package:izoneapp/pages/ViewYoutubeVideoPage.dart';
+import 'package:izoneapp/pages/page_view_youtube_video.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class YoutubeVideoListPage extends StatefulWidget {
