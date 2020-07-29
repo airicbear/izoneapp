@@ -64,13 +64,13 @@ class DisclaimerPage extends StatelessWidget {
                   onPressed: () => launch(
                       'https://www.youtube.com/results?search_query=iz%2Aone+color+coded+lyrics'),
                   icon: FaIcon(FontAwesomeIcons.youtube),
-                  label: Text('YouTube search: "IZ*ONE color coded lyrics"'),
+                  label: Text('YouTube'),
                 ),
                 FlatButton.icon(
                   onPressed: () => launch(
                       'https://translate.google.com/#view=home&op=translate&sl=ko&tl=en'),
                   icon: FaIcon(FontAwesomeIcons.language),
-                  label: Text('Google Translate: Korean to English'),
+                  label: Text('Google Translate'),
                 ),
                 FlatButton.icon(
                     onPressed: () =>
@@ -80,24 +80,24 @@ class DisclaimerPage extends StatelessWidget {
                 FlatButton.icon(
                   onPressed: () => launch('http://iz-one.co.kr/'),
                   icon: FaIcon(FontAwesomeIcons.globeAmericas),
-                  label: Text('The official IZ*ONE website'),
+                  label: Text('Official IZ*ONE website'),
                 ),
                 FlatButton.icon(
                   onPressed: () => launch('https://www.izone-official.com/'),
                   icon: FaIcon(FontAwesomeIcons.globeAmericas),
-                  label: Text('The official IZ*ONE Japan website'),
+                  label: Text('Official IZ*ONE Japan website'),
                 ),
                 FlatButton.icon(
                   onPressed: () =>
                       launch('https://kprofiles.com/izone-members-profile/'),
                   icon: FaIcon(FontAwesomeIcons.globeAmericas),
-                  label: Text('IZ*ONE Members Profile at KProfiles.com'),
+                  label: Text('KProfiles.com'),
                 ),
                 FlatButton.icon(
                   onPressed: () =>
                       launch('https://kpop.fandom.com/wiki/IZ*ONE'),
                   icon: FaIcon(FontAwesomeIcons.globeAmericas),
-                  label: Text('IZ*ONE FANDOM KPOP Wiki Page'),
+                  label: Text('FANDOM KPOP Wiki Page'),
                 ),
                 FlatButton.icon(
                   onPressed: () => launch('https://dbkpop.com/group/izone'),
