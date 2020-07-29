@@ -5,6 +5,7 @@ import 'package:izoneapp/data/lyrics/bloom-iz/lyrics_dreamlike.dart';
 import 'package:izoneapp/data/lyrics/bloom-iz/lyrics_eyes.dart';
 import 'package:izoneapp/data/lyrics/bloom-iz/lyrics_fiesta.dart';
 import 'package:izoneapp/data/lyrics/bloom-iz/lyrics_so_curious.dart';
+import 'package:izoneapp/data/lyrics/bloom-iz/lyrics_spaceship.dart';
 
 class AlbumBloomIz extends Album {
   AlbumBloomIz(BuildContext context)
@@ -19,6 +20,7 @@ class AlbumBloomIz extends Album {
             LyricsDreamlike(context),
             LyricsAyayaya(context),
             LyricsSoCurious(context),
+            LyricsSpaceship(context),
           ],
         );
 
