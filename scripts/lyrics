@@ -1,0 +1,22 @@
+#!/usr/bin/python3
+#
+# Print song lyrics for any website 
+# where there exists <div class="lyrics">,
+# however is primarily intended for https://genius.com/
+#
+# Usage:
+#   alias xclip="xclip -selection c"
+#   ./lyrics [url] | xclip
+#
+
+from bs4 import BeautifulSoup
+import sys
+import requests
+
+if __name__ == '__main__':
+    url = sys.argv[1]
+    r = requests.get(url)
+    html = r.text
+    soup = BeautifulSoup(html, 'html.parser')
+    lyrics = soup.find('div', class_='lyrics').get_text()
+    print(lyrics)
