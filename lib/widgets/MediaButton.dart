@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:izoneapp/data/MediaLinks.dart';
+import 'package:izoneapp/data/media_links.dart';
 
 class MediaButton extends StatelessWidget {
   const MediaButton({Key key, this.link}) : super(key: key);

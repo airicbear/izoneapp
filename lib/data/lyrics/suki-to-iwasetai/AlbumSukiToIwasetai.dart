@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:izoneapp/data/Album.dart';
+import 'package:izoneapp/data/album.dart';
 import 'package:izoneapp/data/lyrics/suki-to-iwasetai/LyricsSukiToIwasetai.dart';
 
 class AlbumSukiToIwasetai extends Album {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:izoneapp/controllers/LyricsPageView.dart';
-import 'package:izoneapp/data/Album.dart';
+import 'package:izoneapp/data/album.dart';
 
 class AlbumLyricsTile extends StatelessWidget {
   const AlbumLyricsTile({Key key, this.album}) : super(key: key);

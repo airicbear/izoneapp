@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:izoneapp/data/Album.dart';
+import 'package:izoneapp/data/album.dart';
 import 'package:izoneapp/data/lyrics/pick-me/LyricsPickMe.dart';
 
 class AlbumPickMe extends Album {

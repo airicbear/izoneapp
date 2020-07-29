@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:izoneapp/pages/ProfilePageGallery.dart';
 import 'package:izoneapp/pages/ProfilePageInfo.dart';
-import 'package:izoneapp/data/Member.dart';
+import 'package:izoneapp/data/member.dart';
 import 'package:izoneapp/pages/ViewPicturePage.dart';
 
 class ProfilePage extends StatefulWidget {

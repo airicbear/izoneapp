@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:izoneapp/data/Song.dart';
+import 'package:izoneapp/data/song.dart';
 
 abstract class Album {
   final BuildContext context;

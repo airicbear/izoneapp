@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:izoneapp/data/Member.dart';
+import 'package:izoneapp/data/member.dart';
 
 class ProfilePageInfo extends StatelessWidget {
   const ProfilePageInfo({Key key, @required this.member}) : super(key: key);

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:izoneapp/data/Song.dart';
+import 'package:izoneapp/data/song.dart';
 
 class LyricsSukiToIwasetai extends Song {
   LyricsSukiToIwasetai(BuildContext context)

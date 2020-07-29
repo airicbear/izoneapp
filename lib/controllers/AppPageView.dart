@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:izoneapp/controllers/ScrollableAppBarScrollBehavior.dart';
-import 'package:izoneapp/data/AppPages.dart';
+import 'package:izoneapp/data/app_pages.dart';
 import 'package:izoneapp/widgets/MediaButtons.dart';
 import 'package:izoneapp/widgets/AppMoreButton.dart';
 

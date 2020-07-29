@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:izoneapp/data/Song.dart';
+import 'package:izoneapp/data/song.dart';
 import 'package:izoneapp/generated/l10n.dart';
 
 class LyricsLaVieEnRose extends Song {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
-import 'package:izoneapp/data/Song.dart';
+import 'package:izoneapp/data/song.dart';
 import 'package:countdown_flutter/countdown_flutter.dart';
 import 'package:countdown_flutter/utils.dart';
 

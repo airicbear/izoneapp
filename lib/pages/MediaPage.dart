@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:izoneapp/data/MediaLinks.dart';
+import 'package:izoneapp/data/media_links.dart';
 import 'package:izoneapp/widgets/MediaLinkTile.dart';
 
 class MediaPage extends StatelessWidget {

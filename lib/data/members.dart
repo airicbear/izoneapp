@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:izoneapp/data/Member.dart';
+import 'package:izoneapp/data/member.dart';
 
 class Members {
   static List<Member> members = [

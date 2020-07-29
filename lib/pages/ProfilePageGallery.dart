@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:izoneapp/data/Member.dart';
+import 'package:izoneapp/data/member.dart';
 import 'package:izoneapp/widgets/GalleryTile.dart';
 
 class ProfilePageGallery extends StatelessWidget {

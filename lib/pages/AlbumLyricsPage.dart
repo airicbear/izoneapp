@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:izoneapp/data/Album.dart';
-import 'package:izoneapp/data/Song.dart';
+import 'package:izoneapp/data/album.dart';
+import 'package:izoneapp/data/song.dart';
 import 'package:izoneapp/pages/SongLyricsPage.dart';
 import 'package:izoneapp/pages/ViewPicturePage.dart';
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:izoneapp/controllers/ScrollableAppBarScrollBehavior.dart';
-import 'package:izoneapp/data/Album.dart';
-import 'package:izoneapp/data/Albums.dart';
+import 'package:izoneapp/data/album.dart';
+import 'package:izoneapp/data/albums.dart';
 import 'package:izoneapp/pages/AlbumLyricsPage.dart';
 
 class LyricsPageView extends StatefulWidget {

@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:izoneapp/data/YoutubeVideo.dart';
+import 'package:izoneapp/data/youtube_video.dart';
 import 'package:izoneapp/generated/l10n.dart';
 
 class MusicVideos {

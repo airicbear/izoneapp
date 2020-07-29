@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:izoneapp/data/Album.dart';
+import 'package:izoneapp/data/album.dart';
 import 'package:izoneapp/data/lyrics/30-girls-6-concepts/LyricsRollinRollin.dart';
 
 class Album30Girls6Concepts extends Album {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:izoneapp/data/Album.dart';
+import 'package:izoneapp/data/album.dart';
 import 'package:izoneapp/data/lyrics/oneiric-diary/LyricsMerryGoRound.dart';
 import 'package:izoneapp/data/lyrics/oneiric-diary/LyricsMerryGoRoundJapanese.dart';
 import 'package:izoneapp/data/lyrics/oneiric-diary/LyricsPretty.dart';

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:izoneapp/data/Members.dart';
+import 'package:izoneapp/data/members.dart';
 import 'package:izoneapp/widgets/MemberTile.dart';
 
 class MembersPage extends StatelessWidget {
