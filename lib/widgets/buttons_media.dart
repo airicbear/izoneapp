@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:izoneapp/data/media_links.dart';
-import 'package:izoneapp/widgets/MediaButton.dart';
+import 'package:izoneapp/widgets/button_media.dart';
 
 class MediaButtons extends StatelessWidget {
   @override

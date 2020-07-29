@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:izoneapp/generated/l10n.dart';
-import 'package:izoneapp/widgets/GroupPicture.dart';
+import 'package:izoneapp/widgets/group_picture.dart';
 
 class AboutPage extends StatelessWidget {
   const AboutPage({Key key}) : super(key: key);

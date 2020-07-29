@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:izoneapp/data/media_links.dart';
-import 'package:izoneapp/widgets/MediaLinkTile.dart';
+import 'package:izoneapp/widgets/list_tile_media.dart';
 
 class MediaPage extends StatelessWidget {
   const MediaPage({Key key}) : super(key: key);

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:izoneapp/controllers/scrollable_app_bar_scroll_behavior.dart';
 import 'package:izoneapp/data/app_pages.dart';
-import 'package:izoneapp/widgets/MediaButtons.dart';
-import 'package:izoneapp/widgets/AppMoreButton.dart';
+import 'package:izoneapp/widgets/buttons_media.dart';
+import 'package:izoneapp/widgets/button_app_more.dart';
 
 class AppPageView extends StatefulWidget {
   AppPageView({Key key}) : super(key: key);

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:izoneapp/data/app_pages.dart';
-import 'package:izoneapp/widgets/GroupPicture.dart';
+import 'package:izoneapp/widgets/group_picture.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key key, this.pageController, this.appBarController})

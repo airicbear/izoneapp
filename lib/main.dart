@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:izoneapp/controllers/AppPageView.dart';
+import 'package:izoneapp/controllers/app_page_view.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:izoneapp/generated/l10n.dart';
 

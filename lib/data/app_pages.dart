@@ -8,7 +8,7 @@ import 'package:izoneapp/pages/page_home.dart';
 import 'package:izoneapp/pages/page_lyrics.dart';
 import 'package:izoneapp/pages/page_media.dart';
 import 'package:izoneapp/pages/page_members.dart';
-import 'package:izoneapp/pages/YoutubeVideoListPage.dart';
+import 'package:izoneapp/pages/page_youtube_video_list.dart';
 
 enum AppPage { HOME, ABOUT, MEMBERS, LYRICS, DANCE, MV, MEDIA }
 
