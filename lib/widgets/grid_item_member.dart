@@ -16,71 +16,69 @@ class MemberTile extends StatelessWidget {
     );
   }
 
+  Widget _tileLabel(BuildContext context) {
+    return FittedBox(
+      child: Column(
+        children: [
+          Text(
+            member.stageName,
+            style: TextStyle(
+              fontSize: Theme.of(context).textTheme.headline5.fontSize,
+            ),
+          ),
+          Text(
+            MaterialLocalizations.of(context).formatShortDate(
+              DateTime.parse(member.dateOfBirth),
+            ),
+            style: TextStyle(
+              fontSize: Theme.of(context).textTheme.caption.fontSize,
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: InkResponse(
-        highlightColor: member.color.withOpacity(0.6),
-        onTap: () {
-          Navigator.of(context).push(_memberRoute(context, member));
-        },
-        highlightShape: BoxShape.rectangle,
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(32.0),
-          topRight: Radius.circular(32.0),
-          bottomLeft: Radius.circular(10.0),
-          bottomRight: Radius.circular(10.0),
-        ),
-        child: Column(
-          children: [
-            Expanded(
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(32.0),
-                child: Stack(
+    return Column(
+      children: [
+        Expanded(
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(12.0),
+            child: Stack(
+              alignment: Alignment.bottomCenter,
+              children: [
+                Stack(
+                  fit: StackFit.expand,
                   alignment: Alignment.bottomCenter,
                   children: [
-                    Stack(
-                      fit: StackFit.expand,
-                      alignment: Alignment.bottomCenter,
-                      children: [
-                        Image(
-                          image: AssetImage(member.getImagePath()),
-                          fit: BoxFit.cover,
-                        ),
-                        MemberPictureGradient(member: member, beginY: 1.0),
-                      ],
+                    Image(
+                      image: AssetImage(member.getImagePath()),
+                      fit: BoxFit.cover,
                     ),
-                    FittedBox(
-                      child: Column(
-                        children: [
-                          Text(
-                            member.stageName,
-                            style: TextStyle(
-                              fontSize: Theme.of(context)
-                                  .textTheme
-                                  .headline5
-                                  .fontSize,
-                            ),
-                          ),
-                          Text(
-                            MaterialLocalizations.of(context).formatShortDate(
-                              DateTime.parse(member.dateOfBirth),
-                            ),
-                            style: TextStyle(
-                              fontSize:
-                                  Theme.of(context).textTheme.caption.fontSize,
-                            ),
-                          )
-                        ],
+                    MemberPictureGradient(member: member, beginY: 1.0),
+                    Material(
+                      color: Colors.transparent,
+                      child: InkWell(
+                        onTap: () => Navigator.of(context).push(
+                          _memberRoute(context, member),
+                        ),
+                        splashColor: Color.lerp(
+                          member.color.withOpacity(0.6),
+                          Theme.of(context).primaryColor,
+                          0.25,
+                        ),
                       ),
                     ),
                   ],
                 ),
-              ),
+                _tileLabel(context),
+              ],
             ),
-          ],
+          ),
         ),
-      ),
+      ],
     );
   }
 }

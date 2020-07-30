@@ -24,7 +24,7 @@ class AlbumLyricsTile extends StatelessWidget {
           Navigator.of(context).push(_albumLyricsRoute(context, album));
         },
         highlightShape: BoxShape.rectangle,
-        borderRadius: BorderRadius.circular(32.0),
+        borderRadius: BorderRadius.circular(12.0),
         child: Column(
           children: [
             Expanded(
