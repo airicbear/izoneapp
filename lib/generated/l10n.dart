@@ -172,6 +172,16 @@ class S {
       args: [],
     );
   }
+
+  /// `SOMEDAY`
+  String get someday {
+    return Intl.message(
+      'SOMEDAY',
+      name: 'someday',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

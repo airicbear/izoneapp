@@ -32,6 +32,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "members" : MessageLookupByLibrary.simpleMessage("회원"),
     "pickMe" : MessageLookupByLibrary.simpleMessage("내꺼야 (Pick Me)"),
     "secretStoryOfTheSwan" : MessageLookupByLibrary.simpleMessage("환상동화"),
+    "someday" : MessageLookupByLibrary.simpleMessage("언젠가 우리의 밤도 지나가겠죠 (SOMEDAY)"),
     "up" : MessageLookupByLibrary.simpleMessage("하늘 위로"),
     "violeta" : MessageLookupByLibrary.simpleMessage("비올레타"),
     "weTogether" : MessageLookupByLibrary.simpleMessage("앞으로 잘 부탁해")
