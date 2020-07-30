@@ -9,6 +9,12 @@ class ViewYoutubeVideoPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations(
+      [
+        DeviceOrientation.landscapeLeft,
+        DeviceOrientation.landscapeRight,
+      ],
+    );
     return WillPopScope(
       onWillPop: () {
         SystemChrome.setPreferredOrientations(DeviceOrientation.values);
