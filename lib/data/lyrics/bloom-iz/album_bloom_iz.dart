@@ -6,6 +6,7 @@ import 'package:izoneapp/data/lyrics/bloom-iz/lyrics_destiny.dart';
 import 'package:izoneapp/data/lyrics/bloom-iz/lyrics_dreamlike.dart';
 import 'package:izoneapp/data/lyrics/bloom-iz/lyrics_eyes.dart';
 import 'package:izoneapp/data/lyrics/bloom-iz/lyrics_fiesta.dart';
+import 'package:izoneapp/data/lyrics/bloom-iz/lyrics_open_your_eyes.dart';
 import 'package:izoneapp/data/lyrics/bloom-iz/lyrics_pink_blusher.dart';
 import 'package:izoneapp/data/lyrics/bloom-iz/lyrics_so_curious.dart';
 import 'package:izoneapp/data/lyrics/bloom-iz/lyrics_someday.dart';
@@ -31,6 +32,7 @@ class AlbumBloomIz extends Album {
             LyricsDaydream(context),
             LyricsPinkBlusher(context),
             LyricsSomeday(context),
+            LyricsOpenYourEyes(context),
           ],
         );
 
