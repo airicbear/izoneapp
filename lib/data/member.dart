@@ -31,17 +31,24 @@ class Member {
     this.galleryUrlList,
   });
 
-  int getAge() {
-    return DateTime.now().difference(DateTime.parse(this.dateOfBirth)).inDays ~/
-        365;
-  }
+  DateTime get dateTimeOfBirth => DateTime.parse(dateOfBirth);
 
-  String getImagePath() {
-    return 'assets/images/oneiric-diary/official-photo-4-${this.stageName.toLowerCase()}.jpg';
-  }
+  /// Get birthday for current year
+  DateTime get birthday => DateTime.parse(
+      '${DateTime.now().year}-${dateTimeOfBirth.month < 10 ? "0" : ""}${dateTimeOfBirth.month}-${dateTimeOfBirth.day < 10 ? "0" : ""}${dateTimeOfBirth.day}');
 
-  String getHeightInFeetInches() {
-    var inches = this.height * 0.3937; // cm to inches
-    return '${inches ~/ 12}\' ${(inches % 12).floor()}\"';
-  }
+  /// Consider it to be birthday time if their birthday is within 3 days
+  bool get isBirthday => DateTime.now().difference(birthday).inDays.abs() < 3;
+
+  /// Get member's age in years, not Korean age
+  int get age => DateTime.now().difference(dateTimeOfBirth).inDays ~/ 365;
+
+  String get imagePath =>
+      'assets/images/oneiric-diary/official-photo-4-${this.stageName.toLowerCase()}.jpg';
+
+  /// Assuming the member's height is given in cm, convert it to inches
+  double get heightInInches => height * 0.3937;
+
+  String get heightInFeetInches =>
+      '${heightInInches ~/ 12}\' ${(heightInInches % 12).floor()}\"';
 }

@@ -21,7 +21,7 @@ class MemberTile extends StatelessWidget {
       child: Column(
         children: [
           Text(
-            member.stageName,
+            '${member.stageName}${member.isBirthday ? " 🎂" : ""}',
             style: TextStyle(
               fontSize: Theme.of(context).textTheme.headline5.fontSize,
             ),
@@ -54,7 +54,7 @@ class MemberTile extends StatelessWidget {
                   alignment: Alignment.bottomCenter,
                   children: [
                     Image(
-                      image: AssetImage(member.getImagePath()),
+                      image: AssetImage(member.imagePath),
                       fit: BoxFit.cover,
                     ),
                     MemberPictureGradient(member: member, beginY: 1.0),

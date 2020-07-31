@@ -71,7 +71,7 @@ class _ProfilePageState extends State<ProfilePage> {
           MaterialPageRoute(
             builder: (context) {
               return ViewPicturePage(
-                memberImagePath: widget.member.getImagePath(),
+                memberImagePath: widget.member.imagePath,
                 color: widget.member.color,
               );
             },
@@ -79,9 +79,9 @@ class _ProfilePageState extends State<ProfilePage> {
         );
       },
       child: Hero(
-        tag: widget.member.getImagePath(),
+        tag: widget.member.imagePath,
         child: Image(
-          image: AssetImage(widget.member.getImagePath()),
+          image: AssetImage(widget.member.imagePath),
           fit: BoxFit.cover,
           height: height,
         ),

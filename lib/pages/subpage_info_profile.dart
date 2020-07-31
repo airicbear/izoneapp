@@ -14,7 +14,7 @@ class ProfilePageInfo extends StatelessWidget {
         'Date of birth',
         '${MaterialLocalizations.of(context).formatFullDate(DateTime.parse(member.dateOfBirth))}'
       ],
-      ['Age', '${member.getAge()} years old'],
+      ['Age', '${member.age} years old'],
       ['Birthplace', member.birthplace],
       ['Company', member.company],
       [
@@ -34,7 +34,7 @@ class ProfilePageInfo extends StatelessWidget {
           ],
         ),
       ],
-      ['Height', '≈ ${member.height} cm (${member.getHeightInFeetInches()})'],
+      ['Height', '≈ ${member.height} cm (${member.heightInFeetInches})'],
       ['Blood type', member.bloodType == null ? 'Unknown' : member.bloodType],
     ];
 
