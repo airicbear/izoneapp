@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:izoneapp/data/media_content.dart';
 import 'package:izoneapp/data/youtube_video.dart';
 import 'package:izoneapp/generated/l10n.dart';
 
-class YoutubeVideos {
+class YoutubeVideos extends MediaContent<YoutubeVideo> {
   static List<YoutubeVideo> _videos;
   final bool sorted;
 
+  @override
   List<YoutubeVideo> tagged(List<String> tags) {
     return _videos.where((video) {
       bool match = true;
