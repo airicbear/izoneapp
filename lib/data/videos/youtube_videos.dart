@@ -3,21 +3,19 @@ import 'package:izoneapp/data/media_content.dart';
 import 'package:izoneapp/data/youtube_video.dart';
 import 'package:izoneapp/generated/l10n.dart';
 
-class YoutubeVideos extends MediaContent<YoutubeVideo> {
+class YoutubeVideos implements MediaContent<YoutubeVideo> {
   static List<YoutubeVideo> _videos;
   final bool sorted;
 
   @override
   List<YoutubeVideo> tagged(List<String> tags) {
     return _videos.where((video) {
-      bool match = true;
-      tags.forEach((tag) {
+      for (final tag in tags) {
         if (!video.tags.contains(tag)) {
-          match = false;
-          return match;
+          return false;
         }
-      });
-      return match;
+      }
+      return true;
     }).toList();
   }
 
