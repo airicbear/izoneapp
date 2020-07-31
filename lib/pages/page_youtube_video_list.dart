@@ -164,8 +164,7 @@ class YoutubeVideoListPageState extends State<YoutubeVideoListPage> {
                   title: Text('${widget.videos.elementAt(index).title}'),
                   subtitle: Text(widget.videos.elementAt(index).subtitle),
                   trailing: Text(MaterialLocalizations.of(context)
-                      .formatCompactDate(
-                          DateTime.parse(widget.videos.elementAt(index).date))),
+                      .formatCompactDate(widget.videos.elementAt(index).date)),
                 ),
               ),
             ),

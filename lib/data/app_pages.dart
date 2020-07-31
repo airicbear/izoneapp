@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:izoneapp/data/dance_videos.dart';
-import 'package:izoneapp/data/music_videos.dart';
+import 'package:izoneapp/data/videos/youtube_videos.dart';
 import 'package:izoneapp/generated/l10n.dart';
 import 'package:izoneapp/pages/page_about.dart';
 import 'package:izoneapp/pages/page_home.dart';
@@ -71,14 +70,18 @@ class AppPages {
         longTitle: 'Dance videos',
         index: AppPage.DANCE.index,
         icon: FaIcon(FontAwesomeIcons.video),
-        page: YoutubeVideoListPage(videos: DanceVideos.videos(context)),
+        page: YoutubeVideoListPage(
+          videos: YoutubeVideos(context).tagged(['dance']),
+        ),
       ),
       AppPageInfo(
         title: 'MV',
         longTitle: 'Music videos',
         index: AppPage.MV.index,
         icon: FaIcon(FontAwesomeIcons.film),
-        page: YoutubeVideoListPage(videos: MusicVideos.videos(context)),
+        page: YoutubeVideoListPage(
+          videos: YoutubeVideos(context).tagged(['mv']),
+        ),
       ),
       AppPageInfo(
         title: S.of(context).media,
