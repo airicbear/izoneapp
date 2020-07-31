@@ -25,7 +25,7 @@ class IzonePictures implements MediaContent<IzonePicture> {
 
   static Future<List<IzonePicture>> search(String query) async {
     final response = await http.get(
-        'https://dbkpop.com/wp-json/wp/v2/media?tags=$izoneId&search=$query');
+        'https://dbkpop.com/wp-json/wp/v2/media?tags=$izoneId&search=$query&per_page=100');
 
     if (response.statusCode == 200) {
       return IzonePicture.fromJsonList(json.decode(response.body));

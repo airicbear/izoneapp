@@ -18,14 +18,16 @@ class ProfilePageGallery extends StatefulWidget {
 
 class _ProfilePageGalleryState extends State<ProfilePageGallery> {
   Future<List<IzonePicture>> _pictures;
-  int _numPictures = 10;
+  int _numPictures = 0;
 
   @override
   void initState() {
     super.initState();
     _pictures = IzonePictures.search(widget.member.fullName);
     _pictures.then((value) {
-      _numPictures = value.length;
+      setState(() {
+        _numPictures = value.length;
+      });
       return;
     });
   }
