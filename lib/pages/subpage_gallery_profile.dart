@@ -9,7 +9,10 @@ class ProfilePageGallery extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverList(
+    return SliverGrid(
+      gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+        maxCrossAxisExtent: 512.0 / 3.0,
+      ),
       delegate: SliverChildBuilderDelegate(
         (context, index) => GalleryTile(
           url: member.galleryUrlList.elementAt(index),
