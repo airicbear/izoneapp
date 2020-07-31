@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:izoneapp/data/album.dart';
-import 'package:izoneapp/data/lyrics/heart-iz/LyricsVioleta.dart';
+import 'package:izoneapp/data/lyrics/heart-iz/lyrics_violeta.dart';
 
 class AlbumHeartIz extends Album {
   AlbumHeartIz(BuildContext context)

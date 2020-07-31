@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:izoneapp/data/album.dart';
-import 'package:izoneapp/data/lyrics/suki-to-iwasetai/LyricsSukiToIwasetai.dart';
+import 'package:izoneapp/data/lyrics/suki-to-iwasetai/lyrics_suki_to_iwasetai.dart';
 
 class AlbumSukiToIwasetai extends Album {
   AlbumSukiToIwasetai(BuildContext context)

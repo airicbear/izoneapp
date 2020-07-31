@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:izoneapp/data/album.dart';
-import 'package:izoneapp/data/lyrics/oneiric-diary/LyricsMerryGoRound.dart';
-import 'package:izoneapp/data/lyrics/oneiric-diary/LyricsMerryGoRoundJapanese.dart';
-import 'package:izoneapp/data/lyrics/oneiric-diary/LyricsPretty.dart';
-import 'package:izoneapp/data/lyrics/oneiric-diary/LyricsRococo.dart';
-import 'package:izoneapp/data/lyrics/oneiric-diary/LyricsSecretStoryOfTheSwan.dart';
-import 'package:izoneapp/data/lyrics/oneiric-diary/LyricsSecretStoryOfTheSwanJapanese.dart';
-import 'package:izoneapp/data/lyrics/oneiric-diary/LyricsWelcome.dart';
-import 'package:izoneapp/data/lyrics/oneiric-diary/LyricsWithOne.dart';
+import 'package:izoneapp/data/lyrics/oneiric-diary/lyrics_merry_go_round.dart';
+import 'package:izoneapp/data/lyrics/oneiric-diary/lyrics_merry_go_round_japanese.dart';
+import 'package:izoneapp/data/lyrics/oneiric-diary/lyrics_pretty.dart';
+import 'package:izoneapp/data/lyrics/oneiric-diary/lyrics_rococo.dart';
+import 'package:izoneapp/data/lyrics/oneiric-diary/lyrics_secret_story_of_the_swan.dart';
+import 'package:izoneapp/data/lyrics/oneiric-diary/lyrics_secret_story_of_the_swan_japanese.dart';
+import 'package:izoneapp/data/lyrics/oneiric-diary/lyrics_welcome.dart';
+import 'package:izoneapp/data/lyrics/oneiric-diary/lyrics_with_one.dart';
 
 class AlbumOneiricDiary extends Album {
   AlbumOneiricDiary(BuildContext context)

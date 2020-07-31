@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:izoneapp/data/album.dart';
-import 'package:izoneapp/data/lyrics/buenos-aires/LyricsBuenosAires.dart';
+import 'package:izoneapp/data/lyrics/buenos-aires/lyrics_buenos_aires.dart';
 
 class AlbumBuenosAires extends Album {
   AlbumBuenosAires(BuildContext context)

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:izoneapp/data/album.dart';
-import 'package:izoneapp/data/lyrics/color-iz/LyricsLaVieEnRose.dart';
+import 'package:izoneapp/data/lyrics/color-iz/lyrics_la_vie_en_rose.dart';
 
 class AlbumColorIz extends Album {
   AlbumColorIz(BuildContext context)

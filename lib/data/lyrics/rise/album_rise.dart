@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:izoneapp/data/album.dart';
-import 'package:izoneapp/data/lyrics/rise/LyricsRise.dart';
+import 'package:izoneapp/data/lyrics/rise/lyrics_rise.dart';
 
 class AlbumRise extends Album {
   AlbumRise(BuildContext context)

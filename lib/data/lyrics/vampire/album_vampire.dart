@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:izoneapp/data/album.dart';
-import 'package:izoneapp/data/lyrics/vampire/LyricsVampire.dart';
+import 'package:izoneapp/data/lyrics/vampire/lyrics_vampire.dart';
 
 class AlbumVampire extends Album {
   AlbumVampire(BuildContext context)

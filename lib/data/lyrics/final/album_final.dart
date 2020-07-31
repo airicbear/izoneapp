@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:izoneapp/data/album.dart';
-import 'package:izoneapp/data/lyrics/final/LyricsWeTogether.dart';
+import 'package:izoneapp/data/lyrics/final/lyrics_we_together.dart';
 
 class AlbumFinal extends Album {
   AlbumFinal(BuildContext context)
