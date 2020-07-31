@@ -33,6 +33,7 @@ dependencies:
   intl_translation: ^0.17.10
   flutter_widget_from_html: ^0.4.2
   countdown_flutter: ^0.1.2
+  http: ^0.12.2
   # cached_network_image: ^2.2.0+1
 
   # The following adds the Cupertino Icons font to your application.

@@ -1,8 +1,12 @@
+import 'dart:convert';
+
 import 'package:izoneapp/data/izone_picture.dart';
 import 'package:izoneapp/data/media_content.dart';
 import 'package:izoneapp/data/members/members.dart';
+import 'package:http/http.dart' as http;
 
 class IzonePictures implements MediaContent<IzonePicture> {
+  static const izoneId = 127;
   static List<IzonePicture> _pictures;
 
   @override
@@ -17,6 +21,17 @@ class IzonePictures implements MediaContent<IzonePicture> {
     }).toList();
     _taggedPictures.sort((a, b) => b.date.compareTo(a.date));
     return _taggedPictures;
+  }
+
+  static Future<List<IzonePicture>> search(String query) async {
+    final response = await http.get(
+        'https://dbkpop.com/wp-json/wp/v2/media?tags=$izoneId&search=$query');
+
+    if (response.statusCode == 200) {
+      return IzonePicture.fromJsonList(json.decode(response.body));
+    } else {
+      throw Exception('Failed to get picture from dbkpop.com.');
+    }
   }
 
   static List<IzonePicture> oneiricDiaryPictures(number, ver) {

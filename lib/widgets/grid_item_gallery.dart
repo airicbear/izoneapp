@@ -47,7 +47,15 @@ class GalleryTile extends StatelessWidget {
             );
           },
           errorBuilder: (context, error, stackTrace) => Center(
-            child: Icon(Icons.signal_wifi_off),
+            child: CircularProgressIndicator(
+              valueColor: AlwaysStoppedAnimation(
+                Color.lerp(
+                  color,
+                  Theme.of(context).textTheme.bodyText1.color,
+                  0.5,
+                ),
+              ),
+            ),
           ),
         ),
       ),
