@@ -5,7 +5,6 @@ import 'package:izoneapp/data/media_content.dart';
 import 'package:http/http.dart' as http;
 
 class IzonePictures implements MediaContent<IzonePicture> {
-  static const izoneId = 127;
   final List<IzonePicture> pictures;
 
   IzonePictures({this.pictures});
@@ -26,7 +25,7 @@ class IzonePictures implements MediaContent<IzonePicture> {
 
   static Future<List<IzonePicture>> search(String query) async {
     final response = await http.get(
-        'https://dbkpop.com/wp-json/wp/v2/media?tags=$izoneId&search=$query&per_page=100');
+        'https://dbkpop.com/wp-json/wp/v2/media?search=$query&per_page=100');
 
     if (response.statusCode == 200) {
       return IzonePicture.fromJsonList(json.decode(response.body));
