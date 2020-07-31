@@ -5,17 +5,6 @@ import 'package:izoneapp/widgets/group_picture.dart';
 class AboutPage extends StatelessWidget {
   const AboutPage({Key key}) : super(key: key);
 
-  Widget _izoneDescription(BuildContext context) {
-    return ListView.custom(
-      padding: const EdgeInsets.all(12.0),
-      childrenDelegate: SliverChildListDelegate.fixed(
-        [
-          SelectableText(S.of(context).aboutIzone),
-        ],
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +20,7 @@ class AboutPage extends StatelessWidget {
                   ),
                 ),
                 Expanded(
-                  child: _izoneDescription(context),
+                  child: _IzoneDescription(),
                 ),
               ],
             );
@@ -45,12 +34,26 @@ class AboutPage extends StatelessWidget {
                   ),
                 ),
                 Flexible(
-                  child: _izoneDescription(context),
+                  child: _IzoneDescription(),
                 ),
               ],
             );
           }
         },
+      ),
+    );
+  }
+}
+
+class _IzoneDescription extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ListView.custom(
+      padding: const EdgeInsets.all(12.0),
+      childrenDelegate: SliverChildListDelegate.fixed(
+        [
+          SelectableText(S.of(context).aboutIzone),
+        ],
       ),
     );
   }

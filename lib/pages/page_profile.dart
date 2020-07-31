@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:izoneapp/pages/subpage_gallery_profile.dart';
 import 'package:izoneapp/pages/subpage_info_profile.dart';
@@ -17,6 +19,7 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   List<Widget> _pages;
   int _selectedIndex = 0;
+  StreamController<int> _pageController;
 
   @override
   void initState() {
@@ -25,74 +28,28 @@ class _ProfilePageState extends State<ProfilePage> {
       ProfilePageInfo(member: widget.member),
       ProfilePageGallery(member: widget.member),
     ];
+    _pageController = StreamController();
+    _pageController.stream.listen((index) {
+      setState(() {
+        _selectedIndex = index;
+      });
+    });
   }
 
-  Widget _bottomNavBar(BuildContext context) {
-    return BottomNavigationBar(
-      currentIndex: _selectedIndex,
-      backgroundColor: Color.lerp(
-        widget.member.color,
-        Theme.of(context).primaryColor,
-        0.5,
-      ),
-      selectedItemColor: Color.lerp(
-        widget.member.color,
-        Theme.of(context).textTheme.bodyText1.color,
-        0.8,
-      ),
-      unselectedItemColor: Color.lerp(
-        Colors.transparent,
-        Theme.of(context).textTheme.bodyText1.color.withOpacity(0.5),
-        0.8,
-      ),
-      items: [
-        BottomNavigationBarItem(
-          icon: Icon(Icons.info),
-          title: Text('Info'),
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.image),
-          title: Text('Gallery'),
-        ),
-      ],
-      onTap: (int index) {
-        setState(() {
-          _selectedIndex = index;
-        });
-      },
-    );
-  }
-
-  Widget _memberHero(context, height) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) {
-              return ViewPicturePage(
-                memberImagePath: widget.member.imagePath,
-                color: widget.member.color,
-              );
-            },
-          ),
-        );
-      },
-      child: Hero(
-        tag: widget.member.imagePath,
-        child: Image(
-          image: AssetImage(widget.member.imagePath),
-          fit: BoxFit.cover,
-          height: height,
-        ),
-      ),
-    );
+  @override
+  void dispose() {
+    super.dispose();
+    _pageController.close();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: _bottomNavBar(context),
+      bottomNavigationBar: _BottomNavBar(
+        member: widget.member,
+        index: _selectedIndex,
+        controller: _pageController,
+      ),
       backgroundColor: Color.lerp(
         Theme.of(context).scaffoldBackgroundColor.withOpacity(0.8),
         widget.member.color,
@@ -120,7 +77,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       background: Stack(
                         fit: StackFit.expand,
                         children: [
-                          _memberHero(context, 470.0),
+                          _MemberHero(member: widget.member, height: 470.0),
                           MemberPictureGradient(
                             member: widget.member,
                           ),
@@ -144,7 +101,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           Stack(
                             fit: StackFit.expand,
                             children: [
-                              _memberHero(context, 470.0),
+                              _MemberHero(member: widget.member, height: 470.0),
                               MemberPictureGradient(
                                 member: widget.member,
                               ),
@@ -182,6 +139,100 @@ class _ProfilePageState extends State<ProfilePage> {
             );
           }
         },
+      ),
+    );
+  }
+}
+
+class _BottomNavBar extends StatefulWidget {
+  final Member member;
+  final int index;
+  final StreamController<int> controller;
+
+  const _BottomNavBar({
+    Key key,
+    @required this.member,
+    @required this.index,
+    @required this.controller,
+  }) : super(key: key);
+
+  @override
+  State<StatefulWidget> createState() => _BottomNavBarState();
+}
+
+class _BottomNavBarState extends State<_BottomNavBar> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return BottomNavigationBar(
+      currentIndex: widget.index,
+      backgroundColor: Color.lerp(
+        widget.member.color,
+        Theme.of(context).primaryColor,
+        0.5,
+      ),
+      selectedItemColor: Color.lerp(
+        widget.member.color,
+        Theme.of(context).textTheme.bodyText1.color,
+        0.8,
+      ),
+      unselectedItemColor: Color.lerp(
+        Colors.transparent,
+        Theme.of(context).textTheme.bodyText1.color.withOpacity(0.5),
+        0.8,
+      ),
+      items: [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.info),
+          title: Text('Info'),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.image),
+          title: Text('Gallery'),
+        ),
+      ],
+      onTap: (int index) {
+        setState(() {
+          widget.controller.add(index);
+        });
+      },
+    );
+  }
+}
+
+class _MemberHero extends StatelessWidget {
+  final Member member;
+  final double height;
+
+  const _MemberHero({Key key, this.member, this.height}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) {
+              return ViewPicturePage(
+                memberImagePath: member.imagePath,
+                color: member.color,
+              );
+            },
+          ),
+        );
+      },
+      child: Hero(
+        tag: member.imagePath,
+        child: Image(
+          image: AssetImage(member.imagePath),
+          fit: BoxFit.cover,
+          height: height,
+        ),
       ),
     );
   }
