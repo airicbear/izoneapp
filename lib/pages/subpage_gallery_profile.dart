@@ -23,7 +23,7 @@ class _ProfilePageGalleryState extends State<ProfilePageGallery> {
   @override
   void initState() {
     super.initState();
-    _pictures = IzonePictures.search(widget.member.fullName);
+    _pictures = IzonePictures.search('izone+${widget.member.stageName}');
     _pictures.then((value) {
       setState(() {
         _numPictures = value.length;
