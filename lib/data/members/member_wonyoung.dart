@@ -16,11 +16,5 @@ class MemberWonyoung extends Member {
           id: 12,
           stageName: "Wonyoung",
           stageNameKorean: "원영",
-          galleryUrlList: [
-            'http://cdn.iz-one.co.kr/images/oneiric-diary/Wrj0g8ez7Ef4/official-photo-1-wonyoung.jpg',
-            'http://cdn.iz-one.co.kr/images/oneiric-diary/v/official-photo-2-wonyoung.jpg',
-            'http://cdn.iz-one.co.kr/images/oneiric-diary/HFdG2LjN8bg4/official-photo-3-wonyoung.jpg',
-            'http://cdn.iz-one.co.kr/images/oneiric-diary/v/official-photo-4-wonyoung.jpg',
-          ],
         );
 }

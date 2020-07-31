@@ -16,11 +16,5 @@ class MemberHitomi extends Member {
           id: 9,
           stageName: "Hitomi",
           stageNameKorean: "히토미",
-          galleryUrlList: [
-            'http://cdn.iz-one.co.kr/images/oneiric-diary/Wrj0g8ez7Ef4/official-photo-1-hitomi.jpg',
-            'http://cdn.iz-one.co.kr/images/oneiric-diary/v/official-photo-2-hitomi.jpg',
-            'http://cdn.iz-one.co.kr/images/oneiric-diary/HFdG2LjN8bg4/official-photo-3-hitomi.jpg',
-            'http://cdn.iz-one.co.kr/images/oneiric-diary/v/official-photo-4-hitomi.jpg',
-          ],
         );
 }

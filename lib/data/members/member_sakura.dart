@@ -16,11 +16,5 @@ class MemberSakura extends Member {
           id: 2,
           stageName: "Sakura",
           stageNameKorean: "사쿠라",
-          galleryUrlList: [
-            'http://cdn.iz-one.co.kr/images/oneiric-diary/Wrj0g8ez7Ef4/official-photo-1-sakura.jpg',
-            'http://cdn.iz-one.co.kr/images/oneiric-diary/v/official-photo-2-sakura.jpg',
-            'http://cdn.iz-one.co.kr/images/oneiric-diary/HFdG2LjN8bg4/official-photo-3-sakura.jpg',
-            'http://cdn.iz-one.co.kr/images/oneiric-diary/v/official-photo-4-sakura.jpg',
-          ],
         );
 }

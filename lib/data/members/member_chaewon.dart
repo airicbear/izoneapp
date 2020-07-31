@@ -16,11 +16,5 @@ class MemberChaewon extends Member {
           id: 6,
           stageName: "Chaewon",
           stageNameKorean: "채원",
-          galleryUrlList: [
-            'http://cdn.iz-one.co.kr/images/oneiric-diary/Wrj0g8ez7Ef4/official-photo-1-chaewon.jpg',
-            'http://cdn.iz-one.co.kr/images/oneiric-diary/v/official-photo-2-chaewon.jpg',
-            'http://cdn.iz-one.co.kr/images/oneiric-diary/HFdG2LjN8bg4/official-photo-3-chaewon.jpg',
-            'http://cdn.iz-one.co.kr/images/oneiric-diary/v/official-photo-4-chaewon.jpg',
-          ],
         );
 }

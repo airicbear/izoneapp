@@ -16,11 +16,5 @@ class MemberMinju extends Member {
           id: 7,
           stageName: "Minju",
           stageNameKorean: "민주",
-          galleryUrlList: [
-            'http://cdn.iz-one.co.kr/images/oneiric-diary/Wrj0g8ez7Ef4/official-photo-1-minju.jpg',
-            'http://cdn.iz-one.co.kr/images/oneiric-diary/v/official-photo-2-minju.jpg',
-            'http://cdn.iz-one.co.kr/images/oneiric-diary/HFdG2LjN8bg4/official-photo-3-minju.jpg',
-            'http://cdn.iz-one.co.kr/images/oneiric-diary/v/official-photo-4-minju.jpg',
-          ],
         );
 }

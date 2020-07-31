@@ -16,11 +16,5 @@ class MemberNako extends Member {
           id: 8,
           stageName: "Nako",
           stageNameKorean: "나코",
-          galleryUrlList: [
-            'http://cdn.iz-one.co.kr/images/oneiric-diary/Wrj0g8ez7Ef4/official-photo-1-nako.jpg',
-            'http://cdn.iz-one.co.kr/images/oneiric-diary/v/official-photo-2-nako.jpg',
-            'http://cdn.iz-one.co.kr/images/oneiric-diary/HFdG2LjN8bg4/official-photo-3-nako.jpg',
-            'http://cdn.iz-one.co.kr/images/oneiric-diary/v/official-photo-4-nako.jpg',
-          ],
         );
 }

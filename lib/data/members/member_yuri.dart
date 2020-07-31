@@ -16,11 +16,5 @@ class MemberYuri extends Member {
           id: 10,
           stageName: "Yuri",
           stageNameKorean: "유리",
-          galleryUrlList: [
-            'http://cdn.iz-one.co.kr/images/oneiric-diary/Wrj0g8ez7Ef4/official-photo-1-yuri.jpg',
-            'http://cdn.iz-one.co.kr/images/oneiric-diary/v/official-photo-2-yuri.jpg',
-            'http://cdn.iz-one.co.kr/images/oneiric-diary/HFdG2LjN8bg4/official-photo-3-yuri.jpg',
-            'http://cdn.iz-one.co.kr/images/oneiric-diary/v/official-photo-4-yuri.jpg',
-          ],
         );
 }

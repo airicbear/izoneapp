@@ -16,11 +16,5 @@ class MemberYena extends Member {
           id: 4,
           stageName: "Yena",
           stageNameKorean: "예나",
-          galleryUrlList: [
-            'http://cdn.iz-one.co.kr/images/oneiric-diary/Wrj0g8ez7Ef4/official-photo-1-yena.jpg',
-            'http://cdn.iz-one.co.kr/images/oneiric-diary/v/official-photo-2-yena.jpg',
-            'http://cdn.iz-one.co.kr/images/oneiric-diary/HFdG2LjN8bg4/official-photo-3-yena.jpg',
-            'http://cdn.iz-one.co.kr/images/oneiric-diary/v/official-photo-4-yena.jpg',
-          ],
         );
 }

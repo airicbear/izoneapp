@@ -15,10 +15,10 @@ class ProfilePageGallery extends StatelessWidget {
       ),
       delegate: SliverChildBuilderDelegate(
         (context, index) => GalleryTile(
-          url: member.galleryUrlList.elementAt(index),
+          url: member.gallery.elementAt(index).path,
           color: member.color.withOpacity(0.2),
         ),
-        childCount: member.galleryUrlList?.length ?? 0,
+        childCount: member.gallery?.length ?? 0,
       ),
     );
   }

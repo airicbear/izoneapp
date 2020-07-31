@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:izoneapp/data/izone_picture.dart';
+import 'package:izoneapp/data/pictures/izone_pictures.dart';
 
 abstract class Member {
   final int id;
@@ -13,7 +15,6 @@ abstract class Member {
   final Color color;
   final String bloodType;
   final String company;
-  final List<String> galleryUrlList;
 
   Member({
     this.id,
@@ -28,8 +29,10 @@ abstract class Member {
     this.color,
     this.bloodType,
     this.company,
-    this.galleryUrlList,
   });
+
+  List<IzonePicture> get gallery =>
+      IzonePictures().tagged([stageName.toLowerCase()]);
 
   DateTime get dateTimeOfBirth => DateTime.parse(dateOfBirth);
 
