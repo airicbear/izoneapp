@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Member {
+abstract class Member {
   final int id;
   final String birthplace;
   final String dateOfBirth;

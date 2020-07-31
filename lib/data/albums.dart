@@ -13,7 +13,7 @@ import 'package:izoneapp/data/lyrics/rise/album_rise.dart';
 import 'package:izoneapp/data/lyrics/suki-to-iwasetai/album_suki_to_iwasetai.dart';
 import 'package:izoneapp/data/lyrics/vampire/album_vampire.dart';
 
-class Albums {
+abstract class Albums {
   static List<Album> albums(BuildContext context) {
     List<Album> _albums = [
       AlbumOneiricDiary(context),
