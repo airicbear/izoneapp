@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:izoneapp/data/albums.dart';
+import 'package:izoneapp/data/lyrics/albums.dart';
 import 'package:izoneapp/widgets/grid_item_lyrics.dart';
 
 class LyricsPage extends StatelessWidget {

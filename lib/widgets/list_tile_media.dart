@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:izoneapp/data/media_links.dart';
+import 'package:izoneapp/data/links/media_links.dart';
 
 class MediaLinkTile extends StatelessWidget {
   const MediaLinkTile({Key key, this.link}) : super(key: key);
