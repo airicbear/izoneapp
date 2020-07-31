@@ -37,6 +37,7 @@ class ViewPicturePage extends StatelessWidget {
               tag: memberImagePath,
             ),
             minScale: PhotoViewComputedScale.contained,
+            maxScale: PhotoViewComputedScale.contained * 10.0,
             filterQuality: FilterQuality.high,
           ),
         ),
