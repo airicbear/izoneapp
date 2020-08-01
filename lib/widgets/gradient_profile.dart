@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:izoneapp/data/member.dart';
+import 'package:izoneapp/data/profile.dart';
 
-class MemberPictureGradient extends StatelessWidget {
-  const MemberPictureGradient(
-      {Key key, @required this.member, this.beginY = 0.8})
+class ProfilePictureGradient extends StatelessWidget {
+  const ProfilePictureGradient(
+      {Key key, @required this.profile, this.beginY = 0.8})
       : super(key: key);
 
-  final Member member;
+  final Profile profile;
   final double beginY;
 
   @override
@@ -19,7 +19,7 @@ class MemberPictureGradient extends StatelessWidget {
           colors: [
             Color.lerp(
               Theme.of(context).primaryColor,
-              member.color,
+              profile.color,
               0.45,
             ),
             Theme.of(context).primaryColor.withOpacity(0.1),

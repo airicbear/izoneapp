@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:izoneapp/data/member.dart';
+import 'package:izoneapp/data/profile.dart';
 
-class MemberHyewon extends Member {
-  MemberHyewon()
+class ProfileHyewon extends Profile {
+  ProfileHyewon()
       : super(
           birthplace: "Yangsan, South Korea",
           bloodType: "B",

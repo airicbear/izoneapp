@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:izoneapp/data/member.dart';
-import 'package:izoneapp/pages/page_profile.dart';
-import 'package:izoneapp/widgets/gradient_member.dart';
+import 'package:izoneapp/data/profile.dart';
+import 'package:izoneapp/pages/level_2/page_profile.dart';
+import 'package:izoneapp/widgets/gradient_profile.dart';
 
-class MemberTile extends StatelessWidget {
-  const MemberTile({Key key, this.member}) : super(key: key);
+class ProfileTile extends StatelessWidget {
+  const ProfileTile({Key key, this.profile}) : super(key: key);
 
-  final Member member;
+  final Profile profile;
 
-  Route _memberRoute(BuildContext context, Member member) {
+  Route _profileRoute(BuildContext context, Profile profile) {
     return MaterialPageRoute(
       builder: (context) => ProfilePage(
-        member: member,
+        profile: profile,
       ),
     );
   }
@@ -31,18 +31,18 @@ class MemberTile extends StatelessWidget {
                   alignment: Alignment.bottomCenter,
                   children: [
                     Image(
-                      image: AssetImage(member.imagePath),
+                      image: AssetImage(profile.imagePath),
                       fit: BoxFit.cover,
                     ),
-                    MemberPictureGradient(member: member, beginY: 1.0),
+                    ProfilePictureGradient(profile: profile, beginY: 1.0),
                     Material(
                       color: Colors.transparent,
                       child: InkWell(
                         onTap: () => Navigator.of(context).push(
-                          _memberRoute(context, member),
+                          _profileRoute(context, profile),
                         ),
                         splashColor: Color.lerp(
-                          member.color.withOpacity(0.6),
+                          profile.color.withOpacity(0.6),
                           Theme.of(context).primaryColor,
                           0.25,
                         ),
@@ -52,9 +52,9 @@ class MemberTile extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () => Navigator.of(context).push(
-                    _memberRoute(context, member),
+                    _profileRoute(context, profile),
                   ),
-                  child: _MemberTileLabel(member: member),
+                  child: _ProfileTileLabel(profile: profile),
                 ),
               ],
             ),
@@ -65,10 +65,10 @@ class MemberTile extends StatelessWidget {
   }
 }
 
-class _MemberTileLabel extends StatelessWidget {
-  final Member member;
+class _ProfileTileLabel extends StatelessWidget {
+  final Profile profile;
 
-  const _MemberTileLabel({Key key, this.member}) : super(key: key);
+  const _ProfileTileLabel({Key key, this.profile}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -76,14 +76,14 @@ class _MemberTileLabel extends StatelessWidget {
       child: Column(
         children: [
           Text(
-            '${member.stageName}${member.isBirthday ? " 🎂" : ""}',
+            '${profile.stageName}${profile.isBirthday ? " 🎂" : ""}',
             style: TextStyle(
               fontSize: Theme.of(context).textTheme.headline5.fontSize,
             ),
           ),
           Text(
             MaterialLocalizations.of(context).formatShortDate(
-              DateTime.parse(member.dateOfBirth),
+              DateTime.parse(profile.dateOfBirth),
             ),
             style: TextStyle(
               fontSize: Theme.of(context).textTheme.caption.fontSize,

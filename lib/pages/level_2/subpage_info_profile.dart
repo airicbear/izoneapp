@@ -1,42 +1,42 @@
 import 'package:flutter/material.dart';
-import 'package:izoneapp/data/member.dart';
+import 'package:izoneapp/data/profile.dart';
 
 class ProfilePageInfo extends StatelessWidget {
-  const ProfilePageInfo({Key key, @required this.member}) : super(key: key);
+  const ProfilePageInfo({Key key, @required this.profile}) : super(key: key);
 
-  final Member member;
+  final Profile profile;
 
   @override
   Widget build(BuildContext context) {
-    final memberInfo = [
-      ['Stage Name', '${member.stageName} (${member.stageNameKorean})'],
-      ['Full Name', '${member.fullName} (${member.fullNameKorean})'],
+    final profileInfo = [
+      ['Stage Name', '${profile.stageName} (${profile.stageNameKorean})'],
+      ['Full Name', '${profile.fullName} (${profile.fullNameKorean})'],
       [
         'Date of birth',
-        '${MaterialLocalizations.of(context).formatFullDate(DateTime.parse(member.dateOfBirth))}'
+        '${MaterialLocalizations.of(context).formatFullDate(DateTime.parse(profile.dateOfBirth))}'
       ],
-      ['Age', '${member.age} years old'],
-      ['Birthplace', member.birthplace],
-      ['Company', member.company],
+      ['Age', '${profile.age} years old'],
+      ['Birthplace', profile.birthplace],
+      ['Company', profile.company],
       [
         'Color',
         Row(
           children: [
-            Text(member.colorDesc),
+            Text(profile.colorDesc),
             Container(
               padding: const EdgeInsets.all(12.0),
               margin: const EdgeInsets.only(left: 12.0),
               decoration: BoxDecoration(
                 border: Border.all(color: Colors.black),
                 borderRadius: BorderRadius.circular(4.0),
-                color: member.color,
+                color: profile.color,
               ),
             ),
           ],
         ),
       ],
-      ['Height', '≈ ${member.height} cm (${member.heightInFeetInches})'],
-      ['Blood type', member.bloodType == null ? 'Unknown' : member.bloodType],
+      ['Height', '≈ ${profile.height} cm (${profile.heightInFeetInches})'],
+      ['Blood type', profile.bloodType == null ? 'Unknown' : profile.bloodType],
     ];
 
     return SliverList(
@@ -49,19 +49,19 @@ class ProfilePageInfo extends StatelessWidget {
             child: InkWell(
               onTap: () {},
               child: ListTile(
-                tileColor: member.color.withOpacity(0.3),
+                tileColor: profile.color.withOpacity(0.3),
                 leading: Container(
                   width: 100,
-                  child: Text(memberInfo[index][0]),
+                  child: Text(profileInfo[index][0]),
                 ),
-                title: memberInfo[index][1] is String
-                    ? Text(memberInfo[index][1])
-                    : memberInfo[index][1],
+                title: profileInfo[index][1] is String
+                    ? Text(profileInfo[index][1])
+                    : profileInfo[index][1],
               ),
             ),
           );
         },
-        childCount: memberInfo.length,
+        childCount: profileInfo.length,
       ),
     );
   }

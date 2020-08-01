@@ -1,16 +1,16 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:izoneapp/pages/subpage_gallery_profile.dart';
-import 'package:izoneapp/pages/subpage_info_profile.dart';
-import 'package:izoneapp/data/member.dart';
+import 'package:izoneapp/pages/level_2/subpage_gallery_profile.dart';
+import 'package:izoneapp/pages/level_2/subpage_info_profile.dart';
+import 'package:izoneapp/data/profile.dart';
 import 'package:izoneapp/pages/page_view_picture.dart';
-import 'package:izoneapp/widgets/gradient_member.dart';
+import 'package:izoneapp/widgets/gradient_profile.dart';
 
 class ProfilePage extends StatefulWidget {
-  const ProfilePage({Key key, @required this.member}) : super(key: key);
+  const ProfilePage({Key key, @required this.profile}) : super(key: key);
 
-  final Member member;
+  final Profile profile;
 
   @override
   State<StatefulWidget> createState() => _ProfilePageState();
@@ -25,8 +25,8 @@ class _ProfilePageState extends State<ProfilePage> {
   void initState() {
     super.initState();
     _pages = [
-      ProfilePageInfo(member: widget.member),
-      ProfilePageGallery(member: widget.member),
+      ProfilePageInfo(profile: widget.profile),
+      ProfilePageGallery(profile: widget.profile),
     ];
     _pageController = StreamController();
     _pageController.stream.listen((index) {
@@ -46,13 +46,13 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: _BottomNavBar(
-        member: widget.member,
+        profile: widget.profile,
         index: _selectedIndex,
         controller: _pageController,
       ),
       backgroundColor: Color.lerp(
         Theme.of(context).scaffoldBackgroundColor.withOpacity(0.8),
-        widget.member.color,
+        widget.profile.color,
         0.5,
       ),
       body: LayoutBuilder(
@@ -60,7 +60,7 @@ class _ProfilePageState extends State<ProfilePage> {
           if (constraints.maxWidth < 600) {
             return GlowingOverscrollIndicator(
               axisDirection: AxisDirection.down,
-              color: widget.member.color,
+              color: widget.profile.color,
               child: CustomScrollView(
                 slivers: [
                   SliverAppBar(
@@ -68,18 +68,18 @@ class _ProfilePageState extends State<ProfilePage> {
                     expandedHeight: 430.0,
                     backgroundColor: Color.lerp(
                       Theme.of(context).primaryColor,
-                      widget.member.color,
+                      widget.profile.color,
                       0.45,
                     ),
                     flexibleSpace: FlexibleSpaceBar(
-                      title: Text(widget.member.stageName),
+                      title: Text(widget.profile.stageName),
                       centerTitle: true,
                       background: Stack(
                         fit: StackFit.expand,
                         children: [
-                          _MemberHero(member: widget.member, height: 470.0),
-                          MemberPictureGradient(
-                            member: widget.member,
+                          _ProfileHero(profile: widget.profile, height: 470.0),
+                          ProfilePictureGradient(
+                            profile: widget.profile,
                           ),
                         ],
                       ),
@@ -101,9 +101,10 @@ class _ProfilePageState extends State<ProfilePage> {
                           Stack(
                             fit: StackFit.expand,
                             children: [
-                              _MemberHero(member: widget.member, height: 470.0),
-                              MemberPictureGradient(
-                                member: widget.member,
+                              _ProfileHero(
+                                  profile: widget.profile, height: 470.0),
+                              ProfilePictureGradient(
+                                profile: widget.profile,
                               ),
                             ],
                           ),
@@ -117,7 +118,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       Container(
                         padding: const EdgeInsets.all(12.0),
                         child: Text(
-                          widget.member.stageName,
+                          widget.profile.stageName,
                           style: Theme.of(context).textTheme.headline3,
                         ),
                       ),
@@ -127,7 +128,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 Expanded(
                   child: GlowingOverscrollIndicator(
                     axisDirection: AxisDirection.down,
-                    color: widget.member.color,
+                    color: widget.profile.color,
                     child: CustomScrollView(
                       slivers: [
                         _pages.elementAt(_selectedIndex),
@@ -145,13 +146,13 @@ class _ProfilePageState extends State<ProfilePage> {
 }
 
 class _BottomNavBar extends StatefulWidget {
-  final Member member;
+  final Profile profile;
   final int index;
   final StreamController<int> controller;
 
   const _BottomNavBar({
     Key key,
-    @required this.member,
+    @required this.profile,
     @required this.index,
     @required this.controller,
   }) : super(key: key);
@@ -171,12 +172,12 @@ class _BottomNavBarState extends State<_BottomNavBar> {
     return BottomNavigationBar(
       currentIndex: widget.index,
       backgroundColor: Color.lerp(
-        widget.member.color,
+        widget.profile.color,
         Theme.of(context).primaryColor,
         0.5,
       ),
       selectedItemColor: Color.lerp(
-        widget.member.color,
+        widget.profile.color,
         Theme.of(context).textTheme.bodyText1.color,
         0.8,
       ),
@@ -204,11 +205,11 @@ class _BottomNavBarState extends State<_BottomNavBar> {
   }
 }
 
-class _MemberHero extends StatelessWidget {
-  final Member member;
+class _ProfileHero extends StatelessWidget {
+  final Profile profile;
   final double height;
 
-  const _MemberHero({Key key, this.member, this.height}) : super(key: key);
+  const _ProfileHero({Key key, this.profile, this.height}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -219,17 +220,17 @@ class _MemberHero extends StatelessWidget {
           MaterialPageRoute(
             builder: (context) {
               return ViewPicturePage(
-                path: member.imagePath,
-                color: member.color,
+                path: profile.imagePath,
+                color: profile.color,
               );
             },
           ),
         );
       },
       child: Hero(
-        tag: member.imagePath,
+        tag: profile.imagePath,
         child: Image(
-          image: AssetImage(member.imagePath),
+          image: AssetImage(profile.imagePath),
           fit: BoxFit.cover,
           height: height,
         ),

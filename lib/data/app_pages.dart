@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:izoneapp/data/videos/youtube_videos.dart';
 import 'package:izoneapp/generated/l10n.dart';
-import 'package:izoneapp/pages/page_about.dart';
-import 'package:izoneapp/pages/page_home.dart';
-import 'package:izoneapp/pages/page_lyrics.dart';
-import 'package:izoneapp/pages/page_media.dart';
-import 'package:izoneapp/pages/page_members.dart';
-import 'package:izoneapp/pages/page_youtube_video_list.dart';
+import 'package:izoneapp/pages/level_1/page_about.dart';
+import 'package:izoneapp/pages/level_1/page_home.dart';
+import 'package:izoneapp/pages/level_1/page_lyrics.dart';
+import 'package:izoneapp/pages/level_1/page_media.dart';
+import 'package:izoneapp/pages/level_1/page_profiles.dart';
+import 'package:izoneapp/pages/level_1/page_youtube_video_list.dart';
 
 enum AppPage { HOME, ABOUT, MEMBERS, LYRICS, DANCE, MV, MEDIA }
 

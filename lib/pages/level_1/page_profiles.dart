@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:izoneapp/data/members/members.dart';
-import 'package:izoneapp/widgets/grid_item_member.dart';
+import 'package:izoneapp/data/profiles/profiles.dart';
+import 'package:izoneapp/widgets/grid_item_profile.dart';
 
 class MembersPage extends StatelessWidget {
   const MembersPage({Key key}) : super(key: key);
@@ -20,12 +20,12 @@ class MembersPage extends StatelessWidget {
                 (BuildContext context, int index) {
                   return Container(
                     padding: const EdgeInsets.all(8.0),
-                    child: MemberTile(
-                      member: Members.members.elementAt(index),
+                    child: ProfileTile(
+                      profile: Profiles.profiles.elementAt(index),
                     ),
                   );
                 },
-                childCount: Members.members.length,
+                childCount: Profiles.profiles.length,
               ),
             ),
           ],

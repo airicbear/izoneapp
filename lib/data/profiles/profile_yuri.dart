@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:izoneapp/data/member.dart';
+import 'package:izoneapp/data/profile.dart';
 
-class MemberYuri extends Member {
-  MemberYuri()
+class ProfileYuri extends Profile {
+  ProfileYuri()
       : super(
           birthplace: "Busan, South Korea",
           bloodType: "AB",

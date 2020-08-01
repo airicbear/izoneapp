@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:izoneapp/data/izone_picture.dart';
-import 'package:izoneapp/data/member.dart';
+import 'package:izoneapp/data/profile.dart';
 import 'package:izoneapp/data/pictures/izone_pictures.dart';
 import 'package:izoneapp/widgets/grid_item_gallery.dart';
 
 class ProfilePageGallery extends StatefulWidget {
   const ProfilePageGallery({
     Key key,
-    @required this.member,
+    @required this.profile,
   }) : super(key: key);
 
-  final Member member;
+  final Profile profile;
 
   @override
   State<StatefulWidget> createState() => _ProfilePageGalleryState();
@@ -23,7 +23,7 @@ class _ProfilePageGalleryState extends State<ProfilePageGallery> {
   @override
   void initState() {
     super.initState();
-    _pictures = IzonePictures.search('izone+${widget.member.stageName}');
+    _pictures = IzonePictures.search('izone+${widget.profile.stageName}');
     _pictures.then((value) {
       setState(() {
         _numPictures = value.length;
@@ -46,7 +46,7 @@ class _ProfilePageGalleryState extends State<ProfilePageGallery> {
               url: snapshot?.data?.elementAt(index)?.path ??
                   // Jo Yuri GIF placeholder
                   'https://media1.tenor.com/images/e2b87e27ae95e036005c1046a5bc4724/tenor.gif',
-              color: widget.member.color,
+              color: widget.profile.color,
             );
           },
         ),

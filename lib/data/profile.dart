@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:izoneapp/data/izone_picture.dart';
 import 'package:izoneapp/data/pictures/izone_pictures.dart';
 
-abstract class Member {
+abstract class Profile {
   final int id;
   final String birthplace;
   final String dateOfBirth;
@@ -16,7 +16,7 @@ abstract class Member {
   final String bloodType;
   final String company;
 
-  Member({
+  Profile({
     this.id,
     this.birthplace,
     this.dateOfBirth,

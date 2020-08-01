@@ -3,7 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:izoneapp/data/album.dart';
 import 'package:izoneapp/data/song.dart';
 import 'package:izoneapp/generated/l10n.dart';
-import 'package:izoneapp/pages/page_song_lyrics.dart';
+import 'package:izoneapp/pages/level_3/page_song_lyrics.dart';
 import 'package:izoneapp/pages/page_view_picture.dart';
 
 class AlbumLyricsPage extends StatelessWidget {
