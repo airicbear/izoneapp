@@ -166,21 +166,19 @@ class _VideoListState extends State<_VideoList> {
   void _toggleFullscreen(int index) {
     SystemChrome.setEnabledSystemUIOverlays([]);
 
-    setState(() {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) {
-            // Stop current video and switch to fullscreen
-            widget.videoController.add('');
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) {
+          // Stop current video and switch to fullscreen
+          widget.videoController.add('');
 
-            return ViewYoutubeVideoPage(
-              youtubeUrl: widget.videos.elementAt(index).url,
-            );
-          },
-        ),
-      );
-    });
+          return ViewYoutubeVideoPage(
+            youtubeUrl: widget.videos.elementAt(index).url,
+          );
+        },
+      ),
+    );
   }
 
   @override

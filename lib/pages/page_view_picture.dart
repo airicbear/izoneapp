@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:photo_view/photo_view.dart';
 
-class ViewPicturePage extends StatelessWidget {
+class ViewPicturePage extends StatefulWidget {
   const ViewPicturePage({
     Key key,
     @required this.memberImagePath,
@@ -14,32 +15,47 @@ class ViewPicturePage extends StatelessWidget {
   final bool isNetwork;
 
   @override
+  State<StatefulWidget> createState() => _ViewPicturePageState();
+}
+
+class _ViewPicturePageState extends State<ViewPicturePage> {
+  bool isFocused;
+
+  @override
+  void initState() {
+    super.initState();
+    isFocused = false;
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.pop(context);
-      },
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0.0,
-        ),
-        extendBodyBehindAppBar: true,
-        body: Center(
-          child: PhotoView(
-            backgroundDecoration: BoxDecoration(
-              color: color?.withOpacity(0.5) ?? Colors.black,
-            ),
-            imageProvider: isNetwork == null || isNetwork == false
-                ? AssetImage(memberImagePath)
-                : NetworkImage(memberImagePath),
-            heroAttributes: PhotoViewHeroAttributes(
-              tag: memberImagePath,
-            ),
-            minScale: PhotoViewComputedScale.contained,
-            maxScale: PhotoViewComputedScale.contained * 10.0,
-            filterQuality: FilterQuality.high,
+    return Scaffold(
+      extendBody: true,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
+        automaticallyImplyLeading: !isFocused,
+      ),
+      extendBodyBehindAppBar: true,
+      body: GestureDetector(
+        onTap: () {
+          setState(() {
+            isFocused = !isFocused;
+          });
+        },
+        child: PhotoView(
+          backgroundDecoration: BoxDecoration(
+            color: widget.color?.withOpacity(0.5) ?? Colors.black,
           ),
+          imageProvider: widget.isNetwork == null || widget.isNetwork == false
+              ? AssetImage(widget.memberImagePath)
+              : NetworkImage(widget.memberImagePath),
+          heroAttributes: PhotoViewHeroAttributes(
+            tag: widget.memberImagePath,
+          ),
+          minScale: PhotoViewComputedScale.contained,
+          maxScale: PhotoViewComputedScale.contained * 10.0,
+          filterQuality: FilterQuality.high,
         ),
       ),
     );
