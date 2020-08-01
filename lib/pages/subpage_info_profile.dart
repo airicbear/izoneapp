@@ -6,8 +6,9 @@ class ProfilePageInfo extends StatelessWidget {
 
   final Member member;
 
-  Widget _memberInfo(context) {
-    var memberInfo = [
+  @override
+  Widget build(BuildContext context) {
+    final memberInfo = [
       ['Stage Name', '${member.stageName} (${member.stageNameKorean})'],
       ['Full Name', '${member.fullName} (${member.fullNameKorean})'],
       [
@@ -63,10 +64,5 @@ class ProfilePageInfo extends StatelessWidget {
         childCount: memberInfo.length,
       ),
     );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return _memberInfo(context);
   }
 }
