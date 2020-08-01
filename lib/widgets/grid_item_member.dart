@@ -16,29 +16,6 @@ class MemberTile extends StatelessWidget {
     );
   }
 
-  Widget _tileLabel(BuildContext context) {
-    return FittedBox(
-      child: Column(
-        children: [
-          Text(
-            '${member.stageName}${member.isBirthday ? " 🎂" : ""}',
-            style: TextStyle(
-              fontSize: Theme.of(context).textTheme.headline5.fontSize,
-            ),
-          ),
-          Text(
-            MaterialLocalizations.of(context).formatShortDate(
-              DateTime.parse(member.dateOfBirth),
-            ),
-            style: TextStyle(
-              fontSize: Theme.of(context).textTheme.caption.fontSize,
-            ),
-          )
-        ],
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -73,12 +50,47 @@ class MemberTile extends StatelessWidget {
                     ),
                   ],
                 ),
-                _tileLabel(context),
+                GestureDetector(
+                  onTap: () => Navigator.of(context).push(
+                    _memberRoute(context, member),
+                  ),
+                  child: _MemberTileLabel(member: member),
+                ),
               ],
             ),
           ),
         ),
       ],
+    );
+  }
+}
+
+class _MemberTileLabel extends StatelessWidget {
+  final Member member;
+
+  const _MemberTileLabel({Key key, this.member}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return FittedBox(
+      child: Column(
+        children: [
+          Text(
+            '${member.stageName}${member.isBirthday ? " 🎂" : ""}',
+            style: TextStyle(
+              fontSize: Theme.of(context).textTheme.headline5.fontSize,
+            ),
+          ),
+          Text(
+            MaterialLocalizations.of(context).formatShortDate(
+              DateTime.parse(member.dateOfBirth),
+            ),
+            style: TextStyle(
+              fontSize: Theme.of(context).textTheme.caption.fontSize,
+            ),
+          )
+        ],
+      ),
     );
   }
 }
