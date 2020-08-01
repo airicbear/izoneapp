@@ -21,8 +21,9 @@ class LyricsPageViewState extends State<LyricsPageView> {
   @override
   void initState() {
     super.initState();
-    _pageController = PageController();
-    _appBarController = ScrollController();
+    _pageController = PageController(initialPage: widget.album.index);
+    _appBarController =
+        ScrollController(initialScrollOffset: widget.album.index * 100.0);
     _nextAlbumIndex = widget.album.index;
   }
 
