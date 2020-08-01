@@ -17,7 +17,7 @@ class GalleryTile extends StatelessWidget {
           MaterialPageRoute(
             builder: (context) {
               return ViewPicturePage(
-                memberImagePath: url,
+                path: url,
                 color: color,
                 isNetwork: true,
               );

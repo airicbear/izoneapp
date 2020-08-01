@@ -1,16 +1,19 @@
+import 'dart:typed_data';
+
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:photo_view/photo_view.dart';
 
 class ViewPicturePage extends StatefulWidget {
   const ViewPicturePage({
     Key key,
-    @required this.memberImagePath,
+    @required this.path,
     this.color,
     this.isNetwork,
   }) : super(key: key);
 
-  final String memberImagePath;
+  final String path;
   final Color color;
   final bool isNetwork;
 
@@ -27,6 +30,20 @@ class _ViewPicturePageState extends State<ViewPicturePage> {
     isFocused = false;
   }
 
+  _savePicture() async {
+    var response = await Dio().get(
+      widget.path,
+      options: Options(
+        responseType: ResponseType.bytes,
+      ),
+    );
+    await ImageGallerySaver.saveImage(
+      Uint8List.fromList(response.data),
+      quality: 60,
+      name: widget.path.split('/').last.split('.').first,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,6 +52,15 @@ class _ViewPicturePageState extends State<ViewPicturePage> {
         backgroundColor: Colors.transparent,
         elevation: 0.0,
         automaticallyImplyLeading: !isFocused,
+        actions: [
+          widget.path.startsWith('http')
+              ? FlatButton.icon(
+                  onPressed: () => _savePicture(),
+                  icon: Icon(Icons.save),
+                  label: Text('Save picture'),
+                )
+              : Spacer(),
+        ],
       ),
       extendBodyBehindAppBar: true,
       body: GestureDetector(
@@ -48,10 +74,10 @@ class _ViewPicturePageState extends State<ViewPicturePage> {
             color: widget.color?.withOpacity(0.5) ?? Colors.black,
           ),
           imageProvider: widget.isNetwork == null || widget.isNetwork == false
-              ? AssetImage(widget.memberImagePath)
-              : NetworkImage(widget.memberImagePath),
+              ? AssetImage(widget.path)
+              : NetworkImage(widget.path),
           heroAttributes: PhotoViewHeroAttributes(
-            tag: widget.memberImagePath,
+            tag: widget.path,
           ),
           minScale: PhotoViewComputedScale.contained,
           maxScale: PhotoViewComputedScale.contained * 10.0,

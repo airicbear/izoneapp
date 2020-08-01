@@ -13,7 +13,7 @@ class GroupPicture extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) {
-              return ViewPicturePage(memberImagePath: imagePath);
+              return ViewPicturePage(path: imagePath);
             },
           ),
         );

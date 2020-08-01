@@ -219,7 +219,7 @@ class _MemberHero extends StatelessWidget {
           MaterialPageRoute(
             builder: (context) {
               return ViewPicturePage(
-                memberImagePath: member.imagePath,
+                path: member.imagePath,
                 color: member.color,
               );
             },

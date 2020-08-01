@@ -86,7 +86,7 @@ class _AlbumCoverArt extends StatelessWidget {
               MaterialPageRoute(
                 builder: (context) {
                   return ViewPicturePage(
-                    memberImagePath: album.getCoverArtPath,
+                    path: album.getCoverArtPath,
                     color: album.color,
                   );
                 },
