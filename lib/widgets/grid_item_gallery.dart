@@ -29,6 +29,7 @@ class GalleryTile extends StatelessWidget {
         tag: url,
         child: Image.network(
           url,
+          cacheWidth: 256,
           fit: BoxFit.cover,
           filterQuality: FilterQuality.none,
           loadingBuilder:
