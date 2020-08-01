@@ -1,30 +1,137 @@
+import 'package:flutter/material.dart';
 import 'package:izoneapp/data/profile.dart';
-import 'package:izoneapp/data/profiles/profile_chaewon.dart';
-import 'package:izoneapp/data/profiles/profile_chaeyeon.dart';
-import 'package:izoneapp/data/profiles/profile_eunbi.dart';
-import 'package:izoneapp/data/profiles/profile_hitomi.dart';
-import 'package:izoneapp/data/profiles/profile_hyewon.dart';
-import 'package:izoneapp/data/profiles/profile_minju.dart';
-import 'package:izoneapp/data/profiles/profile_nako.dart';
-import 'package:izoneapp/data/profiles/profile_sakura.dart';
-import 'package:izoneapp/data/profiles/profile_wonyoung.dart';
-import 'package:izoneapp/data/profiles/profile_yena.dart';
-import 'package:izoneapp/data/profiles/profile_yujin.dart';
-import 'package:izoneapp/data/profiles/profile_yuri.dart';
 
 abstract class Profiles {
   static List<Profile> get profiles => [
-        ProfileEunbi(),
-        ProfileSakura(),
-        ProfileHyewon(),
-        ProfileYena(),
-        ProfileChaeyeon(),
-        ProfileChaewon(),
-        ProfileMinju(),
-        ProfileNako(),
-        ProfileHitomi(),
-        ProfileYuri(),
-        ProfileYujin(),
-        ProfileWonyoung(),
+        Profile(
+          color: Color(0xffef539d),
+          dateOfBirth: DateTime(2018, 10, 29),
+          birthplace: "Seoul, South Korea",
+          colorDesc: "Magenta",
+          company: "Off the Record",
+          name: "IZ*ONE",
+          nameKorean: "아이즈원",
+          height: 163,
+        ),
+        Profile(
+          birthplace: "Seoul, South Korea",
+          colorDesc: "Purple",
+          color: Color.fromRGBO(210, 172, 250, 1),
+          company: "Woollim Entertainment",
+          dateOfBirth: DateTime(1995, 09, 27),
+          name: "Kwon Eunbi",
+          nameKorean: "권은비",
+          height: 160,
+        ),
+        Profile(
+          birthplace: "Kagoshima, Japan",
+          colorDesc: "Pastel Pink",
+          color: Color.fromRGBO(247, 202, 213, 1),
+          company: "EMI Records (HKT48)",
+          dateOfBirth: DateTime(1998, 03, 19),
+          name: "Miyawaki Sakura",
+          nameKorean: "미야와키 사쿠라",
+          height: 163,
+        ),
+        Profile(
+          birthplace: "Yangsan, South Korea",
+          colorDesc: "Coral",
+          color: Color.fromRGBO(240, 127, 117, 1),
+          company: "8D Creative",
+          dateOfBirth: DateTime(1999, 07, 05),
+          name: "Kang Hyewon",
+          nameKorean: "강혜원",
+          height: 163,
+        ),
+        Profile(
+          birthplace: "Seoul, South Korea",
+          colorDesc: "Yellow",
+          color: Color.fromRGBO(250, 230, 80, 1),
+          company: "Yuehua Entertainment",
+          dateOfBirth: DateTime(1999, 09, 29),
+          name: "Choi Yena",
+          nameKorean: "최예나",
+          height: 163,
+        ),
+        Profile(
+          birthplace: "Yongin, South Korea",
+          colorDesc: "Blue Mint",
+          color: Color.fromRGBO(192, 227, 214, 1),
+          company: "WM Entertainment",
+          dateOfBirth: DateTime(2000, 01, 11),
+          name: "Lee Chaeyeon",
+          nameKorean: "이채연",
+          height: 165,
+        ),
+        Profile(
+          birthplace: "Seoul, South Korea",
+          colorDesc: "Mint",
+          color: Color.fromRGBO(147, 243, 147, 1),
+          company: "Woollim Entertainment",
+          dateOfBirth: DateTime(2000, 08, 01),
+          name: "Kim Chaewon",
+          nameKorean: "김채원",
+          height: 164,
+        ),
+        Profile(
+          birthplace: "Seoul, South Korea",
+          colorDesc: "White",
+          color: Colors.white,
+          company: "Urban Works Entertainment",
+          dateOfBirth: DateTime(2001, 02, 05),
+          name: "Kim Minju",
+          nameKorean: "김민주",
+          height: 164,
+        ),
+        Profile(
+          birthplace: "Tochigi, Japan",
+          colorDesc: "Peach",
+          color: Color.fromRGBO(244, 183, 143, 1),
+          company: "Kings Records (AKB48)",
+          dateOfBirth: DateTime(2001, 10, 06),
+          name: "Honda Hitomi",
+          nameKorean: "혼다 히토미",
+          height: 160,
+        ),
+        Profile(
+          birthplace: "Tokyo, Japan",
+          colorDesc: "Sky Blue",
+          color: Color.fromRGBO(143, 205, 230, 1),
+          company: "EMI Records (HKT48)",
+          dateOfBirth: DateTime(2001, 06, 18),
+          name: "Yabuki Nako",
+          nameKorean: "야부키 나코",
+          height: 150,
+        ),
+        Profile(
+          birthplace: "Busan, South Korea",
+          colorDesc: "Orange",
+          color: Color.fromRGBO(247, 162, 57, 1),
+          company: "Stone Music Entertainment",
+          dateOfBirth: DateTime(2001, 10, 22),
+          name: "Jo Yuri",
+          nameKorean: "조유리",
+          height: 162,
+        ),
+        Profile(
+          birthplace: "Cheongju, South Korea",
+          colorDesc: "Blue",
+          color: Color.fromRGBO(123, 161, 232, 1),
+          company: "Starship Entertainment",
+          dateOfBirth: DateTime(2003, 09, 01),
+          name: "An Yujin",
+          nameKorean: "안유진",
+          height: 168,
+        ),
+        Profile(
+          birthplace: "Seoul, South Korea",
+          colorDesc: "Pink",
+          color: Color.fromRGBO(247, 134, 192, 1),
+          company: "Starship Entertainment",
+          dateOfBirth: DateTime(2004, 08, 31),
+          name: "Jang Wonyoung",
+          nameKorean: "장원영",
+          height: 171,
+        ),
       ];
 }

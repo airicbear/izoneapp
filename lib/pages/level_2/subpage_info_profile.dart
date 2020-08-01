@@ -9,13 +9,12 @@ class ProfilePageInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final profileInfo = [
-      ['Stage Name', '${profile.stageName} (${profile.stageNameKorean})'],
-      ['Full Name', '${profile.fullName} (${profile.fullNameKorean})'],
+      ['Name', '${profile.name} (${profile.nameKorean})'],
       [
         'Date of birth',
-        '${MaterialLocalizations.of(context).formatFullDate(DateTime.parse(profile.dateOfBirth))}'
+        '${MaterialLocalizations.of(context).formatFullDate(profile.dateOfBirth)}'
       ],
-      ['Age', '${profile.age} years old'],
+      ['Age', '${profile.age} year${profile.age > 1 ? "s" : ""} old'],
       ['Birthplace', profile.birthplace],
       ['Company', profile.company],
       [
@@ -36,7 +35,6 @@ class ProfilePageInfo extends StatelessWidget {
         ),
       ],
       ['Height', '≈ ${profile.height} cm (${profile.heightInFeetInches})'],
-      ['Blood type', profile.bloodType == null ? 'Unknown' : profile.bloodType],
     ];
 
     return SliverList(

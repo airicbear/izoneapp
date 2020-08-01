@@ -2,14 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:izoneapp/data/videos/youtube_videos.dart';
 import 'package:izoneapp/generated/l10n.dart';
-import 'package:izoneapp/pages/level_1/page_about.dart';
-import 'package:izoneapp/pages/level_1/page_home.dart';
 import 'package:izoneapp/pages/level_1/page_lyrics.dart';
 import 'package:izoneapp/pages/level_1/page_media.dart';
 import 'package:izoneapp/pages/level_1/page_profiles.dart';
 import 'package:izoneapp/pages/level_1/page_youtube_video_list.dart';
 
-enum AppPage { HOME, ABOUT, PROFILES, LYRICS, DANCE, MV, MEDIA }
+enum AppPage { LYRICS, PROFILES, DANCE, MV, MEDIA }
 
 class AppPageInfo {
   final String title;
@@ -35,21 +33,11 @@ class AppPages {
   ) {
     return [
       AppPageInfo(
-        title: S.of(context).home,
-        longTitle: S.of(context).home,
-        index: AppPage.HOME.index,
-        icon: Icon(Icons.home),
-        page: HomePage(
-          pageController: pageController,
-          appBarController: appBarController,
-        ),
-      ),
-      AppPageInfo(
-        title: S.of(context).about,
-        longTitle: 'About IZ*ONE',
-        index: AppPage.ABOUT.index,
-        icon: FaIcon(FontAwesomeIcons.infoCircle),
-        page: AboutPage(),
+        title: S.of(context).lyrics,
+        longTitle: 'Song lyrics',
+        index: AppPage.LYRICS.index,
+        icon: FaIcon(FontAwesomeIcons.readme),
+        page: LyricsPage(),
       ),
       AppPageInfo(
         title: S.of(context).profile,
@@ -57,13 +45,6 @@ class AppPages {
         index: AppPage.PROFILES.index,
         icon: FaIcon(FontAwesomeIcons.userFriends),
         page: MembersPage(),
-      ),
-      AppPageInfo(
-        title: S.of(context).lyrics,
-        longTitle: 'Song lyrics',
-        index: AppPage.LYRICS.index,
-        icon: FaIcon(FontAwesomeIcons.readme),
-        page: LyricsPage(),
       ),
       AppPageInfo(
         title: S.of(context).dance,

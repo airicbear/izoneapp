@@ -76,15 +76,14 @@ class _ProfileTileLabel extends StatelessWidget {
       child: Column(
         children: [
           Text(
-            '${profile.stageName}${profile.isBirthday ? " 🎂" : ""}',
+            '${profile.stageName ?? ""}${profile.isBirthday ? " 🎂" : ""}',
             style: TextStyle(
               fontSize: Theme.of(context).textTheme.headline5.fontSize,
             ),
           ),
           Text(
-            MaterialLocalizations.of(context).formatShortDate(
-              DateTime.parse(profile.dateOfBirth),
-            ),
+            MaterialLocalizations.of(context)
+                .formatShortDate(profile.dateOfBirth),
             style: TextStyle(
               fontSize: Theme.of(context).textTheme.caption.fontSize,
             ),
