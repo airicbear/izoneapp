@@ -22,8 +22,9 @@ class LyricsPageViewState extends State<LyricsPageView> {
   void initState() {
     super.initState();
     _pageController = PageController(initialPage: widget.album.index);
-    _appBarController =
-        ScrollController(initialScrollOffset: widget.album.index * 100.0);
+    _appBarController = ScrollController(
+      initialScrollOffset: widget.album.index * 100.0,
+    );
     _nextAlbumIndex = widget.album.index;
   }
 
@@ -34,63 +35,19 @@ class LyricsPageViewState extends State<LyricsPageView> {
     super.dispose();
   }
 
-  Widget _albumTitle(BuildContext context, Album album) {
-    int _albumIndex = Albums.albums(context)
-        .indexWhere((element) => element.title == album.title);
-    return GestureDetector(
-      onTap: () {
-        _pageController.animateToPage(
-          _albumIndex,
-          duration: const Duration(
-            milliseconds: 1000,
-          ),
-          curve: Curves.fastLinearToSlowEaseIn,
-        );
-        _appBarController.animateTo(
-          _albumIndex * 100.0,
-          duration: Duration(milliseconds: 1000),
-          curve: Curves.fastLinearToSlowEaseIn,
-        );
-      },
-      child: Text(
-        album.title,
-        style: _albumIndex != _nextAlbumIndex
-            ? TextStyle(
-                color: Theme.of(context).disabledColor,
-              )
-            : null,
-      ),
-    );
-  }
-
-  Widget _pageViewAppBar(BuildContext context) {
-    return AppBar(
-      backgroundColor:
-          Albums.albums(context)[_nextAlbumIndex].color.withOpacity(0.5),
-      title: ScrollConfiguration(
-        behavior: ScrollableAppBarScrollBehavior(),
-        child: SingleChildScrollView(
-          controller: _appBarController,
-          scrollDirection: Axis.horizontal,
-          child: ButtonBar(
-            alignment: MainAxisAlignment.start,
-            children: List<Widget>.generate(
-              Albums.albums(context).length,
-              (index) => _albumTitle(
-                context,
-                Albums.albums(context)[index],
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _pageViewAppBar(context),
+      appBar: AppBar(
+        backgroundColor:
+            Albums.albums(context)[_nextAlbumIndex].color.withOpacity(0.5),
+        title: _PageViewAppBar(
+          pageController: _pageController,
+          appBarController: _appBarController,
+          nextIndex: _nextAlbumIndex,
+          album: widget.album,
+        ),
+      ),
       body: PageView(
         onPageChanged: (page) {
           setState(() {
@@ -98,7 +55,7 @@ class LyricsPageViewState extends State<LyricsPageView> {
           });
           _appBarController.animateTo(
             _nextAlbumIndex * 100.0,
-            duration: Duration(milliseconds: 1000),
+            duration: const Duration(seconds: 1),
             curve: Curves.fastLinearToSlowEaseIn,
           );
         },
@@ -106,7 +63,87 @@ class LyricsPageViewState extends State<LyricsPageView> {
         scrollDirection: Axis.horizontal,
         children: List.generate(
           Albums.albums(context).length,
-          (index) => AlbumLyricsPage(album: Albums.albums(context)[index]),
+          (index) => AlbumLyricsPage(
+            album: Albums.albums(context).elementAt(index),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _AlbumTitle extends StatelessWidget {
+  final PageController pageController;
+  final ScrollController appBarController;
+  final int nextIndex;
+  final Album album;
+
+  const _AlbumTitle({
+    Key key,
+    @required this.pageController,
+    @required this.appBarController,
+    @required this.nextIndex,
+    @required this.album,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        pageController.animateToPage(
+          album.index,
+          duration: const Duration(seconds: 1),
+          curve: Curves.fastLinearToSlowEaseIn,
+        );
+        appBarController.animateTo(
+          album.index * 100.0,
+          duration: const Duration(seconds: 1),
+          curve: Curves.fastLinearToSlowEaseIn,
+        );
+      },
+      child: Text(
+        album.title,
+        style: album.index != nextIndex
+            ? TextStyle(
+                color: Theme.of(context).disabledColor,
+              )
+            : null,
+      ),
+    );
+  }
+}
+
+class _PageViewAppBar extends StatelessWidget {
+  final PageController pageController;
+  final ScrollController appBarController;
+  final int nextIndex;
+  final Album album;
+
+  const _PageViewAppBar({
+    @required this.pageController,
+    @required this.appBarController,
+    @required this.nextIndex,
+    @required this.album,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ScrollConfiguration(
+      behavior: ScrollableAppBarScrollBehavior(),
+      child: SingleChildScrollView(
+        controller: appBarController,
+        scrollDirection: Axis.horizontal,
+        child: ButtonBar(
+          alignment: MainAxisAlignment.start,
+          children: List<Widget>.generate(
+            Albums.albums(context).length,
+            (index) => _AlbumTitle(
+              album: Albums.albums(context).elementAt(index),
+              nextIndex: nextIndex,
+              appBarController: appBarController,
+              pageController: pageController,
+            ),
+          ),
         ),
       ),
     );
