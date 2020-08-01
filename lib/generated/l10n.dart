@@ -53,11 +53,11 @@ class S {
     );
   }
 
-  /// `Members`
-  String get members {
+  /// `Profiles`
+  String get profile {
     return Intl.message(
-      'Members',
-      name: 'members',
+      'Profiles',
+      name: 'profile',
       desc: '',
       args: [],
     );

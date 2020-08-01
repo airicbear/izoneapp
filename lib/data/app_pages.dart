@@ -9,7 +9,7 @@ import 'package:izoneapp/pages/level_1/page_media.dart';
 import 'package:izoneapp/pages/level_1/page_profiles.dart';
 import 'package:izoneapp/pages/level_1/page_youtube_video_list.dart';
 
-enum AppPage { HOME, ABOUT, MEMBERS, LYRICS, DANCE, MV, MEDIA }
+enum AppPage { HOME, ABOUT, PROFILES, LYRICS, DANCE, MV, MEDIA }
 
 class AppPageInfo {
   final String title;
@@ -52,9 +52,9 @@ class AppPages {
         page: AboutPage(),
       ),
       AppPageInfo(
-        title: S.of(context).members,
-        longTitle: 'Member profiles',
-        index: AppPage.MEMBERS.index,
+        title: S.of(context).profile,
+        longTitle: 'Profile',
+        index: AppPage.PROFILES.index,
         icon: FaIcon(FontAwesomeIcons.userFriends),
         page: MembersPage(),
       ),
