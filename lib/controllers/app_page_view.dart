@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:izoneapp/controllers/scrollable_app_bar_scroll_behavior.dart';
 import 'package:izoneapp/data/app_pages.dart';
 import 'package:izoneapp/widgets/buttons_media.dart';
@@ -15,14 +14,18 @@ class AppPageView extends StatefulWidget {
 class _AppPageViewState extends State<AppPageView> {
   PageController _pageController;
   ScrollController _appBarController;
-  AppPage _page = AppPage.LYRICS;
+  AppPage _page;
 
   @override
   void initState() {
     super.initState();
-    _pageController = PageController(initialPage: _page.index);
-    _appBarController =
-        ScrollController(initialScrollOffset: _page.index * 50.0);
+    _page = AppPage.LYRICS;
+    _pageController = PageController(
+      initialPage: _page.index,
+    );
+    _appBarController = ScrollController(
+      initialScrollOffset: _page.index * 50.0,
+    );
   }
 
   @override
@@ -32,51 +35,26 @@ class _AppPageViewState extends State<AppPageView> {
     super.dispose();
   }
 
-  Widget _pageTitle(BuildContext context, AppPageInfo page) {
-    return GestureDetector(
-      onTap: () => AppPages.goToPage(page, _pageController, _appBarController),
-      child: Text(
-        page.title,
-        style: _page.index != page.index
-            ? TextStyle(
-                color: Theme.of(context).disabledColor,
-              )
-            : null,
-      ),
-    );
-  }
-
-  Widget _pageViewAppBar(BuildContext context, List<AppPageInfo> appPages) {
-    return AppBar(
-      title: ScrollConfiguration(
-        behavior: ScrollableAppBarScrollBehavior(),
-        child: SingleChildScrollView(
-          controller: _appBarController,
-          scrollDirection: Axis.horizontal,
-          child: ButtonBar(
-            alignment: MainAxisAlignment.start,
-            children: List<Widget>.generate(
-              appPages.length,
-              (index) => _pageTitle(context, appPages.elementAt(index)),
-            ),
-          ),
-        ),
-      ),
-      actions: [
-        AppMoreButton(),
-      ],
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
+    _page = AppPage.LYRICS;
     List<AppPageInfo> _appPages = AppPages.pages(
       context,
       _pageController,
       _appBarController,
     );
     return Scaffold(
-      appBar: _pageViewAppBar(context, _appPages),
+      appBar: AppBar(
+        title: _PageViewAppBar(
+          appPages: _appPages,
+          pageController: _pageController,
+          appBarController: _appBarController,
+          nextPage: _page,
+        ),
+        actions: [
+          AppMoreButton(),
+        ],
+      ),
       drawer: Drawer(
         child: ListView.builder(
           itemBuilder: (context, index) {
@@ -92,9 +70,7 @@ class _AppPageViewState extends State<AppPageView> {
               },
               child: ListTile(
                 leading: _appPage.icon,
-                title: Text(
-                  _appPage.title,
-                ),
+                title: Text(_appPage.title),
               ),
             );
           },
@@ -103,7 +79,6 @@ class _AppPageViewState extends State<AppPageView> {
       ),
       body: PageView(
         onPageChanged: (index) {
-          SystemChrome.setPreferredOrientations(DeviceOrientation.values);
           setState(() {
             _page = AppPage.values.elementAt(index);
           });
@@ -122,6 +97,73 @@ class _AppPageViewState extends State<AppPageView> {
       bottomNavigationBar: BottomAppBar(
         child: MediaButtons(),
         color: Theme.of(context).primaryColor,
+      ),
+    );
+  }
+}
+
+class _PageTitle extends StatelessWidget {
+  final AppPageInfo page;
+  final AppPage nextPage;
+  final PageController pageController;
+  final ScrollController appBarController;
+
+  const _PageTitle({
+    Key key,
+    @required this.page,
+    @required this.nextPage,
+    @required this.pageController,
+    @required this.appBarController,
+  }) : super(key: key);
+
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () => AppPages.goToPage(page, pageController, appBarController),
+      child: Text(
+        page.title,
+        style: nextPage.index != page.index
+            ? TextStyle(
+                color: Theme.of(context).disabledColor,
+              )
+            : null,
+      ),
+    );
+  }
+}
+
+class _PageViewAppBar extends StatelessWidget {
+  final List<AppPageInfo> appPages;
+  final PageController pageController;
+  final ScrollController appBarController;
+  final AppPage nextPage;
+
+  const _PageViewAppBar({
+    Key key,
+    @required this.appPages,
+    @required this.pageController,
+    @required this.appBarController,
+    @required this.nextPage,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ScrollConfiguration(
+      behavior: ScrollableAppBarScrollBehavior(),
+      child: SingleChildScrollView(
+        controller: appBarController,
+        scrollDirection: Axis.horizontal,
+        child: ButtonBar(
+          alignment: MainAxisAlignment.start,
+          children: List<Widget>.generate(
+            appPages.length,
+            (index) => _PageTitle(
+              page: appPages.elementAt(index),
+              nextPage: nextPage,
+              pageController: pageController,
+              appBarController: appBarController,
+            ),
+          ),
+        ),
       ),
     );
   }
