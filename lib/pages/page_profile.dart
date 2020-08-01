@@ -38,8 +38,8 @@ class _ProfilePageState extends State<ProfilePage> {
 
   @override
   void dispose() {
-    super.dispose();
     _pageController.close();
+    super.dispose();
   }
 
   @override

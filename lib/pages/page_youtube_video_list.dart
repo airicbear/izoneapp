@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -19,33 +20,91 @@ class YoutubeVideoListPage extends StatefulWidget {
 
 class YoutubeVideoListPageState extends State<YoutubeVideoListPage> {
   String _currentVideoId = '';
+  StreamController<String> _videoController;
 
-  void _toggleFullscreen(int index) {
-    SystemChrome.setEnabledSystemUIOverlays([]);
-
-    setState(() {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) {
-            // Stop current video and switch to fullscreen
-            _currentVideoId = '';
-
-            return ViewYoutubeVideoPage(
-              youtubeUrl: widget.videos.elementAt(index).url,
-            );
-          },
-        ),
-      );
+  @override
+  void initState() {
+    super.initState();
+    _videoController = StreamController();
+    _videoController.stream.listen((videoId) {
+      setState(() {
+        _currentVideoId = videoId;
+      });
     });
   }
 
-  Widget _videoPlaceholder() {
+  @override
+  void dispose() {
+    _videoController.close();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations(
+      [
+        DeviceOrientation.values
+            .elementAt(MediaQuery.of(context).orientation.index),
+      ],
+    );
+    return Scaffold(
+      body: LayoutBuilder(builder: (context, constraints) {
+        if (constraints.maxWidth < 600) {
+          return CustomScrollView(
+            slivers: [
+              SliverAppBar(
+                expandedHeight: 240,
+                collapsedHeight: 240,
+                floating: true,
+                pinned: true,
+                elevation: 0,
+                flexibleSpace: _VideoPlaceholder(videoId: _currentVideoId),
+              ),
+              _VideoList(
+                videoId: _currentVideoId,
+                videos: widget.videos,
+                videoController: _videoController,
+              ),
+            ],
+          );
+        } else {
+          return Container(
+            child: Row(
+              children: [
+                Expanded(
+                  child: _VideoPlaceholder(videoId: _currentVideoId),
+                ),
+                Expanded(
+                  child: CustomScrollView(
+                    slivers: [
+                      _VideoList(
+                        videoId: _currentVideoId,
+                        videos: widget.videos,
+                        videoController: _videoController,
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          );
+        }
+      }),
+    );
+  }
+}
+
+class _VideoPlaceholder extends StatelessWidget {
+  final String videoId;
+
+  const _VideoPlaceholder({Key key, @required this.videoId}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     try {
-      if ((Platform.isAndroid || Platform.isIOS) &&
-          _currentVideoId.isNotEmpty) {
+      if ((Platform.isAndroid || Platform.isIOS) && videoId.isNotEmpty) {
         return HtmlWidget(
-          '<iframe width="560" height="315" src="https://www.youtube.com/embed/$_currentVideoId" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+          '<iframe width="560" height="315" src="https://www.youtube.com/embed/$videoId" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
           webView: true,
         );
       }
@@ -85,8 +144,47 @@ class YoutubeVideoListPageState extends State<YoutubeVideoListPage> {
       ),
     );
   }
+}
 
-  Widget _videoList() {
+class _VideoList extends StatefulWidget {
+  final String videoId;
+  final List<YoutubeVideo> videos;
+  final StreamController<String> videoController;
+
+  const _VideoList({
+    Key key,
+    @required this.videoId,
+    @required this.videos,
+    @required this.videoController,
+  }) : super(key: key);
+
+  @override
+  State<StatefulWidget> createState() => _VideoListState();
+}
+
+class _VideoListState extends State<_VideoList> {
+  void _toggleFullscreen(int index) {
+    SystemChrome.setEnabledSystemUIOverlays([]);
+
+    setState(() {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) {
+            // Stop current video and switch to fullscreen
+            widget.videoController.add('');
+
+            return ViewYoutubeVideoPage(
+              youtubeUrl: widget.videos.elementAt(index).url,
+            );
+          },
+        ),
+      );
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return SliverList(
       delegate: SliverChildBuilderDelegate(
         (context, index) {
@@ -94,7 +192,7 @@ class YoutubeVideoListPageState extends State<YoutubeVideoListPage> {
             clipBehavior: ClipRRect(
               borderRadius: BorderRadius.circular(4.0),
             ).clipBehavior,
-            color: _currentVideoId == widget.videos.elementAt(index).youtubeId
+            color: widget.videoId == widget.videos.elementAt(index).youtubeId
                 ? Theme.of(context).backgroundColor
                 : Theme.of(context).cardColor,
             child: InkWell(
@@ -102,10 +200,8 @@ class YoutubeVideoListPageState extends State<YoutubeVideoListPage> {
                 if (!widget.videos.elementAt(index).restricted) {
                   try {
                     if ((Platform.isAndroid || Platform.isIOS)) {
-                      setState(() {
-                        _currentVideoId =
-                            widget.videos.elementAt(index).youtubeId;
-                      });
+                      widget.videoController
+                          .add(widget.videos.elementAt(index).youtubeId);
                     } else if (await canLaunch(
                         widget.videos.elementAt(index).url)) {
                       launch(widget.videos.elementAt(index).url);
@@ -139,28 +235,28 @@ class YoutubeVideoListPageState extends State<YoutubeVideoListPage> {
                   ),
                 ),
                 child: ListTile(
-                  leading: _currentVideoId ==
-                          widget.videos.elementAt(index).youtubeId
-                      ? IconButton(
-                          icon: const FaIcon(FontAwesomeIcons.expand),
-                          onPressed: () => _toggleFullscreen(index),
-                        )
-                      : IconButton(
-                          icon: FaIcon(
-                            FontAwesomeIcons.youtube,
-                            color: widget.videos.elementAt(index).restricted
-                                ? Colors.red
-                                : IconTheme.of(context).color,
-                          ),
-                          onPressed: () async {
-                            if (await canLaunch(
-                                widget.videos.elementAt(index).url)) {
-                              launch(widget.videos.elementAt(index).url);
-                            } else {
-                              throw 'Unable to open video "${widget.videos.elementAt(index).url}"';
-                            }
-                          },
-                        ),
+                  leading:
+                      widget.videoId == widget.videos.elementAt(index).youtubeId
+                          ? IconButton(
+                              icon: const FaIcon(FontAwesomeIcons.expand),
+                              onPressed: () => _toggleFullscreen(index),
+                            )
+                          : IconButton(
+                              icon: FaIcon(
+                                FontAwesomeIcons.youtube,
+                                color: widget.videos.elementAt(index).restricted
+                                    ? Colors.red
+                                    : IconTheme.of(context).color,
+                              ),
+                              onPressed: () async {
+                                if (await canLaunch(
+                                    widget.videos.elementAt(index).url)) {
+                                  launch(widget.videos.elementAt(index).url);
+                                } else {
+                                  throw 'Unable to open video "${widget.videos.elementAt(index).url}"';
+                                }
+                              },
+                            ),
                   title: Text('${widget.videos.elementAt(index).title}'),
                   subtitle: Text(widget.videos.elementAt(index).subtitle),
                   trailing: Text(MaterialLocalizations.of(context)
@@ -172,52 +268,6 @@ class YoutubeVideoListPageState extends State<YoutubeVideoListPage> {
         },
         childCount: widget.videos.length,
       ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    SystemChrome.setPreferredOrientations(
-      [
-        DeviceOrientation.values
-            .elementAt(MediaQuery.of(context).orientation.index),
-      ],
-    );
-    return Scaffold(
-      body: LayoutBuilder(builder: (context, constraints) {
-        if (constraints.maxWidth < 600) {
-          return CustomScrollView(
-            slivers: [
-              SliverAppBar(
-                expandedHeight: 240,
-                collapsedHeight: 240,
-                floating: true,
-                pinned: true,
-                elevation: 0,
-                flexibleSpace: _videoPlaceholder(),
-              ),
-              _videoList(),
-            ],
-          );
-        } else {
-          return Container(
-            child: Row(
-              children: [
-                Expanded(
-                  child: _videoPlaceholder(),
-                ),
-                Expanded(
-                  child: CustomScrollView(
-                    slivers: [
-                      _videoList(),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          );
-        }
-      }),
     );
   }
 }
