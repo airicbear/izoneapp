@@ -37,8 +37,7 @@ class _AppPageViewState extends State<AppPageView> {
 
   @override
   Widget build(BuildContext context) {
-    _page = AppPage.LYRICS;
-    List<AppPageInfo> _appPages = AppPages.pages(
+    final List<AppPageInfo> _appPages = AppPages.pages(
       context,
       _pageController,
       _appBarController,

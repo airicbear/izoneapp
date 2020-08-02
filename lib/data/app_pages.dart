@@ -16,7 +16,7 @@ class AppPageInfo {
   final Widget icon;
   final Widget page;
 
-  AppPageInfo({
+  const AppPageInfo({
     this.title,
     this.longTitle,
     this.index,
@@ -80,7 +80,7 @@ class AppPages {
   ) {
     appBarController.animateTo(
       page.index * 50.0,
-      duration: Duration(milliseconds: 1000),
+      duration: const Duration(seconds: 1),
       curve: Curves.fastLinearToSlowEaseIn,
     );
   }
@@ -92,9 +92,7 @@ class AppPages {
   ) {
     pageController.animateToPage(
       page.index,
-      duration: const Duration(
-        milliseconds: 1000,
-      ),
+      duration: const Duration(seconds: 1),
       curve: Curves.fastLinearToSlowEaseIn,
     );
     scrollAppBarToPage(page, appBarController);

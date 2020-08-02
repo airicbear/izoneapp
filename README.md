@@ -69,6 +69,8 @@ There is an issue with the [`PageController`](https://api.flutter.dev/flutter/wi
 This might be a bug concerning the use of [`CustomScrollView`](https://api.flutter.dev/flutter/widgets/CustomScrollView-class.html) under a [`PageView`](https://api.flutter.dev/flutter/widgets/PageView-class.html), I'm not exactly sure.
 It may be worth checking out the [`SliverLayoutBuilder`](https://api.flutter.dev/flutter/widgets/SliverLayoutBuilder-class.html) class.
 
+**UPDATE:** It seems other people have been having the same issue. See issue [#61156](https://github.com/flutter/flutter/issues/61156).
+
 ### Embedded Youtube video (Android)
 
 The audio from the embedded Youtube video persists if the app is not closed and the user decides to go out of the app or turns off their display.

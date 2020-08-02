@@ -38,6 +38,7 @@ dependencies:
   image_gallery_saver: ^1.5.0
   dio: ^3.0.9
   fluttertoast: ^7.0.2
+  youtube_player_flutter: ^7.0.0+7
   # cached_network_image: ^2.2.0+1
 
   # The following adds the Cupertino Icons font to your application.
