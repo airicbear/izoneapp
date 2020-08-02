@@ -60,15 +60,17 @@ class _ViewPicturePageState extends State<ViewPicturePage> {
         backgroundColor: Colors.transparent,
         elevation: 0.0,
         automaticallyImplyLeading: !isFocused,
-        actions: [
-          widget.path.startsWith('http')
-              ? FlatButton.icon(
-                  onPressed: () => _savePicture(),
-                  icon: Icon(Icons.save),
-                  label: Text('Save picture'),
-                )
-              : Spacer(),
-        ],
+        actions: !isFocused
+            ? [
+                widget.path.startsWith('http')
+                    ? FlatButton.icon(
+                        onPressed: () => _savePicture(),
+                        icon: Icon(Icons.save),
+                        label: Text('Save picture'),
+                      )
+                    : Spacer(),
+              ]
+            : [],
       ),
       extendBodyBehindAppBar: true,
       body: GestureDetector(
