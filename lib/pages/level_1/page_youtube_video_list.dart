@@ -19,26 +19,35 @@ class YoutubeVideoListPageState extends State<YoutubeVideoListPage> {
         if (constraints.maxWidth < 600) {
           return CustomScrollView(
             slivers: [
-              _VideoList(
-                videos: widget.videos,
+              SliverList(
+                delegate: SliverChildBuilderDelegate(
+                  (context, index) {
+                    return _VideoListing(
+                      youtubeVideo: widget.videos.elementAt(index),
+                    );
+                  },
+                  childCount: widget.videos.length,
+                ),
               ),
             ],
           );
         } else {
-          return Container(
-            child: Row(
-              children: [
-                Expanded(
-                  child: CustomScrollView(
-                    slivers: [
-                      _VideoList(
-                        videos: widget.videos,
-                      ),
-                    ],
-                  ),
+          return CustomScrollView(
+            slivers: [
+              SliverGrid(
+                gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                  maxCrossAxisExtent: 512.0,
                 ),
-              ],
-            ),
+                delegate: SliverChildBuilderDelegate(
+                  (context, index) {
+                    return _VideoListing(
+                      youtubeVideo: widget.videos.elementAt(index),
+                    );
+                  },
+                  childCount: widget.videos.length,
+                ),
+              ),
+            ],
           );
         }
       },
@@ -46,67 +55,60 @@ class YoutubeVideoListPageState extends State<YoutubeVideoListPage> {
   }
 }
 
-class _VideoList extends StatelessWidget {
-  final List<YoutubeVideo> videos;
+class _VideoListing extends StatelessWidget {
+  final YoutubeVideo youtubeVideo;
 
-  const _VideoList({
-    Key key,
-    @required this.videos,
-  }) : super(key: key);
+  const _VideoListing({Key key, @required this.youtubeVideo}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return SliverList(
-      delegate: SliverChildBuilderDelegate(
-        (context, index) {
-          return Container(
-            height: 230.0,
-            child: Card(
-              clipBehavior: ClipRRect(
-                borderRadius: BorderRadius.circular(4.0),
-              ).clipBehavior,
-              child: InkWell(
-                onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => YoutubePlayerBuilder(
-                    player: YoutubePlayer(
-                      controller: YoutubePlayerController(
-                        initialVideoId: videos.elementAt(index).youtubeId,
-                      ),
-                    ),
-                    builder: (context, player) {
-                      return player;
-                    },
-                  ),
-                )),
-                splashFactory: InkRipple.splashFactory,
-                child: Container(
-                  alignment: Alignment.bottomCenter,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: NetworkImage(
-                        videos.elementAt(index).thumbnail,
-                      ),
-                      fit: BoxFit.cover,
-                      colorFilter: ColorFilter.mode(
-                        Theme.of(context).primaryColor.withOpacity(0.2),
-                        BlendMode.dstATop,
-                      ),
+    return Card(
+      clipBehavior: ClipRRect(
+        borderRadius: BorderRadius.circular(4.0),
+      ).clipBehavior,
+      child: InkWell(
+        onTap: () => Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => YoutubePlayerBuilder(
+              player: YoutubePlayer(
+                controller: YoutubePlayerController(
+                  initialVideoId: youtubeVideo.youtubeId,
+                ),
+              ),
+              builder: (context, player) {
+                return player;
+              },
+            ),
+          ),
+        ),
+        splashFactory: InkRipple.splashFactory,
+        child: Column(
+          children: [
+            Container(
+              height: 220,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: NetworkImage(
+                    YoutubePlayer.getThumbnail(
+                      videoId: youtubeVideo.youtubeId,
                     ),
                   ),
-                  child: ListTile(
-                    title: Text('${videos.elementAt(index).title}'),
-                    subtitle: Text(videos.elementAt(index).subtitle),
-                    trailing: Text(
-                      MaterialLocalizations.of(context)
-                          .formatCompactDate(videos.elementAt(index).date),
-                    ),
-                  ),
+                  fit: BoxFit.cover,
                 ),
               ),
             ),
-          );
-        },
-        childCount: videos.length,
+            ListTile(
+              tileColor: Theme.of(context).cardColor,
+              title: Text('${youtubeVideo.title}'),
+              subtitle: Text(youtubeVideo.subtitle),
+              trailing: Text(
+                MaterialLocalizations.of(context).formatCompactDate(
+                  youtubeVideo.date,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

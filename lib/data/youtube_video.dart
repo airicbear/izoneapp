@@ -17,6 +17,5 @@ class YoutubeVideo {
     @required this.tags,
   }) : assert(youtubeId.isNotEmpty);
 
-  get thumbnail => 'https://i.ytimg.com/vi/$youtubeId/sddefault.jpg';
   get url => 'https://www.youtube.com/embed/$youtubeId';
 }
