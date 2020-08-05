@@ -84,16 +84,6 @@ abstract class Profiles {
           height: 164,
         ),
         Profile(
-          birthplace: "Tochigi, Japan",
-          colorDesc: "Peach",
-          color: Color.fromRGBO(244, 183, 143, 1),
-          company: "Kings Records (AKB48)",
-          dateOfBirth: DateTime(2001, 10, 06),
-          name: "Honda Hitomi",
-          nameKorean: "혼다 히토미",
-          height: 160,
-        ),
-        Profile(
           birthplace: "Tokyo, Japan",
           colorDesc: "Sky Blue",
           color: Color.fromRGBO(143, 205, 230, 1),
@@ -102,6 +92,16 @@ abstract class Profiles {
           name: "Yabuki Nako",
           nameKorean: "야부키 나코",
           height: 150,
+        ),
+        Profile(
+          birthplace: "Tochigi, Japan",
+          colorDesc: "Peach",
+          color: Color.fromRGBO(244, 183, 143, 1),
+          company: "Kings Records (AKB48)",
+          dateOfBirth: DateTime(2001, 10, 06),
+          name: "Honda Hitomi",
+          nameKorean: "혼다 히토미",
+          height: 160,
         ),
         Profile(
           birthplace: "Busan, South Korea",
