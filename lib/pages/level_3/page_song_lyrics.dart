@@ -111,7 +111,7 @@ class SongLyricsPageState extends State<SongLyricsPage>
                     ],
                     bottom: TabBar(
                       controller: _tabController,
-                      indicatorColor: widget.color,
+                      indicatorColor: _themeData.accentColor,
                       tabs: List<Tab>.generate(
                         widget.song.lyrics.length,
                         (index) => Tab(
