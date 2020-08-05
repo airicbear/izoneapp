@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:izoneapp/controllers/scrollable_app_bar_scroll_behavior.dart';
 import 'package:izoneapp/data/app_pages.dart';
+import 'package:izoneapp/pages/page_disclaimer.dart';
 import 'package:izoneapp/widgets/buttons_media.dart';
-import 'package:izoneapp/widgets/button_app_more.dart';
+import 'package:izoneapp/widgets/dialog_about.dart';
 
 class AppPageView extends StatefulWidget {
   AppPageView({Key key}) : super(key: key);
@@ -50,30 +51,62 @@ class _AppPageViewState extends State<AppPageView> {
           appBarController: _appBarController,
           nextPage: _page,
         ),
-        actions: [
-          AppMoreButton(),
-        ],
       ),
       drawer: Drawer(
-        child: ListView.builder(
-          itemBuilder: (context, index) {
-            AppPageInfo _appPage = _appPages.elementAt(index);
-            return InkWell(
-              onTap: () {
-                AppPages.goToPage(
-                  _appPage,
-                  _pageController,
-                  _appBarController,
+        child: ListView(
+          children: [
+            ...List<Widget>.generate(
+              _appPages.length,
+              (index) {
+                AppPageInfo _appPage = _appPages.elementAt(index);
+                return InkWell(
+                  onTap: () {
+                    AppPages.goToPage(
+                      _appPage,
+                      _pageController,
+                      _appBarController,
+                    );
+                    Navigator.pop(context);
+                  },
+                  child: ListTile(
+                    leading: _appPage.icon,
+                    title: Text(_appPage.title),
+                  ),
                 );
-                Navigator.pop(context);
               },
-              child: ListTile(
-                leading: _appPage.icon,
-                title: Text(_appPage.title),
+            ),
+            Divider(
+              color: Theme.of(context).disabledColor,
+              height: 24.0,
+              thickness: 1.0,
+              indent: 12.0,
+              endIndent: 12.0,
+            ),
+            InkWell(
+              onTap: () => showDialog(
+                context: context,
+                child: DisclaimerPage(),
               ),
-            );
-          },
-          itemCount: _appPages.length,
+              child: ListTile(
+                leading: Icon(Icons.warning_rounded),
+                title: Text('Disclaimer'),
+              ),
+            ),
+            InkWell(
+              onTap: () => appAboutDialog(context),
+              child: ListTile(
+                leading: Icon(Icons.info),
+                title: Text('About this app'),
+              ),
+            ),
+            InkWell(
+              onTap: () {},
+              child: ListTile(
+                leading: Icon(Icons.settings),
+                title: Text('Preferences'),
+              ),
+            ),
+          ],
         ),
       ),
       body: PageView(
