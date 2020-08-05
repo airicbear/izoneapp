@@ -89,7 +89,7 @@ class AppPageViewState extends State<AppPageView> {
                       },
                     ),
                     Divider(
-                      color: Theme.of(context).disabledColor,
+                      color: _themeData.disabledColor,
                       height: 24.0,
                       thickness: 1.0,
                       indent: 12.0,
