@@ -8,6 +8,7 @@ class LyricsPage extends StatelessWidget {
     return Scaffold(
       body: Container(
         child: GridView.builder(
+          key: PageStorageKey(LyricsPage),
           gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
             childAspectRatio: 0.8,
             maxCrossAxisExtent: 256.0,

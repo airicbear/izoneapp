@@ -44,7 +44,7 @@ class AppPages {
         longTitle: 'Profile',
         index: AppPage.PROFILES.index,
         icon: FaIcon(FontAwesomeIcons.userFriends),
-        page: MembersPage(),
+        page: ProfilesPage(),
       ),
       AppPageInfo(
         title: S.of(context).dance,

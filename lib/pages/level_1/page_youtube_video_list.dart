@@ -18,6 +18,7 @@ class YoutubeVideoListPageState extends State<YoutubeVideoListPage> {
       builder: (context, constraints) {
         if (constraints.maxWidth < 600) {
           return CustomScrollView(
+            key: PageStorageKey(widget.videos.first.title),
             slivers: [
               SliverList(
                 delegate: SliverChildBuilderDelegate(
@@ -33,6 +34,7 @@ class YoutubeVideoListPageState extends State<YoutubeVideoListPage> {
           );
         } else {
           return CustomScrollView(
+            key: PageStorageKey(widget.videos.first.title),
             slivers: [
               SliverGrid(
                 gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(

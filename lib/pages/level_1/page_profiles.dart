@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:izoneapp/data/profiles/profiles.dart';
 import 'package:izoneapp/widgets/grid_item_profile.dart';
 
-class MembersPage extends StatelessWidget {
-  const MembersPage({Key key}) : super(key: key);
+class ProfilesPage extends StatelessWidget {
+  const ProfilesPage({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
         child: CustomScrollView(
+          key: PageStorageKey(ProfilesPage),
           slivers: [
             SliverGrid(
               gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(

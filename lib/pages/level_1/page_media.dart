@@ -9,6 +9,7 @@ class MediaPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView.builder(
+        key: PageStorageKey(MediaPage),
         itemBuilder: (context, index) {
           return MediaLinkTile(link: MediaLinks.links[index]);
         },
