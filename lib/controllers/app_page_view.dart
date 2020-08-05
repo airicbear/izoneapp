@@ -6,6 +6,7 @@ import 'package:izoneapp/pages/page_disclaimer.dart';
 import 'package:izoneapp/pages/page_preferences.dart';
 import 'package:izoneapp/widgets/buttons_media.dart';
 import 'package:izoneapp/pages/page_about.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AppPageView extends StatefulWidget {
   AppPageView({Key key}) : super(key: key);
@@ -15,6 +16,7 @@ class AppPageView extends StatefulWidget {
 }
 
 class AppPageViewState extends State<AppPageView> {
+  Future<SharedPreferences> prefs = SharedPreferences.getInstance();
   Future<String> theme;
   PageController _pageController;
   ScrollController _appBarController;
@@ -30,6 +32,7 @@ class AppPageViewState extends State<AppPageView> {
     _appBarController = ScrollController(
       initialScrollOffset: _page.index * 50.0,
     );
+    theme = prefs.then((prefs) => prefs.getString('theme') ?? 'Auto');
   }
 
   @override
