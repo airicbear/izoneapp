@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:izoneapp/controllers/app_page_view.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:izoneapp/data/themes.dart';
+import 'package:izoneapp/data/app_themes.dart';
 import 'package:izoneapp/generated/l10n.dart';
 
 void main() {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:izoneapp/controllers/scrollable_app_bar_scroll_behavior.dart';
 import 'package:izoneapp/data/app_pages.dart';
-import 'package:izoneapp/data/themes.dart';
+import 'package:izoneapp/data/app_themes.dart';
 import 'package:izoneapp/pages/page_disclaimer.dart';
 import 'package:izoneapp/pages/page_preferences.dart';
 import 'package:izoneapp/widgets/buttons_media.dart';
