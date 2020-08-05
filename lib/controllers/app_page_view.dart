@@ -32,7 +32,7 @@ class AppPageViewState extends State<AppPageView> {
     _appBarController = ScrollController(
       initialScrollOffset: _page.index * 50.0,
     );
-    theme = prefs.then((prefs) => prefs.getString('theme') ?? 'Auto');
+    theme = prefs.then((_prefs) => _prefs.getString('theme') ?? 'Auto');
   }
 
   @override
