@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:izoneapp/controllers/scrollable_app_bar_scroll_behavior.dart';
 import 'package:izoneapp/data/app_pages.dart';
+import 'package:izoneapp/data/themes.dart';
 import 'package:izoneapp/pages/page_disclaimer.dart';
+import 'package:izoneapp/pages/page_preferences.dart';
 import 'package:izoneapp/widgets/buttons_media.dart';
-import 'package:izoneapp/widgets/dialog_about.dart';
+import 'package:izoneapp/pages/page_about.dart';
 
 class AppPageView extends StatefulWidget {
   AppPageView({Key key}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => _AppPageViewState();
+  State<StatefulWidget> createState() => AppPageViewState();
 }
 
-class _AppPageViewState extends State<AppPageView> {
+class AppPageViewState extends State<AppPageView> {
+  Future<String> theme;
   PageController _pageController;
   ScrollController _appBarController;
   AppPage _page;
@@ -43,94 +46,118 @@ class _AppPageViewState extends State<AppPageView> {
       _pageController,
       _appBarController,
     );
-    return Scaffold(
-      appBar: AppBar(
-        title: _PageViewAppBar(
-          appPages: _appPages,
-          pageController: _pageController,
-          appBarController: _appBarController,
-          nextPage: _page,
-        ),
-      ),
-      drawer: Drawer(
-        child: ListView(
-          children: [
-            ...List<Widget>.generate(
-              _appPages.length,
-              (index) {
-                AppPageInfo _appPage = _appPages.elementAt(index);
-                return InkWell(
-                  onTap: () {
-                    AppPages.goToPage(
-                      _appPage,
-                      _pageController,
-                      _appBarController,
-                    );
-                    Navigator.pop(context);
-                  },
-                  child: ListTile(
-                    leading: _appPage.icon,
-                    title: Text(_appPage.title),
-                  ),
-                );
-              },
-            ),
-            Divider(
-              color: Theme.of(context).disabledColor,
-              height: 24.0,
-              thickness: 1.0,
-              indent: 12.0,
-              endIndent: 12.0,
-            ),
-            InkWell(
-              onTap: () => showDialog(
-                context: context,
-                child: DisclaimerPage(),
+    return FutureBuilder<String>(
+        future: theme,
+        builder: (context, snapshot) {
+          ThemeData _themeData =
+              AppThemes.themes(context)[snapshot.data ?? 'Auto'];
+          return Theme(
+            data: _themeData,
+            child: Scaffold(
+              appBar: AppBar(
+                title: _PageViewAppBar(
+                  appPages: _appPages,
+                  pageController: _pageController,
+                  appBarController: _appBarController,
+                  nextPage: _page,
+                ),
               ),
-              child: ListTile(
-                leading: Icon(Icons.warning_rounded),
-                title: Text('Disclaimer'),
+              drawer: Drawer(
+                child: ListView(
+                  children: [
+                    ...List<Widget>.generate(
+                      _appPages.length,
+                      (index) {
+                        AppPageInfo _appPage = _appPages.elementAt(index);
+                        return InkWell(
+                          onTap: () {
+                            AppPages.goToPage(
+                              _appPage,
+                              _pageController,
+                              _appBarController,
+                            );
+                            Navigator.pop(context);
+                          },
+                          child: ListTile(
+                            leading: _appPage.icon,
+                            title: Text(_appPage.title),
+                          ),
+                        );
+                      },
+                    ),
+                    Divider(
+                      color: Theme.of(context).disabledColor,
+                      height: 24.0,
+                      thickness: 1.0,
+                      indent: 12.0,
+                      endIndent: 12.0,
+                    ),
+                    InkWell(
+                      onTap: () => Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => Theme(
+                            data: _themeData,
+                            child: DisclaimerPage(),
+                          ),
+                        ),
+                      ),
+                      child: ListTile(
+                        leading: Icon(Icons.warning_rounded),
+                        title: Text('Disclaimer'),
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () => Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => Theme(
+                            data: _themeData,
+                            child: AboutAppPage(),
+                          ),
+                        ),
+                      ),
+                      child: ListTile(
+                        leading: Icon(Icons.info),
+                        title: Text('About this app'),
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () => Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => PreferencesPage(root: this),
+                        ),
+                      ),
+                      child: ListTile(
+                        leading: Icon(Icons.settings),
+                        title: Text('Preferences'),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              body: PageView(
+                onPageChanged: (index) {
+                  setState(() {
+                    _page = AppPage.values.elementAt(index);
+                  });
+                  AppPages.scrollAppBarToPage(
+                    _appPages.elementAt(index),
+                    _appBarController,
+                  );
+                },
+                controller: _pageController,
+                scrollDirection: Axis.horizontal,
+                children: List.generate(
+                  _appPages.length,
+                  (index) => _appPages.elementAt(index).page,
+                ),
+              ),
+              bottomNavigationBar: BottomAppBar(
+                child: MediaButtons(),
+                color: _themeData.primaryColor,
               ),
             ),
-            InkWell(
-              onTap: () => appAboutDialog(context),
-              child: ListTile(
-                leading: Icon(Icons.info),
-                title: Text('About this app'),
-              ),
-            ),
-            InkWell(
-              onTap: () {},
-              child: ListTile(
-                leading: Icon(Icons.settings),
-                title: Text('Preferences'),
-              ),
-            ),
-          ],
-        ),
-      ),
-      body: PageView(
-        onPageChanged: (index) {
-          setState(() {
-            _page = AppPage.values.elementAt(index);
-          });
-          AppPages.scrollAppBarToPage(
-            _appPages.elementAt(index),
-            _appBarController,
           );
-        },
-        controller: _pageController,
-        scrollDirection: Axis.horizontal,
-        children: List.generate(
-          _appPages.length,
-          (index) => _appPages.elementAt(index).page,
-        ),
-      ),
-      bottomNavigationBar: BottomAppBar(
-        child: MediaButtons(),
-        color: Theme.of(context).primaryColor,
-      ),
-    );
+        });
   }
 }
 

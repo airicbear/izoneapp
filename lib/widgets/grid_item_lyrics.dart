@@ -18,6 +18,7 @@ class AlbumLyricsTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
+      borderRadius: BorderRadius.circular(12.0),
       child: InkResponse(
         highlightColor: album.color.withOpacity(0.3),
         onTap: () {
