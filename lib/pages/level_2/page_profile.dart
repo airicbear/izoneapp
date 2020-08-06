@@ -199,9 +199,9 @@ class _BottomNavBarState extends State<_BottomNavBar> {
         0.8,
       ),
       unselectedItemColor: Color.lerp(
-        Colors.transparent,
-        Theme.of(context).textTheme.bodyText1.color.withOpacity(0.5),
-        0.8,
+        Color.lerp(widget.profile.color, Theme.of(context).primaryColor, 0.5),
+        Theme.of(context).textTheme.bodyText1.color,
+        0.5,
       ),
       items: [
         BottomNavigationBarItem(
