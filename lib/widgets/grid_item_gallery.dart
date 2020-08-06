@@ -35,27 +35,17 @@ class GalleryTile extends StatelessWidget {
           loadingBuilder:
               (BuildContext context, Widget widget, ImageChunkEvent progress) {
             if (progress == null) return widget;
-            return Center(
-              child: CircularProgressIndicator(
-                valueColor: AlwaysStoppedAnimation(
-                  Color.lerp(
-                    color,
-                    Theme.of(context).textTheme.bodyText1.color,
-                    0.5,
-                  ),
-                ),
-              ),
+            return Image.asset(
+              'assets/gif/yuri.gif',
+              cacheWidth: 256,
+              fit: BoxFit.cover,
             );
           },
           errorBuilder: (context, error, stackTrace) => Center(
-            child: CircularProgressIndicator(
-              valueColor: AlwaysStoppedAnimation(
-                Color.lerp(
-                  color,
-                  Theme.of(context).textTheme.bodyText1.color,
-                  0.5,
-                ),
-              ),
+            child: Image.asset(
+              'assets/gif/yuri.gif',
+              cacheWidth: 256,
+              fit: BoxFit.cover,
             ),
           ),
         ),
