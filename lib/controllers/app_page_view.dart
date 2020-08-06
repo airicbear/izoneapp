@@ -68,6 +68,20 @@ class AppPageViewState extends State<AppPageView> {
               drawer: Drawer(
                 child: ListView(
                   children: [
+                    Container(
+                      padding: const EdgeInsets.only(top: 12.0),
+                      child: ListTile(
+                        title: Text(
+                          'IZ*ONE Lyrics',
+                          textScaleFactor: 2.0,
+                        ),
+                        subtitle: Text('Unoffical lyrics app'),
+                        leading: ClipRRect(
+                          borderRadius: BorderRadius.circular(12.0),
+                          child: Image.asset('assets/launcher.png'),
+                        ),
+                      ),
+                    ),
                     ...List<Widget>.generate(
                       _appPages.length,
                       (index) {
