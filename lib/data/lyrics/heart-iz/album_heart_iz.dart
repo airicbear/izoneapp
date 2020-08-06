@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:izoneapp/data/album.dart';
 import 'package:izoneapp/data/lyrics/heart-iz/lyrics_hey_bae_like_it.dart';
+import 'package:izoneapp/data/lyrics/heart-iz/lyrics_highlight.dart';
 import 'package:izoneapp/data/lyrics/heart-iz/lyrics_violeta.dart';
 
 class AlbumHeartIz extends Album {
@@ -13,6 +14,7 @@ class AlbumHeartIz extends Album {
           songs: [
             LyricsHeyBaeLikeIt(context),
             LyricsVioleta(context),
+            LyricsHighlight(context),
           ],
         );
 
