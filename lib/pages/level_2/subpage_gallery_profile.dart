@@ -18,16 +18,18 @@ class ProfilePageGallery extends StatefulWidget {
 
 class _ProfilePageGalleryState extends State<ProfilePageGallery> {
   Future<List<IzonePicture>> _pictures;
-  int _numPictures = 0;
+  int _numPictures = 9;
 
   @override
   void initState() {
     super.initState();
     _pictures = IzonePictures.search('izone+${widget.profile.stageName}');
     _pictures.then((value) {
-      setState(() {
-        _numPictures = value.length;
-      });
+      if (this.mounted) {
+        setState(() {
+          _numPictures = value.length;
+        });
+      }
       return;
     });
   }
