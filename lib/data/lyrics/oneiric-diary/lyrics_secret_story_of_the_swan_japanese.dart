@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:izoneapp/data/song.dart';
+import 'package:izoneapp/generated/l10n.dart';
 
 class LyricsSecretStoryOfTheSwanJapanese extends Song {
   LyricsSecretStoryOfTheSwanJapanese(BuildContext context)
       : super(
           context,
-          title: 'Secret Story of the Swan (Japanese ver.)',
+          title: '${S.of(context).secretStoryOfTheSwan} (Japanese ver.)',
           length: Duration(minutes: 3, seconds: 12),
           lyrics: {
             "rom": [
