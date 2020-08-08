@@ -21,7 +21,7 @@ class AppThemes {
         brightness: Brightness.dark,
         primaryColor: Colors.black,
         primarySwatch: magentaColor,
-        accentColor: Colors.purpleAccent,
+        accentColor: magentaColor,
         cardColor: Color.fromRGBO(35, 35, 35, 1.0),
         canvasColor: Colors.black,
       );
