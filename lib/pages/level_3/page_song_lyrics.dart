@@ -76,7 +76,7 @@ class SongLyricsPageState extends State<SongLyricsPage>
                           image: DecorationImage(
                             image: AssetImage(widget.coverArt),
                             colorFilter: ColorFilter.mode(
-                              _themeData.primaryColor.withOpacity(0.2),
+                              _themeData.primaryColor.withOpacity(0.3),
                               BlendMode.dstATop,
                             ),
                             fit: BoxFit.cover,
