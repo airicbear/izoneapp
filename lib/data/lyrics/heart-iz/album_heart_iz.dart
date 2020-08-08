@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:izoneapp/data/album.dart';
 import 'package:izoneapp/data/lyrics/heart-iz/lyrics_airplane.dart';
+import 'package:izoneapp/data/lyrics/heart-iz/lyrics_gokigen_sayonara.dart';
 import 'package:izoneapp/data/lyrics/heart-iz/lyrics_hey_bae_like_it.dart';
 import 'package:izoneapp/data/lyrics/heart-iz/lyrics_highlight.dart';
 import 'package:izoneapp/data/lyrics/heart-iz/lyrics_nekoni_naritai.dart';
@@ -23,6 +24,7 @@ class AlbumHeartIz extends Album {
             LyricsAirplane(context),
             LyricsUp(context),
             LyricsNekoniNaritai(context),
+            LyricsGokigenSayonara(context),
           ],
         );
 

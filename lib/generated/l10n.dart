@@ -192,6 +192,16 @@ class S {
       args: [],
     );
   }
+
+  /// `GOKIGEN SAYONARA`
+  String get gokigenSayonara {
+    return Intl.message(
+      'GOKIGEN SAYONARA',
+      name: 'gokigenSayonara',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
