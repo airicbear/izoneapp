@@ -71,16 +71,17 @@ class SongLyricsPageState extends State<SongLyricsPage>
                     backgroundColor: _themeData.primaryColor,
                     flexibleSpace: Hero(
                       tag: widget.coverArt,
-                      child: Stack(
-                        fit: StackFit.expand,
-                        children: [
-                          Image(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
                             image: AssetImage(widget.coverArt),
+                            colorFilter: ColorFilter.mode(
+                              _themeData.primaryColor.withOpacity(0.2),
+                              BlendMode.dstATop,
+                            ),
                             fit: BoxFit.cover,
                           ),
-                          Container(
-                              color: _themeData.primaryColor.withOpacity(0.7)),
-                        ],
+                        ),
                       ),
                     ),
                     title: Text(widget.song.title),
