@@ -182,6 +182,16 @@ class S {
       args: [],
     );
   }
+
+  /// `NEKONI NARITAI`
+  String get nekoniNaritai {
+    return Intl.message(
+      'NEKONI NARITAI',
+      name: 'nekoniNaritai',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
