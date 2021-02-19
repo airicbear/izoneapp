@@ -35,22 +35,22 @@ class AboutAppPage extends StatelessWidget {
           ),
           ListTile(
             title: Text(
-                'This is an unofficial fan-made app dedicated to IZ*ONE and is free and open-source for everyone. There is a web version of this app also available:'),
-            subtitle: FlatButton.icon(
-              label: Text('airicbear.github.io/izone-app'),
-              icon: Icon(Icons.open_in_browser),
-              onPressed: () => launch('https://airicbear.github.io/izone-app'),
-            ),
+                'This is a free, unofficial fan-made app dedicated to IZ*ONE.'),
+            // subtitle: FlatButton.icon(
+            //   label: Text('airicbear.github.io/izone-app'),
+            //   icon: Icon(Icons.open_in_browser),
+            //   onPressed: () => launch('https://airicbear.github.io/izone-app'),
+            // ),
           ),
-          ListTile(
-            title: Text(
-                'If you want to contribute to this app, please visit the GitHub page at github.com/airicbear/izone-app using the button below.'),
-            subtitle: FlatButton.icon(
-              label: Text('airicbear/izone-app'),
-              icon: FaIcon(FontAwesomeIcons.github),
-              onPressed: () => launch('https://github.com/airicbear/izone-app'),
-            ),
-          ),
+          // ListTile(
+          //   title: Text(
+          //       'If you want to contribute to this app, please visit the GitHub page at github.com/airicbear/izone-app using the button below.'),
+          //   subtitle: FlatButton.icon(
+          //     label: Text('airicbear/izone-app'),
+          //     icon: FaIcon(FontAwesomeIcons.github),
+          //     onPressed: () => launch('https://github.com/airicbear/izone-app'),
+          //   ),
+          // ),
           ListTile(
             title: Text(
                 'If you want to support the development of this app, you can pay through PayPal using the button below. The recommended amount is \$10 for most people.'),

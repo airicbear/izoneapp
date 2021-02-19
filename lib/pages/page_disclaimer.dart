@@ -27,18 +27,18 @@ class DisclaimerPage extends StatelessWidget {
                   textScaleFactor: 2.0,
                 ),
                 subtitle: Text(
-                    'The content in this app references multiple different sources. I strive to get the most accurate and up-to-date information as possible however it is not always possible. If you find that there is inaccurate information in this app please submit an issue on the GitHub page providing your sources and I will try to fix it as soon as possible.'),
+                    'The content in this app references multiple different sources. I strive to get the most accurate and up-to-date information as possible however it is not always possible.'),
               ),
-              ButtonBar(
-                children: [
-                  FlatButton.icon(
-                    label: Text('Submit an issue'),
-                    icon: FaIcon(FontAwesomeIcons.github),
-                    onPressed: () =>
-                        launch('https://github.com/airicbear/izone-app'),
-                  ),
-                ],
-              )
+              // ButtonBar(
+              //   children: [
+              //     FlatButton.icon(
+              //       label: Text('Submit an issue'),
+              //       icon: FaIcon(FontAwesomeIcons.github),
+              //       onPressed: () =>
+              //           launch('https://github.com/airicbear/izone-app'),
+              //     ),
+              //   ],
+              // )
             ],
           ),
           ListTile(
