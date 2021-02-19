@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "434075325168",
+    "project_id": "izoneapp-70e28",
+    "storage_bucket": "izoneapp-70e28.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:434075325168:android:07e89fc67b101cfc712835",
+        "android_client_info": {
+          "package_name": "com.github.airicbear.izoneapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "434075325168-kufqh8j5lokipk1811mqfmqem48e5849.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRQmL0HfEEOYekytEPjrOVbQH44B6NVvs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "434075325168-kufqh8j5lokipk1811mqfmqem48e5849.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

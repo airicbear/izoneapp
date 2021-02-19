@@ -3,12 +3,18 @@ import 'package:izoneapp/data/profiles/profiles.dart';
 import 'package:izoneapp/widgets/grid_item_profile.dart';
 
 class ProfilesPage extends StatelessWidget {
-  const ProfilesPage({Key key}) : super(key: key);
+  final double adHeight;
+
+  const ProfilesPage({
+    Key key,
+    @required this.adHeight,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        margin: EdgeInsets.only(bottom: (adHeight - 50).abs()),
         child: CustomScrollView(
           key: PageStorageKey(ProfilesPage),
           slivers: [
@@ -23,6 +29,7 @@ class ProfilesPage extends StatelessWidget {
                     padding: const EdgeInsets.all(8.0),
                     child: ProfileTile(
                       profile: Profiles.profiles.elementAt(index),
+                      adHeight: adHeight,
                     ),
                   );
                 },

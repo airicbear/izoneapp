@@ -2,17 +2,22 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:izoneapp/data/app_themes.dart';
+import 'package:izoneapp/data/profile.dart';
 import 'package:izoneapp/pages/level_2/subpage_gallery_profile.dart';
 import 'package:izoneapp/pages/level_2/subpage_info_profile.dart';
-import 'package:izoneapp/data/profile.dart';
 import 'package:izoneapp/pages/page_view_picture.dart';
 import 'package:izoneapp/widgets/gradient_profile.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfilePage extends StatefulWidget {
-  const ProfilePage({Key key, @required this.profile}) : super(key: key);
+  const ProfilePage({
+    Key key,
+    @required this.profile,
+    @required this.adHeight,
+  }) : super(key: key);
 
   final Profile profile;
+  final double adHeight;
 
   @override
   State<StatefulWidget> createState() => _ProfilePageState();
@@ -56,7 +61,7 @@ class _ProfilePageState extends State<ProfilePage> {
             AppThemes.themes(context)[snapshot.data ?? 'Auto'];
         return Theme(
           data: _themeData,
-          child: Scaffold(
+          child: Container(margin:EdgeInsets.only(bottom: widget.adHeight), child:Scaffold(
             bottomNavigationBar: _BottomNavBar(
               profile: widget.profile,
               index: _selectedIndex,
@@ -155,7 +160,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 }
               },
             ),
-          ),
+          ),),
         );
       },
     );

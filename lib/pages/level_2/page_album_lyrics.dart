@@ -7,64 +7,78 @@ import 'package:izoneapp/pages/level_3/page_song_lyrics.dart';
 import 'package:izoneapp/pages/page_view_picture.dart';
 
 class AlbumLyricsPage extends StatelessWidget {
-  const AlbumLyricsPage({Key key, @required this.album}) : super(key: key);
+  const AlbumLyricsPage({
+    Key key,
+    @required this.album,
+    @required this.adHeight,
+  }) : super(key: key);
 
   final Album album;
+  final double adHeight;
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-          color: album.color,
-        ),
-        Scaffold(
-          backgroundColor:
-              Theme.of(context).scaffoldBackgroundColor.withOpacity(0.5),
-          body: LayoutBuilder(
-            builder: (context, constraints) {
-              if (constraints.maxWidth < 600) {
-                return GlowingOverscrollIndicator(
-                  axisDirection: AxisDirection.down,
-                  color: album.color,
-                  child: CustomScrollView(
-                    slivers: [
-                      SliverAppBar(
-                        backgroundColor: Colors.transparent,
-                        automaticallyImplyLeading: false,
-                        expandedHeight: 410,
-                        flexibleSpace: _AlbumCoverArt(album: album),
-                      ),
-                      _AlbumSongList(album: album),
-                    ],
-                  ),
-                );
-              } else {
-                return Row(
-                  children: [
-                    Flexible(
-                      flex: 2,
-                      child: _AlbumCoverArt(album: album),
+    return Container(
+      margin: EdgeInsets.only(bottom: adHeight),
+      child: Stack(
+        children: [
+          Container(
+            color: album.color,
+          ),
+          Scaffold(
+            backgroundColor:
+                Theme.of(context).scaffoldBackgroundColor.withOpacity(0.5),
+            body: LayoutBuilder(
+              builder: (context, constraints) {
+                if (constraints.maxWidth < 600) {
+                  return GlowingOverscrollIndicator(
+                    axisDirection: AxisDirection.down,
+                    color: album.color,
+                    child: CustomScrollView(
+                      slivers: [
+                        SliverAppBar(
+                          backgroundColor: Colors.transparent,
+                          automaticallyImplyLeading: false,
+                          expandedHeight: 410,
+                          flexibleSpace: _AlbumCoverArt(album: album),
+                        ),
+                        _AlbumSongList(
+                          album: album,
+                          adHeight: adHeight,
+                        ),
+                      ],
                     ),
-                    Expanded(
-                      flex: 3,
-                      child: GlowingOverscrollIndicator(
-                        axisDirection: AxisDirection.down,
-                        color: album.color,
-                        child: CustomScrollView(
-                          slivers: [
-                            _AlbumSongList(album: album),
-                          ],
+                  );
+                } else {
+                  return Row(
+                    children: [
+                      Flexible(
+                        flex: 2,
+                        child: _AlbumCoverArt(album: album),
+                      ),
+                      Expanded(
+                        flex: 3,
+                        child: GlowingOverscrollIndicator(
+                          axisDirection: AxisDirection.down,
+                          color: album.color,
+                          child: CustomScrollView(
+                            slivers: [
+                              _AlbumSongList(
+                                album: album,
+                                adHeight: adHeight,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                );
-              }
-            },
+                    ],
+                  );
+                }
+              },
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
@@ -118,8 +132,10 @@ class _AlbumCoverArt extends StatelessWidget {
 
 class _AlbumSongList extends StatelessWidget {
   final Album album;
+  final double adHeight;
 
-  const _AlbumSongList({Key key, @required this.album}) : super(key: key);
+  const _AlbumSongList({Key key, @required this.album, @required this.adHeight})
+      : super(key: key);
 
   Route _songLyricsRoute({
     BuildContext context,
@@ -132,6 +148,7 @@ class _AlbumSongList extends StatelessWidget {
         song: song,
         coverArt: coverArt,
         color: color,
+        adHeight: adHeight,
       ),
     );
   }

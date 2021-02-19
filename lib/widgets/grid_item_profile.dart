@@ -4,14 +4,20 @@ import 'package:izoneapp/pages/level_2/page_profile.dart';
 import 'package:izoneapp/widgets/gradient_profile.dart';
 
 class ProfileTile extends StatelessWidget {
-  const ProfileTile({Key key, this.profile}) : super(key: key);
+  const ProfileTile({
+    Key key,
+    @required this.profile,
+    @required this.adHeight,
+  }) : super(key: key);
 
   final Profile profile;
+  final double adHeight;
 
   Route _profileRoute(BuildContext context, Profile profile) {
     return MaterialPageRoute(
       builder: (context) => ProfilePage(
         profile: profile,
+        adHeight: adHeight,
       ),
     );
   }

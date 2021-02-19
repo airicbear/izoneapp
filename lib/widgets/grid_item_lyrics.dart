@@ -3,14 +3,20 @@ import 'package:izoneapp/controllers/lyrics_page_view.dart';
 import 'package:izoneapp/data/album.dart';
 
 class AlbumLyricsTile extends StatelessWidget {
-  const AlbumLyricsTile({Key key, this.album}) : super(key: key);
+  const AlbumLyricsTile({
+    Key key,
+    @required this.album,
+    @required this.adHeight,
+  }) : super(key: key);
 
   final Album album;
+  final double adHeight;
 
   Route _albumLyricsRoute(BuildContext context, Album album) {
     return MaterialPageRoute(
       builder: (context) => LyricsPageView(
         album: album,
+        adHeight: adHeight,
       ),
     );
   }

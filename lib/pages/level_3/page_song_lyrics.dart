@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:izoneapp/data/app_themes.dart';
 import 'package:izoneapp/data/song.dart';
-import 'package:countdown_flutter/countdown_flutter.dart';
-import 'package:countdown_flutter/utils.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SongLyricsPage extends StatefulWidget {
-  const SongLyricsPage({Key key, this.song, this.coverArt, this.color})
+  const SongLyricsPage(
+      {Key key, this.song, this.coverArt, this.color, this.adHeight})
       : super(key: key);
 
   final Song song;
   final String coverArt;
   final Color color;
+  final double adHeight;
 
   @override
   State<StatefulWidget> createState() => SongLyricsPageState();
@@ -24,7 +24,6 @@ class SongLyricsPageState extends State<SongLyricsPage>
   Future<String> _theme;
   TabController _tabController;
   List<String> _currentLyrics;
-  bool _startCountdown;
 
   void _changeLyricsListener() {
     setState(() {
@@ -39,7 +38,6 @@ class SongLyricsPageState extends State<SongLyricsPage>
         TabController(length: widget.song.lyrics.length, vsync: this);
     _tabController.addListener(_changeLyricsListener);
     _currentLyrics = widget.song.lyrics.values.toList()[0];
-    _startCountdown = false;
     _theme = _prefs.then((prefs) => prefs.getString('theme') ?? 'Auto');
   }
 
@@ -47,6 +45,12 @@ class SongLyricsPageState extends State<SongLyricsPage>
   void dispose() {
     _tabController.dispose();
     super.dispose();
+  }
+
+  String _printDuration(Duration duration) {
+    String twoDigitMinutes = duration.inMinutes.remainder(60).toString();
+    String twoDigitSeconds = duration.inSeconds.remainder(60).toString();
+    return "$twoDigitMinutes:$twoDigitSeconds";
   }
 
   @override
@@ -58,104 +62,90 @@ class SongLyricsPageState extends State<SongLyricsPage>
             AppThemes.themes(context)[snapshot.data ?? 'Auto'];
         return Theme(
           data: _themeData,
-          child: Scaffold(
-            body: GlowingOverscrollIndicator(
-              axisDirection: AxisDirection.down,
-              color: widget.color,
-              child: CustomScrollView(
-                slivers: [
-                  SliverAppBar(
-                    pinned: true,
-                    expandedHeight: 370,
-                    collapsedHeight: 60,
-                    backgroundColor: _themeData.primaryColor,
-                    flexibleSpace: Hero(
-                      tag: widget.coverArt,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage(widget.coverArt),
-                            colorFilter: ColorFilter.mode(
-                              _themeData.primaryColor.withOpacity(0.3),
-                              BlendMode.dstATop,
+          child: Container(
+            margin: EdgeInsets.only(bottom: widget.adHeight),
+            child: Scaffold(
+              body: GlowingOverscrollIndicator(
+                axisDirection: AxisDirection.down,
+                color: widget.color,
+                child: CustomScrollView(
+                  slivers: [
+                    SliverAppBar(
+                      pinned: true,
+                      expandedHeight: 370,
+                      collapsedHeight: 60,
+                      backgroundColor: _themeData.primaryColor,
+                      flexibleSpace: Hero(
+                        tag: widget.coverArt,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage(widget.coverArt),
+                              colorFilter: ColorFilter.mode(
+                                _themeData.primaryColor.withOpacity(0.3),
+                                BlendMode.dstATop,
+                              ),
+                              fit: BoxFit.cover,
                             ),
-                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                      title: Text(widget.song.title),
+                      actions: [
+                        FlatButton(
+                          child: Text(
+                            _printDuration(widget.song.length),
+                            textScaleFactor: 1.5,
+                          ),
+                        ),
+                      ],
+                      bottom: TabBar(
+                        controller: _tabController,
+                        indicatorColor: _themeData.accentColor,
+                        tabs: List<Tab>.generate(
+                          widget.song.lyrics.length,
+                          (index) => Tab(
+                            text: widget.song.lyrics.keys
+                                .toList()[index]
+                                .toUpperCase(),
                           ),
                         ),
                       ),
                     ),
-                    title: Text(widget.song.title),
-                    actions: [
-                      FlatButton(
-                        onPressed: () => setState(() {
-                          _startCountdown = !_startCountdown;
-                        }),
-                        child: _startCountdown
-                            ? CountdownFormatted(
-                                duration: widget.song.length,
-                                onFinish: () => setState(() {
-                                  _startCountdown = !_startCountdown;
-                                }),
-                                builder:
-                                    (BuildContext context, String remaining) {
-                                  return Text(
-                                    '-$remaining',
-                                    textScaleFactor: 1.5,
-                                  );
-                                },
-                              )
-                            : Text(
-                                formatByMinutes(widget.song.length),
-                                textScaleFactor: 1.5,
+                    SliverList(
+                      delegate: SliverChildBuilderDelegate(
+                        (context, _index) {
+                          bool isEmpty = _currentLyrics[_index].isEmpty;
+                          bool isNewSection =
+                              _currentLyrics[_index].startsWith('[') &&
+                                  _currentLyrics[_index].endsWith(']');
+                          return Card(
+                            clipBehavior: ClipRRect(
+                              borderRadius: BorderRadius.circular(4.0),
+                            ).clipBehavior,
+                            child: InkWell(
+                              splashColor: widget.color.withOpacity(0.8),
+                              onTap: () {},
+                              child: ListTile(
+                                title: HtmlWidget(
+                                  isNewSection
+                                      ? _currentLyrics[_index].substring(
+                                          1, _currentLyrics[_index].length - 1)
+                                      : _currentLyrics[_index],
+                                ),
+                                tileColor: isEmpty || isNewSection
+                                    ? _themeData.canvasColor
+                                    : Colors.transparent,
                               ),
-                      ),
-                    ],
-                    bottom: TabBar(
-                      controller: _tabController,
-                      indicatorColor: _themeData.accentColor,
-                      tabs: List<Tab>.generate(
-                        widget.song.lyrics.length,
-                        (index) => Tab(
-                          text: widget.song.lyrics.keys
-                              .toList()[index]
-                              .toUpperCase(),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SliverList(
-                    delegate: SliverChildBuilderDelegate(
-                      (context, _index) {
-                        bool isEmpty = _currentLyrics[_index].isEmpty;
-                        bool isNewSection =
-                            _currentLyrics[_index].startsWith('[') &&
-                                _currentLyrics[_index].endsWith(']');
-                        return Card(
-                          clipBehavior: ClipRRect(
-                            borderRadius: BorderRadius.circular(4.0),
-                          ).clipBehavior,
-                          child: InkWell(
-                            splashColor: widget.color.withOpacity(0.8),
-                            onTap: () {},
-                            child: ListTile(
-                              title: HtmlWidget(
-                                isNewSection
-                                    ? _currentLyrics[_index].substring(
-                                        1, _currentLyrics[_index].length - 1)
-                                    : _currentLyrics[_index],
-                              ),
-                              tileColor: isEmpty || isNewSection
-                                  ? _themeData.canvasColor
-                                  : Colors.transparent,
                             ),
-                          ),
-                          elevation: isEmpty || isNewSection ? 0 : 1,
-                        );
-                      },
-                      childCount: _currentLyrics.length,
+                            elevation: isEmpty || isNewSection ? 0 : 1,
+                          );
+                        },
+                        childCount: _currentLyrics.length,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),

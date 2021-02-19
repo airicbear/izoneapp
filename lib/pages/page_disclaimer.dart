@@ -3,111 +3,118 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class DisclaimerPage extends StatelessWidget {
+  final double adHeight;
+
+  const DisclaimerPage({Key key, @required this.adHeight}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Disclaimer'),
-      ),
-      body: ListView(
-        children: [
-          ListTile(
-            title: Text(
-              'Content rights',
-              textScaleFactor: 2.0,
-            ),
-            subtitle: Text(
-                'This is an unofficial fan-made app. This fan app and its content are not officially endorsed or produced by, nor associated with or affiliated with the music artist(s) or any associated entities of the artist(s), such as management or record label. All trademarks and copyrights are property of their respective owners.'),
-          ),
-          Column(
-            children: [
-              ListTile(
-                title: Text(
-                  'Content accuracy',
-                  textScaleFactor: 2.0,
-                ),
-                subtitle: Text(
-                    'The content in this app references multiple different sources. I strive to get the most accurate and up-to-date information as possible however it is not always possible.'),
+    return Container(
+      margin: EdgeInsets.only(bottom: adHeight),
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('Disclaimer'),
+        ),
+        body: ListView(
+          children: [
+            ListTile(
+              title: Text(
+                'Content rights',
+                textScaleFactor: 2.0,
               ),
-              // ButtonBar(
-              //   children: [
-              //     FlatButton.icon(
-              //       label: Text('Submit an issue'),
-              //       icon: FaIcon(FontAwesomeIcons.github),
-              //       onPressed: () =>
-              //           launch('https://github.com/airicbear/izone-app'),
-              //     ),
-              //   ],
-              // )
-            ],
-          ),
-          ListTile(
-            title: Text(
-              'References',
-              textScaleFactor: 2.0,
+              subtitle: Text(
+                  'This is an unofficial fan-made app. This fan app and its content are not officially endorsed or produced by, nor associated with or affiliated with the music artist(s) or any associated entities of the artist(s), such as management or record label. All trademarks and copyrights are property of their respective owners.'),
             ),
-            subtitle: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            Column(
               children: [
-                FlatButton.icon(
-                  onPressed: () => launch('https://genius.com/artists/Izone'),
-                  icon: FaIcon(FontAwesomeIcons.globeAmericas),
-                  label: Text('Genius.com'),
+                ListTile(
+                  title: Text(
+                    'Content accuracy',
+                    textScaleFactor: 2.0,
+                  ),
+                  subtitle: Text(
+                      'The content in this app references multiple different sources. I strive to get the most accurate and up-to-date information as possible however it is not always possible.'),
                 ),
-                FlatButton.icon(
-                  onPressed: () => launch(
-                      'https://colorcodedlyrics.com/2018/11/iz-one-aijeuwon-produce-48-lyrics-index'),
-                  icon: FaIcon(FontAwesomeIcons.globeAmericas),
-                  label: Text('colorcodedlyrics.com'),
-                ),
-                FlatButton.icon(
-                  onPressed: () => launch(
-                      'https://www.youtube.com/results?search_query=iz%2Aone+color+coded+lyrics'),
-                  icon: FaIcon(FontAwesomeIcons.youtube),
-                  label: Text('YouTube'),
-                ),
-                FlatButton.icon(
-                  onPressed: () => launch(
-                      'https://translate.google.com/#view=home&op=translate&sl=ko&tl=en'),
-                  icon: FaIcon(FontAwesomeIcons.language),
-                  label: Text('Google Translate'),
-                ),
-                FlatButton.icon(
-                    onPressed: () =>
-                        launch('https://en.wikipedia.org/wiki/Iz*One'),
-                    icon: FaIcon(FontAwesomeIcons.wikipediaW),
-                    label: Text('Wikipedia: Iz*One')),
-                FlatButton.icon(
-                  onPressed: () => launch('http://iz-one.co.kr/'),
-                  icon: FaIcon(FontAwesomeIcons.globeAmericas),
-                  label: Text('Official IZ*ONE website'),
-                ),
-                FlatButton.icon(
-                  onPressed: () => launch('https://www.izone-official.com/'),
-                  icon: FaIcon(FontAwesomeIcons.globeAmericas),
-                  label: Text('Official IZ*ONE Japan website'),
-                ),
-                FlatButton.icon(
-                  onPressed: () =>
-                      launch('https://kprofiles.com/izone-members-profile/'),
-                  icon: FaIcon(FontAwesomeIcons.globeAmericas),
-                  label: Text('KProfiles.com'),
-                ),
-                FlatButton.icon(
-                  onPressed: () =>
-                      launch('https://kpop.fandom.com/wiki/IZ*ONE'),
-                  icon: FaIcon(FontAwesomeIcons.globeAmericas),
-                  label: Text('FANDOM KPOP Wiki Page'),
-                ),
-                FlatButton.icon(
-                  onPressed: () => launch('https://dbkpop.com/group/izone'),
-                  icon: FaIcon(FontAwesomeIcons.globeAmericas),
-                  label: Text('dbkpop.com'),
-                ),
+                // ButtonBar(
+                //   children: [
+                //     FlatButton.icon(
+                //       label: Text('Submit an issue'),
+                //       icon: FaIcon(FontAwesomeIcons.github),
+                //       onPressed: () =>
+                //           launch('https://github.com/airicbear/izone-app'),
+                //     ),
+                //   ],
+                // )
               ],
             ),
-          ),
-        ],
+            ListTile(
+              title: Text(
+                'References',
+                textScaleFactor: 2.0,
+              ),
+              subtitle: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  FlatButton.icon(
+                    onPressed: () => launch('https://genius.com/artists/Izone'),
+                    icon: FaIcon(FontAwesomeIcons.globeAmericas),
+                    label: Text('Genius.com'),
+                  ),
+                  FlatButton.icon(
+                    onPressed: () => launch(
+                        'https://colorcodedlyrics.com/2018/11/iz-one-aijeuwon-produce-48-lyrics-index'),
+                    icon: FaIcon(FontAwesomeIcons.globeAmericas),
+                    label: Text('colorcodedlyrics.com'),
+                  ),
+                  FlatButton.icon(
+                    onPressed: () => launch(
+                        'https://www.youtube.com/results?search_query=iz%2Aone+color+coded+lyrics'),
+                    icon: FaIcon(FontAwesomeIcons.youtube),
+                    label: Text('YouTube'),
+                  ),
+                  FlatButton.icon(
+                    onPressed: () => launch(
+                        'https://translate.google.com/#view=home&op=translate&sl=ko&tl=en'),
+                    icon: FaIcon(FontAwesomeIcons.language),
+                    label: Text('Google Translate'),
+                  ),
+                  FlatButton.icon(
+                      onPressed: () =>
+                          launch('https://en.wikipedia.org/wiki/Iz*One'),
+                      icon: FaIcon(FontAwesomeIcons.wikipediaW),
+                      label: Text('Wikipedia: Iz*One')),
+                  FlatButton.icon(
+                    onPressed: () => launch('http://iz-one.co.kr/'),
+                    icon: FaIcon(FontAwesomeIcons.globeAmericas),
+                    label: Text('Official IZ*ONE website'),
+                  ),
+                  FlatButton.icon(
+                    onPressed: () => launch('https://www.izone-official.com/'),
+                    icon: FaIcon(FontAwesomeIcons.globeAmericas),
+                    label: Text('Official IZ*ONE Japan website'),
+                  ),
+                  FlatButton.icon(
+                    onPressed: () =>
+                        launch('https://kprofiles.com/izone-members-profile/'),
+                    icon: FaIcon(FontAwesomeIcons.globeAmericas),
+                    label: Text('KProfiles.com'),
+                  ),
+                  FlatButton.icon(
+                    onPressed: () =>
+                        launch('https://kpop.fandom.com/wiki/IZ*ONE'),
+                    icon: FaIcon(FontAwesomeIcons.globeAmericas),
+                    label: Text('FANDOM KPOP Wiki Page'),
+                  ),
+                  FlatButton.icon(
+                    onPressed: () => launch('https://dbkpop.com/group/izone'),
+                    icon: FaIcon(FontAwesomeIcons.globeAmericas),
+                    label: Text('dbkpop.com'),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

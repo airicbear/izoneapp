@@ -8,8 +8,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class LyricsPageView extends StatefulWidget {
   final Album album;
+  final double adHeight;
 
-  const LyricsPageView({Key key, this.album}) : super(key: key);
+  const LyricsPageView({Key key, @required this.album, @required this.adHeight}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => LyricsPageViewState();
@@ -78,6 +79,7 @@ class LyricsPageViewState extends State<LyricsPageView> {
                 Albums.albums(context).length,
                 (index) => AlbumLyricsPage(
                   album: Albums.albums(context).elementAt(index),
+                  adHeight: widget.adHeight,
                 ),
               ),
             ),
