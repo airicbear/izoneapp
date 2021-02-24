@@ -1,10 +1,11 @@
 import 'dart:typed_data';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:photo_view/photo_view.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 class ViewPicturePage extends StatefulWidget {
   const ViewPicturePage({
@@ -85,7 +86,7 @@ class _ViewPicturePageState extends State<ViewPicturePage> {
           ),
           imageProvider: widget.isNetwork == null || widget.isNetwork == false
               ? AssetImage(widget.path)
-              : NetworkImage(widget.path),
+              : CachedNetworkImageProvider(widget.path),
           heroAttributes: PhotoViewHeroAttributes(
             tag: widget.path,
           ),

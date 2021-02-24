@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:izoneapp/pages/page_view_picture.dart';
 
@@ -27,21 +28,18 @@ class GalleryTile extends StatelessWidget {
       },
       child: Hero(
         tag: url,
-        child: Image.network(
-          url,
-          cacheWidth: 256,
+        child: CachedNetworkImage(
+          imageUrl: url,
           fit: BoxFit.cover,
           filterQuality: FilterQuality.none,
-          loadingBuilder:
-              (BuildContext context, Widget widget, ImageChunkEvent progress) {
-            if (progress == null) return widget;
+          placeholder: (context, url) {
             return Image.asset(
               'assets/gif/yuri.gif',
               cacheWidth: 256,
               fit: BoxFit.cover,
             );
           },
-          errorBuilder: (context, error, stackTrace) => Center(
+          errorWidget: (context, url, error) => Center(
             child: Image.asset(
               'assets/gif/yuri.gif',
               cacheWidth: 256,
