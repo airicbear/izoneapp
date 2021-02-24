@@ -19,7 +19,7 @@ class GalleryTile extends StatelessWidget {
             builder: (context) {
               return ViewPicturePage(
                 path: url,
-                color: color,
+                color: Colors.black,
                 isNetwork: true,
               );
             },
