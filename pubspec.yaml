@@ -34,8 +34,8 @@ dependencies:
   flutter_widget_from_html: ^0.4.2
   http: ^0.12.2
   wallpaper: ^1.0.4
-  image_gallery_saver: ^1.6.0
-  # dio: ^3.0.9
+  gallery_saver: ^2.0.3
+  dio: ^3.0.10
   fluttertoast: ^7.0.2
   youtube_player_flutter: ^7.0.0+7
   shared_preferences: '>=0.5.8 <2.0.0'

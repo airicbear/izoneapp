@@ -1,10 +1,7 @@
-import 'dart:typed_data';
-
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:image_gallery_saver/image_gallery_saver.dart';
+import 'package:gallery_saver/gallery_saver.dart';
 import 'package:photo_view/photo_view.dart';
 
 class ViewPicturePage extends StatefulWidget {
@@ -34,23 +31,14 @@ class _ViewPicturePageState extends State<ViewPicturePage> {
 
   _savePicture() async {
     String filename = widget.path.split('/').last;
-    final response = await Dio().get(
-      widget.path,
-      options: Options(
-        responseType: ResponseType.bytes,
-      ),
-    );
-    await ImageGallerySaver.saveImage(
-      Uint8List.fromList(response.data),
-      quality: 60,
-      name: filename.split('.').first,
-    );
-    Fluttertoast.showToast(
-      msg: 'Saved $filename',
-      toastLength: Toast.LENGTH_LONG,
-      textColor: Theme.of(context).textTheme.bodyText1.color,
-      backgroundColor: Theme.of(context).cardColor,
-    );
+    await GallerySaver.saveImage(widget.path).then((bool success) {
+      Fluttertoast.showToast(
+        msg: 'Saved $filename',
+        toastLength: Toast.LENGTH_LONG,
+        textColor: Theme.of(context).textTheme.bodyText1.color,
+        backgroundColor: Theme.of(context).cardColor,
+      );
+    });
   }
 
   @override
