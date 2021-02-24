@@ -61,106 +61,108 @@ class _ProfilePageState extends State<ProfilePage> {
             AppThemes.themes(context)[snapshot.data ?? 'Auto'];
         return Theme(
           data: _themeData,
-          child: Container(margin:EdgeInsets.only(bottom: widget.adHeight), child:Scaffold(
-            bottomNavigationBar: _BottomNavBar(
-              profile: widget.profile,
-              index: _selectedIndex,
-              controller: _pageController,
-            ),
-            backgroundColor: Color.lerp(
-              _themeData.scaffoldBackgroundColor,
-              widget.profile.color,
-              0.45,
-            ),
-            body: LayoutBuilder(
-              builder: (context, constraints) {
-                if (constraints.maxWidth < 600) {
-                  return GlowingOverscrollIndicator(
-                    axisDirection: AxisDirection.down,
-                    color: widget.profile.color,
-                    child: CustomScrollView(
-                      slivers: [
-                        SliverAppBar(
-                          pinned: true,
-                          expandedHeight: 430.0,
-                          backgroundColor: Color.lerp(
-                            Theme.of(context).primaryColor,
-                            widget.profile.color,
-                            0.45,
-                          ),
-                          flexibleSpace: FlexibleSpaceBar(
-                            title: Text(widget.profile.stageName),
-                            centerTitle: true,
-                            background: Stack(
-                              fit: StackFit.expand,
-                              children: [
-                                _ProfileHero(
-                                    profile: widget.profile, height: 470.0),
-                                ProfilePictureGradient(
-                                  profile: widget.profile,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        _pages.elementAt(_selectedIndex),
-                      ],
-                    ),
-                  );
-                } else {
-                  return Row(
-                    children: [
-                      Expanded(
-                        child: Stack(
-                          alignment: Alignment.bottomCenter,
-                          children: [
-                            Stack(
-                              children: [
-                                Stack(
-                                  fit: StackFit.expand,
-                                  children: [
-                                    _ProfileHero(
-                                        profile: widget.profile, height: 470.0),
-                                    ProfilePictureGradient(
-                                      profile: widget.profile,
-                                    ),
-                                  ],
-                                ),
-                                SafeArea(
-                                  child: BackButton(
-                                    onPressed: () =>
-                                        Navigator.of(context).pop(),
+          child: Container(
+            margin: EdgeInsets.only(bottom: widget.adHeight),
+            child: Scaffold(
+              bottomNavigationBar: _BottomNavBar(
+                profile: widget.profile,
+                index: _selectedIndex,
+                controller: _pageController,
+              ),
+              backgroundColor: Color.lerp(
+                _themeData.scaffoldBackgroundColor,
+                widget.profile.color,
+                0.45,
+              ),
+              body: LayoutBuilder(
+                builder: (context, constraints) {
+                  if (constraints.maxWidth < 600) {
+                    return GlowingOverscrollIndicator(
+                      axisDirection: AxisDirection.down,
+                      color: widget.profile.color,
+                      child: CustomScrollView(
+                        slivers: [
+                          SliverAppBar(
+                            pinned: true,
+                            expandedHeight: 430.0,
+                            flexibleSpace: FlexibleSpaceBar(
+                              title: Text(widget.profile.stageName),
+                              centerTitle: true,
+                              background: Stack(
+                                fit: StackFit.expand,
+                                children: [
+                                  _ProfileHero(
+                                    profile: widget.profile,
+                                    height: 470.0,
                                   ),
-                                ),
-                              ],
-                            ),
-                            Container(
-                              padding: const EdgeInsets.all(12.0),
-                              child: Text(
-                                widget.profile.stageName,
-                                style: Theme.of(context).textTheme.headline3,
+                                  ProfilePictureGradient(
+                                    profile: widget.profile,
+                                  ),
+                                ],
                               ),
                             ),
-                          ],
-                        ),
+                          ),
+                          _pages.elementAt(_selectedIndex),
+                        ],
                       ),
-                      Expanded(
-                        child: GlowingOverscrollIndicator(
-                          axisDirection: AxisDirection.down,
-                          color: widget.profile.color,
-                          child: CustomScrollView(
-                            slivers: [
-                              _pages.elementAt(_selectedIndex),
+                    );
+                  } else {
+                    return Row(
+                      children: [
+                        Expanded(
+                          child: Stack(
+                            alignment: Alignment.bottomCenter,
+                            children: [
+                              Stack(
+                                children: [
+                                  Stack(
+                                    fit: StackFit.expand,
+                                    children: [
+                                      _ProfileHero(
+                                        profile: widget.profile,
+                                        height: 470.0,
+                                      ),
+                                      ProfilePictureGradient(
+                                        profile: widget.profile,
+                                      ),
+                                    ],
+                                  ),
+                                  SafeArea(
+                                    child: BackButton(
+                                      onPressed: () =>
+                                          Navigator.of(context).pop(),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Container(
+                                padding: const EdgeInsets.all(12.0),
+                                child: Text(
+                                  widget.profile.stageName,
+                                  style: Theme.of(context).textTheme.headline3,
+                                ),
+                              ),
                             ],
                           ),
                         ),
-                      ),
-                    ],
-                  );
-                }
-              },
+                        Expanded(
+                          child: GlowingOverscrollIndicator(
+                            axisDirection: AxisDirection.down,
+                            color: widget.profile.color,
+                            child: CustomScrollView(
+                              slivers: [
+                                _pages.elementAt(_selectedIndex),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    );
+                  }
+                },
+              ),
             ),
-          ),),
+          ),
         );
       },
     );
@@ -211,11 +213,11 @@ class _BottomNavBarState extends State<_BottomNavBar> {
       items: [
         BottomNavigationBarItem(
           icon: Icon(Icons.info),
-          title: Text('Info'),
+          label: 'Info',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.image),
-          title: Text('Gallery'),
+          label: 'Gallery',
         ),
       ],
       onTap: (int index) {
@@ -243,7 +245,7 @@ class _ProfileHero extends StatelessWidget {
             builder: (context) {
               return ViewPicturePage(
                 path: profile.imagePath,
-                color: profile.color,
+                color: Color.lerp(Colors.black, profile.color, 0.5),
               );
             },
           ),

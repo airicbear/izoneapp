@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:izoneapp/data/izone_picture.dart';
-import 'package:izoneapp/data/profile.dart';
 import 'package:izoneapp/data/pictures/izone_pictures.dart';
+import 'package:izoneapp/data/profile.dart';
 import 'package:izoneapp/widgets/grid_item_gallery.dart';
 
 class ProfilePageGallery extends StatefulWidget {
@@ -44,10 +44,15 @@ class _ProfilePageGalleryState extends State<ProfilePageGallery> {
         (context, index) => FutureBuilder<List<IzonePicture>>(
           future: _pictures,
           builder: (context, snapshot) {
+            if (snapshot?.data?.elementAt(index)?.path == null) {
+              return Padding(
+                padding: EdgeInsets.all(16.0),
+                child: CircularProgressIndicator(),
+              );
+            }
+
             return GalleryTile(
-              url: snapshot?.data?.elementAt(index)?.path ??
-                  // Jo Yuri GIF placeholder
-                  'https://media1.tenor.com/images/e2b87e27ae95e036005c1046a5bc4724/tenor.gif',
+              url: snapshot?.data?.elementAt(index)?.path,
               color: widget.profile.color,
             );
           },
