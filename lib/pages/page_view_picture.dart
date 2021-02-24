@@ -32,6 +32,9 @@ class _ViewPicturePageState extends State<ViewPicturePage> {
   }
 
   _savePicture() async {
+    setState(() {
+      isSaved = true;
+    });
     String filename = widget.path.split('/').last;
     await GallerySaver.saveImage(widget.path).then((bool success) {
       Fluttertoast.showToast(
@@ -40,9 +43,6 @@ class _ViewPicturePageState extends State<ViewPicturePage> {
         textColor: Theme.of(context).textTheme.bodyText1.color,
         backgroundColor: Theme.of(context).cardColor,
       );
-      setState(() {
-        isSaved = true;
-      });
     });
   }
 
