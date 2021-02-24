@@ -22,11 +22,13 @@ class ViewPicturePage extends StatefulWidget {
 
 class _ViewPicturePageState extends State<ViewPicturePage> {
   bool isFocused;
+  bool isSaved;
 
   @override
   void initState() {
     super.initState();
     isFocused = false;
+    isSaved = false;
   }
 
   _savePicture() async {
@@ -38,6 +40,9 @@ class _ViewPicturePageState extends State<ViewPicturePage> {
         textColor: Theme.of(context).textTheme.bodyText1.color,
         backgroundColor: Theme.of(context).cardColor,
       );
+      setState(() {
+        isSaved = true;
+      });
     });
   }
 
@@ -52,11 +57,17 @@ class _ViewPicturePageState extends State<ViewPicturePage> {
         actions: !isFocused
             ? [
                 widget.path.startsWith('http')
-                    ? FlatButton.icon(
-                        onPressed: () => _savePicture(),
-                        icon: Icon(Icons.save),
-                        label: Text('Save picture'),
-                      )
+                    ? isSaved
+                        ? FlatButton.icon(
+                            onPressed: () {},
+                            icon: Icon(Icons.check),
+                            label: Text('Saved'),
+                          )
+                        : FlatButton.icon(
+                            onPressed: () => _savePicture(),
+                            icon: Icon(Icons.save),
+                            label: Text('Save picture'),
+                          )
                     : Spacer(),
               ]
             : [],
