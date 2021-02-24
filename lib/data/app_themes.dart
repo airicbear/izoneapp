@@ -37,6 +37,10 @@ class AppThemes {
       );
 
   static ThemeData get magenta => ThemeData(
+        appBarTheme: AppBarTheme(
+          color: Colors.transparent,
+          elevation: 0,
+        ),
         primaryColor: Color(0xFFEF539D),
         primarySwatch: magentaColor,
         brightness: Brightness.dark,
