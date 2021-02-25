@@ -14,11 +14,29 @@ class ProfileTile extends StatelessWidget {
   final double adHeight;
 
   Route _profileRoute(BuildContext context, Profile profile) {
-    return MaterialPageRoute(
-      builder: (context) => ProfilePage(
-        profile: profile,
-        adHeight: adHeight,
-      ),
+    return PageRouteBuilder<void>(
+      pageBuilder: (
+        BuildContext context,
+        Animation<double> animation,
+        Animation<double> secondaryAnimation,
+      ) {
+        return AnimatedBuilder(
+          animation: animation,
+          builder: (BuildContext context, Widget child) {
+            return Opacity(
+              opacity: Interval(
+                0.0,
+                1.0,
+                curve: Curves.fastOutSlowIn,
+              ).transform(animation.value),
+              child: ProfilePage(
+                profile: profile,
+                adHeight: adHeight,
+              ),
+            );
+          },
+        );
+      },
     );
   }
 

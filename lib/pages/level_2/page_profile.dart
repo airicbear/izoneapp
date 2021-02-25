@@ -29,10 +29,16 @@ class _ProfilePageState extends State<ProfilePage> {
   List<Widget> _pages;
   int _selectedIndex = 0;
   StreamController<int> _pageController;
+  double kOpacity = 0.0;
 
   @override
   void initState() {
     super.initState();
+    Future.delayed(Duration(milliseconds: 300), () {
+      setState(() {
+        kOpacity = 1.0;
+      });
+    });
     _pages = [
       ProfilePageInfo(profile: widget.profile),
       ProfilePageGallery(profile: widget.profile),
@@ -91,8 +97,12 @@ class _ProfilePageState extends State<ProfilePage> {
                                     profile: widget.profile,
                                     height: 470.0,
                                   ),
-                                  ProfilePictureGradient(
-                                    profile: widget.profile,
+                                  AnimatedOpacity(
+                                    opacity: kOpacity,
+                                    duration: Duration(milliseconds: 100),
+                                    child: ProfilePictureGradient(
+                                      profile: widget.profile,
+                                    ),
                                   ),
                                 ],
                               ),
