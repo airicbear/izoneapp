@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:izoneapp/data/youtube_video.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
@@ -105,7 +106,7 @@ class _VideoListing extends StatelessWidget {
               height: 220,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: NetworkImage(
+                  image: CachedNetworkImageProvider(
                     YoutubePlayer.getThumbnail(
                       videoId: youtubeVideo.youtubeId,
                     ),
