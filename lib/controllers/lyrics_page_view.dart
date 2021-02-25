@@ -10,7 +10,8 @@ class LyricsPageView extends StatefulWidget {
   final Album album;
   final double adHeight;
 
-  const LyricsPageView({Key key, @required this.album, @required this.adHeight}) : super(key: key);
+  const LyricsPageView({Key key, @required this.album, @required this.adHeight})
+      : super(key: key);
 
   @override
   State<StatefulWidget> createState() => LyricsPageViewState();
@@ -52,9 +53,6 @@ class LyricsPageViewState extends State<LyricsPageView> {
           data: _themeData,
           child: Scaffold(
             appBar: AppBar(
-              backgroundColor: Albums.albums(context)[_nextAlbumIndex]
-                  .color
-                  .withOpacity(0.5),
               title: _PageViewAppBar(
                 pageController: _pageController,
                 appBarController: _appBarController,
