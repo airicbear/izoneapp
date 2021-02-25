@@ -69,11 +69,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 index: _selectedIndex,
                 controller: _pageController,
               ),
-              backgroundColor: Color.lerp(
-                _themeData.scaffoldBackgroundColor,
-                widget.profile.color,
-                0.45,
-              ),
+              backgroundColor: _themeData.scaffoldBackgroundColor,
               body: LayoutBuilder(
                 builder: (context, constraints) {
                   if (constraints.maxWidth < 600) {
@@ -195,11 +191,7 @@ class _BottomNavBarState extends State<_BottomNavBar> {
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       currentIndex: widget.index,
-      backgroundColor: Color.lerp(
-        widget.profile.color,
-        Theme.of(context).primaryColor,
-        0.5,
-      ),
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       selectedItemColor: Color.lerp(
         widget.profile.color,
         Theme.of(context).textTheme.bodyText1.color,

@@ -47,7 +47,7 @@ class ProfilePageInfo extends StatelessWidget {
             child: InkWell(
               onTap: () {},
               child: ListTile(
-                tileColor: profile.color.withOpacity(0.3),
+                tileColor: Theme.of(context).cardColor,
                 leading: Container(
                   width: 100,
                   child: Text(profileInfo[index][0]),

@@ -17,12 +17,8 @@ class ProfilePictureGradient extends StatelessWidget {
           begin: Alignment(0.0, beginY),
           end: Alignment(0.0, 0.0),
           colors: [
-            Color.lerp(
-              Theme.of(context).primaryColor,
-              profile.color,
-              0.45,
-            ),
-            Theme.of(context).primaryColor.withOpacity(0.1),
+            Theme.of(context).scaffoldBackgroundColor,
+            Theme.of(context).scaffoldBackgroundColor.withOpacity(0.01),
           ],
         ),
       ),
