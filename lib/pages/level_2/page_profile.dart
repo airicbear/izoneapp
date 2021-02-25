@@ -247,7 +247,6 @@ class _ProfileHero extends StatelessWidget {
             builder: (context) {
               return ViewPicturePage(
                 path: profile.imagePath,
-                color: Color.lerp(Colors.black, profile.color, 0.5),
               );
             },
           ),

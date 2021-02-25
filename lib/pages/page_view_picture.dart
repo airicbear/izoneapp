@@ -9,12 +9,10 @@ class ViewPicturePage extends StatefulWidget {
   const ViewPicturePage({
     Key key,
     @required this.path,
-    this.color,
     this.isNetwork,
   }) : super(key: key);
 
   final String path;
-  final Color color;
   final bool isNetwork;
 
   @override
@@ -50,6 +48,9 @@ class _ViewPicturePageState extends State<ViewPicturePage> {
     return Scaffold(
       extendBody: true,
       appBar: AppBar(
+        leading: BackButton(
+          color: Colors.white,
+        ),
         backgroundColor: Colors.transparent,
         elevation: 0.0,
         actions: [
@@ -74,7 +75,6 @@ class _ViewPicturePageState extends State<ViewPicturePage> {
           Navigator.of(context).push(
             MaterialPageRoute(
               builder: (context) => _FocusedViewPicturePage(
-                color: widget.color,
                 isNetwork: widget.isNetwork,
                 path: widget.path,
               ),
@@ -86,7 +86,7 @@ class _ViewPicturePageState extends State<ViewPicturePage> {
         },
         child: PhotoView(
           backgroundDecoration: BoxDecoration(
-            color: widget.color?.withOpacity(0.5) ?? Colors.black,
+            color: Colors.black,
           ),
           imageProvider: widget.isNetwork == null || widget.isNetwork == false
               ? AssetImage(widget.path)
@@ -114,23 +114,30 @@ class _FocusedViewPicturePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
+    return WillPopScope(
+      onWillPop: () async {
         Navigator.of(context).pop();
+        Navigator.of(context).pop();
+        return true;
       },
-      child: PhotoView(
-        backgroundDecoration: BoxDecoration(
-          color: color?.withOpacity(0.5) ?? Colors.black,
+      child: GestureDetector(
+        onTap: () {
+          Navigator.of(context).pop();
+        },
+        child: PhotoView(
+          backgroundDecoration: BoxDecoration(
+            color: Colors.black,
+          ),
+          imageProvider: isNetwork == null || isNetwork == false
+              ? AssetImage(path)
+              : CachedNetworkImageProvider(path),
+          heroAttributes: PhotoViewHeroAttributes(
+            tag: path,
+          ),
+          minScale: PhotoViewComputedScale.contained,
+          maxScale: PhotoViewComputedScale.contained * 10.0,
+          filterQuality: FilterQuality.high,
         ),
-        imageProvider: isNetwork == null || isNetwork == false
-            ? AssetImage(path)
-            : CachedNetworkImageProvider(path),
-        heroAttributes: PhotoViewHeroAttributes(
-          tag: path,
-        ),
-        minScale: PhotoViewComputedScale.contained,
-        maxScale: PhotoViewComputedScale.contained * 10.0,
-        filterQuality: FilterQuality.high,
       ),
     );
   }
