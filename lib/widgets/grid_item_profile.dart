@@ -50,32 +50,32 @@ class ProfileTile extends StatelessWidget {
             child: Stack(
               alignment: Alignment.bottomCenter,
               children: [
-                Hero(
-                  tag: profile.imagePath,
-                  child: Stack(
-                    fit: StackFit.expand,
-                    alignment: Alignment.bottomCenter,
-                    children: [
-                      Image(
+                Stack(
+                  fit: StackFit.expand,
+                  alignment: Alignment.bottomCenter,
+                  children: [
+                    Hero(
+                      tag: profile.imagePath,
+                      child: Image(
                         image: AssetImage(profile.imagePath),
                         fit: BoxFit.cover,
                       ),
-                      ProfilePictureGradient(profile: profile, beginY: 1.0),
-                      Material(
-                        color: Colors.transparent,
-                        child: InkWell(
-                          onTap: () => Navigator.of(context).push(
-                            _profileRoute(context, profile),
-                          ),
-                          splashColor: Color.lerp(
-                            profile.color.withOpacity(0.6),
-                            Theme.of(context).primaryColor,
-                            0.25,
-                          ),
+                    ),
+                    ProfilePictureGradient(profile: profile, beginY: 1.0),
+                    Material(
+                      color: Colors.transparent,
+                      child: InkWell(
+                        onTap: () => Navigator.of(context).push(
+                          _profileRoute(context, profile),
+                        ),
+                        splashColor: Color.lerp(
+                          profile.color.withOpacity(0.6),
+                          Theme.of(context).primaryColor,
+                          0.25,
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
                 GestureDetector(
                   onTap: () => Navigator.of(context).push(
