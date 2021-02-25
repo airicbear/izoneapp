@@ -79,38 +79,34 @@ class _ProfilePageState extends State<ProfilePage> {
               body: LayoutBuilder(
                 builder: (context, constraints) {
                   if (constraints.maxWidth < 600) {
-                    return GlowingOverscrollIndicator(
-                      axisDirection: AxisDirection.down,
-                      color: widget.profile.color,
-                      child: CustomScrollView(
-                        slivers: [
-                          SliverAppBar(
-                            pinned: true,
-                            expandedHeight: 430.0,
-                            flexibleSpace: FlexibleSpaceBar(
-                              title: Text(widget.profile.stageName),
-                              centerTitle: true,
-                              background: Stack(
-                                fit: StackFit.expand,
-                                children: [
-                                  _ProfileHero(
+                    return CustomScrollView(
+                      slivers: [
+                        SliverAppBar(
+                          pinned: true,
+                          expandedHeight: 430.0,
+                          flexibleSpace: FlexibleSpaceBar(
+                            title: Text(widget.profile.stageName),
+                            centerTitle: true,
+                            background: Stack(
+                              fit: StackFit.expand,
+                              children: [
+                                _ProfileHero(
+                                  profile: widget.profile,
+                                  height: 470.0,
+                                ),
+                                AnimatedOpacity(
+                                  opacity: kOpacity,
+                                  duration: Duration(milliseconds: 100),
+                                  child: ProfilePictureGradient(
                                     profile: widget.profile,
-                                    height: 470.0,
                                   ),
-                                  AnimatedOpacity(
-                                    opacity: kOpacity,
-                                    duration: Duration(milliseconds: 100),
-                                    child: ProfilePictureGradient(
-                                      profile: widget.profile,
-                                    ),
-                                  ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
                           ),
-                          _pages.elementAt(_selectedIndex),
-                        ],
-                      ),
+                        ),
+                        _pages.elementAt(_selectedIndex),
+                      ],
                     );
                   } else {
                     return Row(
@@ -152,14 +148,10 @@ class _ProfilePageState extends State<ProfilePage> {
                           ),
                         ),
                         Expanded(
-                          child: GlowingOverscrollIndicator(
-                            axisDirection: AxisDirection.down,
-                            color: widget.profile.color,
-                            child: CustomScrollView(
-                              slivers: [
-                                _pages.elementAt(_selectedIndex),
-                              ],
-                            ),
+                          child: CustomScrollView(
+                            slivers: [
+                              _pages.elementAt(_selectedIndex),
+                            ],
                           ),
                         ),
                       ],
@@ -202,16 +194,9 @@ class _BottomNavBarState extends State<_BottomNavBar> {
     return BottomNavigationBar(
       currentIndex: widget.index,
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      selectedItemColor: Color.lerp(
-        widget.profile.color,
-        Theme.of(context).textTheme.bodyText1.color,
-        0.8,
-      ),
-      unselectedItemColor: Color.lerp(
-        Color.lerp(widget.profile.color, Theme.of(context).primaryColor, 0.5),
-        Theme.of(context).textTheme.bodyText1.color,
-        0.5,
-      ),
+      selectedItemColor: Theme.of(context).textTheme.bodyText1.color,
+      unselectedItemColor:
+          Theme.of(context).textTheme.bodyText1.color.withOpacity(0.5),
       items: [
         BottomNavigationBarItem(
           icon: Icon(Icons.info),
