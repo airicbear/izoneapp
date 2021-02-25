@@ -60,11 +60,13 @@ class _ViewPicturePageState extends State<ViewPicturePage> {
                       onPressed: () {},
                       icon: Icon(Icons.check),
                       label: Text('Saved'),
+                      colorBrightness: Brightness.dark,
                     )
                   : FlatButton.icon(
                       onPressed: () => _savePicture(),
                       icon: Icon(Icons.save),
                       label: Text('Save picture'),
+                      colorBrightness: Brightness.dark,
                     )
               : Spacer()
         ],
