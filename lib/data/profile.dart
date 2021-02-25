@@ -39,7 +39,7 @@ class Profile {
   int get age => DateTime.now().difference(dateOfBirth).inDays ~/ 365;
 
   String get imagePath =>
-      'assets/images/oneiric-diary/official-photo-4-${this.stageName.replaceAll('*', '').toLowerCase()}.jpg';
+      'assets/images/one-reeler-act-iv/${this.stageName.replaceAll('*', '').toLowerCase()}.png';
 
   /// Assuming the member's height is given in cm, convert it to inches
   double get heightInInches => height * 0.3937;
