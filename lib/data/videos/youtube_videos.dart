@@ -22,6 +22,48 @@ class YoutubeVideos implements MediaContent<YoutubeVideo> {
   YoutubeVideos(BuildContext context, {this.sorted = true}) {
     _videos = [
       YoutubeVideo(
+        title: 'ZERO:ATTITUDE',
+        subtitle: 'Music video',
+        date: DateTime(2021, 02, 15),
+        youtubeId: 'WGVpBTw3PYo',
+        tags: ['mv'],
+      ),
+      YoutubeVideo(
+        title: 'Sequence',
+        subtitle: 'Dance practice',
+        date: DateTime(2020, 12, 18),
+        youtubeId: '49XOs_pibB4',
+        tags: ['dance'],
+      ),
+      YoutubeVideo(
+        title: 'Panorama',
+        subtitle: 'Dance practice',
+        date: DateTime(2020, 12, 16),
+        youtubeId: 'aDdgU2gPtQQ',
+        tags: ['dance'],
+      ),
+      YoutubeVideo(
+        title: 'Panorama',
+        subtitle: 'Music video (Performance ver.)',
+        date: DateTime(2020, 12, 14),
+        youtubeId: '64hndxW-pJw',
+        tags: ['mv'],
+      ),
+      YoutubeVideo(
+        title: 'Panorama',
+        subtitle: 'Music video',
+        date: DateTime(2020, 12, 7),
+        youtubeId: 'G8GaQdW2wHc',
+        tags: ['mv'],
+      ),
+      YoutubeVideo(
+        title: 'Beware',
+        subtitle: 'Music video',
+        date: DateTime(2020, 10, 06),
+        youtubeId: 'QqsvrV1_XEA',
+        tags: ['mv'],
+      ),
+      YoutubeVideo(
         title: 'Pretty',
         subtitle: 'Dance performance',
         date: DateTime(2020, 06, 19),
