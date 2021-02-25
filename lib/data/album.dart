@@ -14,5 +14,5 @@ abstract class Album {
   Album(this.context, {this.title, this.releaseDate, this.songs, this.color});
 
   String get getCoverArtPath =>
-      'assets/coverart/${this.title.split(RegExp(r'[\s\*]')).join('-').toLowerCase()}.jpg';
+      'assets/coverart/${this.title.split(RegExp(r'[\s\*\:\-\/]+')).join('-').toLowerCase()}.jpg';
 }
