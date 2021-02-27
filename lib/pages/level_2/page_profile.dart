@@ -29,16 +29,13 @@ class _ProfilePageState extends State<ProfilePage> {
   List<Widget> _pages;
   int _selectedIndex = 0;
   StreamController<int> _pageController;
-  double kOpacity = 0.0;
+
+  final _expandedHeight = 470.0;
+  final _collapsedHeight = 80.0;
 
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(milliseconds: 300), () {
-      setState(() {
-        kOpacity = 1.0;
-      });
-    });
     _pages = [
       ProfilePageInfo(profile: widget.profile),
       ProfilePageGallery(profile: widget.profile),
@@ -78,31 +75,40 @@ class _ProfilePageState extends State<ProfilePage> {
               backgroundColor: _themeData.scaffoldBackgroundColor,
               body: LayoutBuilder(
                 builder: (context, constraints) {
+                  double _top = constraints.biggest.height;
                   if (constraints.maxWidth < 600) {
                     return CustomScrollView(
                       slivers: [
                         SliverAppBar(
+                          backgroundColor: _themeData.scaffoldBackgroundColor,
+                          floating: true,
                           pinned: true,
-                          expandedHeight: 430.0,
-                          flexibleSpace: FlexibleSpaceBar(
-                            title: Text(widget.profile.stageName),
-                            centerTitle: true,
-                            background: Stack(
-                              fit: StackFit.expand,
-                              children: [
-                                _ProfileHero(
-                                  profile: widget.profile,
-                                  height: 470.0,
-                                ),
-                                AnimatedOpacity(
-                                  opacity: kOpacity,
-                                  duration: Duration(milliseconds: 100),
-                                  child: ProfilePictureGradient(
-                                    profile: widget.profile,
+                          collapsedHeight: _collapsedHeight,
+                          expandedHeight: _expandedHeight,
+                          flexibleSpace: LayoutBuilder(
+                            builder: (_context, _constraints) {
+                              return Stack(
+                                alignment: Alignment.bottomCenter,
+                                children: [
+                                  Opacity(
+                                    opacity: (_constraints.biggest.height /
+                                            (_expandedHeight +
+                                                _collapsedHeight))
+                                        .clamp(0.0, 1.0),
+                                    child: _ProfileHero(
+                                      profile: widget.profile,
+                                      height: _expandedHeight + 50.0,
+                                    ),
                                   ),
-                                ),
-                              ],
-                            ),
+                                  Text(
+                                    widget.profile.stageName,
+                                    style:
+                                        Theme.of(context).textTheme.headline3,
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ],
+                              );
+                            },
                           ),
                         ),
                         _pages.elementAt(_selectedIndex),
@@ -216,11 +222,28 @@ class _BottomNavBarState extends State<_BottomNavBar> {
   }
 }
 
-class _ProfileHero extends StatelessWidget {
+class _ProfileHero extends StatefulWidget {
   final Profile profile;
   final double height;
 
   const _ProfileHero({Key key, this.profile, this.height}) : super(key: key);
+
+  @override
+  State<StatefulWidget> createState() => _ProfileHeroState();
+}
+
+class _ProfileHeroState extends State<_ProfileHero> {
+  double kOpacity = 0.0;
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration(milliseconds: 300), () {
+      setState(() {
+        kOpacity = 1.0;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -231,19 +254,31 @@ class _ProfileHero extends StatelessWidget {
           MaterialPageRoute(
             builder: (context) {
               return ViewPicturePage(
-                path: profile.imagePath,
+                path: widget.profile.imagePath,
               );
             },
           ),
         );
       },
-      child: Hero(
-        tag: profile.imagePath,
-        child: Image(
-          image: AssetImage(profile.imagePath),
-          fit: BoxFit.cover,
-          height: height,
-        ),
+      child: Stack(
+        fit: StackFit.expand,
+        children: [
+          Hero(
+            tag: widget.profile.imagePath,
+            child: Image(
+              image: AssetImage(widget.profile.imagePath),
+              fit: BoxFit.cover,
+              height: widget.height,
+            ),
+          ),
+          AnimatedOpacity(
+            opacity: kOpacity,
+            duration: Duration(milliseconds: 100),
+            child: ProfilePictureGradient(
+              profile: widget.profile,
+            ),
+          ),
+        ],
       ),
     );
   }
