@@ -61,16 +61,15 @@ class SongLyricsPageState extends State<SongLyricsPage>
             AppThemes.themes(context)[snapshot.data ?? 'Auto'];
         return Theme(
           data: _themeData,
-          child: Container(
-            margin: EdgeInsets.only(bottom: widget.adHeight),
-            child: Scaffold(
-              body: CustomScrollView(
+          child: Scaffold(
+            body: Container(
+              margin: EdgeInsets.only(bottom: widget.adHeight),
+              child: CustomScrollView(
                 slivers: [
                   SliverAppBar(
+                    backgroundColor: _themeData.scaffoldBackgroundColor,
                     pinned: true,
                     expandedHeight: 370,
-                    collapsedHeight: 60,
-                    backgroundColor: _themeData.primaryColor,
                     flexibleSpace: Hero(
                       tag: widget.coverArt,
                       child: Container(
@@ -89,6 +88,7 @@ class SongLyricsPageState extends State<SongLyricsPage>
                     title: Text(widget.song.title),
                     actions: [
                       FlatButton(
+                        onPressed: () {},
                         child: Text(
                           _printDuration(widget.song.length),
                           textScaleFactor: 1.5,

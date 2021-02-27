@@ -29,7 +29,6 @@ class AlbumLyricsPage extends StatelessWidget {
               return CustomScrollView(
                 slivers: [
                   SliverAppBar(
-                    backgroundColor: Colors.transparent,
                     automaticallyImplyLeading: false,
                     expandedHeight: 410,
                     flexibleSpace: _AlbumCoverArt(album: album),
@@ -107,7 +106,8 @@ class _AlbumCoverArt extends StatelessWidget {
             color: Theme.of(context).scaffoldBackgroundColor,
           ),
           child: Text(
-              '${MaterialLocalizations.of(context).formatShortDate(DateTime.parse(album.releaseDate))}'),
+            '${MaterialLocalizations.of(context).formatShortDate(DateTime.parse(album.releaseDate))}',
+          ),
         ),
       ],
     );
