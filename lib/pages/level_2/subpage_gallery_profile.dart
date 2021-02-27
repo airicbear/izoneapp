@@ -46,8 +46,13 @@ class _ProfilePageGalleryState extends State<ProfilePageGallery> {
           builder: (context, snapshot) {
             if (snapshot?.data?.elementAt(index)?.path == null) {
               return Padding(
-                padding: EdgeInsets.all(16.0),
-                child: CircularProgressIndicator(),
+                padding: EdgeInsets.all(24.0),
+                child: CircularProgressIndicator(
+                  strokeWidth: 8.0,
+                  valueColor: new AlwaysStoppedAnimation<Color>(
+                    Theme.of(context).disabledColor,
+                  ),
+                ),
               );
             }
 
