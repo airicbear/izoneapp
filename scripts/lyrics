@@ -4,9 +4,12 @@
 # where there exists <div class="lyrics">,
 # however is primarily intended for https://genius.com/
 #
-# Usage:
+# Usage (Linux):
 #   alias xclip="xclip -selection c"
 #   ./lyrics [url] | xclip
+#
+# Usage (MacOS):
+#   ./lyrics [url] | pbcopy
 #
 
 from bs4 import BeautifulSoup
@@ -18,5 +21,8 @@ if __name__ == '__main__':
     r = requests.get(url)
     html = r.text
     soup = BeautifulSoup(html, 'html.parser')
-    lyrics = soup.find('div', class_='lyrics').get_text()
-    print(lyrics)
+    for e in soup.findAll('br'):
+        e.extract()
+    lyrics = str(soup.find('p'))[3:-4]
+    for line in lyrics.split('\n'):
+        print(f'"{line}",')
