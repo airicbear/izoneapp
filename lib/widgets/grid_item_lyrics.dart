@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:izoneapp/controllers/lyrics_page_view.dart';
 import 'package:izoneapp/data/album.dart';
+import 'package:izoneapp/widgets/gradient_box.dart';
+import 'package:izoneapp/widgets/grid_item_label.dart';
 
 class AlbumLyricsTile extends StatelessWidget {
   const AlbumLyricsTile({
@@ -21,6 +23,23 @@ class AlbumLyricsTile extends StatelessWidget {
     );
   }
 
+  Widget _albumInfo(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Column(
+        children: [
+          Text(album.title),
+          Text(
+            '${MaterialLocalizations.of(context).formatCompactDate(DateTime.parse(album.releaseDate))}',
+            style: TextStyle(
+              color: Theme.of(context).disabledColor,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -32,33 +51,29 @@ class AlbumLyricsTile extends StatelessWidget {
         },
         highlightShape: BoxShape.rectangle,
         borderRadius: BorderRadius.circular(12.0),
-        child: Column(
+        child: Stack(
+          alignment: Alignment.bottomCenter,
           children: [
-            Expanded(
-              child: Hero(
-                tag: album.getCoverArtPath,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(12.0),
-                  child: Image(
-                    image: AssetImage(album.getCoverArtPath),
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: Column(
-                children: [
-                  Text(album.title),
-                  Text(
-                    '${MaterialLocalizations.of(context).formatCompactDate(DateTime.parse(album.releaseDate))}',
-                    style: TextStyle(
-                      color: Theme.of(context).disabledColor,
+            Stack(
+              fit: StackFit.expand,
+              children: [
+                Hero(
+                  tag: album.getCoverArtPath,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(12.0),
+                    child: Image(
+                      image: AssetImage(album.getCoverArtPath),
+                      fit: BoxFit.cover,
                     ),
                   ),
-                ],
-              ),
+                ),
+                GradientBox(),
+              ],
+            ),
+            GridItemLabel(
+              title: album.title,
+              subtitle:
+                  MaterialLocalizations.of(context).formatShortDate(album.date),
             ),
           ],
         ),

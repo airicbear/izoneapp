@@ -15,4 +15,6 @@ abstract class Album {
 
   String get getCoverArtPath =>
       'assets/coverart/${this.title.split(RegExp(r'[\s\*\:\-\/]+')).join('-').toLowerCase()}.jpg';
+
+  DateTime get date => DateTime.parse(this.releaseDate);
 }

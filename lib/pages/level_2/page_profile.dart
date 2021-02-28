@@ -6,7 +6,7 @@ import 'package:izoneapp/data/profile.dart';
 import 'package:izoneapp/pages/level_2/subpage_gallery_profile.dart';
 import 'package:izoneapp/pages/level_2/subpage_info_profile.dart';
 import 'package:izoneapp/pages/page_view_picture.dart';
-import 'package:izoneapp/widgets/gradient_profile.dart';
+import 'package:izoneapp/widgets/gradient_box.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -130,9 +130,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                         profile: widget.profile,
                                         height: 470.0,
                                       ),
-                                      ProfilePictureGradient(
-                                        profile: widget.profile,
-                                      ),
+                                      GradientBox(),
                                     ],
                                   ),
                                   SafeArea(
@@ -274,9 +272,7 @@ class _ProfileHeroState extends State<_ProfileHero> {
           AnimatedOpacity(
             opacity: kOpacity,
             duration: Duration(milliseconds: 100),
-            child: ProfilePictureGradient(
-              profile: widget.profile,
-            ),
+            child: GradientBox(),
           ),
         ],
       ),
