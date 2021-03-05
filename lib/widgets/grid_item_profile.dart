@@ -8,11 +8,9 @@ class ProfileTile extends StatelessWidget {
   const ProfileTile({
     Key key,
     @required this.profile,
-    @required this.adHeight,
   }) : super(key: key);
 
   final Profile profile;
-  final double adHeight;
 
   Route _profileRoute(BuildContext context, Profile profile) {
     return PageRouteBuilder<void>(
@@ -32,7 +30,6 @@ class ProfileTile extends StatelessWidget {
               ).transform(animation.value),
               child: ProfilePage(
                 profile: profile,
-                adHeight: adHeight,
               ),
             );
           },

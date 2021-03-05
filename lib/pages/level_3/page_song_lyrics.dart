@@ -5,12 +5,10 @@ import 'package:izoneapp/data/song.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SongLyricsPage extends StatefulWidget {
-  const SongLyricsPage({Key key, this.song, this.coverArt, this.adHeight})
-      : super(key: key);
+  const SongLyricsPage({Key key, this.song, this.coverArt}) : super(key: key);
 
   final Song song;
   final String coverArt;
-  final double adHeight;
 
   @override
   State<StatefulWidget> createState() => SongLyricsPageState();
@@ -62,85 +60,85 @@ class SongLyricsPageState extends State<SongLyricsPage>
         return Theme(
           data: _themeData,
           child: Scaffold(
-            body: Container(
-              margin: EdgeInsets.only(bottom: widget.adHeight),
-              child: CustomScrollView(
-                slivers: [
-                  SliverAppBar(
-                    backgroundColor: _themeData.scaffoldBackgroundColor,
-                    pinned: true,
-                    expandedHeight: 370,
-                    flexibleSpace: Hero(
-                      tag: widget.coverArt,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage(widget.coverArt),
-                            colorFilter: ColorFilter.mode(
-                              _themeData.primaryColor.withOpacity(0.3),
-                              BlendMode.dstATop,
-                            ),
-                            fit: BoxFit.cover,
+            body: CustomScrollView(
+              slivers: [
+                SliverAppBar(
+                  backgroundColor: _themeData.scaffoldBackgroundColor,
+                  pinned: true,
+                  expandedHeight: 370,
+                  flexibleSpace: Hero(
+                    tag: widget.coverArt,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage(widget.coverArt),
+                          colorFilter: ColorFilter.mode(
+                            _themeData.primaryColor.withOpacity(0.3),
+                            BlendMode.dstATop,
                           ),
-                        ),
-                      ),
-                    ),
-                    title: Text(widget.song.title),
-                    actions: [
-                      FlatButton(
-                        onPressed: () {},
-                        child: Text(
-                          _printDuration(widget.song.length),
-                          textScaleFactor: 1.5,
-                        ),
-                      ),
-                    ],
-                    bottom: TabBar(
-                      controller: _tabController,
-                      indicatorColor: _themeData.accentColor,
-                      tabs: List<Tab>.generate(
-                        widget.song.lyrics.length,
-                        (index) => Tab(
-                          text: widget.song.lyrics.keys
-                              .toList()[index]
-                              .toUpperCase(),
+                          fit: BoxFit.cover,
                         ),
                       ),
                     ),
                   ),
-                  SliverList(
-                    delegate: SliverChildBuilderDelegate(
-                      (context, _index) {
-                        bool isEmpty = _currentLyrics[_index].isEmpty;
-                        bool isNewSection =
-                            _currentLyrics[_index].startsWith('[') &&
-                                _currentLyrics[_index].endsWith(']');
-                        return Card(
-                          clipBehavior: ClipRRect(
-                            borderRadius: BorderRadius.circular(4.0),
-                          ).clipBehavior,
-                          child: InkWell(
-                            onTap: () {},
-                            child: ListTile(
-                              title: HtmlWidget(
-                                isNewSection
-                                    ? _currentLyrics[_index].substring(
-                                        1, _currentLyrics[_index].length - 1)
-                                    : _currentLyrics[_index],
-                              ),
-                              tileColor: isEmpty || isNewSection
-                                  ? _themeData.canvasColor
-                                  : Colors.transparent,
-                            ),
-                          ),
-                          elevation: isEmpty || isNewSection ? 0 : 1,
-                        );
-                      },
-                      childCount: _currentLyrics.length,
+                  title: Text(widget.song.title),
+                  actions: [
+                    TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        _printDuration(widget.song.length),
+                        textScaleFactor: 1.5,
+                      ),
+                      style: TextButton.styleFrom(
+                        primary: _themeData.textTheme.bodyText1.color,
+                      ),
+                    ),
+                  ],
+                  bottom: TabBar(
+                    controller: _tabController,
+                    indicatorColor: _themeData.accentColor,
+                    tabs: List<Tab>.generate(
+                      widget.song.lyrics.length,
+                      (index) => Tab(
+                        text: widget.song.lyrics.keys
+                            .toList()[index]
+                            .toUpperCase(),
+                      ),
                     ),
                   ),
-                ],
-              ),
+                ),
+                SliverList(
+                  delegate: SliverChildBuilderDelegate(
+                    (context, _index) {
+                      bool isEmpty = _currentLyrics[_index].isEmpty;
+                      bool isNewSection =
+                          _currentLyrics[_index].startsWith('[') &&
+                              _currentLyrics[_index].endsWith(']');
+                      return Card(
+                        clipBehavior: ClipRRect(
+                          borderRadius: BorderRadius.circular(4.0),
+                        ).clipBehavior,
+                        child: InkWell(
+                          onTap: () {},
+                          child: ListTile(
+                            title: HtmlWidget(
+                              isNewSection
+                                  ? _currentLyrics[_index].substring(
+                                      1, _currentLyrics[_index].length - 1)
+                                  : _currentLyrics[_index],
+                            ),
+                            tileColor: isEmpty || isNewSection
+                                ? _themeData.canvasColor
+                                : Colors.transparent,
+                          ),
+                        ),
+                        elevation: isEmpty || isNewSection ? 0 : 1,
+                      );
+                    },
+                    childCount: _currentLyrics.length,
+                  ),
+                ),
+              ],
             ),
           ),
         );

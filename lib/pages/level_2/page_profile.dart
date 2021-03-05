@@ -13,11 +13,9 @@ class ProfilePage extends StatefulWidget {
   const ProfilePage({
     Key key,
     @required this.profile,
-    @required this.adHeight,
   }) : super(key: key);
 
   final Profile profile;
-  final double adHeight;
 
   @override
   State<StatefulWidget> createState() => _ProfilePageState();
@@ -64,105 +62,100 @@ class _ProfilePageState extends State<ProfilePage> {
             AppThemes.themes(context)[snapshot.data ?? 'Auto'];
         return Theme(
           data: _themeData,
-          child: Container(
-            margin: EdgeInsets.only(bottom: widget.adHeight),
-            child: Scaffold(
-              bottomNavigationBar: _BottomNavBar(
-                profile: widget.profile,
-                index: _selectedIndex,
-                controller: _pageController,
-              ),
-              backgroundColor: _themeData.scaffoldBackgroundColor,
-              body: LayoutBuilder(
-                builder: (context, constraints) {
-                  double _top = constraints.biggest.height;
-                  if (constraints.maxWidth < 600) {
-                    return CustomScrollView(
-                      slivers: [
-                        SliverAppBar(
-                          backgroundColor: _themeData.scaffoldBackgroundColor,
-                          floating: true,
-                          pinned: true,
-                          collapsedHeight: _collapsedHeight,
-                          expandedHeight: _expandedHeight,
-                          flexibleSpace: LayoutBuilder(
-                            builder: (_context, _constraints) {
-                              return Stack(
-                                alignment: Alignment.bottomCenter,
-                                children: [
-                                  Opacity(
-                                    opacity: (_constraints.biggest.height /
-                                            (_expandedHeight +
-                                                _collapsedHeight))
-                                        .clamp(0.0, 1.0),
-                                    child: _ProfileHero(
-                                      profile: widget.profile,
-                                      height: _expandedHeight + 50.0,
-                                    ),
+          child: Scaffold(
+            bottomNavigationBar: _BottomNavBar(
+              profile: widget.profile,
+              index: _selectedIndex,
+              controller: _pageController,
+            ),
+            backgroundColor: _themeData.scaffoldBackgroundColor,
+            body: LayoutBuilder(
+              builder: (context, constraints) {
+                double _top = constraints.biggest.height;
+                if (constraints.maxWidth < 600) {
+                  return CustomScrollView(
+                    slivers: [
+                      SliverAppBar(
+                        backgroundColor: _themeData.scaffoldBackgroundColor,
+                        floating: true,
+                        pinned: true,
+                        collapsedHeight: _collapsedHeight,
+                        expandedHeight: _expandedHeight,
+                        flexibleSpace: LayoutBuilder(
+                          builder: (_context, _constraints) {
+                            return Stack(
+                              alignment: Alignment.bottomCenter,
+                              children: [
+                                Opacity(
+                                  opacity: (_constraints.biggest.height /
+                                          (_expandedHeight + _collapsedHeight))
+                                      .clamp(0.0, 1.0),
+                                  child: _ProfileHero(
+                                    profile: widget.profile,
+                                    height: _expandedHeight + 50.0,
                                   ),
-                                  Text(
-                                    widget.profile.stageName,
-                                    style:
-                                        Theme.of(context).textTheme.headline3,
-                                    textAlign: TextAlign.center,
-                                  ),
-                                ],
-                              );
-                            },
-                          ),
-                        ),
-                        _pages.elementAt(_selectedIndex),
-                      ],
-                    );
-                  } else {
-                    return Row(
-                      children: [
-                        Expanded(
-                          child: Stack(
-                            alignment: Alignment.bottomCenter,
-                            children: [
-                              Stack(
-                                children: [
-                                  Stack(
-                                    fit: StackFit.expand,
-                                    children: [
-                                      _ProfileHero(
-                                        profile: widget.profile,
-                                        height: 470.0,
-                                      ),
-                                      GradientBox(),
-                                    ],
-                                  ),
-                                  SafeArea(
-                                    child: BackButton(
-                                      onPressed: () =>
-                                          Navigator.of(context).pop(),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Container(
-                                padding: const EdgeInsets.all(12.0),
-                                child: Text(
+                                ),
+                                Text(
                                   widget.profile.stageName,
                                   style: Theme.of(context).textTheme.headline3,
+                                  textAlign: TextAlign.center,
                                 ),
+                              ],
+                            );
+                          },
+                        ),
+                      ),
+                      _pages.elementAt(_selectedIndex),
+                    ],
+                  );
+                } else {
+                  return Row(
+                    children: [
+                      Expanded(
+                        child: Stack(
+                          alignment: Alignment.bottomCenter,
+                          children: [
+                            Stack(
+                              children: [
+                                Stack(
+                                  fit: StackFit.expand,
+                                  children: [
+                                    _ProfileHero(
+                                      profile: widget.profile,
+                                      height: 470.0,
+                                    ),
+                                    GradientBox(),
+                                  ],
+                                ),
+                                SafeArea(
+                                  child: BackButton(
+                                    onPressed: () =>
+                                        Navigator.of(context).pop(),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Container(
+                              padding: const EdgeInsets.all(12.0),
+                              child: Text(
+                                widget.profile.stageName,
+                                style: Theme.of(context).textTheme.headline3,
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
-                        Expanded(
-                          child: CustomScrollView(
-                            slivers: [
-                              _pages.elementAt(_selectedIndex),
-                            ],
-                          ),
+                      ),
+                      Expanded(
+                        child: CustomScrollView(
+                          slivers: [
+                            _pages.elementAt(_selectedIndex),
+                          ],
                         ),
-                      ],
-                    );
-                  }
-                },
-              ),
+                      ),
+                    ],
+                  );
+                }
+              },
             ),
           ),
         );

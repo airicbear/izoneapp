@@ -1,12 +1,9 @@
-import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
-import 'package:izoneapp/ad_manager.dart';
 import 'package:izoneapp/controllers/scrollable_app_bar_scroll_behavior.dart';
 import 'package:izoneapp/data/app_pages.dart';
 import 'package:izoneapp/data/app_themes.dart';
 import 'package:izoneapp/pages/page_about.dart';
 import 'package:izoneapp/pages/page_disclaimer.dart';
-// import 'package:izoneapp/widgets/buttons_media.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AppPageView extends StatefulWidget {
@@ -22,12 +19,6 @@ class _AppPageViewState extends State<AppPageView> {
   PageController _pageController;
   ScrollController _appBarController;
   AppPage _page;
-  BannerAd _bannerAd;
-  void _loadBannerAd() {
-    _bannerAd
-      ..load()
-      ..show(anchorType: AnchorType.bottom);
-  }
 
   @override
   void initState() {
@@ -40,17 +31,10 @@ class _AppPageViewState extends State<AppPageView> {
       initialScrollOffset: _page.index * 50.0,
     );
     theme = prefs.then((_prefs) => _prefs.getString('theme') ?? 'Auto');
-
-    _bannerAd = BannerAd(
-      adUnitId: AdManager.bannerAdUnitId,
-      size: AdSize.banner,
-    );
-    _loadBannerAd();
   }
 
   @override
   void dispose() {
-    _bannerAd?.dispose();
     _pageController.dispose();
     _appBarController.dispose();
     super.dispose();
@@ -65,12 +49,10 @@ class _AppPageViewState extends State<AppPageView> {
 
   @override
   Widget build(BuildContext context) {
-    double _adHeight = _bannerAd.size.height.toDouble();
     final List<AppPageInfo> _appPages = AppPages.pages(
       context,
       _pageController,
       _appBarController,
-      _adHeight,
     );
     return FutureBuilder<String>(
       future: theme,
@@ -137,9 +119,7 @@ class _AppPageViewState extends State<AppPageView> {
                       MaterialPageRoute(
                         builder: (context) => Theme(
                           data: _themeData,
-                          child: DisclaimerPage(
-                            adHeight: _adHeight,
-                          ),
+                          child: DisclaimerPage(),
                         ),
                       ),
                     ),
@@ -153,9 +133,7 @@ class _AppPageViewState extends State<AppPageView> {
                       MaterialPageRoute(
                         builder: (context) => Theme(
                           data: _themeData,
-                          child: AboutAppPage(
-                            adHeight: _adHeight,
-                          ),
+                          child: AboutAppPage(),
                         ),
                       ),
                     ),
@@ -210,10 +188,7 @@ class _AppPageViewState extends State<AppPageView> {
               scrollDirection: Axis.horizontal,
               children: List.generate(
                 _appPages.length,
-                (index) => Container(
-                  margin: EdgeInsets.only(bottom: _adHeight),
-                  child: _appPages.elementAt(index).page,
-                ),
+                (index) => _appPages.elementAt(index).page,
               ),
             ),
             // bottomNavigationBar: BottomAppBar(

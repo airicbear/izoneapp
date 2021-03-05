@@ -30,7 +30,6 @@ class AppPages {
     BuildContext context,
     PageController pageController,
     ScrollController appBarController,
-    double adHeight,
   ) {
     return [
       AppPageInfo(
@@ -38,18 +37,14 @@ class AppPages {
         longTitle: 'Song lyrics',
         index: AppPage.LYRICS.index,
         icon: FaIcon(FontAwesomeIcons.readme),
-        page: LyricsPage(
-          adHeight: adHeight,
-        ),
+        page: LyricsPage(),
       ),
       AppPageInfo(
         title: S.of(context).profile,
         longTitle: 'Profile',
         index: AppPage.PROFILES.index,
         icon: FaIcon(FontAwesomeIcons.userFriends),
-        page: ProfilesPage(
-          adHeight: adHeight,
-        ),
+        page: ProfilesPage(),
       ),
       AppPageInfo(
         title: S.of(context).dance,
@@ -58,7 +53,6 @@ class AppPages {
         icon: FaIcon(FontAwesomeIcons.video),
         page: YoutubeVideoListPage(
           videos: YoutubeVideos(context).tagged(['dance']),
-          adHeight: adHeight,
         ),
       ),
       AppPageInfo(
@@ -68,7 +62,6 @@ class AppPages {
         icon: FaIcon(FontAwesomeIcons.film),
         page: YoutubeVideoListPage(
           videos: YoutubeVideos(context).tagged(['mv']),
-          adHeight: adHeight,
         ),
       ),
       AppPageInfo(

@@ -1,4 +1,4 @@
-import 'package:cached_network_image/cached_network_image.dart';
+// import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:izoneapp/data/youtube_video.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
@@ -7,11 +7,9 @@ class YoutubeVideoListPage extends StatefulWidget {
   const YoutubeVideoListPage({
     Key key,
     @required this.videos,
-    @required this.adHeight,
   }) : super(key: key);
 
   final List<YoutubeVideo> videos;
-  final double adHeight;
 
   @override
   State<StatefulWidget> createState() => YoutubeVideoListPageState();
@@ -31,7 +29,6 @@ class YoutubeVideoListPageState extends State<YoutubeVideoListPage> {
                   (context, index) {
                     return _VideoListing(
                       youtubeVideo: widget.videos.elementAt(index),
-                      adHeight: widget.adHeight,
                     );
                   },
                   childCount: widget.videos.length,
@@ -51,7 +48,6 @@ class YoutubeVideoListPageState extends State<YoutubeVideoListPage> {
                   (context, index) {
                     return _VideoListing(
                       youtubeVideo: widget.videos.elementAt(index),
-                      adHeight: widget.adHeight,
                     );
                   },
                   childCount: widget.videos.length,
@@ -67,12 +63,10 @@ class YoutubeVideoListPageState extends State<YoutubeVideoListPage> {
 
 class _VideoListing extends StatelessWidget {
   final YoutubeVideo youtubeVideo;
-  final double adHeight;
 
   const _VideoListing({
     Key key,
     @required this.youtubeVideo,
-    @required this.adHeight,
   }) : super(key: key);
 
   @override
@@ -91,10 +85,7 @@ class _VideoListing extends StatelessWidget {
                 ),
               ),
               builder: (context, player) {
-                return Container(
-                  margin: EdgeInsets.only(bottom: adHeight),
-                  child: player,
-                );
+                return player;
               },
             ),
           ),
@@ -106,7 +97,7 @@ class _VideoListing extends StatelessWidget {
               height: 220,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: CachedNetworkImageProvider(
+                  image: NetworkImage(
                     YoutubePlayer.getThumbnail(
                       videoId: youtubeVideo.youtubeId,
                     ),

@@ -10,58 +10,51 @@ class AlbumLyricsPage extends StatelessWidget {
   const AlbumLyricsPage({
     Key key,
     @required this.album,
-    @required this.adHeight,
   }) : super(key: key);
 
   final Album album;
-  final double adHeight;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(bottom: adHeight),
-      child: Scaffold(
-        backgroundColor:
-            Theme.of(context).scaffoldBackgroundColor.withOpacity(0.5),
-        body: LayoutBuilder(
-          builder: (context, constraints) {
-            if (constraints.maxWidth < 600) {
-              return CustomScrollView(
-                slivers: [
-                  SliverAppBar(
-                    automaticallyImplyLeading: false,
-                    expandedHeight: 410,
-                    flexibleSpace: _AlbumCoverArt(album: album),
+    return Scaffold(
+      backgroundColor:
+          Theme.of(context).scaffoldBackgroundColor.withOpacity(0.5),
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          if (constraints.maxWidth < 600) {
+            return CustomScrollView(
+              slivers: [
+                SliverAppBar(
+                  automaticallyImplyLeading: false,
+                  expandedHeight: 410,
+                  flexibleSpace: _AlbumCoverArt(album: album),
+                ),
+                _AlbumSongList(
+                  album: album,
+                ),
+              ],
+            );
+          } else {
+            return Row(
+              children: [
+                Flexible(
+                  flex: 2,
+                  child: _AlbumCoverArt(album: album),
+                ),
+                Expanded(
+                  flex: 3,
+                  child: CustomScrollView(
+                    slivers: [
+                      _AlbumSongList(
+                        album: album,
+                      ),
+                    ],
                   ),
-                  _AlbumSongList(
-                    album: album,
-                    adHeight: adHeight,
-                  ),
-                ],
-              );
-            } else {
-              return Row(
-                children: [
-                  Flexible(
-                    flex: 2,
-                    child: _AlbumCoverArt(album: album),
-                  ),
-                  Expanded(
-                    flex: 3,
-                    child: CustomScrollView(
-                      slivers: [
-                        _AlbumSongList(
-                          album: album,
-                          adHeight: adHeight,
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              );
-            }
-          },
-        ),
+                ),
+              ],
+            );
+          }
+        },
       ),
     );
   }
@@ -116,10 +109,8 @@ class _AlbumCoverArt extends StatelessWidget {
 
 class _AlbumSongList extends StatelessWidget {
   final Album album;
-  final double adHeight;
 
-  const _AlbumSongList({Key key, @required this.album, @required this.adHeight})
-      : super(key: key);
+  const _AlbumSongList({Key key, @required this.album}) : super(key: key);
 
   Route _songLyricsRoute({
     BuildContext context,
@@ -130,7 +121,6 @@ class _AlbumSongList extends StatelessWidget {
       builder: (context) => SongLyricsPage(
         song: song,
         coverArt: coverArt,
-        adHeight: adHeight,
       ),
     );
   }

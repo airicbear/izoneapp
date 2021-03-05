@@ -3,9 +3,7 @@ import 'package:izoneapp/data/lyrics/albums.dart';
 import 'package:izoneapp/widgets/grid_item_lyrics.dart';
 
 class LyricsPage extends StatelessWidget {
-  final double adHeight;
-
-  const LyricsPage({Key key, @required this.adHeight}) : super(key: key);
+  const LyricsPage({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +20,6 @@ class LyricsPage extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: AlbumLyricsTile(
                 album: Albums.albums(context).elementAt(index),
-                adHeight: adHeight,
               ),
             );
           },

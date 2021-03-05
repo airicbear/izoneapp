@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:izoneapp/data/izone_picture.dart';
 import 'package:izoneapp/data/pictures/izone_pictures.dart';
+import 'package:izoneapp/data/zodiac.dart';
 
 class Profile {
   final String birthplace;
@@ -34,6 +35,9 @@ class Profile {
 
   /// Consider it to be birthday time if their birthday is within 3 days
   bool get isBirthday => DateTime.now().difference(birthday).inDays.abs() < 3;
+
+  /// Get zodiac sign
+  String get zodiac => Zodiac.zodiac(this.dateOfBirth);
 
   /// Get member's age in years, not Korean age
   int get age => DateTime.now().difference(dateOfBirth).inDays ~/ 365;

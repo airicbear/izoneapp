@@ -8,34 +8,14 @@ class AlbumLyricsTile extends StatelessWidget {
   const AlbumLyricsTile({
     Key key,
     @required this.album,
-    @required this.adHeight,
   }) : super(key: key);
 
   final Album album;
-  final double adHeight;
 
   Route _albumLyricsRoute(BuildContext context, Album album) {
     return MaterialPageRoute(
       builder: (context) => LyricsPageView(
         album: album,
-        adHeight: adHeight,
-      ),
-    );
-  }
-
-  Widget _albumInfo(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: Column(
-        children: [
-          Text(album.title),
-          Text(
-            '${MaterialLocalizations.of(context).formatCompactDate(DateTime.parse(album.releaseDate))}',
-            style: TextStyle(
-              color: Theme.of(context).disabledColor,
-            ),
-          ),
-        ],
       ),
     );
   }

@@ -1,4 +1,4 @@
-import 'package:cached_network_image/cached_network_image.dart';
+// import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -56,17 +56,17 @@ class _ViewPicturePageState extends State<ViewPicturePage> {
         actions: [
           widget.path.startsWith('http')
               ? isSaved
-                  ? FlatButton.icon(
+                  ? TextButton.icon(
                       onPressed: () {},
                       icon: Icon(Icons.check),
                       label: Text('Saved'),
-                      colorBrightness: Brightness.dark,
+                      style: TextButton.styleFrom(primary: Colors.white),
                     )
-                  : FlatButton.icon(
+                  : TextButton.icon(
                       onPressed: () => _savePicture(),
                       icon: Icon(Icons.save),
                       label: Text('Save picture'),
-                      colorBrightness: Brightness.dark,
+                      style: TextButton.styleFrom(primary: Colors.white),
                     )
               : Spacer()
         ],
@@ -92,7 +92,7 @@ class _ViewPicturePageState extends State<ViewPicturePage> {
           ),
           imageProvider: widget.isNetwork == null || widget.isNetwork == false
               ? AssetImage(widget.path)
-              : CachedNetworkImageProvider(widget.path),
+              : NetworkImage(widget.path),
           heroAttributes: PhotoViewHeroAttributes(
             tag: widget.path,
           ),
@@ -132,7 +132,7 @@ class _FocusedViewPicturePage extends StatelessWidget {
           ),
           imageProvider: isNetwork == null || isNetwork == false
               ? AssetImage(path)
-              : CachedNetworkImageProvider(path),
+              : NetworkImage(path),
           heroAttributes: PhotoViewHeroAttributes(
             tag: path,
           ),
