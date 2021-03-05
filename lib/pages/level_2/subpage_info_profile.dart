@@ -35,6 +35,7 @@ class ProfilePageInfo extends StatelessWidget {
         ),
       ],
       ['Height', '≈ ${profile.height} cm (${profile.heightInFeetInches})'],
+      ['Zodiac', profile.zodiac],
     ];
 
     return SliverList(
