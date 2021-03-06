@@ -79,7 +79,7 @@ class LyricsWeTogether extends Song {
               "그래서",
               "",
               "끝이 안 보이는 저 넓은 세상 문 앞에",
-              "소중한 나로 데려다 준, you’re my angel",
+              "소중한 나로 데려다 준, you're my angel",
               "너의 두 손에 나의 용기로",
               "모두 다 채우고 싶어",
               "",
