@@ -17,7 +17,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'IZ*ONE',
       home: FutureBuilder<InitializationStatus>(
         future: _initGoogleMobileAds(),
         builder: (context, snapshot) => AppPageView(),
