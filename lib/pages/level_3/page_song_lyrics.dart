@@ -60,6 +60,16 @@ class SongLyricsPageState extends State<SongLyricsPage>
         return Theme(
           data: _themeData,
           child: Scaffold(
+            bottomNavigationBar: TabBar(
+              controller: _tabController,
+              indicatorColor: _themeData.accentColor,
+              tabs: List<Tab>.generate(
+                widget.song.lyrics.length,
+                (index) => Tab(
+                  text: widget.song.lyrics.keys.toList()[index].toUpperCase(),
+                ),
+              ),
+            ),
             body: CustomScrollView(
               slivers: [
                 SliverAppBar(
@@ -94,18 +104,6 @@ class SongLyricsPageState extends State<SongLyricsPage>
                       ),
                     ),
                   ],
-                  bottom: TabBar(
-                    controller: _tabController,
-                    indicatorColor: _themeData.accentColor,
-                    tabs: List<Tab>.generate(
-                      widget.song.lyrics.length,
-                      (index) => Tab(
-                        text: widget.song.lyrics.keys
-                            .toList()[index]
-                            .toUpperCase(),
-                      ),
-                    ),
-                  ),
                 ),
                 SliverList(
                   delegate: SliverChildBuilderDelegate(
