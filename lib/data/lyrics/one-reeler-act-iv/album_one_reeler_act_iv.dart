@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:izoneapp/data/album.dart';
+import 'package:izoneapp/data/lyrics/one-reeler-act-iv/lyrics_island.dart';
 import 'package:izoneapp/data/lyrics/one-reeler-act-iv/lyrics_mise_en_scene.dart';
+import 'package:izoneapp/data/lyrics/one-reeler-act-iv/lyrics_o_sole_mio.dart';
 import 'package:izoneapp/data/lyrics/one-reeler-act-iv/lyrics_panorama.dart';
+import 'package:izoneapp/data/lyrics/one-reeler-act-iv/lyrics_sequence.dart';
+import 'package:izoneapp/data/lyrics/one-reeler-act-iv/lyrics_slow_journey.dart';
 
 class AlbumOneReelerActIV extends Album {
   AlbumOneReelerActIV(BuildContext context)
@@ -13,6 +17,10 @@ class AlbumOneReelerActIV extends Album {
           songs: [
             LyricsMiseEnScene(context),
             LyricsPanorama(context),
+            LyricsIsland(context),
+            LyricsSequence(context),
+            LyricsOSoleMio(context),
+            LyricsSlowJourney(context),
           ],
         );
 
