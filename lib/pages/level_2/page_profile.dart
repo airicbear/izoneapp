@@ -71,7 +71,6 @@ class _ProfilePageState extends State<ProfilePage> {
             backgroundColor: _themeData.scaffoldBackgroundColor,
             body: LayoutBuilder(
               builder: (context, constraints) {
-                double _top = constraints.biggest.height;
                 if (constraints.maxWidth < 600) {
                   return CustomScrollView(
                     slivers: [
