@@ -1,8 +1,6 @@
 #!/usr/bin/python3
 #
-# Print song lyrics for any website 
-# where there exists <div class="lyrics">,
-# however is primarily intended for https://genius.com/
+# Print song lyrics from https://genius.com/
 #
 # Usage (Linux):
 #   alias xclip="xclip -selection c"
