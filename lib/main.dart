@@ -3,18 +3,25 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:izoneapp/controllers/app_page_view.dart';
 import 'package:izoneapp/data/app_themes.dart';
 import 'package:izoneapp/generated/l10n.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your appl ication.
+  Future<InitializationStatus> _initGoogleMobileAds() {
+    return MobileAds.instance.initialize();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'IZ*ONE',
-      home: AppPageView(),
+      home: FutureBuilder<InitializationStatus>(
+        future: _initGoogleMobileAds(),
+        builder: (context, snapshot) => AppPageView(),
+      ),
       debugShowCheckedModeBanner: false,
       darkTheme: AppThemes.dark,
       theme: AppThemes.light,
