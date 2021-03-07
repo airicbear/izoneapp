@@ -13,7 +13,4 @@ class AlbumZeroAttitude extends Album {
             LyricsZeroAttitude(context),
           ],
         );
-
-  @override
-  int index;
 }

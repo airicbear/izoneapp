@@ -13,7 +13,4 @@ class AlbumRise extends Album {
             LyricsRise(context),
           ],
         );
-
-  @override
-  int index;
 }

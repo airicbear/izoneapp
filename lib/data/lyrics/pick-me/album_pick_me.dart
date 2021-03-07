@@ -13,7 +13,4 @@ class AlbumPickMe extends Album {
             LyricsPickMe(context),
           ],
         );
-
-  @override
-  int index;
 }

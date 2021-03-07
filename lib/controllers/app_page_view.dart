@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:izoneapp/ad_manager.dart';
+// import 'package:google_mobile_ads/google_mobile_ads.dart';
+// import 'package:izoneapp/ad_manager.dart';
 import 'package:izoneapp/controllers/scrollable_app_bar_scroll_behavior.dart';
 import 'package:izoneapp/data/app_pages.dart';
 import 'package:izoneapp/data/app_themes.dart';
@@ -21,8 +21,8 @@ class _AppPageViewState extends State<AppPageView> {
   PageController _pageController;
   ScrollController _appBarController;
   AppPage _page;
-  BannerAd _ad;
-  bool _isAdLoaded = false;
+  // BannerAd _ad;
+  // bool _isAdLoaded = false;
 
   @override
   void initState() {
@@ -35,27 +35,27 @@ class _AppPageViewState extends State<AppPageView> {
       initialScrollOffset: _page.index * 50.0,
     );
     theme = prefs.then((_prefs) => _prefs.getString('theme') ?? 'Auto');
-    _ad = BannerAd(
-      size: AdSize.banner,
-      adUnitId: AdManager.bannerAdUnitId,
-      listener: AdListener(
-        onAdLoaded: (_) {
-          setState(() {
-            _isAdLoaded = true;
-          });
-        },
-        onAdFailedToLoad: (_, error) {
-          print('Ad load failed (code=${error.code} message=${error.message})');
-        },
-      ),
-      request: AdRequest(),
-    );
-    _ad.load();
+    // _ad = BannerAd(
+    //   size: AdSize.banner,
+    //   adUnitId: AdManager.bannerAdUnitId,
+    //   listener: AdListener(
+    //     onAdLoaded: (_) {
+    //       setState(() {
+    //         _isAdLoaded = true;
+    //       });
+    //     },
+    //     onAdFailedToLoad: (_, error) {
+    //       print('Ad load failed (code=${error.code} message=${error.message})');
+    //     },
+    //   ),
+    //   request: AdRequest(),
+    // );
+    // _ad.load();
   }
 
   @override
   void dispose() {
-    _ad?.dispose();
+    // _ad?.dispose();
     _pageController.dispose();
     _appBarController.dispose();
     super.dispose();
@@ -199,13 +199,13 @@ class _AppPageViewState extends State<AppPageView> {
                       ],
                     ),
                   ),
-                  if (_isAdLoaded)
-                    Container(
-                      child: AdWidget(ad: _ad),
-                      width: _ad.size.width.toDouble(),
-                      height: 72.0,
-                      alignment: Alignment.center,
-                    ),
+                  // if (_isAdLoaded)
+                  //   Container(
+                  //     child: AdWidget(ad: _ad),
+                  //     width: _ad.size.width.toDouble(),
+                  //     height: 72.0,
+                  //     alignment: Alignment.center,
+                  //   ),
                 ],
               ),
             ),

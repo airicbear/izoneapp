@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:izoneapp/data/app_themes.dart';
 import 'package:izoneapp/data/song.dart';
+import 'package:izoneapp/util/format_duration.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SongLyricsPage extends StatefulWidget {
@@ -155,17 +156,10 @@ class _DurationDisplay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String _printDuration(Duration duration) {
-      String twoDigitMinutes = duration.inMinutes.remainder(60).toString();
-      String twoDigitSeconds =
-          duration.inSeconds.remainder(60).toString().padLeft(2, "0");
-      return "$twoDigitMinutes:$twoDigitSeconds";
-    }
-
     return TextButton(
       onPressed: () {},
       child: Text(
-        _printDuration(song.length),
+        formatDuration(song.length),
         textScaleFactor: 1.5,
       ),
       style: TextButton.styleFrom(

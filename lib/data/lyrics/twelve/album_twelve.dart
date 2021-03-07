@@ -13,7 +13,4 @@ class AlbumTwelve extends Album {
             LyricsBeware(context),
           ],
         );
-
-  @override
-  int index;
 }

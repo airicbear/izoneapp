@@ -13,7 +13,4 @@ class AlbumFinal extends Album {
             LyricsWeTogether(context),
           ],
         );
-
-  @override
-  int index;
 }

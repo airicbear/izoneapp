@@ -35,7 +35,4 @@ class AlbumBloomIz extends Album {
             LyricsOpenYourEyes(context),
           ],
         );
-
-  @override
-  int index;
 }

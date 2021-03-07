@@ -13,7 +13,4 @@ class AlbumColorIz extends Album {
             LyricsLaVieEnRose(context),
           ],
         );
-
-  @override
-  int index;
 }

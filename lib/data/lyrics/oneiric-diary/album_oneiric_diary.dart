@@ -27,7 +27,4 @@ class AlbumOneiricDiary extends Album {
             LyricsMerryGoRoundJapanese(context),
           ],
         );
-
-  @override
-  int index;
 }

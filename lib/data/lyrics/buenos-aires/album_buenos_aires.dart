@@ -21,7 +21,4 @@ class AlbumBuenosAires extends Album {
             LyricsHumanLove(context),
           ],
         );
-
-  @override
-  int index;
 }

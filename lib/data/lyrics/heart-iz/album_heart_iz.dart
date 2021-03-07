@@ -27,7 +27,4 @@ class AlbumHeartIz extends Album {
             LyricsGokigenSayonara(context),
           ],
         );
-
-  @override
-  int index;
 }

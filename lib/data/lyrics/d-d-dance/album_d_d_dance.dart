@@ -13,7 +13,4 @@ class AlbumDDDance extends Album {
             LyricsDDDance(context),
           ],
         );
-
-  @override
-  int index;
 }

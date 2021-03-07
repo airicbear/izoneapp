@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:izoneapp/controllers/lyrics_page_view.dart';
 import 'package:izoneapp/data/album.dart';
-import 'package:izoneapp/widgets/gradient_box.dart';
-import 'package:izoneapp/widgets/grid_item_label.dart';
+import 'package:izoneapp/pages/level_2/page_album_lyrics.dart';
 
 class AlbumLyricsTile extends StatelessWidget {
   const AlbumLyricsTile({
     Key key,
     @required this.album,
+    @required this.themeData,
   }) : super(key: key);
 
   final Album album;
+  final ThemeData themeData;
 
   Route _albumLyricsRoute(BuildContext context, Album album) {
     return MaterialPageRoute(
-      builder: (context) => LyricsPageView(
+      builder: (context) => AlbumLyricsPage(
         album: album,
+        themeData: this.themeData,
       ),
     );
   }
@@ -31,29 +32,23 @@ class AlbumLyricsTile extends StatelessWidget {
         },
         highlightShape: BoxShape.rectangle,
         borderRadius: BorderRadius.circular(12.0),
-        child: Stack(
-          alignment: Alignment.bottomCenter,
+        child: Column(
           children: [
-            Stack(
-              fit: StackFit.expand,
-              children: [
-                Hero(
-                  tag: album.getCoverArtPath,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(12.0),
-                    child: Image(
-                      image: AssetImage(album.getCoverArtPath),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
+            Hero(
+              tag: album.getCoverArtPath,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(12.0),
+                child: Image(
+                  image: AssetImage(album.getCoverArtPath),
+                  fit: BoxFit.cover,
                 ),
-                GradientBox(),
-              ],
+              ),
             ),
-            GridItemLabel(
-              title: album.title,
-              subtitle:
-                  MaterialLocalizations.of(context).formatShortDate(album.date),
+            FittedBox(
+              child: Text(
+                album.title,
+                style: Theme.of(context).textTheme.subtitle1,
+              ),
             ),
           ],
         ),

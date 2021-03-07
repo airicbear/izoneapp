@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:izoneapp/data/profile.dart';
 import 'package:izoneapp/pages/level_2/page_profile.dart';
 import 'package:izoneapp/widgets/gradient_box.dart';
-import 'package:izoneapp/widgets/grid_item_label.dart';
 
 class ProfileTile extends StatelessWidget {
   const ProfileTile({
@@ -78,11 +77,11 @@ class ProfileTile extends StatelessWidget {
                   onTap: () => Navigator.of(context).push(
                     _profileRoute(context, profile),
                   ),
-                  child: GridItemLabel(
-                    title:
-                        '${profile.stageName ?? ""}${profile.isBirthday ? " 🎂" : ""}',
-                    subtitle: MaterialLocalizations.of(context)
-                        .formatShortDate(profile.dateOfBirth),
+                  child: FittedBox(
+                    child: Text(
+                      '${profile.stageName ?? ""}${profile.isBirthday ? " 🎂" : ""}',
+                      style: Theme.of(context).textTheme.headline6,
+                    ),
                   ),
                 ),
               ],

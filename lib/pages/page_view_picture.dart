@@ -1,4 +1,4 @@
-// import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -92,13 +92,20 @@ class _ViewPicturePageState extends State<ViewPicturePage> {
           ),
           imageProvider: widget.isNetwork == null || widget.isNetwork == false
               ? AssetImage(widget.path)
-              : NetworkImage(widget.path),
+              : CachedNetworkImageProvider(widget.path),
           heroAttributes: PhotoViewHeroAttributes(
             tag: widget.path,
           ),
           minScale: PhotoViewComputedScale.contained,
           maxScale: PhotoViewComputedScale.contained * 10.0,
           filterQuality: FilterQuality.high,
+          loadingBuilder: (_context, _event) {
+            return Image.asset(
+              'assets/gif/yuri.gif',
+              cacheWidth: 256,
+              fit: BoxFit.cover,
+            );
+          },
         ),
       ),
     );

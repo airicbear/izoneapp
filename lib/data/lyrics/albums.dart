@@ -18,8 +18,8 @@ import 'package:izoneapp/data/lyrics/vampire/album_vampire.dart';
 import 'package:izoneapp/data/lyrics/zero-attitude/album_zero_attitude.dart';
 
 abstract class Albums {
-  static List<Album> albums(BuildContext context) {
-    List<Album> _albums = [
+  static List<Album> allAlbums(BuildContext context) {
+    return [
       AlbumZeroAttitude(context),
       AlbumDDDance(context),
       AlbumOneReelerActIV(context),
@@ -36,11 +36,40 @@ abstract class Albums {
       Album30Girls6Concepts(context),
       AlbumPickMe(context),
     ];
-    int _index = 0;
-    _albums.forEach((album) {
-      album.index = _index;
-      _index++;
-    });
-    return _albums;
+  }
+
+  static List<Album> koreanAlbums(BuildContext context) {
+    return [
+      AlbumOneReelerActIV(context),
+      AlbumOneiricDiary(context),
+      AlbumBloomIz(context),
+      AlbumHeartIz(context),
+      AlbumColorIz(context),
+    ];
+  }
+
+  static List<Album> japaneseAlbums(BuildContext context) {
+    return [
+      AlbumTwelve(context),
+      AlbumVampire(context),
+      AlbumBuenosAires(context),
+      AlbumSukiToIwasetai(context),
+    ];
+  }
+
+  static List<Album> singles(BuildContext context) {
+    return [
+      AlbumZeroAttitude(context),
+      AlbumDDDance(context),
+      AlbumRise(context),
+    ];
+  }
+
+  static List<Album> produce48(BuildContext context) {
+    return [
+      AlbumFinal(context),
+      Album30Girls6Concepts(context),
+      AlbumPickMe(context),
+    ];
   }
 }

@@ -10,15 +10,16 @@ class AlbumLyricsPage extends StatelessWidget {
   const AlbumLyricsPage({
     Key key,
     @required this.album,
+    @required this.themeData,
   }) : super(key: key);
 
   final Album album;
+  final ThemeData themeData;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:
-          Theme.of(context).scaffoldBackgroundColor.withOpacity(0.5),
+      backgroundColor: themeData.scaffoldBackgroundColor,
       body: LayoutBuilder(
         builder: (context, constraints) {
           if (constraints.maxWidth < 600) {
@@ -26,11 +27,12 @@ class AlbumLyricsPage extends StatelessWidget {
               slivers: [
                 SliverAppBar(
                   automaticallyImplyLeading: false,
-                  expandedHeight: 410,
+                  expandedHeight: 370,
                   flexibleSpace: _AlbumCoverArt(album: album),
                 ),
                 _AlbumSongList(
                   album: album,
+                  themeData: themeData,
                 ),
               ],
             );
@@ -47,6 +49,7 @@ class AlbumLyricsPage extends StatelessWidget {
                     slivers: [
                       _AlbumSongList(
                         album: album,
+                        themeData: themeData,
                       ),
                     ],
                   ),
@@ -92,16 +95,6 @@ class _AlbumCoverArt extends StatelessWidget {
             ),
           ),
         ),
-        Container(
-          padding: const EdgeInsets.all(12.0),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.only(topLeft: Radius.circular(4.0)),
-            color: Theme.of(context).scaffoldBackgroundColor,
-          ),
-          child: Text(
-            '${MaterialLocalizations.of(context).formatShortDate(DateTime.parse(album.releaseDate))}',
-          ),
-        ),
       ],
     );
   }
@@ -109,8 +102,13 @@ class _AlbumCoverArt extends StatelessWidget {
 
 class _AlbumSongList extends StatelessWidget {
   final Album album;
+  final ThemeData themeData;
 
-  const _AlbumSongList({Key key, @required this.album}) : super(key: key);
+  const _AlbumSongList({
+    Key key,
+    @required this.album,
+    @required this.themeData,
+  }) : super(key: key);
 
   Route _songLyricsRoute({
     BuildContext context,
@@ -129,42 +127,59 @@ class _AlbumSongList extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverList(
       delegate: SliverChildBuilderDelegate(
-        (context, index) => Card(
-          clipBehavior: ClipRRect(
-            borderRadius: BorderRadius.circular(4.0),
-          ).clipBehavior,
-          child: InkWell(
-            onTap: () => Navigator.of(context).push(
-              _songLyricsRoute(
-                context: context,
-                song: album.songs[index],
-                coverArt: album.getCoverArtPath,
-              ),
-            ),
-            child: ListTile(
-              leading: Text(
-                '${index + 1}.',
+        (context, index) {
+          if (index == 0)
+            return ListTile(
+              title: Text(
+                MaterialLocalizations.of(context)
+                    .formatShortDate(DateTime.parse(album.releaseDate)),
+                style: themeData.textTheme.caption,
                 textScaleFactor: 1.25,
               ),
-              title: Text('${album.songs[index].title}'),
-              trailing: FittedBox(
-                child: Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(4.0),
-                      child: Text(
-                        S.of(context).lyrics,
-                        textScaleFactor: 1.25,
+              trailing: Text(
+                '${album.totalDuration.inMinutes} minutes',
+                style: themeData.textTheme.caption,
+                textScaleFactor: 1.25,
+              ),
+            );
+          return Card(
+            color: themeData.cardColor,
+            clipBehavior: ClipRRect(
+              borderRadius: BorderRadius.circular(4.0),
+            ).clipBehavior,
+            child: InkWell(
+              onTap: () => Navigator.of(context).push(
+                _songLyricsRoute(
+                  context: context,
+                  song: album.songs[index - 1],
+                  coverArt: album.getCoverArtPath,
+                ),
+              ),
+              child: ListTile(
+                leading: Text(
+                  '$index.',
+                  textScaleFactor: 1.25,
+                ),
+                title: Text('${album.songs[index - 1].title}'),
+                trailing: FittedBox(
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: Text(
+                          S.of(context).lyrics,
+                          textScaleFactor: 1.25,
+                        ),
                       ),
-                    ),
-                    FaIcon(FontAwesomeIcons.readme),
-                  ],
+                      FaIcon(FontAwesomeIcons.readme),
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-        ),
-        childCount: album.songs.length,
+          );
+        },
+        childCount: album.songs.length + 1,
       ),
     );
   }

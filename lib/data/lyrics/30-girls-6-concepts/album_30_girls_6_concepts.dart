@@ -13,7 +13,4 @@ class Album30Girls6Concepts extends Album {
             LyricsRollinRollin(context),
           ],
         );
-
-  @override
-  int index;
 }

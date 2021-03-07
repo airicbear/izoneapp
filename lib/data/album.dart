@@ -8,10 +8,21 @@ abstract class Album {
   final List<Song> songs;
   final Color color;
 
-  set index(int n);
-  int get index;
+  Album(
+    this.context, {
+    this.title,
+    this.releaseDate,
+    this.songs,
+    this.color,
+  });
 
-  Album(this.context, {this.title, this.releaseDate, this.songs, this.color});
+  Duration get totalDuration {
+    Duration total = Duration();
+    for (Song song in songs) {
+      total += song.length;
+    }
+    return total;
+  }
 
   String get getCoverArtPath =>
       'assets/coverart/${this.title.split(RegExp(r'[\s\*\:\-\/]+')).join('-').toLowerCase()}.jpg';

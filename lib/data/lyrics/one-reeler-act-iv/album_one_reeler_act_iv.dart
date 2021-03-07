@@ -23,7 +23,4 @@ class AlbumOneReelerActIV extends Album {
             LyricsSlowJourney(context),
           ],
         );
-
-  @override
-  int index;
 }

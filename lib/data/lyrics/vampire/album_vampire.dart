@@ -21,7 +21,4 @@ class AlbumVampire extends Album {
             LyricsFukigenLucy(context),
           ],
         );
-
-  @override
-  int index;
 }
