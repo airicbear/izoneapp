@@ -76,7 +76,6 @@ class _ProfilePageState extends State<ProfilePage> {
                     slivers: [
                       SliverAppBar(
                         backgroundColor: _themeData.scaffoldBackgroundColor,
-                        floating: true,
                         pinned: true,
                         collapsedHeight: _collapsedHeight,
                         expandedHeight: _expandedHeight,
