@@ -50,6 +50,7 @@ class Zodiac {
     if (isAquarius(date)) return '♒ Aquarius';
     if (isPisces(date)) return '♓ Pisces';
     assert(false, 'Date $date did not correspond to a zodiac sign.');
+    return 'No zodiac';
   }
 
   static bool _afterBefore(
