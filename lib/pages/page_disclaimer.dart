@@ -35,7 +35,7 @@ class DisclaimerPage extends StatelessWidget {
               //       label: Text('Submit an issue'),
               //       icon: FaIcon(FontAwesomeIcons.github),
               //       onPressed: () =>
-              //           launch('https://github.com/airicbear/izone-app'),
+              //           launchUrl('https://github.com/airicbear/izone-app' as Uri),
               //     ),
               //   ],
               // )
@@ -50,58 +50,64 @@ class DisclaimerPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 TextButton.icon(
-                  onPressed: () => launch('https://genius.com/artists/Izone'),
-                  icon: FaIcon(FontAwesomeIcons.globeAmericas),
+                  onPressed: () =>
+                      launchUrl('https://genius.com/artists/Izone' as Uri),
+                  icon: FaIcon(FontAwesomeIcons.earthAmericas),
                   label: Text('Genius.com'),
                 ),
                 TextButton.icon(
-                  onPressed: () => launch(
-                      'https://colorcodedlyrics.com/2018/11/iz-one-aijeuwon-produce-48-lyrics-index'),
-                  icon: FaIcon(FontAwesomeIcons.globeAmericas),
+                  onPressed: () => launchUrl(
+                      'https://colorcodedlyrics.com/2018/11/iz-one-aijeuwon-produce-48-lyrics-index'
+                          as Uri),
+                  icon: FaIcon(FontAwesomeIcons.earthAmericas),
                   label: Text('colorcodedlyrics.com'),
                 ),
                 TextButton.icon(
-                  onPressed: () => launch(
-                      'https://www.youtube.com/results?search_query=iz%2Aone+color+coded+lyrics'),
+                  onPressed: () => launchUrl(
+                      'https://www.youtube.com/results?search_query=iz%2Aone+color+coded+lyrics'
+                          as Uri),
                   icon: FaIcon(FontAwesomeIcons.youtube),
                   label: Text('YouTube'),
                 ),
                 TextButton.icon(
-                  onPressed: () => launch(
-                      'https://translate.google.com/#view=home&op=translate&sl=ko&tl=en'),
+                  onPressed: () => launchUrl(
+                      'https://translate.google.com/#view=home&op=translate&sl=ko&tl=en'
+                          as Uri),
                   icon: FaIcon(FontAwesomeIcons.language),
                   label: Text('Google Translate'),
                 ),
                 TextButton.icon(
-                    onPressed: () =>
-                        launch('https://en.wikipedia.org/wiki/Iz*One'),
+                    onPressed: () => launchUrl(
+                        'https://en.wikipedia.org/wiki/Iz*One' as Uri),
                     icon: FaIcon(FontAwesomeIcons.wikipediaW),
                     label: Text('Wikipedia: Iz*One')),
                 TextButton.icon(
-                  onPressed: () => launch('http://iz-one.co.kr/'),
-                  icon: FaIcon(FontAwesomeIcons.globeAmericas),
+                  onPressed: () => launchUrl('http://iz-one.co.kr/' as Uri),
+                  icon: FaIcon(FontAwesomeIcons.earthAmericas),
                   label: Text('Official IZ*ONE website'),
                 ),
                 TextButton.icon(
-                  onPressed: () => launch('https://www.izone-official.com/'),
-                  icon: FaIcon(FontAwesomeIcons.globeAmericas),
+                  onPressed: () =>
+                      launchUrl('https://www.izone-official.com/' as Uri),
+                  icon: FaIcon(FontAwesomeIcons.earthAmericas),
                   label: Text('Official IZ*ONE Japan website'),
                 ),
                 TextButton.icon(
-                  onPressed: () =>
-                      launch('https://kprofiles.com/izone-members-profile/'),
-                  icon: FaIcon(FontAwesomeIcons.globeAmericas),
+                  onPressed: () => launchUrl(
+                      'https://kprofiles.com/izone-members-profile/' as Uri),
+                  icon: FaIcon(FontAwesomeIcons.earthAmericas),
                   label: Text('KProfiles.com'),
                 ),
                 TextButton.icon(
                   onPressed: () =>
-                      launch('https://kpop.fandom.com/wiki/IZ*ONE'),
-                  icon: FaIcon(FontAwesomeIcons.globeAmericas),
+                      launchUrl('https://kpop.fandom.com/wiki/IZ*ONE' as Uri),
+                  icon: FaIcon(FontAwesomeIcons.earthAmericas),
                   label: Text('FANDOM KPOP Wiki Page'),
                 ),
                 TextButton.icon(
-                  onPressed: () => launch('https://dbkpop.com/group/izone'),
-                  icon: FaIcon(FontAwesomeIcons.globeAmericas),
+                  onPressed: () =>
+                      launchUrl('https://dbkpop.com/group/izone' as Uri),
+                  icon: FaIcon(FontAwesomeIcons.earthAmericas),
                   label: Text('dbkpop.com'),
                 ),
               ],

@@ -43,7 +43,7 @@ class AppPages {
         title: S.of(context)!.profile,
         longTitle: 'Profile',
         index: AppPage.PROFILES.index,
-        icon: FaIcon(FontAwesomeIcons.userFriends),
+        icon: FaIcon(FontAwesomeIcons.userGroup),
         page: ProfilesPage(),
       ),
       AppPageInfo(

@@ -79,7 +79,7 @@ class ProfileTile extends StatelessWidget {
                   ),
                   child: FittedBox(
                     child: Text(
-                      '${profile.stageName ?? ""}${profile.isBirthday ? " 🎂" : ""}',
+                      '${profile.stageName}${profile.isBirthday ? " 🎂" : ""}',
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
                   ),
