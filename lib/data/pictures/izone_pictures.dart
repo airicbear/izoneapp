@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 class IzonePictures implements MediaContent<IzonePicture> {
   final List<IzonePicture> pictures;
 
-  IzonePictures({this.pictures});
+  IzonePictures({required this.pictures});
 
   @override
   List<IzonePicture> tagged(List<String> tags) {
@@ -25,7 +25,8 @@ class IzonePictures implements MediaContent<IzonePicture> {
 
   static Future<List<IzonePicture>> search(String query) async {
     final response = await http.get(
-        'https://dbkpop.com/wp-json/wp/v2/media?search=$query&per_page=100');
+        'https://dbkpop.com/wp-json/wp/v2/media?search=$query&per_page=100'
+            as Uri);
 
     if (response.statusCode == 200) {
       return IzonePicture.fromJsonList(json.decode(response.body));

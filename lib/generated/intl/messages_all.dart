@@ -26,21 +26,18 @@ Map<String, LibraryLoader> _deferredLibraries = {
 
 MessageLookupByLibrary _findExact(String localeName) {
   switch (localeName) {
-    case 'en':
-      return messages_en.messages;
     case 'ko':
       return messages_ko.messages;
     default:
-      return null;
+      return messages_en.messages;
   }
 }
 
 /// User programs should call this before using [localeName] for messages.
 Future<bool> initializeMessages(String localeName) async {
   var availableLocale = Intl.verifiedLocale(
-    localeName,
-    (locale) => _deferredLibraries[locale] != null,
-    onFailure: (_) => null);
+      localeName, (locale) => _deferredLibraries[locale] != null,
+      onFailure: (_) => null);
   if (availableLocale == null) {
     return new Future.value(false);
   }
@@ -60,8 +57,8 @@ bool _messagesExistFor(String locale) {
 }
 
 MessageLookupByLibrary _findGeneratedMessagesFor(String locale) {
-  var actualLocale = Intl.verifiedLocale(locale, _messagesExistFor,
-      onFailure: (_) => null);
-  if (actualLocale == null) return null;
+  String actualLocale =
+      Intl.verifiedLocale(locale, _messagesExistFor, onFailure: (_) => null)!;
+
   return _findExact(actualLocale);
 }

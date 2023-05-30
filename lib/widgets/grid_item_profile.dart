@@ -5,8 +5,8 @@ import 'package:izoneapp/widgets/gradient_box.dart';
 
 class ProfileTile extends StatelessWidget {
   const ProfileTile({
-    Key key,
-    @required this.profile,
+    Key? key,
+    required this.profile,
   }) : super(key: key);
 
   final Profile profile;
@@ -20,7 +20,7 @@ class ProfileTile extends StatelessWidget {
       ) {
         return AnimatedBuilder(
           animation: animation,
-          builder: (BuildContext context, Widget child) {
+          builder: (BuildContext context, Widget? child) {
             return Opacity(
               opacity: Interval(
                 0.0,
@@ -80,7 +80,7 @@ class ProfileTile extends StatelessWidget {
                   child: FittedBox(
                     child: Text(
                       '${profile.stageName ?? ""}${profile.isBirthday ? " 🎂" : ""}',
-                      style: Theme.of(context).textTheme.headline6,
+                      style: Theme.of(context).textTheme.titleLarge,
                     ),
                   ),
                 ),

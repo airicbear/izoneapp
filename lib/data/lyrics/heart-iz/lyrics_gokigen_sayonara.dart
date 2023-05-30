@@ -6,7 +6,7 @@ class LyricsGokigenSayonara extends Song {
   LyricsGokigenSayonara(BuildContext context)
       : super(
           context,
-          title: S.of(context).gokigenSayonara,
+          title: S.of(context)!.gokigenSayonara,
           length: const Duration(minutes: 4, seconds: 21),
           lyrics: {
             "rom": [

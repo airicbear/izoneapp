@@ -3,7 +3,7 @@ import 'package:izoneapp/data/links/media_links.dart';
 import 'package:izoneapp/widgets/list_tile_media.dart';
 
 class MediaPage extends StatelessWidget {
-  const MediaPage({Key key}) : super(key: key);
+  const MediaPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

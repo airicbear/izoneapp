@@ -4,7 +4,7 @@ import 'package:izoneapp/data/lyrics/albums.dart';
 import 'package:izoneapp/widgets/grid_item_lyrics.dart';
 
 class LyricsPage extends StatelessWidget {
-  const LyricsPage({Key key}) : super(key: key);
+  const LyricsPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,8 +37,11 @@ class _HorizontalAlbumList extends StatelessWidget {
   final String title;
   final List<Album> albums;
 
-  const _HorizontalAlbumList({Key key, this.title, this.albums})
-      : super(key: key);
+  const _HorizontalAlbumList({
+    Key? key,
+    required this.title,
+    required this.albums,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +52,7 @@ class _HorizontalAlbumList extends StatelessWidget {
         children: [
           Text(
             title,
-            style: Theme.of(context).textTheme.headline6,
+            style: Theme.of(context).textTheme.titleLarge,
             textScaleFactor: 1.25,
           ),
           Container(

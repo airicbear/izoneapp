@@ -6,7 +6,7 @@ class LyricsLaVieEnRose extends Song {
   LyricsLaVieEnRose(BuildContext context)
       : super(
           context,
-          title: S.of(context).laVieEnRose,
+          title: S.of(context)!.laVieEnRose,
           length: Duration(minutes: 3, seconds: 40),
           lyrics: {
             "rom": [

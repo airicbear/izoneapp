@@ -5,8 +5,8 @@ import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class YoutubeVideoListPage extends StatefulWidget {
   const YoutubeVideoListPage({
-    Key key,
-    @required this.videos,
+    Key? key,
+    required this.videos,
   }) : super(key: key);
 
   final List<YoutubeVideo> videos;
@@ -65,8 +65,8 @@ class _VideoListing extends StatelessWidget {
   final YoutubeVideo youtubeVideo;
 
   const _VideoListing({
-    Key key,
-    @required this.youtubeVideo,
+    Key? key,
+    required this.youtubeVideo,
   }) : super(key: key);
 
   @override

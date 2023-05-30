@@ -14,20 +14,20 @@ class Profile {
   final String company;
 
   Profile({
-    this.birthplace,
-    this.dateOfBirth,
-    this.name,
-    this.nameKorean,
-    this.height,
-    this.colorDesc,
-    this.color,
-    this.company,
+    required this.birthplace,
+    required this.dateOfBirth,
+    required this.name,
+    required this.nameKorean,
+    required this.height,
+    required this.colorDesc,
+    required this.color,
+    required this.company,
   });
 
   String get stageName => name.split(' ').last;
 
   List<IzonePicture> get gallery =>
-      IzonePictures().tagged([stageName.toLowerCase()]);
+      IzonePictures(pictures: []).tagged([stageName.toLowerCase()]);
 
   /// Get birthday for current year
   DateTime get birthday => DateTime.parse(

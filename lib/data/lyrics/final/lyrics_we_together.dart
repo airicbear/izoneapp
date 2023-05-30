@@ -6,7 +6,7 @@ class LyricsWeTogether extends Song {
   LyricsWeTogether(BuildContext context)
       : super(
           context,
-          title: S.of(context).weTogether,
+          title: S.of(context)!.weTogether,
           length: Duration(minutes: 3, seconds: 47),
           lyrics: {
             "rom": [

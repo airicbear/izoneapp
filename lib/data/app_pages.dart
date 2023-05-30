@@ -17,11 +17,11 @@ class AppPageInfo {
   final Widget page;
 
   const AppPageInfo({
-    this.title,
-    this.longTitle,
-    this.index,
-    this.icon,
-    this.page,
+    required this.title,
+    required this.longTitle,
+    required this.index,
+    required this.icon,
+    required this.page,
   });
 }
 
@@ -33,21 +33,21 @@ class AppPages {
   ) {
     return [
       AppPageInfo(
-        title: S.of(context).lyrics,
+        title: S.of(context)!.lyrics,
         longTitle: 'Song lyrics',
         index: AppPage.LYRICS.index,
         icon: FaIcon(FontAwesomeIcons.readme),
         page: LyricsPage(),
       ),
       AppPageInfo(
-        title: S.of(context).profile,
+        title: S.of(context)!.profile,
         longTitle: 'Profile',
         index: AppPage.PROFILES.index,
         icon: FaIcon(FontAwesomeIcons.userFriends),
         page: ProfilesPage(),
       ),
       AppPageInfo(
-        title: S.of(context).dance,
+        title: S.of(context)!.dance,
         longTitle: 'Dance videos',
         index: AppPage.DANCE.index,
         icon: FaIcon(FontAwesomeIcons.video),
@@ -65,7 +65,7 @@ class AppPages {
         ),
       ),
       AppPageInfo(
-        title: S.of(context).media,
+        title: S.of(context)!.media,
         longTitle: 'Social media & platforms',
         index: AppPage.MEDIA.index,
         icon: Icon(Icons.live_tv),

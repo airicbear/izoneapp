@@ -6,7 +6,7 @@ class LyricsSecretStoryOfTheSwan extends Song {
   LyricsSecretStoryOfTheSwan(BuildContext context)
       : super(
           context,
-          title: S.of(context).secretStoryOfTheSwan,
+          title: S.of(context)!.secretStoryOfTheSwan,
           length: Duration(minutes: 3, seconds: 13),
           lyrics: {
             "rom": [

@@ -6,7 +6,7 @@ class LyricsNekoniNaritai extends Song {
   LyricsNekoniNaritai(BuildContext context)
       : super(
           context,
-          title: '${S.of(context).nekoniNaritai} (Korean ver.)',
+          title: '${S.of(context)!.nekoniNaritai} (Korean ver.)',
           length: const Duration(minutes: 4, seconds: 17),
           lyrics: {
             "rom": [

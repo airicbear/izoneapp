@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:izoneapp/pages/page_view_picture.dart';
 
 class GalleryTile extends StatelessWidget {
-  const GalleryTile({Key key, @required this.url, this.color})
-      : super(key: key);
+  const GalleryTile({
+    Key? key,
+    required this.url,
+    required this.color,
+  }) : super(key: key);
 
   final String url;
   final Color color;

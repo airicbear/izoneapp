@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 // import 'package:izoneapp/ad_manager.dart';
 import 'package:izoneapp/controllers/scrollable_app_bar_scroll_behavior.dart';
 import 'package:izoneapp/data/app_pages.dart';
-import 'package:izoneapp/data/app_themes.dart';
+// import 'package:izoneapp/data/app_themes.dart';
 import 'package:izoneapp/pages/page_about.dart';
 import 'package:izoneapp/pages/page_disclaimer.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AppPageView extends StatefulWidget {
-  AppPageView({Key key}) : super(key: key);
+  AppPageView({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _AppPageViewState();
@@ -17,10 +17,10 @@ class AppPageView extends StatefulWidget {
 
 class _AppPageViewState extends State<AppPageView> {
   Future<SharedPreferences> prefs = SharedPreferences.getInstance();
-  Future<String> theme;
-  PageController _pageController;
-  ScrollController _appBarController;
-  AppPage _page;
+  late Future<String> theme;
+  late PageController _pageController;
+  late ScrollController _appBarController;
+  late AppPage _page;
   // BannerAd _ad;
   // bool _isAdLoaded = false;
 
@@ -78,8 +78,8 @@ class _AppPageViewState extends State<AppPageView> {
     return FutureBuilder<String>(
       future: theme,
       builder: (context, snapshot) {
-        ThemeData _themeData =
-            AppThemes.themes(context)[snapshot.data ?? 'Auto'];
+        // ThemeData _themeData = AppThemes.themes(context)['Light']!;
+        ThemeData _themeData = Theme.of(context);
         return Theme(
           data: _themeData,
           child: Scaffold(
@@ -167,35 +167,35 @@ class _AppPageViewState extends State<AppPageView> {
                             title: Text('About this app'),
                           ),
                         ),
-                        InkWell(
-                          child: ExpansionTile(
-                            leading: Icon(Icons.palette),
-                            title: Text('Themes'),
-                            children: List.generate(
-                              AppThemes.themes(context).length,
-                              (index) {
-                                String _themeName = AppThemes.themes(context)
-                                    .keys
-                                    .toList()
-                                    .elementAt(index);
-                                return InkWell(
-                                  onTap: () => _changeTheme(_themeName),
-                                  child: ListTile(
-                                    title: Text(_themeName),
-                                    trailing: Icon(
-                                      Icons.circle,
-                                      color: AppThemes.themes(context)
-                                          .values
-                                          .toList()
-                                          .elementAt(index)
-                                          .primaryColor,
-                                    ),
-                                  ),
-                                );
-                              },
-                            ),
-                          ),
-                        ),
+                        // InkWell(
+                        //   child: ExpansionTile(
+                        //     leading: Icon(Icons.palette),
+                        //     title: Text('Themes'),
+                        //     children: List.generate(
+                        //       AppThemes.themes(context).length,
+                        //       (index) {
+                        //         String _themeName = AppThemes.themes(context)
+                        //             .keys
+                        //             .toList()
+                        //             .elementAt(index);
+                        //         return InkWell(
+                        //           onTap: () => _changeTheme(_themeName),
+                        //           child: ListTile(
+                        //             title: Text(_themeName),
+                        //             trailing: Icon(
+                        //               Icons.circle,
+                        //               color: AppThemes.themes(context)
+                        //                   .values
+                        //                   .toList()
+                        //                   .elementAt(index)
+                        //                   .primaryColor,
+                        //             ),
+                        //           ),
+                        //         );
+                        //       },
+                        //     ),
+                        //   ),
+                        // ),
                       ],
                     ),
                   ),
@@ -244,11 +244,11 @@ class _PageTitle extends StatelessWidget {
   final ScrollController appBarController;
 
   const _PageTitle({
-    Key key,
-    @required this.page,
-    @required this.nextPage,
-    @required this.pageController,
-    @required this.appBarController,
+    Key? key,
+    required this.page,
+    required this.nextPage,
+    required this.pageController,
+    required this.appBarController,
   }) : super(key: key);
 
   Widget build(BuildContext context) {
@@ -273,11 +273,11 @@ class _PageViewAppBar extends StatelessWidget {
   final AppPage nextPage;
 
   const _PageViewAppBar({
-    Key key,
-    @required this.appPages,
-    @required this.pageController,
-    @required this.appBarController,
-    @required this.nextPage,
+    Key? key,
+    required this.appPages,
+    required this.pageController,
+    required this.appBarController,
+    required this.nextPage,
   }) : super(key: key);
 
   @override

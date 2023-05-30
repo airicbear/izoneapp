@@ -6,8 +6,8 @@ import 'package:izoneapp/widgets/grid_item_gallery.dart';
 
 class ProfilePageGallery extends StatefulWidget {
   const ProfilePageGallery({
-    Key key,
-    @required this.profile,
+    Key? key,
+    required this.profile,
   }) : super(key: key);
 
   final Profile profile;
@@ -17,7 +17,7 @@ class ProfilePageGallery extends StatefulWidget {
 }
 
 class _ProfilePageGalleryState extends State<ProfilePageGallery> {
-  Future<List<IzonePicture>> _pictures;
+  late Future<List<IzonePicture>> _pictures;
   int _numPictures = 9;
 
   @override
@@ -44,7 +44,7 @@ class _ProfilePageGalleryState extends State<ProfilePageGallery> {
         (context, index) => FutureBuilder<List<IzonePicture>>(
           future: _pictures,
           builder: (context, snapshot) {
-            if (snapshot?.data?.elementAt(index)?.path == null) {
+            if (snapshot.data?.elementAt(index).path == null) {
               return Padding(
                 padding: EdgeInsets.all(24.0),
                 child: CircularProgressIndicator(
@@ -57,7 +57,7 @@ class _ProfilePageGalleryState extends State<ProfilePageGallery> {
             }
 
             return GalleryTile(
-              url: snapshot?.data?.elementAt(index)?.path,
+              url: snapshot.data!.elementAt(index).path,
               color: widget.profile.color,
             );
           },

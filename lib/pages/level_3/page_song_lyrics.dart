@@ -6,7 +6,11 @@ import 'package:izoneapp/util/format_duration.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SongLyricsPage extends StatefulWidget {
-  const SongLyricsPage({Key key, this.song, this.coverArt}) : super(key: key);
+  const SongLyricsPage({
+    Key? key,
+    required this.song,
+    required this.coverArt,
+  }) : super(key: key);
 
   final Song song;
   final String coverArt;
@@ -18,9 +22,9 @@ class SongLyricsPage extends StatefulWidget {
 class SongLyricsPageState extends State<SongLyricsPage>
     with TickerProviderStateMixin {
   Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
-  Future<String> _theme;
-  TabController _tabController;
-  List<String> _currentLyrics;
+  late Future<String> _theme;
+  late TabController _tabController;
+  late List<String> _currentLyrics;
   final _expandedHeight = 370.0;
 
   void _changeLyricsListener() {
@@ -50,14 +54,15 @@ class SongLyricsPageState extends State<SongLyricsPage>
     return FutureBuilder<String>(
       future: _theme,
       builder: (context, snapshot) {
-        ThemeData _themeData =
-            AppThemes.themes(context)[snapshot.data ?? 'Auto'];
+        // ThemeData _themeData =
+        //     AppThemes.themes(context)[snapshot.data ?? 'Auto']!;
+        ThemeData _themeData = Theme.of(context);
         return Theme(
           data: _themeData,
           child: Scaffold(
             bottomNavigationBar: TabBar(
               controller: _tabController,
-              indicatorColor: _themeData.accentColor,
+              indicatorColor: _themeData.colorScheme.secondary,
               tabs: List<Tab>.generate(
                 widget.song.lyrics.length,
                 (index) => Tab(
@@ -125,7 +130,11 @@ class _CoverArt extends StatelessWidget {
   final String coverArt;
   final ThemeData themeData;
 
-  const _CoverArt({Key key, this.coverArt, this.themeData}) : super(key: key);
+  const _CoverArt({
+    Key? key,
+    required this.coverArt,
+    required this.themeData,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -151,8 +160,11 @@ class _DurationDisplay extends StatelessWidget {
   final Song song;
   final ThemeData themeData;
 
-  const _DurationDisplay({Key key, this.song, this.themeData})
-      : super(key: key);
+  const _DurationDisplay({
+    Key? key,
+    required this.song,
+    required this.themeData,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -163,7 +175,7 @@ class _DurationDisplay extends StatelessWidget {
         textScaleFactor: 1.5,
       ),
       style: TextButton.styleFrom(
-        primary: themeData.textTheme.bodyText1.color,
+        foregroundColor: themeData.textTheme.bodyLarge?.color,
       ),
     );
   }
@@ -173,8 +185,11 @@ class _LyricsList extends StatelessWidget {
   final List<String> currentLyrics;
   final ThemeData themeData;
 
-  const _LyricsList({Key key, this.currentLyrics, this.themeData})
-      : super(key: key);
+  const _LyricsList({
+    Key? key,
+    required this.currentLyrics,
+    required this.themeData,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

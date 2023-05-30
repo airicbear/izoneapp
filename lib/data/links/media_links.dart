@@ -9,7 +9,8 @@ class MediaLinkInfo {
   final Widget icon;
   final String description;
 
-  MediaLinkInfo({this.launch, this.icon, this.description});
+  MediaLinkInfo(
+      {required this.launch, required this.icon, required this.description});
 }
 
 class MediaLinks {
