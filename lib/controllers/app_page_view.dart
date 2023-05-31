@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 // import 'package:izoneapp/ad_manager.dart';
 import 'package:izoneapp/controllers/scrollable_app_bar_scroll_behavior.dart';
 import 'package:izoneapp/data/app_pages.dart';
-// import 'package:izoneapp/data/app_themes.dart';
+import 'package:izoneapp/data/app_themes.dart';
 import 'package:izoneapp/pages/page_about.dart';
 import 'package:izoneapp/pages/page_disclaimer.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -78,8 +78,7 @@ class _AppPageViewState extends State<AppPageView> {
     return FutureBuilder<String>(
       future: theme,
       builder: (context, snapshot) {
-        // ThemeData _themeData = AppThemes.themes(context)['Light']!;
-        ThemeData _themeData = Theme.of(context);
+        ThemeData _themeData = AppThemes.themes(context)['Light']!;
         return Theme(
           data: _themeData,
           child: Scaffold(
@@ -167,35 +166,35 @@ class _AppPageViewState extends State<AppPageView> {
                             title: Text('About this app'),
                           ),
                         ),
-                        // InkWell(
-                        //   child: ExpansionTile(
-                        //     leading: Icon(Icons.palette),
-                        //     title: Text('Themes'),
-                        //     children: List.generate(
-                        //       AppThemes.themes(context).length,
-                        //       (index) {
-                        //         String _themeName = AppThemes.themes(context)
-                        //             .keys
-                        //             .toList()
-                        //             .elementAt(index);
-                        //         return InkWell(
-                        //           onTap: () => _changeTheme(_themeName),
-                        //           child: ListTile(
-                        //             title: Text(_themeName),
-                        //             trailing: Icon(
-                        //               Icons.circle,
-                        //               color: AppThemes.themes(context)
-                        //                   .values
-                        //                   .toList()
-                        //                   .elementAt(index)
-                        //                   .primaryColor,
-                        //             ),
-                        //           ),
-                        //         );
-                        //       },
-                        //     ),
-                        //   ),
-                        // ),
+                        InkWell(
+                          child: ExpansionTile(
+                            leading: Icon(Icons.palette),
+                            title: Text('Themes'),
+                            children: List.generate(
+                              AppThemes.themes(context).length,
+                              (index) {
+                                String _themeName = AppThemes.themes(context)
+                                    .keys
+                                    .toList()
+                                    .elementAt(index);
+                                return InkWell(
+                                  onTap: () => _changeTheme(_themeName),
+                                  child: ListTile(
+                                    title: Text(_themeName),
+                                    trailing: Icon(
+                                      Icons.circle,
+                                      color: AppThemes.themes(context)
+                                          .values
+                                          .toList()
+                                          .elementAt(index)
+                                          .primaryColor,
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ),
