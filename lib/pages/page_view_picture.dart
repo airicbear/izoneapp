@@ -35,14 +35,14 @@ class _ViewPicturePageState extends State<ViewPicturePage> {
       isSaved = true;
     });
     String filename = widget.path.split('/').last;
-    await GallerySaver.saveImage(widget.path).then((bool success) {
+    await GallerySaver.saveImage(widget.path).then((bool? success) {
       Fluttertoast.showToast(
         msg: 'Saved $filename',
         toastLength: Toast.LENGTH_LONG,
         textColor: Theme.of(context).textTheme.bodyLarge?.color,
         backgroundColor: Theme.of(context).cardColor,
       );
-    } as FutureOr Function(bool? value));
+    });
   }
 
   @override
