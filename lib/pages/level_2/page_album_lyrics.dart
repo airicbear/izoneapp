@@ -162,9 +162,13 @@ class _AlbumSongList extends StatelessWidget {
               child: ListTile(
                 leading: Text(
                   '$index.',
+                  style: themeData.textTheme.titleMedium,
                   textScaleFactor: 1.25,
                 ),
-                title: Text('${album.songs[index - 1].title}'),
+                title: Text(
+                  '${album.songs[index - 1].title}',
+                  style: themeData.textTheme.titleMedium,
+                ),
                 trailing: FittedBox(
                   child: Row(
                     children: [
@@ -172,10 +176,14 @@ class _AlbumSongList extends StatelessWidget {
                         padding: const EdgeInsets.all(4.0),
                         child: Text(
                           S.of(context)!.lyrics,
+                          style: themeData.textTheme.bodySmall,
                           textScaleFactor: 1.25,
                         ),
                       ),
-                      FaIcon(FontAwesomeIcons.readme),
+                      FaIcon(
+                        FontAwesomeIcons.readme,
+                        color: themeData.textTheme.bodySmall?.color,
+                      ),
                     ],
                   ),
                 ),
