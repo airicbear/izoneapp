@@ -26,7 +26,6 @@ class AlbumLyricsPage extends StatelessWidget {
             return CustomScrollView(
               slivers: [
                 SliverAppBar(
-                  automaticallyImplyLeading: false,
                   expandedHeight: 370,
                   flexibleSpace: _AlbumCoverArt(album: album),
                 ),
