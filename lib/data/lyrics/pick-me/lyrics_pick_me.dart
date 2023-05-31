@@ -6,7 +6,7 @@ class LyricsPickMe extends Song {
   LyricsPickMe(BuildContext context)
       : super(
           context,
-          title: S.of(context).pickMe,
+          title: S.of(context)!.pickMe,
           length: Duration(minutes: 4, seconds: 39),
           lyrics: {
             "rom": [

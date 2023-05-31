@@ -9,7 +9,7 @@ import 'package:izoneapp/pages/page_disclaimer.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AppPageView extends StatefulWidget {
-  AppPageView({Key key}) : super(key: key);
+  AppPageView({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _AppPageViewState();
@@ -17,10 +17,10 @@ class AppPageView extends StatefulWidget {
 
 class _AppPageViewState extends State<AppPageView> {
   Future<SharedPreferences> prefs = SharedPreferences.getInstance();
-  Future<String> theme;
-  PageController _pageController;
-  ScrollController _appBarController;
-  AppPage _page;
+  late Future<String> theme;
+  late PageController _pageController;
+  late ScrollController _appBarController;
+  late AppPage _page;
   // BannerAd _ad;
   // bool _isAdLoaded = false;
 
@@ -79,11 +79,16 @@ class _AppPageViewState extends State<AppPageView> {
       future: theme,
       builder: (context, snapshot) {
         ThemeData _themeData =
-            AppThemes.themes(context)[snapshot.data ?? 'Auto'];
+            AppThemes.themes(context)[snapshot.data ?? 'Auto']!;
         return Theme(
           data: _themeData,
           child: Scaffold(
             appBar: AppBar(
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+              iconTheme: IconThemeData(
+                color: _themeData.textTheme.titleLarge?.color,
+              ),
               title: _PageViewAppBar(
                 appPages: _appPages,
                 pageController: _pageController,
@@ -169,6 +174,8 @@ class _AppPageViewState extends State<AppPageView> {
                         ),
                         InkWell(
                           child: ExpansionTile(
+                            textColor: _themeData.indicatorColor,
+                            iconColor: _themeData.indicatorColor,
                             leading: Icon(Icons.palette),
                             title: Text('Themes'),
                             children: List.generate(
@@ -244,11 +251,11 @@ class _PageTitle extends StatelessWidget {
   final ScrollController appBarController;
 
   const _PageTitle({
-    Key key,
-    @required this.page,
-    @required this.nextPage,
-    @required this.pageController,
-    @required this.appBarController,
+    Key? key,
+    required this.page,
+    required this.nextPage,
+    required this.pageController,
+    required this.appBarController,
   }) : super(key: key);
 
   Widget build(BuildContext context) {
@@ -260,7 +267,7 @@ class _PageTitle extends StatelessWidget {
             ? TextStyle(
                 color: Theme.of(context).disabledColor,
               )
-            : null,
+            : Theme.of(context).textTheme.titleLarge,
       ),
     );
   }
@@ -273,11 +280,11 @@ class _PageViewAppBar extends StatelessWidget {
   final AppPage nextPage;
 
   const _PageViewAppBar({
-    Key key,
-    @required this.appPages,
-    @required this.pageController,
-    @required this.appBarController,
-    @required this.nextPage,
+    Key? key,
+    required this.appPages,
+    required this.pageController,
+    required this.appBarController,
+    required this.nextPage,
   }) : super(key: key);
 
   @override

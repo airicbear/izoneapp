@@ -6,7 +6,7 @@ class LyricsUp extends Song {
   LyricsUp(BuildContext context)
       : super(
           context,
-          title: S.of(context).up,
+          title: S.of(context)!.up,
           length: const Duration(minutes: 3, seconds: 12),
           lyrics: {
             "rom": [

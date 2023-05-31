@@ -7,9 +7,9 @@ import 'package:photo_view/photo_view.dart';
 
 class ViewPicturePage extends StatefulWidget {
   const ViewPicturePage({
-    Key key,
-    @required this.path,
-    this.isNetwork,
+    Key? key,
+    required this.path,
+    required this.isNetwork,
   }) : super(key: key);
 
   final String path;
@@ -20,7 +20,7 @@ class ViewPicturePage extends StatefulWidget {
 }
 
 class _ViewPicturePageState extends State<ViewPicturePage> {
-  bool isSaved;
+  late bool isSaved;
 
   @override
   void initState() {
@@ -33,11 +33,11 @@ class _ViewPicturePageState extends State<ViewPicturePage> {
       isSaved = true;
     });
     String filename = widget.path.split('/').last;
-    await GallerySaver.saveImage(widget.path).then((bool success) {
+    await GallerySaver.saveImage(widget.path).then((bool? success) {
       Fluttertoast.showToast(
         msg: 'Saved $filename',
         toastLength: Toast.LENGTH_LONG,
-        textColor: Theme.of(context).textTheme.bodyText1.color,
+        textColor: Theme.of(context).textTheme.bodyLarge?.color,
         backgroundColor: Theme.of(context).cardColor,
       );
     });
@@ -60,13 +60,15 @@ class _ViewPicturePageState extends State<ViewPicturePage> {
                       onPressed: () {},
                       icon: Icon(Icons.check),
                       label: Text('Saved'),
-                      style: TextButton.styleFrom(primary: Colors.white),
+                      style:
+                          TextButton.styleFrom(foregroundColor: Colors.white),
                     )
                   : TextButton.icon(
                       onPressed: () => _savePicture(),
                       icon: Icon(Icons.save),
                       label: Text('Save picture'),
-                      style: TextButton.styleFrom(primary: Colors.white),
+                      style:
+                          TextButton.styleFrom(foregroundColor: Colors.white),
                     )
               : Spacer()
         ],
@@ -79,6 +81,7 @@ class _ViewPicturePageState extends State<ViewPicturePage> {
               builder: (context) => _FocusedViewPicturePage(
                 isNetwork: widget.isNetwork,
                 path: widget.path,
+                color: Colors.black,
               ),
             ),
           );
@@ -90,8 +93,8 @@ class _ViewPicturePageState extends State<ViewPicturePage> {
           backgroundDecoration: BoxDecoration(
             color: Colors.black,
           ),
-          imageProvider: widget.isNetwork == null || widget.isNetwork == false
-              ? AssetImage(widget.path)
+          imageProvider: widget.isNetwork == false
+              ? AssetImage(widget.path) as ImageProvider
               : CachedNetworkImageProvider(widget.path),
           heroAttributes: PhotoViewHeroAttributes(
             tag: widget.path,
@@ -117,9 +120,12 @@ class _FocusedViewPicturePage extends StatelessWidget {
   final bool isNetwork;
   final String path;
 
-  const _FocusedViewPicturePage(
-      {Key key, this.color, this.isNetwork, this.path})
-      : super(key: key);
+  const _FocusedViewPicturePage({
+    Key? key,
+    required this.isNetwork,
+    required this.path,
+    required this.color,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -137,8 +143,8 @@ class _FocusedViewPicturePage extends StatelessWidget {
           backgroundDecoration: BoxDecoration(
             color: Colors.black,
           ),
-          imageProvider: isNetwork == null || isNetwork == false
-              ? AssetImage(path)
+          imageProvider: isNetwork == false
+              ? AssetImage(path) as ImageProvider
               : NetworkImage(path),
           heroAttributes: PhotoViewHeroAttributes(
             tag: path,

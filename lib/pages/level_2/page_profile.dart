@@ -11,8 +11,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({
-    Key key,
-    @required this.profile,
+    Key? key,
+    required this.profile,
   }) : super(key: key);
 
   final Profile profile;
@@ -23,10 +23,10 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
-  Future<String> _theme;
-  List<Widget> _pages;
+  late Future<String> _theme;
+  late List<Widget> _pages;
   int _selectedIndex = 0;
-  StreamController<int> _pageController;
+  late StreamController<int> _pageController;
 
   final _expandedHeight = 470.0;
   final _collapsedHeight = 80.0;
@@ -59,7 +59,7 @@ class _ProfilePageState extends State<ProfilePage> {
       future: _theme,
       builder: (context, snapshot) {
         ThemeData _themeData =
-            AppThemes.themes(context)[snapshot.data ?? 'Auto'];
+            AppThemes.themes(context)[snapshot.data ?? 'Auto']!;
         return Theme(
           data: _themeData,
           child: Scaffold(
@@ -75,6 +75,9 @@ class _ProfilePageState extends State<ProfilePage> {
                   return CustomScrollView(
                     slivers: [
                       SliverAppBar(
+                        iconTheme: IconThemeData(
+                          color: _themeData.textTheme.titleLarge?.color,
+                        ),
                         backgroundColor: _themeData.scaffoldBackgroundColor,
                         pinned: true,
                         collapsedHeight: _collapsedHeight,
@@ -95,7 +98,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                 ),
                                 Text(
                                   widget.profile.stageName,
-                                  style: Theme.of(context).textTheme.headline3,
+                                  style:
+                                      Theme.of(context).textTheme.displaySmall,
                                   textAlign: TextAlign.center,
                                 ),
                               ],
@@ -137,7 +141,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               padding: const EdgeInsets.all(12.0),
                               child: Text(
                                 widget.profile.stageName,
-                                style: Theme.of(context).textTheme.headline3,
+                                style: Theme.of(context).textTheme.displaySmall,
                               ),
                             ),
                           ],
@@ -168,10 +172,10 @@ class _BottomNavBar extends StatefulWidget {
   final StreamController<int> controller;
 
   const _BottomNavBar({
-    Key key,
-    @required this.profile,
-    @required this.index,
-    @required this.controller,
+    Key? key,
+    required this.profile,
+    required this.index,
+    required this.controller,
   }) : super(key: key);
 
   @override
@@ -189,9 +193,9 @@ class _BottomNavBarState extends State<_BottomNavBar> {
     return BottomNavigationBar(
       currentIndex: widget.index,
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      selectedItemColor: Theme.of(context).textTheme.bodyText1.color,
+      selectedItemColor: Theme.of(context).textTheme.bodyLarge!.color,
       unselectedItemColor:
-          Theme.of(context).textTheme.bodyText1.color.withOpacity(0.5),
+          Theme.of(context).textTheme.bodyLarge!.color!.withOpacity(0.5),
       items: [
         BottomNavigationBarItem(
           icon: Icon(Icons.info),
@@ -215,7 +219,11 @@ class _ProfileHero extends StatefulWidget {
   final Profile profile;
   final double height;
 
-  const _ProfileHero({Key key, this.profile, this.height}) : super(key: key);
+  const _ProfileHero({
+    Key? key,
+    required this.profile,
+    required this.height,
+  }) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _ProfileHeroState();
@@ -244,6 +252,7 @@ class _ProfileHeroState extends State<_ProfileHero> {
             builder: (context) {
               return ViewPicturePage(
                 path: widget.profile.imagePath,
+                isNetwork: false,
               );
             },
           ),

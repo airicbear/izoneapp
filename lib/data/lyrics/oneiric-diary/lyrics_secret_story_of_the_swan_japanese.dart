@@ -6,7 +6,7 @@ class LyricsSecretStoryOfTheSwanJapanese extends Song {
   LyricsSecretStoryOfTheSwanJapanese(BuildContext context)
       : super(
           context,
-          title: '${S.of(context).secretStoryOfTheSwan} (Japanese ver.)',
+          title: '${S.of(context)!.secretStoryOfTheSwan} (Japanese ver.)',
           length: Duration(minutes: 3, seconds: 12),
           lyrics: {
             "rom": [

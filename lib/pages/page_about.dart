@@ -5,7 +5,15 @@ class AboutAppPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('About'),
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        iconTheme: IconThemeData(
+          color: Theme.of(context).textTheme.titleLarge?.color,
+        ),
+        title: Text(
+          'About',
+          style: Theme.of(context).textTheme.titleLarge,
+        ),
       ),
       body: ListView(
         children: [
@@ -25,8 +33,16 @@ class AboutAppPage extends StatelessWidget {
                       builder: (context) => LicensePage(),
                     ),
                   ),
-                  icon: Icon(Icons.book),
-                  label: Text('View all licenses'),
+                  icon: Icon(
+                    Icons.book,
+                    color: Theme.of(context).colorScheme.secondary,
+                  ),
+                  label: Text(
+                    'View all licenses',
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.secondary,
+                    ),
+                  ),
                 ),
               ],
             ),

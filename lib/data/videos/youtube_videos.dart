@@ -4,7 +4,7 @@ import 'package:izoneapp/data/youtube_video.dart';
 import 'package:izoneapp/generated/l10n.dart';
 
 class YoutubeVideos implements MediaContent<YoutubeVideo> {
-  static List<YoutubeVideo> _videos;
+  late List<YoutubeVideo> _videos;
   final bool sorted;
 
   @override
@@ -71,7 +71,7 @@ class YoutubeVideos implements MediaContent<YoutubeVideo> {
         tags: ['mv', 'dance'],
       ),
       YoutubeVideo(
-        title: S.of(context).secretStoryOfTheSwan,
+        title: S.of(context)!.secretStoryOfTheSwan,
         subtitle: 'Music video',
         date: DateTime(2020, 06, 15),
         youtubeId: 'nnVjsos40qk',
@@ -107,7 +107,7 @@ class YoutubeVideos implements MediaContent<YoutubeVideo> {
         tags: ['mv'],
       ),
       YoutubeVideo(
-        title: S.of(context).violeta,
+        title: S.of(context)!.violeta,
         subtitle: 'Music video',
         date: DateTime(2019, 04, 01),
         youtubeId: '6eEZ7DJMzuk',
@@ -129,7 +129,7 @@ class YoutubeVideos implements MediaContent<YoutubeVideo> {
         tags: ['mv'],
       ),
       YoutubeVideo(
-        title: S.of(context).laVieEnRose,
+        title: S.of(context)!.laVieEnRose,
         subtitle: 'Music video (Performance ver.)',
         date: DateTime(2018, 11, 08),
         youtubeId: 'E-T1gEeUqwA',
@@ -137,7 +137,7 @@ class YoutubeVideos implements MediaContent<YoutubeVideo> {
         restricted: true,
       ),
       YoutubeVideo(
-        title: S.of(context).laVieEnRose,
+        title: S.of(context)!.laVieEnRose,
         subtitle: 'Music video',
         date: DateTime(2018, 10, 29),
         youtubeId: 'WZwr2a_lFWY',
@@ -145,14 +145,14 @@ class YoutubeVideos implements MediaContent<YoutubeVideo> {
         restricted: true,
       ),
       YoutubeVideo(
-        title: S.of(context).secretStoryOfTheSwan,
+        title: S.of(context)!.secretStoryOfTheSwan,
         subtitle: 'Dance practice',
         date: DateTime(2020, 06, 23),
         youtubeId: '1yQjsWhOuJI',
         tags: ['dance'],
       ),
       YoutubeVideo(
-        title: S.of(context).secretStoryOfTheSwan,
+        title: S.of(context)!.secretStoryOfTheSwan,
         subtitle: 'STUDIO CHOOM performance',
         date: DateTime(2020, 06, 16),
         youtubeId: 'fXSXUKXuqu8',
@@ -187,28 +187,28 @@ class YoutubeVideos implements MediaContent<YoutubeVideo> {
         tags: ['dance'],
       ),
       YoutubeVideo(
-        title: S.of(context).up,
+        title: S.of(context)!.up,
         subtitle: 'Dance practice',
         date: DateTime(2019, 05, 17),
         youtubeId: 'IsUVaQOj0fs',
         tags: ['dance'],
       ),
       YoutubeVideo(
-        title: S.of(context).violeta,
+        title: S.of(context)!.violeta,
         subtitle: 'Dance practice (Close up ver.)',
         date: DateTime(2019, 04, 25),
         youtubeId: 'wnTWDHiBRpQ',
         tags: ['dance'],
       ),
       YoutubeVideo(
-        title: S.of(context).violeta,
+        title: S.of(context)!.violeta,
         subtitle: 'Dance practice',
         date: DateTime(2019, 04, 07),
         youtubeId: 'Z8_aiEDLoY4',
         tags: ['dance'],
       ),
       YoutubeVideo(
-        title: S.of(context).laVieEnRose,
+        title: S.of(context)!.laVieEnRose,
         subtitle: '2018 MAMA ver.',
         date: DateTime(2019, 01, 04),
         youtubeId: 'xhdW-GceM6g',
@@ -222,7 +222,7 @@ class YoutubeVideos implements MediaContent<YoutubeVideo> {
         tags: ['dance'],
       ),
       YoutubeVideo(
-        title: S.of(context).laVieEnRose,
+        title: S.of(context)!.laVieEnRose,
         subtitle: 'Dance practice',
         date: DateTime(2018, 11, 03),
         youtubeId: 'hsMaygLZ3G4',
@@ -236,7 +236,7 @@ class YoutubeVideos implements MediaContent<YoutubeVideo> {
         tags: ['dance'],
       ),
       YoutubeVideo(
-        title: S.of(context).pickMe,
+        title: S.of(context)!.pickMe,
         subtitle: 'Dance practice (12 ver.)',
         date: DateTime(2018, 10, 04),
         youtubeId: 'YGiLQUc8x5E',

@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:izoneapp/pages/page_view_picture.dart';
 
 class GroupPicture extends StatelessWidget {
-  const GroupPicture({Key key, this.imagePath}) : super(key: key);
+  const GroupPicture({
+    Key? key,
+    required this.imagePath,
+  }) : super(key: key);
 
   final String imagePath;
 
@@ -13,7 +16,10 @@ class GroupPicture extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) {
-              return ViewPicturePage(path: imagePath);
+              return ViewPicturePage(
+                path: imagePath,
+                isNetwork: false,
+              );
             },
           ),
         );

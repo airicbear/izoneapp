@@ -7,7 +7,15 @@ class DisclaimerPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Disclaimer'),
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        iconTheme: IconThemeData(
+          color: Theme.of(context).textTheme.titleLarge?.color,
+        ),
+        title: Text(
+          'Disclaimer',
+          style: Theme.of(context).textTheme.titleLarge,
+        ),
       ),
       body: ListView(
         children: [
@@ -32,10 +40,16 @@ class DisclaimerPage extends StatelessWidget {
               // ButtonBar(
               //   children: [
               //     TextButton.icon(
-              //       label: Text('Submit an issue'),
-              //       icon: FaIcon(FontAwesomeIcons.github),
-              //       onPressed: () =>
-              //           launch('https://github.com/airicbear/izone-app'),
+              //       label: Text(
+              //         'Submit an issue',
+              //         style: Theme.of(context).textTheme.titleMedium,
+              //       ),
+              //       icon: FaIcon(
+              //         FontAwesomeIcons.github,
+              //         color: Theme.of(context).textTheme.titleMedium?.color,
+              //       ),
+              //       onPressed: () => launchUrl(
+              //           'https://github.com/airicbear/izone-app' ),
               //     ),
               //   ],
               // )
@@ -50,59 +64,123 @@ class DisclaimerPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 TextButton.icon(
-                  onPressed: () => launch('https://genius.com/artists/Izone'),
-                  icon: FaIcon(FontAwesomeIcons.globeAmericas),
-                  label: Text('Genius.com'),
+                  onPressed: () =>
+                      launchUrl(Uri.parse('https://genius.com/artists/Izone')),
+                  icon: FaIcon(
+                    FontAwesomeIcons.earthAmericas,
+                    color: Theme.of(context).textTheme.titleMedium?.color,
+                  ),
+                  label: Text(
+                    'Genius.com',
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
                 ),
                 TextButton.icon(
-                  onPressed: () => launch(
-                      'https://colorcodedlyrics.com/2018/11/iz-one-aijeuwon-produce-48-lyrics-index'),
-                  icon: FaIcon(FontAwesomeIcons.globeAmericas),
-                  label: Text('colorcodedlyrics.com'),
+                  onPressed: () => launchUrl(Uri.parse(
+                      'https://colorcodedlyrics.com/2018/11/iz-one-aijeuwon-produce-48-lyrics-index')),
+                  icon: FaIcon(
+                    FontAwesomeIcons.earthAmericas,
+                    color: Theme.of(context).textTheme.titleMedium?.color,
+                  ),
+                  label: Text(
+                    'colorcodedlyrics.com',
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
                 ),
                 TextButton.icon(
-                  onPressed: () => launch(
-                      'https://www.youtube.com/results?search_query=iz%2Aone+color+coded+lyrics'),
-                  icon: FaIcon(FontAwesomeIcons.youtube),
-                  label: Text('YouTube'),
+                  onPressed: () => launchUrl(Uri.parse(
+                      'https://www.youtube.com/results?search_query=iz%2Aone+color+coded+lyrics')),
+                  icon: FaIcon(
+                    FontAwesomeIcons.youtube,
+                    color: Theme.of(context).textTheme.titleMedium?.color,
+                  ),
+                  label: Text(
+                    'YouTube',
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
                 ),
                 TextButton.icon(
-                  onPressed: () => launch(
-                      'https://translate.google.com/#view=home&op=translate&sl=ko&tl=en'),
-                  icon: FaIcon(FontAwesomeIcons.language),
-                  label: Text('Google Translate'),
+                  onPressed: () => launchUrl(Uri.parse(
+                      'https://translate.google.com/#view=home&op=translate&sl=ko&tl=en')),
+                  icon: FaIcon(
+                    FontAwesomeIcons.language,
+                    color: Theme.of(context).textTheme.titleMedium?.color,
+                  ),
+                  label: Text(
+                    'Google Translate',
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
                 ),
                 TextButton.icon(
-                    onPressed: () =>
-                        launch('https://en.wikipedia.org/wiki/Iz*One'),
-                    icon: FaIcon(FontAwesomeIcons.wikipediaW),
-                    label: Text('Wikipedia: Iz*One')),
-                TextButton.icon(
-                  onPressed: () => launch('http://iz-one.co.kr/'),
-                  icon: FaIcon(FontAwesomeIcons.globeAmericas),
-                  label: Text('Official IZ*ONE website'),
+                  onPressed: () => launchUrl(
+                      Uri.parse('https://en.wikipedia.org/wiki/Iz*One')),
+                  icon: FaIcon(
+                    FontAwesomeIcons.wikipediaW,
+                    color: Theme.of(context).textTheme.titleMedium?.color,
+                  ),
+                  label: Text(
+                    'Wikipedia: Iz*One',
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
                 ),
                 TextButton.icon(
-                  onPressed: () => launch('https://www.izone-official.com/'),
-                  icon: FaIcon(FontAwesomeIcons.globeAmericas),
-                  label: Text('Official IZ*ONE Japan website'),
+                  onPressed: () => launchUrl(Uri.parse('http://iz-one.co.kr/')),
+                  icon: FaIcon(
+                    FontAwesomeIcons.earthAmericas,
+                    color: Theme.of(context).textTheme.titleMedium?.color,
+                  ),
+                  label: Text(
+                    'Official IZ*ONE website',
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
                 ),
                 TextButton.icon(
                   onPressed: () =>
-                      launch('https://kprofiles.com/izone-members-profile/'),
-                  icon: FaIcon(FontAwesomeIcons.globeAmericas),
-                  label: Text('KProfiles.com'),
+                      launchUrl(Uri.parse('https://www.izone-official.com/')),
+                  icon: FaIcon(
+                    FontAwesomeIcons.earthAmericas,
+                    color: Theme.of(context).textTheme.titleMedium?.color,
+                  ),
+                  label: Text(
+                    'Official IZ*ONE Japan website',
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
+                ),
+                TextButton.icon(
+                  onPressed: () => launchUrl(Uri.parse(
+                      'https://kprofiles.com/izone-members-profile/')),
+                  icon: FaIcon(
+                    FontAwesomeIcons.earthAmericas,
+                    color: Theme.of(context).textTheme.titleMedium?.color,
+                  ),
+                  label: Text(
+                    'KProfiles.com',
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
+                ),
+                TextButton.icon(
+                  onPressed: () => launchUrl(
+                      Uri.parse('https://kpop.fandom.com/wiki/IZ*ONE')),
+                  icon: FaIcon(
+                    FontAwesomeIcons.earthAmericas,
+                    color: Theme.of(context).textTheme.titleMedium?.color,
+                  ),
+                  label: Text(
+                    'FANDOM KPOP Wiki Page',
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
                 ),
                 TextButton.icon(
                   onPressed: () =>
-                      launch('https://kpop.fandom.com/wiki/IZ*ONE'),
-                  icon: FaIcon(FontAwesomeIcons.globeAmericas),
-                  label: Text('FANDOM KPOP Wiki Page'),
-                ),
-                TextButton.icon(
-                  onPressed: () => launch('https://dbkpop.com/group/izone'),
-                  icon: FaIcon(FontAwesomeIcons.globeAmericas),
-                  label: Text('dbkpop.com'),
+                      launchUrl(Uri.parse('https://dbkpop.com/group/izone')),
+                  icon: FaIcon(
+                    FontAwesomeIcons.earthAmericas,
+                    color: Theme.of(context).textTheme.titleMedium?.color,
+                  ),
+                  label: Text(
+                    'dbkpop.com',
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
                 ),
               ],
             ),

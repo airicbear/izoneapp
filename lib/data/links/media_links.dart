@@ -9,15 +9,16 @@ class MediaLinkInfo {
   final Widget icon;
   final String description;
 
-  MediaLinkInfo({this.launch, this.icon, this.description});
+  MediaLinkInfo(
+      {required this.launch, required this.icon, required this.description});
 }
 
 class MediaLinks {
   static _launchUrl(url, {altUrl}) async {
-    if (await canLaunch(url)) {
-      await launch(url);
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url);
     } else {
-      await launch(altUrl);
+      await launchUrl(altUrl);
     }
   }
 
@@ -81,7 +82,7 @@ class MediaLinks {
     MediaLinkInfo(
       launch: () => _launchUrl(
           'https://music.youtube.com/channel/UCG81UKNsFg9Perf0uPQOsQw'),
-      icon: FaIcon(FontAwesomeIcons.playCircle),
+      icon: FaIcon(FontAwesomeIcons.circlePlay),
       description: 'YouTube Music',
     ),
     MediaLinkInfo(
@@ -105,7 +106,7 @@ class MediaLinks {
         description: 'Tidal Music'),
     MediaLinkInfo(
       launch: () => _launchUrl('http://iz-one.co.kr/'),
-      icon: FaIcon(FontAwesomeIcons.globeAmericas),
+      icon: FaIcon(FontAwesomeIcons.earthAmericas),
       description: 'Official website',
     ),
   ];

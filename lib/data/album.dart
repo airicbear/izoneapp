@@ -10,10 +10,10 @@ abstract class Album {
 
   Album(
     this.context, {
-    this.title,
-    this.releaseDate,
-    this.songs,
-    this.color,
+    required this.title,
+    required this.releaseDate,
+    required this.songs,
+    required this.color,
   });
 
   Duration get totalDuration {

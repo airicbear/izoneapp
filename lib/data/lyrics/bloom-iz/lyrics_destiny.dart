@@ -6,7 +6,7 @@ class LyricsDestiny extends Song {
   LyricsDestiny(BuildContext context)
       : super(
           context,
-          title: S.of(context).destiny,
+          title: S.of(context)!.destiny,
           length: Duration(minutes: 3, seconds: 21),
           lyrics: {
             "rom": [

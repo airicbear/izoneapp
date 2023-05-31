@@ -38,7 +38,11 @@ abstract class Song {
         .join('\n');
   }
 
-  Song(this.context, {this.title, this.length, this.lyrics})
-      : assert(lyrics.length > 0 && lineCountMatch(lyrics),
+  Song(
+    this.context, {
+    required this.title,
+    required this.length,
+    required this.lyrics,
+  }) : assert(lyrics.length > 0 && lineCountMatch(lyrics),
             'Song lyrics must have matching number of lines. The song lyrics for "$title" has section indices\n\n${sectionIndices(lyrics)}\n');
 }

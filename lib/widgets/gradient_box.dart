@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 class GradientBox extends StatelessWidget {
-  const GradientBox({Key key, this.beginY = 0.8}) : super(key: key);
+  const GradientBox({
+    Key? key,
+    this.beginY = 0.8,
+  }) : super(key: key);
 
   final double beginY;
 

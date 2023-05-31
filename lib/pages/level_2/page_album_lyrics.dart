@@ -8,9 +8,9 @@ import 'package:izoneapp/pages/page_view_picture.dart';
 
 class AlbumLyricsPage extends StatelessWidget {
   const AlbumLyricsPage({
-    Key key,
-    @required this.album,
-    @required this.themeData,
+    Key? key,
+    required this.album,
+    required this.themeData,
   }) : super(key: key);
 
   final Album album;
@@ -26,7 +26,6 @@ class AlbumLyricsPage extends StatelessWidget {
             return CustomScrollView(
               slivers: [
                 SliverAppBar(
-                  automaticallyImplyLeading: false,
                   expandedHeight: 370,
                   flexibleSpace: _AlbumCoverArt(album: album),
                 ),
@@ -66,7 +65,10 @@ class AlbumLyricsPage extends StatelessWidget {
 class _AlbumCoverArt extends StatelessWidget {
   final Album album;
 
-  const _AlbumCoverArt({Key key, @required this.album}) : super(key: key);
+  const _AlbumCoverArt({
+    Key? key,
+    required this.album,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -81,6 +83,7 @@ class _AlbumCoverArt extends StatelessWidget {
                 builder: (context) {
                   return ViewPicturePage(
                     path: album.getCoverArtPath,
+                    isNetwork: false,
                   );
                 },
               ),
@@ -105,15 +108,15 @@ class _AlbumSongList extends StatelessWidget {
   final ThemeData themeData;
 
   const _AlbumSongList({
-    Key key,
-    @required this.album,
-    @required this.themeData,
+    Key? key,
+    required this.album,
+    required this.themeData,
   }) : super(key: key);
 
   Route _songLyricsRoute({
-    BuildContext context,
-    Song song,
-    String coverArt,
+    required BuildContext context,
+    required Song song,
+    required String coverArt,
   }) {
     return MaterialPageRoute(
       builder: (context) => SongLyricsPage(
@@ -133,12 +136,12 @@ class _AlbumSongList extends StatelessWidget {
               title: Text(
                 MaterialLocalizations.of(context)
                     .formatShortDate(DateTime.parse(album.releaseDate)),
-                style: themeData.textTheme.caption,
+                style: themeData.textTheme.bodySmall,
                 textScaleFactor: 1.25,
               ),
               trailing: Text(
                 '${album.totalDuration.inMinutes} minutes',
-                style: themeData.textTheme.caption,
+                style: themeData.textTheme.bodySmall,
                 textScaleFactor: 1.25,
               ),
             );
@@ -158,20 +161,28 @@ class _AlbumSongList extends StatelessWidget {
               child: ListTile(
                 leading: Text(
                   '$index.',
+                  style: themeData.textTheme.titleMedium,
                   textScaleFactor: 1.25,
                 ),
-                title: Text('${album.songs[index - 1].title}'),
+                title: Text(
+                  '${album.songs[index - 1].title}',
+                  style: themeData.textTheme.titleMedium,
+                ),
                 trailing: FittedBox(
                   child: Row(
                     children: [
                       Padding(
                         padding: const EdgeInsets.all(4.0),
                         child: Text(
-                          S.of(context).lyrics,
+                          S.of(context)!.lyrics,
+                          style: themeData.textTheme.bodySmall,
                           textScaleFactor: 1.25,
                         ),
                       ),
-                      FaIcon(FontAwesomeIcons.readme),
+                      FaIcon(
+                        FontAwesomeIcons.readme,
+                        color: themeData.textTheme.bodySmall?.color,
+                      ),
                     ],
                   ),
                 ),

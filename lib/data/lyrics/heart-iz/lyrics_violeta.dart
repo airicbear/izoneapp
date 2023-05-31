@@ -248,5 +248,5 @@ class LyricsVioleta implements Song {
       };
 
   @override
-  String get title => S.of(context).violeta;
+  String get title => S.of(context)!.violeta;
 }

@@ -6,11 +6,11 @@ class IzonePicture {
   final List<String> tags;
 
   IzonePicture({
-    this.id,
-    this.path,
-    this.date,
-    this.description,
-    this.tags,
+    required this.id,
+    required this.path,
+    required this.date,
+    required this.description,
+    required this.tags,
   });
 
   factory IzonePicture.fromJson(Map<String, dynamic> json) {

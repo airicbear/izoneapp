@@ -4,9 +4,9 @@ import 'package:izoneapp/pages/level_2/page_album_lyrics.dart';
 
 class AlbumLyricsTile extends StatelessWidget {
   const AlbumLyricsTile({
-    Key key,
-    @required this.album,
-    @required this.themeData,
+    Key? key,
+    required this.album,
+    required this.themeData,
   }) : super(key: key);
 
   final Album album;
@@ -47,7 +47,7 @@ class AlbumLyricsTile extends StatelessWidget {
             FittedBox(
               child: Text(
                 album.title,
-                style: Theme.of(context).textTheme.subtitle1,
+                style: Theme.of(context).textTheme.titleMedium,
               ),
             ),
           ],

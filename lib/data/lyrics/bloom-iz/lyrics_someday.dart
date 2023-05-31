@@ -6,7 +6,7 @@ class LyricsSomeday extends Song {
   LyricsSomeday(BuildContext context)
       : super(
           context,
-          title: S.of(context).someday,
+          title: S.of(context)!.someday,
           length: Duration(minutes: 3, seconds: 18),
           lyrics: {
             "rom": [

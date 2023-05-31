@@ -18,37 +18,29 @@ class AppThemes {
       );
 
   static ThemeData get dark => ThemeData(
-        brightness: Brightness.dark,
         primaryColor: Colors.black,
-        primarySwatch: magentaColor,
-        accentColor: magentaColor,
         cardColor: Color.fromRGBO(35, 35, 35, 1.0),
         canvasColor: Colors.black,
+        colorScheme: ColorScheme.fromSwatch(primarySwatch: magentaColor)
+            .copyWith(secondary: magentaColor)
+            .copyWith(brightness: Brightness.dark),
       );
 
   static ThemeData get light => ThemeData(
-        appBarTheme: AppBarTheme(
-          color: Colors.transparent,
-          elevation: 0,
-        ),
         primaryColor: Colors.white,
         primarySwatch: magentaColor,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       );
 
   static ThemeData get magenta => ThemeData(
-        appBarTheme: AppBarTheme(
-          color: Colors.transparent,
-          elevation: 0,
-        ),
         primaryColor: Color(0xFFEF539D),
-        primarySwatch: magentaColor,
-        brightness: Brightness.dark,
         scaffoldBackgroundColor: Color(0xFFEF539D),
-        accentColor: Color(0xFFF7A9CD),
         cardColor: Color(0xFFF16BAA),
         canvasColor: Color(0xFFF05FA3),
-        backgroundColor: Color(0xFFF05FA3),
+        colorScheme: ColorScheme.fromSwatch(primarySwatch: magentaColor)
+            .copyWith(secondary: Color(0xFFF7A9CD))
+            .copyWith(background: Color(0xFFF05FA3))
+            .copyWith(brightness: Brightness.dark),
       );
 
   static Map<String, ThemeData> themes(BuildContext context) {
