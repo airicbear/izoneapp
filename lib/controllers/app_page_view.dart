@@ -172,6 +172,8 @@ class _AppPageViewState extends State<AppPageView> {
                         ),
                         InkWell(
                           child: ExpansionTile(
+                            textColor: _themeData.indicatorColor,
+                            iconColor: _themeData.indicatorColor,
                             leading: Icon(Icons.palette),
                             title: Text('Themes'),
                             children: List.generate(
