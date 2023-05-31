@@ -84,6 +84,9 @@ class _AppPageViewState extends State<AppPageView> {
           data: _themeData,
           child: Scaffold(
             appBar: AppBar(
+              iconTheme: IconThemeData(
+                color: _themeData.textTheme.titleLarge?.color,
+              ),
               title: _PageViewAppBar(
                 appPages: _appPages,
                 pageController: _pageController,
@@ -260,7 +263,7 @@ class _PageTitle extends StatelessWidget {
             ? TextStyle(
                 color: Theme.of(context).disabledColor,
               )
-            : null,
+            : Theme.of(context).textTheme.titleLarge,
       ),
     );
   }
