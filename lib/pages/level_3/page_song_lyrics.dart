@@ -75,6 +75,9 @@ class SongLyricsPageState extends State<SongLyricsPage>
                   return CustomScrollView(
                     slivers: [
                       SliverAppBar(
+                        iconTheme: IconThemeData(
+                          color: _themeData.textTheme.titleLarge?.color,
+                        ),
                         backgroundColor: _themeData.scaffoldBackgroundColor,
                         expandedHeight: _expandedHeight,
                         pinned: true,
@@ -82,7 +85,10 @@ class SongLyricsPageState extends State<SongLyricsPage>
                           coverArt: widget.coverArt,
                           themeData: _themeData,
                         ),
-                        title: Text(widget.song.title),
+                        title: Text(
+                          widget.song.title,
+                          style: _themeData.textTheme.titleLarge,
+                        ),
                         actions: [
                           _DurationDisplay(
                             song: widget.song,
