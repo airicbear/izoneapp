@@ -5,6 +5,8 @@ class AboutAppPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
         iconTheme: IconThemeData(
           color: Theme.of(context).textTheme.titleLarge?.color,
         ),

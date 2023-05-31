@@ -18,10 +18,6 @@ class AppThemes {
       );
 
   static ThemeData get dark => ThemeData(
-        appBarTheme: AppBarTheme(
-          color: Colors.transparent,
-          elevation: 0,
-        ),
         primaryColor: Colors.black,
         cardColor: Color.fromRGBO(35, 35, 35, 1.0),
         canvasColor: Colors.black,
@@ -31,20 +27,12 @@ class AppThemes {
       );
 
   static ThemeData get light => ThemeData(
-        appBarTheme: AppBarTheme(
-          color: Colors.transparent,
-          elevation: 0,
-        ),
         primaryColor: Colors.white,
         primarySwatch: magentaColor,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       );
 
   static ThemeData get magenta => ThemeData(
-        appBarTheme: AppBarTheme(
-          color: Colors.transparent,
-          elevation: 0,
-        ),
         primaryColor: Color(0xFFEF539D),
         scaffoldBackgroundColor: Color(0xFFEF539D),
         cardColor: Color(0xFFF16BAA),

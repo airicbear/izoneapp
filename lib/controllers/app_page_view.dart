@@ -84,6 +84,8 @@ class _AppPageViewState extends State<AppPageView> {
           data: _themeData,
           child: Scaffold(
             appBar: AppBar(
+              backgroundColor: Colors.transparent,
+              elevation: 0,
               iconTheme: IconThemeData(
                 color: _themeData.textTheme.titleLarge?.color,
               ),
