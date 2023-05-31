@@ -75,6 +75,9 @@ class _ProfilePageState extends State<ProfilePage> {
                   return CustomScrollView(
                     slivers: [
                       SliverAppBar(
+                        iconTheme: IconThemeData(
+                          color: _themeData.textTheme.titleLarge?.color,
+                        ),
                         backgroundColor: _themeData.scaffoldBackgroundColor,
                         pinned: true,
                         collapsedHeight: _collapsedHeight,
