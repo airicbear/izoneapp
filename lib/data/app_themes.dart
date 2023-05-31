@@ -21,11 +21,9 @@ class AppThemes {
         primaryColor: Colors.black,
         cardColor: Color.fromRGBO(35, 35, 35, 1.0),
         canvasColor: Colors.black,
-        colorScheme:
-            ColorScheme.fromSwatch(primarySwatch: magentaColor).copyWith(
-          secondary: magentaColor,
-          brightness: Brightness.dark,
-        ),
+        colorScheme: ColorScheme.fromSwatch(primarySwatch: magentaColor)
+            .copyWith(secondary: magentaColor)
+            .copyWith(brightness: Brightness.dark),
       );
 
   static ThemeData get light => ThemeData(
@@ -44,21 +42,21 @@ class AppThemes {
           elevation: 0,
         ),
         primaryColor: Color(0xFFEF539D),
-        brightness: Brightness.dark,
         scaffoldBackgroundColor: Color(0xFFEF539D),
         cardColor: Color(0xFFF16BAA),
         canvasColor: Color(0xFFF05FA3),
         colorScheme: ColorScheme.fromSwatch(primarySwatch: magentaColor)
             .copyWith(secondary: Color(0xFFF7A9CD))
-            .copyWith(background: Color(0xFFF05FA3)),
+            .copyWith(background: Color(0xFFF05FA3))
+            .copyWith(brightness: Brightness.dark),
       );
 
   static Map<String, ThemeData> themes(BuildContext context) {
     return {
       'Auto': Theme.of(context),
-      // 'Dark': dark,
+      'Dark': dark,
       'Light': light,
-      // 'Magenta': magenta,
+      'Magenta': magenta,
     };
   }
 }
