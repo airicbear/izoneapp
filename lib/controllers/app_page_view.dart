@@ -78,7 +78,8 @@ class _AppPageViewState extends State<AppPageView> {
     return FutureBuilder<String>(
       future: theme,
       builder: (context, snapshot) {
-        ThemeData _themeData = AppThemes.themes(context)['Light']!;
+        ThemeData _themeData =
+            AppThemes.themes(context)[snapshot.data ?? 'Auto']!;
         return Theme(
           data: _themeData,
           child: Scaffold(

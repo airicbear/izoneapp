@@ -18,6 +18,10 @@ class AppThemes {
       );
 
   static ThemeData get dark => ThemeData(
+        appBarTheme: AppBarTheme(
+          color: Colors.transparent,
+          elevation: 0,
+        ),
         primaryColor: Colors.black,
         cardColor: Color.fromRGBO(35, 35, 35, 1.0),
         canvasColor: Colors.black,
