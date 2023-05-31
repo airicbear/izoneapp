@@ -54,9 +54,8 @@ class SongLyricsPageState extends State<SongLyricsPage>
     return FutureBuilder<String>(
       future: _theme,
       builder: (context, snapshot) {
-        // ThemeData _themeData =
-        //     AppThemes.themes(context)[snapshot.data ?? 'Auto']!;
-        ThemeData _themeData = Theme.of(context);
+        ThemeData _themeData =
+            AppThemes.themes(context)[snapshot.data ?? 'Auto']!;
         return Theme(
           data: _themeData,
           child: Scaffold(

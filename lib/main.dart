@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       home: AppPageView(),
       debugShowCheckedModeBanner: false,
       darkTheme: ThemeData.dark(),
-      theme: ThemeData.light(),
+      theme: AppThemes.light,
       localizationsDelegates: [
         const AppLocalizationDelegate(),
         GlobalMaterialLocalizations.delegate,
