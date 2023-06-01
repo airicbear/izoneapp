@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       // ),
       home: AppPageView(),
       debugShowCheckedModeBanner: false,
-      darkTheme: ThemeData.dark(),
+      darkTheme: AppThemes.dark,
       theme: AppThemes.light,
       localizationsDelegates: [
         const AppLocalizationDelegate(),
